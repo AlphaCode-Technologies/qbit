@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "nrwl.angular-console",
+    "bradlc.vscode-tailwindcss",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "seyyedkhandon.firacode",
+    "waderyan.gitblame",
+    "mhutchie.git-graph",
+    "github.vscode-github-actions",
+    "yzhang.markdown-all-in-one",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "sonarsource.sonarlint-vscode",
+    "wayou.vscode-todo-highlight",
+    "pkief.material-icon-theme",
+    "usernamehw.errorlens",
+    "davidanson.vscode-markdownlint"
+  ]
+}

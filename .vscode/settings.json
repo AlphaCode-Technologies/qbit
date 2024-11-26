@@ -1,0 +1,21 @@
+{
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "node_modules",
+    "vscode-extension",
+    ".git",
+    ".git/{info,lfs,logs,refs,objects}/**",
+    ".git/{index,*refs,*HEAD}",
+    ".vscode",
+    ".vscode-insiders",
+    ".gitignore",
+    "pnpm-lock.yaml"
+  ],
+  "cSpell.ignoreWords": ["alphacodetechnologies", "dulan", "dulans", "padma", "sudasinghe", "Komodo", "tseslint"],
+  "editor.renderWhitespace": "all",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": "active",
+  "editor.fontLigatures": true,
+  "material-icon-theme.activeIconPack": "react_redux"
+}
