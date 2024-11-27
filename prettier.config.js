@@ -6,5 +6,7 @@ export default {
   tabWidth: 2,
   printWidth: 120,
   arrowParens: 'always',
-  endOfLine: 'crlf',
+  bracketSpacing: true,
+  bracketSameLine: false,
+  endOfLine: 'lf',
 };
