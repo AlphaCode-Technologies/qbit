@@ -16,6 +16,7 @@
     "wayou.vscode-todo-highlight",
     "pkief.material-icon-theme",
     "usernamehw.errorlens",
-    "davidanson.vscode-markdownlint"
+    "davidanson.vscode-markdownlint",
+    "webhint.vscode-webhint"
   ]
 }

@@ -11,7 +11,16 @@
     ".gitignore",
     "pnpm-lock.yaml"
   ],
-  "cSpell.ignoreWords": ["alphacodetechnologies", "dulan", "dulans", "padma", "sudasinghe", "Komodo", "tseslint"],
+  "cSpell.ignoreWords": [
+    "Autodocs",
+    "Komodo",
+    "alphacodetechnologies",
+    "dulan",
+    "dulans",
+    "padma",
+    "sudasinghe",
+    "tseslint"
+  ],
   "editor.renderWhitespace": "all",
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
