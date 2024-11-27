@@ -18,7 +18,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test:ui": "vitest --ui",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -26,6 +27,8 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.2",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@eslint/js": "^9.13.0",
     "@storybook/addon-essentials": "8.4.5",
     "@storybook/addon-interactions": "8.4.5",
@@ -48,7 +51,9 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "eslint-plugin-storybook": "^0.11.1",
     "globals": "^15.11.0",
+    "husky": "^9.1.7",
     "jsdom": "^25.0.1",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.49",
     "prettier": "^3.3.3",
     "storybook": "8.4.5",

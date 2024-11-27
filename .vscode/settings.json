@@ -15,12 +15,15 @@
     "Autodocs",
     "Komodo",
     "alphacodetechnologies",
+    "commitlint",
     "dulan",
     "dulans",
     "hintrc",
     "padma",
+    "pnpx",
     "sudasinghe",
-    "tseslint"
+    "tseslint",
+    "vitest"
   ],
   "editor.renderWhitespace": "all",
   "editor.bracketPairColorization.enabled": true,
