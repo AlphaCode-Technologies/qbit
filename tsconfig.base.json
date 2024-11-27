@@ -7,7 +7,8 @@
     /* Path setup */
     "baseUrl": "./",
     "paths": {
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
+      "@components/*": ["src/components/*"]
     },
 
     /* Bundler mode */
@@ -23,6 +24,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": false,
     "noUncheckedSideEffectImports": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type inference */
+    "types": ["vitest/globals"]
   }
 }

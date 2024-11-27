@@ -17,6 +17,6 @@
     "pkief.material-icon-theme",
     "usernamehw.errorlens",
     "davidanson.vscode-markdownlint",
-    "webhint.vscode-webhint"
+    "vitest.explorer"
   ]
 }
