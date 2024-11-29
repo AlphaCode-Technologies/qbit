@@ -1,4 +1,3 @@
+pnpm exec sh ./.github/hooks/pre-commit.sh
 pnpm exec lint-staged
 pnpm exec vitest run
-
-# exit 1
