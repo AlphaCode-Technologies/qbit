@@ -24,4 +24,10 @@ declare namespace AlphaElements {
     inputs: Inputs;
     outputs: Outputs;
   };
+
+  type RadioGroupProps = {
+    name: string;
+    id?: string;
+    disabled?: boolean;
+  };
 }
