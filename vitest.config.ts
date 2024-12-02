@@ -8,8 +8,8 @@ export default mergeConfig(
     test: {
       globals: true,
       environment: 'jsdom',
-      include: ['src/__tests__/*.test.{ts,tsx}'],
-      setupFiles: ['src/__tests__/setupTests.ts'],
+      include: ['src/**/*.test.{ts,tsx}'],
+      setupFiles: ['./setupTests.ts'],
       reporters: ['html'],
       outputFile: { html: '.testing/html/index.html' },
     },
