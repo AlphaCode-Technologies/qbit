@@ -1,5 +1,7 @@
-import { FC, PropsWithChildren } from 'react';
+const Radio = ({ properties, actions }: AlphaElements.RadioProps) => {
+  const { Renderer, ...rest } = properties;
 
-export const Radio: FC<PropsWithChildren<AlphaElements.RadioGroupProps>> = ({ children }) => {
-  return <>{children}</>;
+  return <Renderer properties={rest} actions={actions} />;
 };
+
+export default Radio;

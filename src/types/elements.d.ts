@@ -3,31 +3,46 @@ declare namespace AlphaElements {
     [key: string]: function;
   };
 
-  type Actions = Action[];
-
-  type InputNode = {
-    [key: string]: function | string;
+  type Property = {
+    [key: string]: any;
   };
-
-  type Inputs = InputNode[];
-
-  type OutputNode = {
-    [key: string]: function | string;
-  };
-
-  type Outputs = OutputNode[];
 
   type Manifest = {
     name: string;
+    actions: Action[];
+    properties: Property[];
+  };
 
-    actions: Actions;
-    inputs: Inputs;
-    outputs: Outputs;
+  type ComponentProperties = {
+    name?: string;
+    value?: any;
+    disabled?: boolean;
+    Renderer?: FC<RadioProps>;
+    tabIndex?: number;
+  };
+
+  type RadioGroupProperties = {
+    keyExtractor?: (val: RadioProperties) => string;
+  } & Required<Pick<ComponentProperties, 'name'>> &
+    Omit<ComponentProperties, 'name'>;
+
+  type RadioProperties = {
+    label?: string;
+    selected?: boolean;
+  } & Required<Pick<ComponentProperties, 'value'>> &
+    Omit<ComponentProperties, 'name' | 'value'>;
+
+  type RadioGroupActions = {
+    onChange?: (val: any) => void;
   };
 
   type RadioGroupProps = {
-    name: string;
-    id?: string;
-    disabled?: boolean;
+    properties: RadioGroupProperties;
+    actions: RadioGroupActions;
+  } & PropsWithChildren;
+
+  type RadioProps = {
+    properties: RadioProperties;
+    actions?: RadioGroupActions;
   };
 }

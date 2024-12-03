@@ -1,14 +1,26 @@
-import { Checkbox } from '@inputs/choices';
-import { Switch } from '@inputs/choices/checkbox/skins';
+import { DefaultSkin } from '@components/inputs/choices/radio/skins';
+import { Radio, RadioGroup } from '@inputs/choices';
 
 const App = () => {
+  const groupProperties: AlphaElements.RadioGroupProperties = {
+    name: 'radio-group',
+    value: 'bad',
+    Renderer: DefaultSkin,
+    keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
+  };
+  const actions: AlphaElements.RadioGroupActions = {
+    onChange: (val: any) => {
+      console.log(val);
+    },
+  };
+
   return (
     <div data-id="my-id">
-      <Checkbox />
-
-      <Checkbox>
-        <Switch />
-      </Checkbox>
+      <RadioGroup properties={groupProperties} actions={actions}>
+        <Radio properties={{ value: 'good', label: 'Good' }} />
+        <Radio properties={{ value: 'bad', label: 'Bad', disabled: false }} />
+        <Radio properties={{ value: 'avg', label: 'Avg' }} />
+      </RadioGroup>
     </div>
   );
 };
