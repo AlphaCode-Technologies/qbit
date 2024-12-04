@@ -4,7 +4,7 @@ import { FC, ReactElement, useState } from 'react';
 export const useBindSkin = (params: AlphaElements.RadioGroupProps, defaultSkin: FC<AlphaElements.RadioProps>) => {
   // Destructure properties and actions from the input parameters.
   const { properties, actions } = params;
-  const { name, value, disabled, Renderer, keyExtractor } = properties;
+  const { name, value, disabled, Renderer, keyExtractor, horizontal } = properties;
   const { onChange } = actions ?? {};
 
   // State to track the currently selected radio button value.
@@ -43,5 +43,5 @@ export const useBindSkin = (params: AlphaElements.RadioGroupProps, defaultSkin: 
   };
 
   // Return the function for binding props and actions, along with the group name and current selected value.
-  return { getPropsAndActions, name, selectedValue };
+  return { getPropsAndActions, name, selectedValue, horizontal };
 };

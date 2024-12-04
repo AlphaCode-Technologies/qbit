@@ -17,7 +17,7 @@ declare namespace AlphaElements {
     name?: string;
     value?: any;
     disabled?: boolean;
-    Renderer?: FC<RadioProps>;
+    Renderer?: FC<T>;
     tabIndex?: number;
     horizontal?: boolean;
   };
