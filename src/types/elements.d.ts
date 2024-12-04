@@ -22,16 +22,18 @@ declare namespace AlphaElements {
     horizontal?: boolean;
   };
 
+  // Extends the base properties to define specific properties for a RadioGroup component.
   type RadioGroupProperties = {
     keyExtractor?: (val: RadioProperties) => string;
-  } & Required<Pick<ComponentProperties, 'name'>> &
-    Omit<ComponentProperties, 'name'>;
+  } & Required<Pick<ComponentProperties, 'name'>> & // Requires the `name` property from ComponentProperties.
+    Omit<ComponentProperties, 'name'>; // Excludes the `name` property from the rest of ComponentProperties.
 
+  // Defines properties specific to individual Radio buttons.
   type RadioProperties = {
     label?: string;
     selected?: boolean;
-  } & Required<Pick<ComponentProperties, 'value'>> &
-    Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
+  } & Required<Pick<ComponentProperties, 'value'>> & // Requires the `value` property from ComponentProperties.
+    Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>; // Excludes `name`, `value`, and `horizontal` from the rest of ComponentProperties.
 
   type RadioGroupActions = {
     onChange?: (val: any) => void;
@@ -40,7 +42,7 @@ declare namespace AlphaElements {
   type RadioGroupProps = {
     properties: RadioGroupProperties;
     actions: RadioGroupActions;
-  } & PropsWithChildren;
+  } & PropsWithChildren; // Allows the RadioGroup to have nested child components.
 
   type RadioProps = {
     properties: RadioProperties;
