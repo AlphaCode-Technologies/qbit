@@ -1,4 +1,4 @@
-import { DefaultSkin } from '@components/inputs/choices/radio/skins';
+import { ButtonSkin, DefaultSkin } from '@components/inputs/choices/radio/skins';
 import { Radio, RadioGroup } from '@inputs/choices';
 
 const App = () => {
@@ -7,6 +7,7 @@ const App = () => {
   const groupProperties: AlphaElements.RadioGroupProperties = {
     name: 'radio-group',
     value: 'bad',
+    horizontal: false,
     Renderer: DefaultSkin,
     keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
   };
@@ -20,7 +21,7 @@ const App = () => {
   return (
     <div data-id="my-id">
       <RadioGroup properties={groupProperties} actions={actions}>
-        <Radio properties={{ value: 'good', label: 'Good', Renderer: DefaultSkin }} />
+        <Radio properties={{ value: 'good', label: 'Good', Renderer: ButtonSkin }} />
         <Radio properties={{ value: 'bad', label: 'Bad', disabled: true }} />
         <Radio properties={{ value: 'avg', label: 'Avg' }} />
       </RadioGroup>
