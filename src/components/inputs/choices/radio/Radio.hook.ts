@@ -14,7 +14,7 @@ export const useBindSkin = (params: AlphaElements.RadioGroupProps, defaultSkin: 
   const getPropsAndActions = (child: ReactElement, i: number) => {
     const childProperties = child.props?.properties ?? {};
     const childActions = child.props?.actions ?? {};
-    const { value: childValue, disabled: childDisabled, Renderer: childRenderer } = childProperties;
+    const { value: childValue, disabled: childDisabled, Renderer: childRenderer, testId } = childProperties;
     // Determine if the child element should be disabled, considering both parent and child settings.
     const elementDisabled = childDisabled || disabled;
     // Choose the renderer: child-specific, parent, or the default skin.
@@ -38,6 +38,7 @@ export const useBindSkin = (params: AlphaElements.RadioGroupProps, defaultSkin: 
         Renderer: elementRenderer,
         selected,
         tabIndex,
+        testId,
       },
     };
   };

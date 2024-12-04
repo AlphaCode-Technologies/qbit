@@ -1,5 +1,5 @@
 const Skin = ({ properties, actions }: AlphaElements.RadioProps) => {
-  const { label, value, selected, disabled, tabIndex } = properties;
+  const { label, value, selected, disabled, tabIndex, testId } = properties;
   const { onChange } = actions ?? {};
 
   return (
@@ -10,6 +10,7 @@ const Skin = ({ properties, actions }: AlphaElements.RadioProps) => {
         xmlns="http://www.w3.org/2000/svg"
         tabIndex={tabIndex}
         onClick={() => !disabled && onChange?.(value)}
+        data-testid={testId}
       >
         <g clipPath="url(#clip0_105_90997)">
           <path

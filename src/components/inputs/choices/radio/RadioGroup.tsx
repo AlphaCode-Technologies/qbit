@@ -12,12 +12,13 @@ const RadioGroup = ({ children, ...rest }: AlphaElements.RadioGroupProps) => {
       {Children.map(children as ReactElement[], (child: ReactElement, i: number) => {
         // For each child, extract a unique key, properties, and actions using `getPropsAndActions`.
         const { key, properties, actions } = getPropsAndActions(child, i);
-        const { selected, disabled } = properties;
+        const { value, selected, disabled } = properties;
         return (
           <React.Fragment key={key}>
             <input
               type="radio"
               name={name}
+              value={value}
               checked={selected}
               disabled={disabled}
               onChange={() => {}}

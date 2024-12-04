@@ -20,6 +20,7 @@ declare namespace AlphaElements {
     Renderer?: FC<T>;
     tabIndex?: number;
     horizontal?: boolean;
+    testId?: string;
   };
 
   // Extends the base properties to define specific properties for a RadioGroup component.
