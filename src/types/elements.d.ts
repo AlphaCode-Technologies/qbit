@@ -19,6 +19,7 @@ declare namespace AlphaElements {
     disabled?: boolean;
     Renderer?: FC<RadioProps>;
     tabIndex?: number;
+    horizontal?: boolean;
   };
 
   type RadioGroupProperties = {
@@ -30,7 +31,7 @@ declare namespace AlphaElements {
     label?: string;
     selected?: boolean;
   } & Required<Pick<ComponentProperties, 'value'>> &
-    Omit<ComponentProperties, 'name' | 'value'>;
+    Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
 
   type RadioGroupActions = {
     onChange?: (val: any) => void;

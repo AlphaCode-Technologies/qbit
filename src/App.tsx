@@ -17,8 +17,8 @@ const App = () => {
   return (
     <div data-id="my-id">
       <RadioGroup properties={groupProperties} actions={actions}>
-        <Radio properties={{ value: 'good', label: 'Good' }} />
-        <Radio properties={{ value: 'bad', label: 'Bad', disabled: false }} />
+        <Radio properties={{ value: 'good', label: 'Good', Renderer: DefaultSkin }} />
+        <Radio properties={{ value: 'bad', label: 'Bad', disabled: true }} />
         <Radio properties={{ value: 'avg', label: 'Avg' }} />
       </RadioGroup>
     </div>
