@@ -9,7 +9,7 @@ const Skin = ({ properties, actions }: AlphaElements.RadioProps) => {
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         tabIndex={tabIndex}
-        onClick={() => !disabled && onChange?.(value)}
+        onClick={() => onChange?.(value)}
         data-testid={testId}
       >
         <g clipPath="url(#clip0_105_90997)">

@@ -28,8 +28,10 @@ export const useBindSkin = (params: AlphaElements.RadioGroupProps, defaultSkin: 
       actions: {
         ...childActions,
         onChange: (value: any) => {
-          setSelectedValue(value);
-          onChange?.(value);
+          if (!elementDisabled) {
+            setSelectedValue(value);
+            onChange?.(value);
+          }
         },
       },
       properties: {
