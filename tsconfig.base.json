@@ -9,7 +9,8 @@
     "paths": {
       "@types/*": ["src/types/*"],
       "@components/*": ["src/components/*"],
-      "@inputs/*": ["src/components/inputs/*"]
+      "@inputs/*": ["src/components/inputs/*"],
+      "@skins/*": ["src/skins/*"]
     },
 
     /* Bundler mode */
