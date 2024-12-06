@@ -1,5 +1,5 @@
-import { ButtonSkin, DefaultSkin } from '@components/inputs/choices/radio/skins';
 import { Radio, RadioGroup } from '@inputs/choices';
+import { RadioSkin } from '@skins/defaults';
 
 const App = () => {
   // Define properties for the RadioGroup component, including its name, default selected value,
@@ -8,7 +8,7 @@ const App = () => {
     name: 'radio-group',
     value: 'bad',
     horizontal: false,
-    Renderer: DefaultSkin,
+    Renderer: RadioSkin,
     keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
   };
   // Define actions for the RadioGroup component, including a handler for value changes.
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <div data-id="my-id">
       <RadioGroup properties={groupProperties} actions={actions}>
-        <Radio properties={{ value: 'good', label: 'Good', Renderer: ButtonSkin }} />
+        <Radio properties={{ value: 'good', label: 'Good' }} />
         <Radio properties={{ value: 'bad', label: 'Bad', disabled: true }} />
         <Radio properties={{ value: 'avg', label: 'Avg' }} />
       </RadioGroup>

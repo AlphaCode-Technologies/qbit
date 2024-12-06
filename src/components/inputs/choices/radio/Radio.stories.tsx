@@ -1,5 +1,5 @@
+import { RadioSkin } from '@skins/defaults';
 import Radio from './Radio';
-import { ButtonSkin, DefaultSkin } from './skins';
 
 export default {
   title: 'Alpha Elements/Inputs/Choice/Radio',
@@ -22,18 +22,18 @@ export default {
 
 export const Default = {
   args: {
-    properties: { value: 'good', label: 'Good', Renderer: DefaultSkin },
+    properties: { value: 'good', label: 'Good', Renderer: RadioSkin },
   },
 };
 
 export const Disabled = {
   args: {
-    properties: { value: 'good', label: 'Good', disabled: true, Renderer: DefaultSkin },
+    properties: { value: 'good', label: 'Good', disabled: true, Renderer: RadioSkin },
   },
 };
 
 export const Skin = {
   args: {
-    properties: { value: 'good', label: 'Good', Renderer: ButtonSkin },
+    properties: { value: 'good', label: 'Good', Renderer: RadioSkin },
   },
 };

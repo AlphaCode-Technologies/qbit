@@ -1,4 +1,6 @@
 declare namespace AlphaElements {
+  // #region COMMON ELEMENT
+
   type Action = {
     [key: string]: function;
   };
@@ -13,7 +15,7 @@ declare namespace AlphaElements {
     properties: Property[];
   };
 
-  type ComponentProperties = {
+  type ComponentProperties<T = any> = {
     name?: string;
     value?: any;
     disabled?: boolean;
@@ -23,10 +25,14 @@ declare namespace AlphaElements {
     testId?: string;
   };
 
+  // #endregion
+
+  // #region RADIO ELEMENT
+
   // Extends the base properties to define specific properties for a RadioGroup component.
   type RadioGroupProperties = {
     keyExtractor?: (val: RadioProperties) => string;
-  } & Required<Pick<ComponentProperties, 'name'>> & // Requires the `name` property from ComponentProperties.
+  } & Required<Pick<ComponentProperties, 'name' | 'Renderer'>> & // Requires the `name` property from ComponentProperties.
     Omit<ComponentProperties, 'name'>; // Excludes the `name` property from the rest of ComponentProperties.
 
   // Defines properties specific to individual Radio buttons.
@@ -49,4 +55,6 @@ declare namespace AlphaElements {
     properties: RadioProperties;
     actions?: RadioGroupActions;
   };
+
+  // #endregion
 }
