@@ -12,6 +12,17 @@ export default mergeConfig(
       setupFiles: ['./setupTests.ts'],
       reporters: ['html'],
       outputFile: { html: '.testing/html/index.html' },
+      coverage: {
+        reportsDirectory: '.testing/coverage',
+        include: ['src/*'],
+        exclude: [
+          'src/**/*.{stories,test}.{ts,tsx}',
+          'src/**/*.manifest.{ts,tsx,json}',
+          'src/*.{ts,tsx}',
+          'src/skins',
+          'src/types',
+        ],
+      },
     },
   }),
 );
