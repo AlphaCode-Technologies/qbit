@@ -1,11 +1,26 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, RefObject, useEffect, useState } from 'react';
 
-export const useBindSkin = (params: AlphaElements.SelectProps) => {
+export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HTMLDivElement>) => {
   const { properties, actions } = params;
   const { name, value, disabled, Renderer, optionRenderer, keyExtractor, horizontal } = properties;
   const { onChange } = actions ?? {};
-
+  const [optionVisible, setOptionVisible] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
+
+  const handleOutSideClick = (event: MouseEvent) => {
+    if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
+      setOptionVisible(false);
+    }
+  };
+
+  const optionShow = () => {
+    setOptionVisible(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleOutSideClick);
+    return () => document.removeEventListener('click', handleOutSideClick);
+  });
 
   const getPropsAndActions = (child: ReactElement, i: number) => {
     const childProperties = child.props?.properties ?? {};
@@ -24,6 +39,7 @@ export const useBindSkin = (params: AlphaElements.SelectProps) => {
           if (!elementDisabled) {
             setSelectedValue(value);
             onChange?.(value);
+            optionShow();
           }
         },
       },
@@ -38,5 +54,5 @@ export const useBindSkin = (params: AlphaElements.SelectProps) => {
     };
   };
 
-  return { getPropsAndActions, name, selectedValue, horizontal, actions, properties };
+  return { getPropsAndActions, name, selectedValue, horizontal, actions, properties, optionVisible, setOptionVisible };
 };

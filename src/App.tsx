@@ -1,14 +1,7 @@
-import DateAndTime from '@components/inputs/choices/date-and-time/DateAndTime';
 import { Option, Select } from '@inputs/choices';
 import { OptionSkin, SelectSkin } from '@skins/defaults';
 
 const App = () => {
-  const dateTimeProperties: AlphaElements.DateTimeProperties = {
-    type: 'date',
-    value: '',
-    format: 'DD-MM-YYYY',
-  };
-
   const SelectProperties: AlphaElements.SelectProperties = {
     name: 'select',
     value: '',
@@ -18,13 +11,11 @@ const App = () => {
 
   return (
     <div data-id="my-id">
-      <DateAndTime properties={dateTimeProperties} />
-      <hr />
       <Select properties={SelectProperties}>
-        <Option properties={{ value: 'good', label: 'Good' }} />
-        <Option properties={{ value: 'bad', label: 'Bad' }} />
-        <Option properties={{ value: 'average', label: 'Average' }} />
-        <Option properties={{ value: 'waste', label: 'Waste' }} />
+        <Option properties={{ value: { value: 'good', label: 'Good' } }} />
+        <Option properties={{ value: { value: 'bad', label: 'Bad' } }} />
+        <Option properties={{ value: { value: 'average', label: 'Average' } }} />
+        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
       </Select>
     </div>
   );

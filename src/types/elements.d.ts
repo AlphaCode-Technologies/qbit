@@ -58,14 +58,28 @@ declare namespace AlphaElements {
 
   // #endregion
 
-  // #region SELECT ELEMENT
+  type DateTimeProperties = {
+    type?: 'date' | 'datetime';
+    format?: string;
+  } & Required<Pick<ComponentProperties, 'value'>> &
+    Omit<ComponentProperties, 'value' | 'horizontal'>;
 
+  type DateTimeActions = {
+    onChange?: (val: any) => void;
+  };
+
+  type DateTimeProps = {
+    properties: DateTimeProperties;
+    actions?: DateTimeActions;
+  };
+
+  // #region SELECT ELEMENT
   type SelectProperties = {
     label?: string;
     optionContainerClassName?: string;
     optionRenderer?: FC<OptionProps>;
   } & Required<Pick<ComponentProperties, 'value'>> &
-    Omit<ComponentProperties, 'horizontal'>;
+    Omit<ComponentProperties, 'value' | 'horizontal'>;
 
   type SelectActions = {
     onChange?: (val: any) => void;
@@ -77,14 +91,13 @@ declare namespace AlphaElements {
   } & PropsWithChildren;
 
   type OptionProperties = {
-    label?: string;
     selected?: boolean;
   } & Required<Pick<ComponentProperties, 'value'>> &
     Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
 
   type OptionProps = {
     properties: OptionProperties;
-    actions?: RadioGroupActions;
+    actions?: SelectActions;
   };
   // #endregion
 }
