@@ -1,7 +1,7 @@
-import { FC, ReactElement, useState } from 'react';
+import { ReactElement, useState } from 'react';
 
 // Custom hook `useBindSkin` that binds properties, actions, and rendering logic for a radio group component.
-export const useBindSkin = (params: AlphaElements.RadioGroupProps, defaultSkin: FC<AlphaElements.RadioProps>) => {
+export const useBindSkin = (params: AlphaElements.RadioGroupProps) => {
   // Destructure properties and actions from the input parameters.
   const { properties, actions } = params;
   const { name, value, disabled, Renderer, keyExtractor, horizontal } = properties;
@@ -18,7 +18,7 @@ export const useBindSkin = (params: AlphaElements.RadioGroupProps, defaultSkin: 
     // Determine if the child element should be disabled, considering both parent and child settings.
     const elementDisabled = childDisabled || disabled;
     // Choose the renderer: child-specific, parent, or the default skin.
-    const elementRenderer = childRenderer ?? Renderer ?? defaultSkin;
+    const elementRenderer = childRenderer ?? Renderer;
     // Generate a unique key for each child element, using a custom key extractor if provided.
     const key = keyExtractor?.(childProperties) ?? `${name}-${i}`;
     const selected = childValue === selectedValue;

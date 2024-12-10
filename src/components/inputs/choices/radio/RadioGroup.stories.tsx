@@ -1,6 +1,6 @@
+import { RadioSkin } from '@skins/defaults';
 import Radio from './Radio';
 import RadioGroup from './RadioGroup';
-import { ButtonSkin, DefaultSkin } from './skins';
 
 export default {
   title: 'Alpha Elements/Inputs/Choice/RadioGroup',
@@ -17,7 +17,7 @@ export default {
       testId: '',
       disabled: false,
       horizontal: false,
-      Renderer: DefaultSkin,
+      Renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
@@ -41,6 +41,7 @@ export const Default = {
     properties: {
       name: 'radio-group',
       horizontal: false,
+      Renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
@@ -65,6 +66,7 @@ export const Selected = {
       name: 'radio-group',
       value: 'bad',
       horizontal: false,
+      Renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
@@ -89,30 +91,7 @@ export const Disabled = {
       name: 'radio-group',
       horizontal: false,
       disabled: true,
-      keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
-    },
-    actions: {
-      onchange: (val: any) => console.log(val),
-    },
-    data: [
-      { value: 'good', label: 'Good', testId: 'good_0' },
-      { value: 'bad', label: 'Bad', testId: 'bad_1' },
-      { value: 'avg', label: 'Avg', testId: 'avg_2' },
-    ],
-    children: [
-      <Radio properties={{ value: 'good', label: 'Good' }} />,
-      <Radio properties={{ value: 'bad', label: 'Bad' }} />,
-      <Radio properties={{ value: 'avg', label: 'Avg' }} />,
-    ],
-  },
-};
-
-export const Skin = {
-  args: {
-    properties: {
-      name: 'radio-group',
-      horizontal: false,
-      Renderer: ButtonSkin,
+      Renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
@@ -136,7 +115,7 @@ export const Horizontal = {
     properties: {
       name: 'radio-group',
       horizontal: true,
-      Renderer: ButtonSkin,
+      Renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
