@@ -1,5 +1,5 @@
 const Skin = ({ properties, actions }: AlphaElements.OptionProps) => {
-  const { value } = properties;
+  const { value, testId } = properties;
   const { onChange } = actions ?? {};
 
   return (
@@ -11,6 +11,7 @@ const Skin = ({ properties, actions }: AlphaElements.OptionProps) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         onClick={() => onChange?.(value)}
+        data-testid={testId}
       >
         <rect x="1" y="0.5" width="303" height="47" rx="7.5" stroke="currentColor" />
         <path

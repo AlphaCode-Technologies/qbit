@@ -78,6 +78,7 @@ declare namespace AlphaElements {
     label?: string;
     optionContainerClassName?: string;
     optionRenderer?: FC<OptionProps>;
+    keyExtractor?: (val: OptionProperties) => string;
   } & Required<Pick<ComponentProperties, 'value'>> &
     Omit<ComponentProperties, 'value' | 'horizontal'>;
 

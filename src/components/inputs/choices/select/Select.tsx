@@ -12,7 +12,7 @@ const Select = ({ children, ...rest }: AlphaElements.SelectProps) => {
   return (
     <div ref={ref} className="w-fit">
       <div onClick={() => setOptionVisible(true)}>
-        <Renderer properties={{ ...rest, value: selectedValue }} actions={actions} />
+        <Renderer properties={{ ...properties, value: selectedValue }} actions={actions} />
       </div>
       {optionVisible && (
         <div className={`absolute overflow-auto ${optionContainerClassName}`}>

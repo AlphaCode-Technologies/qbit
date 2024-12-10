@@ -1,7 +1,14 @@
 const Skin = ({ properties }: AlphaElements.SelectProps) => {
-  const { value } = properties;
+  const { value, testId } = properties;
   return (
-    <svg width="345" height="56" viewBox="0 0 345 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="345"
+      height="56"
+      viewBox="0 0 345 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      data-testid={testId}
+    >
       <g filter="url(#filter0_dd_57_12827)">
         <path
           d="M4 12C4 7.58172 7.58172 4 12 4H333C337.418 4 341 7.58172 341 12V44C341 48.4183 337.418 52 333 52H12C7.58172 52 4 48.4183 4 44V12Z"
