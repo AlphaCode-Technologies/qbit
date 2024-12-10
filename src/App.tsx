@@ -1,30 +1,31 @@
-import { ButtonSkin, DefaultSkin } from '@components/inputs/choices/radio/skins';
-import { Radio, RadioGroup } from '@inputs/choices';
+import DateAndTime from '@components/inputs/choices/date-and-time/DateAndTime';
+import { Option, Select } from '@inputs/choices';
+import { OptionSkin, SelectSkin } from '@skins/defaults';
 
 const App = () => {
-  // Define properties for the RadioGroup component, including its name, default selected value,
-  // a custom renderer (DefaultSkin), and a key extraction function for identifying radios uniquely.
-  const groupProperties: AlphaElements.RadioGroupProperties = {
-    name: 'radio-group',
-    value: 'bad',
-    horizontal: false,
-    Renderer: DefaultSkin,
-    keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
+  const dateTimeProperties: AlphaElements.DateTimeProperties = {
+    type: 'date',
+    value: '',
+    format: 'DD-MM-YYYY',
   };
-  // Define actions for the RadioGroup component, including a handler for value changes.
-  const actions: AlphaElements.RadioGroupActions = {
-    onChange: (val: any) => {
-      console.log(val);
-    },
+
+  const SelectProperties: AlphaElements.SelectProperties = {
+    name: 'select',
+    value: '',
+    Renderer: SelectSkin,
+    optionRenderer: OptionSkin,
   };
 
   return (
     <div data-id="my-id">
-      <RadioGroup properties={groupProperties} actions={actions}>
-        <Radio properties={{ value: 'good', label: 'Good', Renderer: ButtonSkin }} />
-        <Radio properties={{ value: 'bad', label: 'Bad', disabled: true }} />
-        <Radio properties={{ value: 'avg', label: 'Avg' }} />
-      </RadioGroup>
+      <DateAndTime properties={dateTimeProperties} />
+      <hr />
+      <Select properties={SelectProperties}>
+        <Option properties={{ value: 'good', label: 'Good' }} />
+        <Option properties={{ value: 'bad', label: 'Bad' }} />
+        <Option properties={{ value: 'average', label: 'Average' }} />
+        <Option properties={{ value: 'waste', label: 'Waste' }} />
+      </Select>
     </div>
   );
 };

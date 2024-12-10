@@ -49,4 +49,47 @@ declare namespace AlphaElements {
     properties: RadioProperties;
     actions?: RadioGroupActions;
   };
+
+  // #endregion
+  type DateTimeProperties = {
+    type?: 'date' | 'datetime';
+    format?: string;
+  } & Required<Pick<ComponentProperties, 'value'>> &
+    Omit<ComponentProperties, 'value' | 'horizontal'>;
+
+  type DateTimeActions = {
+    onChange?: (val: any) => void;
+  };
+
+  type DateTimeProps = {
+    properties: DateTimeProperties;
+    actions?: DateTimeActions;
+  };
+
+  type SelectProperties = {
+    label?: string;
+    optionContainerClassName?: string;
+    optionRenderer?: FC<OptionProps>;
+  } & Required<Pick<ComponentProperties, 'value'>> &
+    Omit<ComponentProperties, 'horizontal'>;
+
+  type SelectActions = {
+    onChange?: (val: any) => void;
+  };
+
+  type SelectProps = {
+    properties: SelectProperties;
+    actions: SelectActions;
+  } & PropsWithChildren;
+
+  type OptionProperties = {
+    label?: string;
+    selected?: boolean;
+  } & Required<Pick<ComponentProperties, 'value'>> &
+    Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
+
+  type OptionProps = {
+    properties: OptionProperties;
+    actions?: RadioGroupActions;
+  };
 }
