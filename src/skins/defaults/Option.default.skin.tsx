@@ -1,6 +1,6 @@
 const Skin = ({ properties, actions }: AlphaElements.OptionProps) => {
   const { value, testId } = properties;
-  const { onChange } = actions ?? {};
+  const { onSelect } = actions ?? {};
 
   return (
     <div className="mb-2">
@@ -10,7 +10,7 @@ const Skin = ({ properties, actions }: AlphaElements.OptionProps) => {
         viewBox="0 0 305 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        onClick={() => onChange?.(value)}
+        onClick={() => onSelect?.(value)}
         data-testid={testId}
       >
         <rect x="1" y="0.5" width="303" height="47" rx="7.5" stroke="currentColor" />

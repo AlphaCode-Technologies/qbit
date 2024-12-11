@@ -3,7 +3,7 @@ import { ReactElement, RefObject, useEffect, useState } from 'react';
 export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HTMLDivElement>) => {
   const { properties, actions } = params;
   const { name, value, disabled, Renderer, optionRenderer, keyExtractor, horizontal } = properties;
-  const { onChange } = actions ?? {};
+  const { onSelect } = actions ?? {};
   const [optionVisible, setOptionVisible] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
 
@@ -35,10 +35,10 @@ export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HT
       key,
       actions: {
         ...childActions,
-        onChange: (value: any) => {
+        onSelect: (value: any) => {
           if (!elementDisabled) {
             setSelectedValue(value);
-            onChange?.(value);
+            onSelect?.(value);
             optionShow();
           }
         },

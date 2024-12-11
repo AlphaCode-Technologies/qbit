@@ -83,7 +83,8 @@ declare namespace AlphaElements {
     Omit<ComponentProperties, 'value' | 'horizontal'>;
 
   type SelectActions = {
-    onChange?: (val: any) => void;
+    onSelect?: (val: any) => void;
+    onOptionScrollEnd?: () => void;
   };
 
   type SelectProps = {

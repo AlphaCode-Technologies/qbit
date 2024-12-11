@@ -3,19 +3,39 @@ import { useBindSkin } from './Select.hook';
 
 const Select = ({ children, ...rest }: AlphaElements.SelectProps) => {
   const ref: RefObject<HTMLDivElement> = useRef(null);
+  const optionContainer: RefObject<HTMLDivElement> = useRef(null);
   const { properties, actions, selectedValue, optionVisible, getPropsAndActions, setOptionVisible } = useBindSkin(
     rest,
     ref,
   );
-  const { Renderer, optionContainerClassName = 'rounded p-4 bg-slate-100 mt-1 m-h-72' } = properties;
+  const { onOptionScrollEnd } = actions;
+  const { disabled, Renderer, optionContainerClassName = 'rounded p-4 bg-slate-100 mt-1 h-72' } = properties;
+
+  const handleScroll = () => {
+    const div = optionContainer.current;
+    if (div) {
+      const scrollTop = div.scrollTop;
+      const scrollHeight = div.scrollHeight;
+      const clientHeight = div.clientHeight;
+
+      // Check if the user has scrolled to the bottom of the div
+      if (scrollTop + clientHeight >= scrollHeight) {
+        onOptionScrollEnd();
+      }
+    }
+  };
 
   return (
     <div ref={ref} className="w-fit">
-      <div onClick={() => setOptionVisible(true)}>
+      <div onClick={() => !disabled && setOptionVisible(true)}>
         <Renderer properties={{ ...properties, value: selectedValue }} actions={actions} />
       </div>
       {optionVisible && (
-        <div className={`absolute overflow-auto ${optionContainerClassName}`}>
+        <div
+          ref={optionContainer}
+          onScroll={onOptionScrollEnd && handleScroll}
+          className={`ae-select-element-container absolute overflow-auto ${optionContainerClassName}`}
+        >
           {Children.map(children as ReactElement[], (child: ReactElement, i: number) => {
             const { key, properties, actions } = getPropsAndActions(child, i);
             return (
