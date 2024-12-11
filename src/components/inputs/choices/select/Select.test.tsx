@@ -3,13 +3,13 @@ import Select from './Select';
 import Option from './Option';
 import { OptionSkin, SelectSkin } from '@skins/defaults';
 
-const TestSkin = ({ properties, actions }: AlphaElements.RadioProps) => {
+const TestSkin = ({ properties, actions }: AlphaElements.SelectProps) => {
   const { label, value, selected, tabIndex } = properties;
-  const { onChange } = actions ?? {};
+  const { onSelect } = actions ?? {};
   return (
     <button
       className={`bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 ${selected && 'border border-teal-900'}`}
-      onClick={() => onChange?.(value)}
+      onClick={() => onSelect?.(value)}
       tabIndex={tabIndex}
     >
       {label}
@@ -26,7 +26,7 @@ const DEFAULT_PROPERTIES: AlphaElements.SelectProperties = {
 };
 
 const DEFAULT_ACTIONS: AlphaElements.SelectActions = {
-  onChange: (val: any) => {
+  onSelect: (val: any) => {
     console.log(val);
   },
 };
@@ -99,7 +99,7 @@ describe('Test for select elements', () => {
     const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     await fireEvent.click(selectEle!);
     const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    fireEvent.click(optionEle!);
+    await fireEvent.click(optionEle!);
     const selectEle2 = await screen.findByTestId(DEFAULT_PROPERTIES.testId!);
     const optionText = selectEle2?.textContent?.trim();
     expect(optionText).toContain(DEFAULT_DATA[0].value?.label);
@@ -123,5 +123,35 @@ describe('Test for select elements', () => {
     await fireEvent.click(selectEle!);
     const element = screen.getAllByRole('button');
     expect(element).toHaveLength(data.length);
+  });
+
+  it('Should have render with child disabled', async () => {
+    const data: AlphaElements.OptionProperties[] = [
+      { value: { value: 'good', label: 'Good' }, testId: 'good_0', disabled: true },
+      { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1' },
+      { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2' },
+    ];
+    renderSelect({
+      props: {
+        ...DEFAULT_PROPERTIES,
+        keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
+      },
+      actions: DEFAULT_ACTIONS,
+      data: data,
+    });
+    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
+    await fireEvent.click(selectEle!);
+    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
+    await fireEvent.click(optionEle!);
+    const optionEle2 = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
+    expect(optionEle2).not.toBeNull();
+  });
+
+  it('Should have render with select', async () => {
+    renderSelect({ props: { ...DEFAULT_PROPERTIES, disabled: true }, actions: DEFAULT_ACTIONS, data: DEFAULT_DATA });
+    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
+    await fireEvent.click(selectEle!);
+    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
+    expect(optionEle).toBeNull();
   });
 });
