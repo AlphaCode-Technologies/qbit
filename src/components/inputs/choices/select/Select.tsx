@@ -8,7 +8,7 @@ const Select = ({ children, ...rest }: AlphaElements.SelectProps) => {
     rest,
     ref,
   );
-  const { onOptionScrollEnd } = actions;
+  const { onOptionScrollEnd } = actions ?? {};
   const { disabled, Renderer, optionContainerClassName = 'rounded p-4 bg-slate-100 mt-1 h-72' } = properties;
 
   const handleScroll = () => {
