@@ -19,11 +19,12 @@ It's a React library built as part of the design system for the "KOMODO" platfor
   - [Branching strategy](#branching-strategy)
     - [Naming for branch](#naming-for-branch)
     - [Components of the Branch Name](#components-of-the-branch-name)
-    - [Branch Name Examples](#branch-name-examples)
-    - [Additional Notes](#additional-notes)
-  - [Commit Guidelines](#commit-guidelines)
-    - [Commit Examples](#commit-examples)
-  
+    - [Branch name examples](#branch-name-examples)
+    - [Additional notes](#additional-notes)
+  - [Commit guidelines](#commit-guidelines)
+    - [Commit examples](#commit-examples)
+  - [Code review guidelines](#code-review-guidelines)
+
 ## How to install
 
 - Set your SSH key to github
@@ -75,6 +76,7 @@ In this project we are using `node` & `pnpm`, so need to install them then only 
   ```
 
 - Install pnpm
+
   - for windows
 
     ```bash
@@ -113,7 +115,7 @@ In this project we are using `node` & `pnpm`, so need to install them then only 
   ```
 
 - To run the build file
-  
+
   ```bash
     pnpm dev:preview
   ```
@@ -121,6 +123,7 @@ In this project we are using `node` & `pnpm`, so need to install them then only 
 ## How to run test
 
 - Test project
+
   - option 1 (you can able to check the test cases and results by click the icon named testing in code editor)
 
     ```bash
@@ -152,8 +155,8 @@ src
       └── elementVariant (example: choices)
         └── element (example: checkbox)
           └── skin
-            ├── Default.tsx 
-            ├── index.ts 
+            ├── Default.tsx
+            ├── index.ts
             ├── Skin1.tsx  (example: Switch.tsx)
             ├── Skin2.tsx  (example: Padlock.tsx)
           ├── Element.manifest.json (example: Checkbox.manifest.tsx)
@@ -161,7 +164,7 @@ src
           └── Element.tsx  (example: Checkbox.tsx)
           └── Element.test.tsx (example: Checkbox.test.tsx)
         ├── index.ts
-  ```
+```
 
 ## Branching strategy
 
@@ -172,6 +175,7 @@ All branches must follow the naming convention: `<prefix>/ACEL-<ID>/<title>`
 ### Components of the Branch Name
 
 - **`<prefix>`** : Indicates the purpose of the branch. Use one of the following:
+
   - `feature` : For new features
   - `bugfix` : For bug fixes
   - `chore` : For Initial
@@ -184,13 +188,13 @@ All branches must follow the naming convention: `<prefix>/ACEL-<ID>/<title>`
 
 - **`<title>`** : A brief, descriptive title for the branch, written in lowercase with words separated by hyphens.
 
-### Branch Name Examples
+### Branch name examples
 
 1. `feature/ACEL-1234/feature-branch`
 2. `chore/ACEL-1235/creating-checkbox`
 3. `bugfix/ACEL-1236/bugfix-checkbox`
 
-### Additional Notes
+### Additional notes
 
 - Make sure the branch name is short and clear.
 - Use the Jira ticket ID to keep track of your code and the project management tool.
@@ -198,11 +202,12 @@ All branches must follow the naming convention: `<prefix>/ACEL-<ID>/<title>`
 
 Using this naming system keeps the code organized and easy for everyone to use.
 
-## Commit Guidelines
+## Commit guidelines
 
 We follow the [**Conventional Commits**](https://www.conventionalcommits.org/en/v1.0.0/) standard for writing commit messages. The commit message format is: `<type>[optional scope]: <description>`
 
 1. **`<type>`** : Indicates the purpose of the change.
+
    - `feat` : Introducing a new feature
    - `fix` : Fixing a bug
    - `docs` : Documentation changes
@@ -215,14 +220,19 @@ We follow the [**Conventional Commits**](https://www.conventionalcommits.org/en/
    - `ci` : Changes to CI configuration files or scripts
 
 2. **`<scope>`**: Describes the specific area of the codebase affected by the change. Use scopes to clarify which part of the project the commit applies to.
+
    - Example scopes: `setup`, `ui`, `build`, `testing`, `docs`
 
 3. **`<description>`**: A brief summary of the change that focuses on actions. (e.g., "add," "fix," "update", "setup").
 
-### Commit Examples
+### Commit examples
 
 1. `docs(baseline): add developer.md`
 2. `chore(setup): setup tailwindcss`
 3. `fix(ui): fix checkbox logic`
 
 For more info about Conventional Commits, visit <https://www.conventionalcommits.org/en/v1.0.0/>
+
+## Code review guidelines
+
+Find the code review guide [here](CODE-REVIEW-GUIDE.md).
