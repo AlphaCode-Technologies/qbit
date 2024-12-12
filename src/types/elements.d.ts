@@ -58,21 +58,6 @@ declare namespace AlphaElements {
 
   // #endregion
 
-  type DateTimeProperties = {
-    type?: 'date' | 'datetime';
-    format?: string;
-  } & Required<Pick<ComponentProperties, 'value'>> &
-    Omit<ComponentProperties, 'value' | 'horizontal'>;
-
-  type DateTimeActions = {
-    onChange?: (val: any) => void;
-  };
-
-  type DateTimeProps = {
-    properties: DateTimeProperties;
-    actions?: DateTimeActions;
-  };
-
   // #region SELECT ELEMENT
   type SelectProperties = {
     label?: string;
