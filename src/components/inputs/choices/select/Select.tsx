@@ -8,7 +8,7 @@ const Select = ({ children, ...rest }: AlphaElements.SelectProps) => {
     rest,
     ref,
   );
-  const { onOptionScrollEnd } = actions ?? {};
+  const { triggerScrollEnd } = actions ?? {};
   const {
     disabled,
     Renderer,
@@ -24,7 +24,7 @@ const Select = ({ children, ...rest }: AlphaElements.SelectProps) => {
 
       // Check if the user has scrolled to the bottom of the div
       if (scrollTop + clientHeight >= scrollHeight) {
-        onOptionScrollEnd();
+        triggerScrollEnd();
       }
     }
   };
@@ -37,7 +37,7 @@ const Select = ({ children, ...rest }: AlphaElements.SelectProps) => {
       {optionVisible && (
         <div
           ref={optionContainer}
-          onScroll={onOptionScrollEnd && handleScroll}
+          onScroll={triggerScrollEnd && handleScroll}
           className={`ae-select-element-container absolute overflow-auto ${optionContainerClassName}`}
         >
           {Children.map(children as ReactElement[], (child: ReactElement, i: number) => {

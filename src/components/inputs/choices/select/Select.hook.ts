@@ -7,19 +7,19 @@ export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HT
   const [optionVisible, setOptionVisible] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
 
-  const handleOutSideClick = (event: MouseEvent) => {
+  const handleClickOutSide = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
       setOptionVisible(false);
     }
   };
 
-  const optionShow = () => {
+  const showOption = () => {
     setOptionVisible(false);
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleOutSideClick);
-    return () => document.removeEventListener('click', handleOutSideClick);
+    document.addEventListener('click', handleClickOutSide);
+    return () => document.removeEventListener('click', handleClickOutSide);
   });
 
   const getPropsAndActions = (child: ReactElement, i: number) => {
@@ -39,7 +39,7 @@ export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HT
           if (!elementDisabled) {
             setSelectedValue(value);
             onSelect?.(value);
-            optionShow();
+            showOption();
           }
         },
       },

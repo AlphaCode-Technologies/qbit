@@ -69,7 +69,7 @@ declare namespace AlphaElements {
 
   type SelectActions = {
     onSelect?: (val: any) => void;
-    onOptionScrollEnd?: () => void;
+    triggerScrollEnd?: () => void;
   };
 
   type SelectProps = {

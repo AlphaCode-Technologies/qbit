@@ -10,7 +10,7 @@ const App = () => {
   };
 
   const SelectAction: AlphaElements.SelectActions = {
-    onOptionScrollEnd: () => console.log('Scrolled end'),
+    triggerScrollEnd: () => console.log('Scrolled end'),
   };
 
   return (
@@ -19,12 +19,6 @@ const App = () => {
         <Option properties={{ value: { value: 'good', label: 'Good' } }} />
         <Option properties={{ value: { value: 'bad', label: 'Bad' } }} />
         <Option properties={{ value: { value: 'average', label: 'Average' } }} />
-        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
-        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
-        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
-        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
-        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
-        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
         <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
       </Select>
     </div>
