@@ -4,10 +4,7 @@ import { useBindSkin } from './Select.hook';
 const Select = ({ children, ...rest }: AlphaElements.SelectProps) => {
   const ref: RefObject<HTMLDivElement> = useRef(null);
   const optionContainer: RefObject<HTMLDivElement> = useRef(null);
-  const { properties, actions, selectedValue, optionVisible, getPropsAndActions, setOptionVisible } = useBindSkin(
-    rest,
-    ref,
-  );
+  const { properties, actions, selectedValue, isOpen, getPropsAndActions, setIsOpen } = useBindSkin(rest, ref);
   const { triggerScrollEnd } = actions ?? {};
   const {
     disabled,
@@ -24,17 +21,17 @@ const Select = ({ children, ...rest }: AlphaElements.SelectProps) => {
 
       // Check if the user has scrolled to the bottom of the div
       if (scrollTop + clientHeight >= scrollHeight) {
-        triggerScrollEnd();
+        triggerScrollEnd?.();
       }
     }
   };
 
   return (
     <div ref={ref} className="w-fit">
-      <div onClick={() => !disabled && setOptionVisible(true)}>
+      <div onClick={() => !disabled && setIsOpen(true)}>
         <Renderer properties={{ ...properties, value: selectedValue }} actions={actions} />
       </div>
-      {optionVisible && (
+      {isOpen && (
         <div
           ref={optionContainer}
           onScroll={triggerScrollEnd && handleScroll}

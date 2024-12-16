@@ -4,17 +4,17 @@ export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HT
   const { properties, actions } = params;
   const { name, value, disabled, Renderer, optionRenderer, keyExtractor, horizontal } = properties;
   const { onSelect } = actions ?? {};
-  const [optionVisible, setOptionVisible] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
 
   const handleClickOutSide = (event: MouseEvent) => {
-    if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
-      setOptionVisible(false);
+    if (!ref.current?.contains(event.target as HTMLElement)) {
+      setIsOpen(false);
     }
   };
 
   const showOption = () => {
-    setOptionVisible(false);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -23,10 +23,9 @@ export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HT
   });
 
   const getPropsAndActions = (child: ReactElement, i: number) => {
-    const childProperties = child.props?.properties ?? {};
-    const childActions = child.props?.actions ?? {};
+    const { properties: childProperties = {}, actions: childActions = {} } = child.props ?? {};
     const { value: childValue, disabled: childDisabled, Renderer: childRenderer, testId } = childProperties;
-    const elementDisabled = childDisabled || disabled;
+    const elementDisabled = disabled || childDisabled;
     const elementRenderer = childRenderer ?? optionRenderer ?? Renderer;
     const key = keyExtractor?.(childProperties) ?? `${name}-${i}`;
     const selected = childValue === selectedValue;
@@ -54,5 +53,5 @@ export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HT
     };
   };
 
-  return { getPropsAndActions, name, selectedValue, horizontal, actions, properties, optionVisible, setOptionVisible };
+  return { getPropsAndActions, name, selectedValue, horizontal, actions, properties, isOpen, setIsOpen };
 };
