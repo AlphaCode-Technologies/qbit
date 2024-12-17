@@ -3,12 +3,15 @@ import Select from './Select';
 import Option from './Option';
 import { OptionSkin, SelectSkin } from '@skins/defaults';
 
-const TestSkin = ({ properties, actions }: AlphaElements.SelectProps) => {
-  const { label, value, selected, tabIndex } = properties;
+const TestSkin: com.elem.Skin<AlphaElements.SelectProperties, AlphaElements.SelectActions> = ({
+  properties,
+  actions,
+}) => {
+  const { label, value, tabIndex } = properties;
   const { onSelect } = actions ?? {};
   return (
     <button
-      className={`bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 ${selected && 'border border-teal-900'}`}
+      className={`bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4`}
       onClick={() => onSelect?.(value)}
       tabIndex={tabIndex}
     >
@@ -20,7 +23,7 @@ const TestSkin = ({ properties, actions }: AlphaElements.SelectProps) => {
 const DEFAULT_PROPERTIES: AlphaElements.SelectProperties = {
   name: 'select-element',
   value: '',
-  Renderer: SelectSkin,
+  renderer: SelectSkin,
   optionRenderer: OptionSkin,
   testId: 'select-test-id',
 };
@@ -107,9 +110,9 @@ describe('Test for select elements', () => {
 
   it('Should have render with child skin', async () => {
     const data: AlphaElements.OptionProperties[] = [
-      { value: { value: 'good', label: 'Good' }, testId: 'good_0', Renderer: TestSkin },
-      { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1', Renderer: TestSkin },
-      { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2', Renderer: TestSkin },
+      { value: { value: 'good', label: 'Good' }, testId: 'good_0', renderer: TestSkin },
+      { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1', renderer: TestSkin },
+      { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2', renderer: TestSkin },
     ];
     renderSelect({
       props: {

@@ -1,4 +1,4 @@
-const Skin = ({ properties }: AlphaElements.SelectProps) => {
+const Skin: com.elem.Skin<AlphaElements.SelectProperties, AlphaElements.SelectActions> = ({ properties }) => {
   const { value, testId } = properties;
   return (
     <svg

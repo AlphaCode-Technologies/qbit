@@ -24,7 +24,7 @@ declare namespace AlphaElements {
     name?: string;
     value?: any;
     disabled?: boolean;
-    Renderer?: FC<T>;
+    renderer?: FC<T>;
     tabIndex?: number;
     horizontal?: boolean;
     testId?: string;
@@ -39,7 +39,7 @@ declare namespace AlphaElements {
   // Extends the base properties to define specific properties for a RadioGroup component.
   type RadioGroupProperties = {
     keyExtractor?: (val: RadioProperties) => string;
-  } & Required<Pick<ComponentProperties, 'name' | 'Renderer'>> & // Requires the `name` property from ComponentProperties.
+  } & Required<Pick<ComponentProperties, 'name' | 'renderer'>> & // Requires the `name` property from ComponentProperties.
     Omit<ComponentProperties, 'name'>; // Excludes the `name` property from the rest of ComponentProperties.
 
   // Defines properties specific to individual Radio buttons.
@@ -79,20 +79,11 @@ declare namespace AlphaElements {
     triggerScrollEnd?: () => void;
   };
 
-  type SelectProps = {
-    properties: SelectProperties;
-    actions: SelectActions;
-  } & PropsWithChildren;
-
   type OptionProperties = {
     selected?: boolean;
   } & Required<Pick<ComponentProperties, 'value'>> &
     Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
 
-  type OptionProps = {
-    properties: OptionProperties;
-    actions?: SelectActions;
-  };
   // #endregion
 
   // #region BUTTON ELEMENT
@@ -105,7 +96,7 @@ declare namespace AlphaElements {
   // Defines properties specific to Buttons.
   type ButtonProperties = {
     loaderProps?: ButtonLoadingProperties;
-  } & Required<Pick<ComponentProperties, 'value' | 'Renderer'>> & // Requires the `value` and `Renderer` property from ComponentProperties.
+  } & Required<Pick<ComponentProperties, 'value' | 'renderer'>> & // Requires the `value` and `renderer` property from ComponentProperties.
     Omit<ComponentProperties, 'value' | 'name' | 'horizontal'>; // Excludes `value`, `name` and `horizontal` from the rest of ComponentProperties.
 
   type ButtonActions = {
@@ -122,7 +113,7 @@ declare namespace AlphaElements {
   // #region AVATAR ELEMENT
 
   // Extends the base properties to define specific properties for Avatar component.
-  type AvatarProperties = {} & Required<Pick<ComponentProperties, 'value' | 'Renderer'>> & // Requires the `value` and `Renderer` property from ComponentProperties.
+  type AvatarProperties = {} & Required<Pick<ComponentProperties, 'value' | 'renderer'>> & // Requires the `value` and `renderer` property from ComponentProperties.
     Omit<ComponentProperties, 'value' | 'name' | 'horizontal'>; // Excludes the `value`, `name` and `horizontal` property from the rest of ComponentProperties.
 
   type AvatarActions = {
@@ -149,6 +140,7 @@ declare namespace AlphaElements {
     properties: CheckboxProperties;
     actions?: CheckBoxAction;
   };
+
   // #endregion
 
   // #region LOADER ELEMENT
@@ -156,7 +148,7 @@ declare namespace AlphaElements {
   // Defines properties specific to Loaders.
   type LoaderProperties = {
     isLoading: boolean;
-  } & Required<Pick<ComponentProperties, 'Renderer'>> &
+  } & Required<Pick<ComponentProperties, 'renderer'>> &
     Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'tabIndex' | 'horizontal'>;
 
   type LoaderProps = {

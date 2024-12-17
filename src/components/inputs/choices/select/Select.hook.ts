@@ -1,8 +1,11 @@
 import { ReactElement, RefObject, useEffect, useState } from 'react';
 
-export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HTMLDivElement>) => {
+export const useBindSkin = (
+  params: com.elem.Shell<AlphaElements.OptionProperties, AlphaElements.SelectActions>,
+  ref: RefObject<HTMLDivElement>,
+) => {
   const { properties, actions } = params;
-  const { name, value, disabled, Renderer, optionRenderer, keyExtractor, horizontal } = properties;
+  const { name, value, disabled, renderer, optionRenderer, keyExtractor, horizontal } = properties;
   const { onSelect } = actions ?? {};
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
@@ -24,9 +27,9 @@ export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HT
 
   const getPropsAndActions = (child: ReactElement, i: number) => {
     const { properties: childProperties = {}, actions: childActions = {} } = child.props ?? {};
-    const { value: childValue, disabled: childDisabled, Renderer: childRenderer, testId } = childProperties;
+    const { value: childValue, disabled: childDisabled, renderer: childRenderer, testId } = childProperties;
     const elementDisabled = disabled || childDisabled;
-    const elementRenderer = childRenderer ?? optionRenderer ?? Renderer;
+    const elementRenderer = childRenderer ?? optionRenderer ?? renderer;
     const key = keyExtractor?.(childProperties) ?? `${name}-${i}`;
     const selected = childValue === selectedValue;
     const tabIndex = i + 1;
@@ -45,7 +48,7 @@ export const useBindSkin = (params: AlphaElements.SelectProps, ref: RefObject<HT
       properties: {
         ...childProperties,
         disabled: elementDisabled,
-        Renderer: elementRenderer,
+        renderer: elementRenderer,
         selected,
         tabIndex,
         testId,
