@@ -65,6 +65,30 @@ declare namespace AlphaElements {
 
   // #endregion
 
+  // #region BUTTON ELEMENT
+
+  // Defines properties specific to Button Loading.
+  type ButtonLoadingProperties = {
+    isLoading?: boolean;
+  } & Omit<ComponentProperties, 'name' | 'tabIndex' | 'horizontal'>;
+
+  // Defines properties specific to Buttons.
+  type ButtonProperties = {
+    loaderProps?: ButtonLoadingProperties;
+  } & Required<Pick<ComponentProperties, 'value' | 'Renderer'>> & // Requires the `value` and `Renderer` property from ComponentProperties.
+    Omit<ComponentProperties, 'value' | 'name' | 'horizontal'>; // Excludes `value`, `name` and `horizontal` from the rest of ComponentProperties.
+
+  type ButtonActions = {
+    onClick?: () => void;
+  };
+
+  type ButtonProps = {
+    properties: ButtonProperties;
+    actions?: ButtonActions;
+  };
+
+  // #endregion
+
   // #region AVATAR ELEMENT
 
   // Extends the base properties to define specific properties for Avatar component.
