@@ -162,4 +162,26 @@ declare namespace AlphaElements {
   type LoaderProps = {
     properties: LoaderProperties;
   };
+
+  // #region BADGES ELEMENT
+  type BadgesAction = {
+    onClick?: (value: boolean) => void;
+    onClose?: (id: string) => void;
+  };
+
+  type BadgesProperties = {
+    label: string;
+    showCloseButton?: boolean;
+    size?: Size;
+    count?: number;
+    checked?: boolean;
+    imageSrc?: string;
+  } & Required<Pick<ComponentProperties, 'Renderer'>> &
+    Pick<ComponentProperties, 'id' | 'disabled' | 'testId'>;
+
+  type BadgesProps = {
+    properties: BadgesProperties;
+    actions: BadgesAction;
+  };
+  // #endregion
 }

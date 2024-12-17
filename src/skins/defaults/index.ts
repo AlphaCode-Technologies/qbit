@@ -5,3 +5,4 @@ export { default as ButtonSkin } from './Button.default.skin';
 export { default as AvatarSkin } from './Avatar.default.skin';
 export { default as CheckboxSkin } from './Checkbox.default.skin';
 export { default as LoaderSkin } from './Loader.default.skin';
+export { default as BatchSkin } from './Badges.default.skin';
