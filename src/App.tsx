@@ -1,6 +1,6 @@
+import { Option, Select } from '@inputs/choices';
+import { OptionSkin, SelectSkin } from '@skins/defaults';
 import { Shell } from '@components/containers';
-import { Radio, RadioGroup } from '@inputs/choices';
-import { RadioSkin } from '@skins/defaults';
 
 type CheckboxProperties = {
   value?: boolean;
@@ -21,29 +21,25 @@ const Checkbox: com.elem.Shell<CheckboxProperties, CheckboxActions> = ({ propert
 };
 
 const App = () => {
-  // Define properties for the RadioGroup component, including its name, default selected value,
-  // a custom renderer (DefaultSkin), and a key extraction function for identifying radios uniquely.
-  const groupProperties: AlphaElements.RadioGroupProperties = {
-    name: 'radio-group',
-    value: 'bad',
-    horizontal: false,
-    Renderer: RadioSkin,
-    keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
+  const SelectProperties: AlphaElements.SelectProperties = {
+    name: 'select',
+    value: { value: 'good', label: 'Good' },
+    Renderer: SelectSkin,
+    optionRenderer: OptionSkin,
   };
-  // Define actions for the RadioGroup component, including a handler for value changes.
-  const actions: AlphaElements.RadioGroupActions = {
-    onChange: (val: any) => {
-      console.log(val);
-    },
+
+  const SelectAction: AlphaElements.SelectActions = {
+    triggerScrollEnd: () => console.log('Scrolled end'),
   };
 
   return (
     <div data-id="my-id">
-      <RadioGroup properties={groupProperties} actions={actions}>
-        <Radio properties={{ value: 'good', label: 'Good' }} />
-        <Radio properties={{ value: 'bad', label: 'Bad', disabled: true }} />
-        <Radio properties={{ value: 'avg', label: 'Avg' }} />
-      </RadioGroup>
+      <Select properties={SelectProperties} actions={SelectAction}>
+        <Option properties={{ value: { value: 'good', label: 'Good' } }} />
+        <Option properties={{ value: { value: 'bad', label: 'Bad' } }} />
+        <Option properties={{ value: { value: 'average', label: 'Average' } }} />
+        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
+      </Select>
       <Checkbox
         properties={{ renderer: CheckboxSkin }}
         actions={{

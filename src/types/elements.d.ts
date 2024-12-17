@@ -65,6 +65,36 @@ declare namespace AlphaElements {
 
   // #endregion
 
+  // #region SELECT ELEMENT
+  type SelectProperties = {
+    label?: string;
+    optionContainerClassName?: string;
+    optionRenderer?: FC<OptionProps>;
+    keyExtractor?: (val: OptionProperties) => string;
+  } & Required<Pick<ComponentProperties, 'value'>> &
+    Omit<ComponentProperties, 'value' | 'horizontal'>;
+
+  type SelectActions = {
+    onSelect?: (val: any) => void;
+    triggerScrollEnd?: () => void;
+  };
+
+  type SelectProps = {
+    properties: SelectProperties;
+    actions: SelectActions;
+  } & PropsWithChildren;
+
+  type OptionProperties = {
+    selected?: boolean;
+  } & Required<Pick<ComponentProperties, 'value'>> &
+    Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
+
+  type OptionProps = {
+    properties: OptionProperties;
+    actions?: SelectActions;
+  };
+  // #endregion
+
   // #region BUTTON ELEMENT
 
   // Defines properties specific to Button Loading.
