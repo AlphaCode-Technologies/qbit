@@ -65,6 +65,22 @@ declare namespace AlphaElements {
 
   // #endregion
 
+  // #region AVATAR ELEMENT
+
+  // Extends the base properties to define specific properties for Avatar component.
+  type AvatarProperties = {} & Required<Pick<ComponentProperties, 'value' | 'Renderer'>> & // Requires the `value` and `Renderer` property from ComponentProperties.
+    Omit<ComponentProperties, 'value' | 'name' | 'horizontal'>; // Excludes the `value`, `name` and `horizontal` property from the rest of ComponentProperties.
+
+  type AvatarActions = {
+    onClick?: () => void;
+  };
+
+  type AvatarProps = {
+    properties: AvatarProperties;
+    actions?: AvatarActions;
+  };
+  // #endregion
+
   // region CHECKBOX ELEMENT
   type CheckBoxAction = {
     onChange: (value: boolean) => void;
