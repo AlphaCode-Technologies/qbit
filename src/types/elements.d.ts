@@ -1,3 +1,7 @@
+/**
+ * Author: Dulan Sudasinghe
+ * Date: 15.12.2024
+ */
 declare namespace AlphaElements {
   // #region COMMON ELEMENT
 
