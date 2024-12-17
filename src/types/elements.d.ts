@@ -1,3 +1,7 @@
+/**
+ * Author: Dulan Sudasinghe
+ * Date: 15.12.2024
+ */
 declare namespace AlphaElements {
   // #region COMMON ELEMENT
 
@@ -15,7 +19,8 @@ declare namespace AlphaElements {
     properties: Property[];
   };
 
-  type ComponentProperties = {
+  type ComponentProperties<T = any> = {
+    id?: string;
     name?: string;
     value?: any;
     disabled?: boolean;
@@ -24,6 +29,8 @@ declare namespace AlphaElements {
     horizontal?: boolean;
     testId?: string;
   };
+
+  type Size = 'sm' | 'md' | 'lg' | 'xl';
 
   // #endregion
 
@@ -87,4 +94,72 @@ declare namespace AlphaElements {
     actions?: SelectActions;
   };
   // #endregion
+
+  // #region BUTTON ELEMENT
+
+  // Defines properties specific to Button Loading.
+  type ButtonLoadingProperties = {
+    isLoading?: boolean;
+  } & Omit<ComponentProperties, 'name' | 'tabIndex' | 'horizontal'>;
+
+  // Defines properties specific to Buttons.
+  type ButtonProperties = {
+    loaderProps?: ButtonLoadingProperties;
+  } & Required<Pick<ComponentProperties, 'value' | 'Renderer'>> & // Requires the `value` and `Renderer` property from ComponentProperties.
+    Omit<ComponentProperties, 'value' | 'name' | 'horizontal'>; // Excludes `value`, `name` and `horizontal` from the rest of ComponentProperties.
+
+  type ButtonActions = {
+    onClick?: () => void;
+  };
+
+  type ButtonProps = {
+    properties: ButtonProperties;
+    actions?: ButtonActions;
+  };
+
+  // #endregion
+
+  // #region AVATAR ELEMENT
+
+  // Extends the base properties to define specific properties for Avatar component.
+  type AvatarProperties = {} & Required<Pick<ComponentProperties, 'value' | 'Renderer'>> & // Requires the `value` and `Renderer` property from ComponentProperties.
+    Omit<ComponentProperties, 'value' | 'name' | 'horizontal'>; // Excludes the `value`, `name` and `horizontal` property from the rest of ComponentProperties.
+
+  type AvatarActions = {
+    onClick?: () => void;
+  };
+
+  type AvatarProps = {
+    properties: AvatarProperties;
+    actions?: AvatarActions;
+  };
+  // #endregion
+
+  // region CHECKBOX ELEMENT
+  type CheckBoxAction = {
+    onChange: (value: boolean) => void;
+  };
+
+  type CheckboxProperties = {
+    size?: Size;
+  } & Required<Pick<ComponentProperties, 'value' | 'name'>> &
+    Omit<ComponentProperties, 'name' | 'value'>;
+
+  type CheckboxProps = {
+    properties: CheckboxProperties;
+    actions?: CheckBoxAction;
+  };
+  // #endregion
+
+  // #region LOADER ELEMENT
+
+  // Defines properties specific to Loaders.
+  type LoaderProperties = {
+    isLoading: boolean;
+  } & Required<Pick<ComponentProperties, 'Renderer'>> &
+    Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'tabIndex' | 'horizontal'>;
+
+  type LoaderProps = {
+    properties: LoaderProperties;
+  };
 }
