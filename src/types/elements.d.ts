@@ -16,6 +16,7 @@ declare namespace AlphaElements {
   };
 
   type ComponentProperties<T = any> = {
+    id?: string;
     name?: string;
     value?: any;
     disabled?: boolean;
@@ -24,6 +25,8 @@ declare namespace AlphaElements {
     horizontal?: boolean;
     testId?: string;
   };
+
+  type Size = 'sm' | 'md' | 'lg' | 'xl';
 
   // #endregion
 
@@ -56,5 +59,21 @@ declare namespace AlphaElements {
     actions?: RadioGroupActions;
   };
 
+  // #endregion
+
+  // region CHECKBOX ELEMENT
+  type CheckBoxAction = {
+    onChange: (value: boolean) => void;
+  };
+
+  type CheckboxProperties = {
+    size?: Size;
+  } & Required<Pick<ComponentProperties, 'value' | 'name'>> &
+    Omit<ComponentProperties, 'name' | 'value'>;
+
+  type CheckboxProps = {
+    properties: CheckboxProperties;
+    actions?: CheckBoxAction;
+  };
   // #endregion
 }
