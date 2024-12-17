@@ -10,8 +10,9 @@
       "@types/*": ["src/types/*"],
       "@components/*": ["src/components/*"],
       "@inputs/*": ["src/components/inputs/*"],
-      "@skins/*": ["src/skins/*"],
-      "@containers/*": ["src/components/containers/*"]
+      "@containers/*": ["src/components/containers/*"],
+      "@displays/*": ["src/components/displays/*"],
+      "@skins/*": ["src/skins/*"]
     },
 
     /* Bundler mode */

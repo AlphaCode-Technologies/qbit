@@ -96,4 +96,16 @@ declare namespace AlphaElements {
     actions?: CheckBoxAction;
   };
   // #endregion
+
+  // #region LOADER ELEMENT
+
+  // Defines properties specific to Loaders.
+  type LoaderProperties = {
+    isLoading: boolean;
+  } & Required<Pick<ComponentProperties, 'Renderer'>> &
+    Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'tabIndex' | 'horizontal'>;
+
+  type LoaderProps = {
+    properties: LoaderProperties;
+  };
 }
