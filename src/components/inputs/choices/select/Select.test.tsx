@@ -34,7 +34,7 @@ const DEFAULT_ACTIONS: AlphaElements.SelectActions = {
   },
 };
 
-const DEFAULT_DATA: AlphaElements.OptionProperties[] = [
+const DEFAULT_DATA: AlphaElements.SelectOptionProps[] = [
   { value: { value: 'good', label: 'Good' }, testId: 'good_0' },
   { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1' },
   { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2' },
@@ -43,13 +43,13 @@ const DEFAULT_DATA: AlphaElements.OptionProperties[] = [
 type SelectData = {
   props: AlphaElements.SelectProperties;
   actions: AlphaElements.SelectActions;
-  data: AlphaElements.OptionProperties[];
+  data: AlphaElements.SelectOptionProps[];
 };
 
 const renderSelect = ({ props, actions, data }: SelectData) =>
   render(
     <Select properties={props} actions={actions}>
-      {data?.map((d: AlphaElements.OptionProperties) => {
+      {data?.map((d: AlphaElements.SelectOptionProps) => {
         return <Option properties={d} />;
       })}
     </Select>,
@@ -109,7 +109,7 @@ describe('Test for select elements', () => {
   });
 
   it('Should have render with child skin', async () => {
-    const data: AlphaElements.OptionProperties[] = [
+    const data: AlphaElements.SelectOptionProps[] = [
       { value: { value: 'good', label: 'Good' }, testId: 'good_0', renderer: TestSkin },
       { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1', renderer: TestSkin },
       { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2', renderer: TestSkin },
@@ -129,7 +129,7 @@ describe('Test for select elements', () => {
   });
 
   it('Should have render with child disabled', async () => {
-    const data: AlphaElements.OptionProperties[] = [
+    const data: AlphaElements.SelectOptionProps[] = [
       { value: { value: 'good', label: 'Good' }, testId: 'good_0', disabled: true },
       { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1' },
       { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2' },

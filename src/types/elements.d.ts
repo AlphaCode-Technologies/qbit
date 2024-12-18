@@ -70,8 +70,8 @@ declare namespace AlphaElements {
     label?: string;
     optionContainerClassName?: string;
     optionRenderer?: FC<OptionProps>;
-    keyExtractor?: (val: OptionProperties) => string;
-  } & Required<Pick<ComponentProperties, 'value'>> &
+    keyExtractor?: (val: SelectOptionProps) => string;
+  } & Required<ComponentProperties, 'value'> &
     Omit<ComponentProperties, 'value' | 'horizontal'>;
 
   type SelectActions = {
@@ -79,9 +79,9 @@ declare namespace AlphaElements {
     triggerScrollEnd?: () => void;
   };
 
-  type OptionProperties = {
+  type SelectOptionProps = {
     selected?: boolean;
-  } & Required<Pick<ComponentProperties, 'value'>> &
+  } & Required<ComponentProperties, 'value'> &
     Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
 
   // #endregion

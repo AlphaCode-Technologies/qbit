@@ -24,7 +24,7 @@ const App = () => {
   const SelectProperties: AlphaElements.SelectProperties = {
     name: 'select',
     value: { value: 'good', label: 'Good' },
-    Renderer: SelectSkin,
+    renderer: SelectSkin,
     optionRenderer: OptionSkin,
   };
 

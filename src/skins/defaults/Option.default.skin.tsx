@@ -1,4 +1,4 @@
-const Skin: com.elem.Skin<AlphaElements.OptionProperties, AlphaElements.SelectActions> = ({ properties, actions }) => {
+const Skin: com.elem.Skin<AlphaElements.SelectOptionProps, AlphaElements.SelectActions> = ({ properties, actions }) => {
   const { value, testId } = properties;
   const { onSelect } = actions ?? {};
 
