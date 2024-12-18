@@ -75,9 +75,8 @@ declare namespace AlphaElements {
     Omit<ComponentProperties, 'value' | 'horizontal'>;
 
   type SelectActions = {
-    onSelect?: (val: any) => void;
     triggerScrollEnd?: () => void;
-  };
+  } & Partial<com.evt.UiEvents>;
 
   type SelectOptionProps = {
     selected?: boolean;

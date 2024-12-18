@@ -7,7 +7,7 @@ export const useBindSkin = (
 ) => {
   const { properties, actions } = params;
   const { name, value, disabled, renderer, optionRenderer, keyExtractor, horizontal } = properties;
-  const { onSelect, triggerScrollEnd } = actions ?? {};
+  const { onChange, triggerScrollEnd } = actions ?? {};
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
 
@@ -24,7 +24,7 @@ export const useBindSkin = (
   };
 
   const onClickSelectOption = () => {
-    if (disabled) setIsOpen(true);
+    if (!disabled) setIsOpen(true);
   };
 
   const showOption = () => {
@@ -54,10 +54,10 @@ export const useBindSkin = (
       key,
       actions: {
         ...childActions,
-        onSelect: (value: any) => {
+        onChange: (value: any) => {
           if (!elementDisabled) {
             setSelectedValue(value);
-            onSelect?.(value);
+            onChange?.(value);
             showOption();
           }
         },

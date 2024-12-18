@@ -8,11 +8,11 @@ const TestSkin: com.elem.Skin<AlphaElements.SelectProperties, AlphaElements.Sele
   actions,
 }) => {
   const { label, value, tabIndex } = properties;
-  const { onSelect } = actions ?? {};
+  const { onChange } = actions ?? {};
   return (
     <button
       className={`bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4`}
-      onClick={() => onSelect?.(value)}
+      onClick={() => onChange?.(value)}
       tabIndex={tabIndex}
     >
       {label}
@@ -29,7 +29,7 @@ const DEFAULT_PROPERTIES: AlphaElements.SelectProperties = {
 };
 
 const DEFAULT_ACTIONS: AlphaElements.SelectActions = {
-  onSelect: (val: any) => {
+  onChange: (val: any) => {
     console.log(val);
   },
 };
