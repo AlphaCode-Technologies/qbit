@@ -5,7 +5,7 @@ export const useBindSkin = (
   ref: RefObject<HTMLDivElement>,
   optionRef: RefObject<HTMLDivElement>,
 ) => {
-  const { properties, actions } = params;
+  const { properties, actions, options } = params;
   const { name, value, disabled, renderer, optionRenderer, keyExtractor, horizontal } = properties;
   const { onChange, triggerScrollEnd } = actions ?? {};
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,11 @@ export const useBindSkin = (
   }, [ref]);
 
   const getPropsAndActions = (child: ReactElement, i: number) => {
-    const { properties: childProperties = {}, actions: childActions = {} } = child.props ?? {};
+    const {
+      properties: childProperties = {},
+      actions: childActions = {},
+      options: childOptions = {},
+    } = child.props ?? {};
     const { value: childValue, disabled: childDisabled, renderer: childRenderer, testId } = childProperties;
     const elementDisabled = disabled || childDisabled;
     const elementRenderer = childRenderer ?? optionRenderer ?? renderer;
@@ -70,6 +74,7 @@ export const useBindSkin = (
         tabIndex,
         testId,
       },
+      options: childOptions,
     };
   };
 
@@ -80,6 +85,7 @@ export const useBindSkin = (
     horizontal,
     actions,
     properties,
+    options,
     isOpen,
     onClickSelectOption,
     handleScroll,
