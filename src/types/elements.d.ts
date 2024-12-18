@@ -184,4 +184,23 @@ declare namespace AlphaElements {
     actions: BadgesAction;
   };
   // #endregion
+
+  // #BREADCRUMBS region
+  type BreadcrumbProperties = {
+    name: string;
+    path: string;
+    active: boolean;
+    size?: Size;
+    index?: number;
+    total?: number;
+  } & Pick<ComponentProperties, 'id' | 'Renderer' | 'disabled' | 'testId'>;
+
+  type BreadcrumbAction = {
+    onClick?: (id: string) => void;
+  };
+
+  type BreadcrumbProps = {
+    properties: BreadcrumbProperties[];
+    actions?: BreadcrumbAction;
+  } & PropsWithChildren;
 }
