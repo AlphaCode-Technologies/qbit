@@ -1,6 +1,8 @@
 import { Option, Select } from '@inputs/choices';
-import { OptionSkin, SelectSkin } from '@skins/defaults';
+import { DefaultAccordionSkin, OptionSkin, SelectSkin } from '@skins/defaults';
 import { Shell } from '@components/containers';
+import { Accordion } from '@components/display/menu';
+import { useState } from 'react';
 
 type CheckboxProperties = {
   value?: boolean;
@@ -21,6 +23,8 @@ const Checkbox: com.elem.Shell<CheckboxProperties, CheckboxActions> = ({ propert
 };
 
 const App = () => {
+  const [toggled, setToggled] = useState(false);
+  const [toggled2, setToggled2] = useState(false);
   const SelectProperties: AlphaElements.SelectProperties = {
     name: 'select',
     value: { value: 'good', label: 'Good' },
@@ -30,6 +34,16 @@ const App = () => {
 
   const SelectAction: AlphaElements.SelectActions = {
     triggerScrollEnd: () => console.log('Scrolled end'),
+  };
+
+  const handleToggle = (newState: boolean) => {
+    console.log('Accordion toggled:', newState);
+    setToggled(!toggled);
+  };
+
+  const handleToggle2 = (newState: boolean) => {
+    console.log('Accordion toggled:', newState);
+    setToggled2(!toggled2);
   };
 
   return (
@@ -47,6 +61,30 @@ const App = () => {
             console.log('check box skin with new ');
           },
         }}
+      />
+      <Accordion
+        properties={{
+          id: 'accordion-1',
+          title: 'Click to Expand',
+          Renderer: DefaultAccordionSkin,
+          content: (
+            <>
+              <p>sample</p>
+              <Accordion
+                properties={{
+                  id: 'accordion-2',
+                  title: 'Click to Expand',
+                  Renderer: DefaultAccordionSkin,
+                  content: 'This is the accordion content. It will be shown when expanded.',
+                  isOpen: toggled2,
+                }}
+                actions={{ onToggle: handleToggle2 }}
+              />
+            </>
+          ),
+          isOpen: toggled,
+        }}
+        actions={{ onToggle: handleToggle }}
       />
     </div>
   );

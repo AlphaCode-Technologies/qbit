@@ -203,4 +203,24 @@ declare namespace AlphaElements {
     properties: BreadcrumbProperties[];
     actions?: BreadcrumbAction;
   } & PropsWithChildren;
+  // #endregion
+
+  // region ACCORDION ELEMENT
+  type AccordionActions = {
+    onToggle: (isOpen: boolean) => void;
+  };
+
+  type AccordionProperties = {
+    id?: string;
+    title: string;
+    content: ReactNode;
+    isOpen: boolean;
+  } & Required<Pick<ComponentProperties, 'Renderer'>> &
+    Pick<ComponentProperties, 'id' | 'disabled' | 'testId'>;
+
+  type AccordionProps = {
+    properties: AccordionProperties;
+    actions: AccordionActions;
+  };
+  // endregion
 }
