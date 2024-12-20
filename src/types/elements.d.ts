@@ -223,4 +223,13 @@ declare namespace AlphaElements {
     actions: AccordionActions;
   };
   // endregion
+
+  // region MODAL ELEMENT
+  type ModalActions = { onClose: () => void } & com.evt.MouseEvents;
+
+  type ModalProperties = {
+    isOpen: boolean;
+    modalClassNames?: string;
+  };
+  // endregion
 }

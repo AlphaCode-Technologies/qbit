@@ -98,7 +98,7 @@ declare namespace com {
     };
 
     type ShellProps<P, A> = SkinProps<P, A> & BaseShellProps<P, A>;
-    type Shell<P, A> = React.FC<ShellProps<P, A>>;
+    type Shell<P, A> = React.FC<ShellProps<P, A>> & PropsWithChildren;
 
     type AsyncShellProps<P, A> = ShellProps<P, A> & {
       properties: com.utils.ValidateProps<P> & {
