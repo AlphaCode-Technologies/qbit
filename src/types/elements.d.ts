@@ -19,6 +19,19 @@ declare namespace AlphaElements {
     properties: Property[];
   };
 
+  /**
+   * Write all default component properties inside this block.
+   * This can be then extended by other components properties
+   */
+  type DefaultProperties<V> = {
+    id?: string;
+    value?: V;
+    label?: string;
+    name?: string;
+    disabled?: boolean;
+    testId?: string;
+  };
+
   type ComponentProperties<T = any> = {
     id?: string;
     name?: string;

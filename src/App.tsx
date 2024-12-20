@@ -1,8 +1,9 @@
 import { Option, Select } from '@inputs/choices';
-import { DefaultAccordionSkin, OptionSkin, SelectSkin } from '@skins/defaults';
+import { DefaultAccordionSkin, ListItemSkin, ListSkin, OptionSkin, SelectSkin } from '@skins/defaults';
 import { Shell } from '@components/containers';
 import { Accordion } from '@components/display/menu';
 import { useState } from 'react';
+import { List, ListItem } from '@components/displays';
 
 type CheckboxProperties = {
   value?: boolean;
@@ -86,6 +87,23 @@ const App = () => {
         }}
         actions={{ onToggle: handleToggle }}
       />
+      {/* List component */}
+      <List
+        properties={{ renderer: ListSkin }}
+        actions={{ onClick: (e) => console.log('clicked', e.currentTarget) }}
+        options={{
+          styling: {
+            styles: {
+              backgroundColor: 'gray',
+            },
+          },
+        }}
+      >
+        <ListItem properties={{ renderer: ListItemSkin, label: 'Item 1' }} />
+        <ListItem properties={{ renderer: ListItemSkin, label: 'Item 2' }} />
+        <ListItem properties={{ renderer: ListItemSkin, label: 'Item 3' }} />
+        <ListItem properties={{ renderer: ListItemSkin, label: 'Item 4' }} />
+      </List>
     </div>
   );
 };

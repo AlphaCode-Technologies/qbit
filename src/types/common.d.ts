@@ -78,33 +78,47 @@ declare namespace com {
    * Define all your common element types here.
    */
   declare namespace elem {
-    type SkinProps<P, A> = {
+    /** Base skin props which will be injected directly to the
+     * skin component.
+     */
+    type SkinProps<P, A> = React.PropsWithChildren<{
       properties: com.utils.ValidateProps<P>;
       actions?: Partial<com.utils.ValidateProps<A>>;
       options?: Partial<
         com.utils.ValidateProps<{
           a11y?: com.opt.A11yProps;
-          styles?: com.opt.StyleProps;
+          styling?: com.opt.StyleProps;
+          keyExtractor?: <V = any>(datum: V) => string;
         }>
       >;
-    };
+    }>;
 
+    /**
+     * Skin type component or the renderer component.
+     */
     type Skin<P, A> = React.FC<SkinProps<P, A>>;
 
-    type BaseShellProps<P, A> = {
-      properties: com.utils.ValidateProps<P> & {
+    /**
+     * Base shell props which will be injected directly to the
+     * shell component. This is re-used in both Shell and AsyncShell
+     */
+    type BaseShellProps<P, A> = React.PropsWithChildren<{
+      properties: com.utils.ValidateProps<{
         renderer: Skin<P, A>;
-      };
-    };
+      }>;
+    }>;
 
     type ShellProps<P, A> = SkinProps<P, A> & BaseShellProps<P, A>;
     type Shell<P, A> = React.FC<ShellProps<P, A>>;
 
+    /**
+     * AsyncShell is for components that require async data loading.
+     */
     type AsyncShellProps<P, A> = ShellProps<P, A> & {
-      properties: com.utils.ValidateProps<P> & {
+      properties: com.utils.ValidateProps<{
         isLoading?: boolean;
         skeleton: React.FC;
-      };
+      }>;
     };
 
     type AsyncShell<P, A> = React.FC<AsyncShellProps<P, A>>;

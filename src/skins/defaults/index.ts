@@ -8,3 +8,5 @@ export { default as AvatarSkin } from './Avatar.default.skin';
 export { default as CheckboxSkin } from './Checkbox.default.skin';
 export { default as LoaderSkin } from './Loader.default.skin';
 export { default as BatchSkin } from './Badges.default.skin';
+export { default as ListSkin } from './list/List.skin.default';
+export { default as ListItemSkin } from './list-item/ListItem.skin.default';
