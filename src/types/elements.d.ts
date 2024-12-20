@@ -230,6 +230,6 @@ declare namespace AlphaElements {
   type ModalProperties = {
     isOpen: boolean;
     modalClassNames?: string;
-  };
+  } & Pick<ComponentProperties, 'testId'>;
   // endregion
 }

@@ -6,7 +6,7 @@ export const useBindSkin = ({
   options,
 }: com.elem.Shell<AlphaElements.ModalProperties, AlphaElements.ModalActions>) => {
   const getPropsAndActions = (child: ReactElement) => {
-    const { properties: childProperties, actions: childActions, options: childOptions } = child.props ?? {};
+    const { properties: childProperties, actions: childActions, options: childOptions } = child.props;
 
     return {
       actions: {
