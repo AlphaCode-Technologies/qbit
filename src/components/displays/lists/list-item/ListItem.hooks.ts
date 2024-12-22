@@ -1,10 +1,13 @@
-import { ShellProps } from './ListItem.types';
+import { ListItemProps } from './ListItem.types';
 
-const useBindSkin = <V extends object>({ properties, actions, options }: ShellProps<V>) => {
+import ValidTypes = com.utils.ValidTypes;
+
+const useBindSkin = <V extends ValidTypes>({ properties, actions, renderers, options }: ListItemProps<V>) => {
   return {
     properties,
     actions,
     options,
+    renderers,
   };
 };
 

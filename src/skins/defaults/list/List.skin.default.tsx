@@ -1,18 +1,22 @@
-import { SkinProps } from './List.skin.types';
+import { log } from '@utils/helpers';
+import { ListSkinProps } from './List.skin.types';
 
-const ListSkin = <V extends object>({ properties, actions, options, children }: SkinProps<V>) => {
-  const { id, name } = properties;
+type ValidTypes = com.utils.ValidTypes;
+
+const ListSkin = <V extends ValidTypes>({ properties, options, children }: ListSkinProps<V>) => {
+  const { testId, name } = properties;
   const { styling = {} } = options ?? {};
-  const { styles = {} } = styling;
-  const { onClick } = actions ?? {};
+  const { styles = {}, className = '' } = styling;
+
+  log('@list skin rendering');
   return (
-    <ol id={id} data-name={name} style={styles}>
-      {(children as React.ReactElement[])?.map((child, i) => {
-        return (
-          <li key={`simple-list-item-${i}`} onClick={onClick}>
-            {child}
-          </li>
-        );
+    <ol data-testid={testId} data-name={name} style={styles} className={className}>
+      {(children as React.ReactElement[])?.map((child) => {
+        const {
+          properties: { value },
+        } = child.props;
+        log('@list-item skin rendering', child);
+        return <li key={`simple-list-item-${value}`}>{child}</li>;
       })}
     </ol>
   );

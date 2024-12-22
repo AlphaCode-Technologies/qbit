@@ -1,2 +1,2 @@
 export { default as Shell } from './base/Shell';
-export { default as AsyncShell } from './base/Shell.async';
+export { default as SubShell } from './base/Shell.sub';

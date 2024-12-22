@@ -1,15 +1,15 @@
 /**
- * Author: Dulan Sudasinghe
- * Date: 15.12.2024
+ * @Author Dulan Sudasinghe
+ * @created Date: 15.12.2024
  *
- * This is the common namespace that contains all the common types and interfaces that are shared across the application.
+ * @description This is the common namespace that contains all the common types and interfaces that are shared across the application.
  */
 declare namespace com {
   /**
    * Define all typescript utilities here.
    */
   declare namespace utils {
-    type ValidateProps<T> = {
+    type ValidateProps<T extends object> = {
       [key in keyof T]: T[key];
     };
 
@@ -19,6 +19,15 @@ declare namespace com {
       description: string;
       date: string;
     };
+
+    type ValidTypes =
+      | string
+      | number
+      | boolean
+      | object
+      | null
+      | undefined
+      | Array<string | number | boolean | object | symbol>;
   }
 
   /**
@@ -51,10 +60,10 @@ declare namespace com {
    * Use partials as these should be optional.
    */
   declare namespace act {
-    type MouseActions = Partial<com.evt.MouseEvents>;
-    type KeyboardActions = Partial<com.evt.KeyboardEvents>;
-    type UiActions = Partial<com.evt.UiEvents>;
-    type MediaActions = Partial<com.evt.MediaEvents>;
+    type MouseActions = Action<Partial<com.evt.MouseEvents>>;
+    type KeyboardActions = Action<Partial<com.evt.KeyboardEvents>>;
+    type UiActions = Action<Partial<com.evt.UiEvents>>;
+    type MediaActions = Action<Partial<com.evt.MediaEvents>>;
   }
 
   /**
@@ -78,18 +87,32 @@ declare namespace com {
    * Define all your common element types here.
    */
   declare namespace elem {
+    type Properties<P> = Partial<com.utils.ValidateProps<P>>;
+    type Actions<A> = Partial<com.utils.ValidateProps<A>>;
+    type Options<O> = Partial<com.utils.ValidateProps<O>>;
+    type Renderers<R> = com.utils.ValidateProps<R>;
+
     /** Base skin props which will be injected directly to the
      * skin component.
      */
-    type SkinProps<P, A> = React.PropsWithChildren<{
-      properties: com.utils.ValidateProps<P>;
-      actions?: Partial<com.utils.ValidateProps<A>>;
-      options?: Partial<
-        com.utils.ValidateProps<{
+    type SkinProps<P, A, O = object> = React.PropsWithChildren<{
+      properties: Properties<
+        {
+          // Write all default component properties here
+          id?: string;
+          name?: string;
+          disabled?: boolean;
+          testId?: string;
+        } & P
+      >;
+      actions?: Actions<A>;
+      options?: Options<
+        {
+          // Default options
           a11y?: com.opt.A11yProps;
           styling?: com.opt.StyleProps;
-          keyExtractor?: <V = any>(datum: V) => string;
-        }>
+          keyExtractor?: <V = any>(value: V) => string;
+        } & O
       >;
     }>;
 
@@ -99,28 +122,31 @@ declare namespace com {
     type Skin<P, A> = React.FC<SkinProps<P, A>>;
 
     /**
-     * Base shell props which will be injected directly to the
-     * shell component. This is re-used in both Shell and AsyncShell
+     * Properties of the Shell component.
      */
-    type BaseShellProps<P, A> = React.PropsWithChildren<{
-      properties: com.utils.ValidateProps<{
+    type ShellProps<P, A> = SkinProps<P, A> & {
+      renderers: Renderers<{
         renderer: Skin<P, A>;
-      }>;
-    }>;
-
-    type ShellProps<P, A> = SkinProps<P, A> & BaseShellProps<P, A>;
-    type Shell<P, A> = React.FC<ShellProps<P, A>>;
-
-    /**
-     * AsyncShell is for components that require async data loading.
-     */
-    type AsyncShellProps<P, A> = ShellProps<P, A> & {
-      properties: com.utils.ValidateProps<{
-        isLoading?: boolean;
-        skeleton: React.FC;
+        subRenderer?: Skin<P, A>;
+        skeletonRenderer?: Skin<P, A>;
       }>;
     };
 
-    type AsyncShell<P, A> = React.FC<AsyncShellProps<P, A>>;
+    /**
+     * Parent component or
+     */
+    type Shell<P, A> = React.FC<ShellProps<P, A>>;
+
+    /**
+     * If the component contains child components
+     * Define the SubShell with
+     */
+    type SubShellProps<P, A> = SkinProps<P, A> & {
+      renderers?: Renderers<{
+        renderer?: Skin<P, A>;
+      }>;
+    };
+
+    type SubShell<P, A> = React.FC<SubShellProps<P, A>>;
   }
 }

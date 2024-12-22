@@ -1,27 +1,9 @@
 import { Option, Select } from '@inputs/choices';
 import { DefaultAccordionSkin, ListItemSkin, ListSkin, OptionSkin, SelectSkin } from '@skins/defaults';
-import { Shell } from '@components/containers';
+
 import { Accordion } from '@components/display/menu';
-import { useState } from 'react';
 import { List, ListItem } from '@components/displays';
-
-type CheckboxProperties = {
-  value?: boolean;
-  disabled?: boolean;
-};
-
-type CheckboxActions = com.evt.MouseEvents & com.evt.UiEvents;
-
-const CheckboxSkin: com.elem.Skin<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
-  const { value } = properties;
-  const { onChange } = actions ?? {};
-  const { a11y = {} } = options ?? {};
-  return <input type="checkbox" defaultChecked={value} onChange={onChange} {...a11y} />;
-};
-
-const Checkbox: com.elem.Shell<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
-  return <Shell<CheckboxProperties, CheckboxActions> properties={properties} actions={actions} options={options} />;
-};
+import { useState } from 'react';
 
 const App = () => {
   const [toggled, setToggled] = useState(false);
@@ -55,14 +37,7 @@ const App = () => {
         <Option properties={{ value: { value: 'average', label: 'Average' } }} />
         <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
       </Select>
-      <Checkbox
-        properties={{ renderer: CheckboxSkin }}
-        actions={{
-          onChange: () => {
-            console.log('check box skin with new ');
-          },
-        }}
-      />
+
       <Accordion
         properties={{
           id: 'accordion-1',
@@ -89,7 +64,7 @@ const App = () => {
       />
       {/* List component */}
       <List
-        properties={{ renderer: ListSkin }}
+        properties={{ label: 'List Component' }}
         actions={{ onClick: (e) => console.log('clicked', e.currentTarget) }}
         options={{
           styling: {
@@ -98,11 +73,15 @@ const App = () => {
             },
           },
         }}
+        renderers={{ renderer: ListSkin, subRenderer: ListItemSkin }}
       >
-        <ListItem properties={{ renderer: ListItemSkin, label: 'Item 1' }} />
-        <ListItem properties={{ renderer: ListItemSkin, label: 'Item 2' }} />
-        <ListItem properties={{ renderer: ListItemSkin, label: 'Item 3' }} />
-        <ListItem properties={{ renderer: ListItemSkin, label: 'Item 4' }} />
+        <ListItem<string>
+          properties={{ label: 'Item 1', value: 'test-1' }}
+          options={{ styling: { styles: { backgroundColor: 'blue' } } }}
+        />
+        <ListItem properties={{ label: 'Item 2', value: 'test-2' }} />
+        <ListItem properties={{ label: 'Item 3', value: 'test-3' }} />
+        <ListItem properties={{ label: 'Item 4', value: 'test-4', disabled: true }} />
       </List>
     </div>
   );

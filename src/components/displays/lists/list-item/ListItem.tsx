@@ -1,14 +1,21 @@
-import { Shell } from '@components/containers';
-
-import { Actions, Properties, ShellProps } from './ListItem.types';
+import { SubShell } from '@components/containers';
 import useBindSkin from './ListItem.hooks';
 
-const ListItem = <V extends object>({ children, ...rest }: ShellProps<V>) => {
-  const { properties, actions, options } = useBindSkin(rest);
+import { ListItemActions, ListItemProperties, ListItemProps } from './ListItem.types';
+
+import ValidTypes = com.utils.ValidTypes;
+
+const ListItem = <V extends ValidTypes>({ children, ...rest }: ListItemProps<V>) => {
+  const { properties, actions, renderers, options } = useBindSkin(rest);
   return (
-    <Shell<Properties<V>, Actions> properties={properties} actions={actions} options={options}>
+    <SubShell<ListItemProperties<V>, ListItemActions>
+      properties={properties}
+      actions={actions}
+      renderers={renderers}
+      options={options}
+    >
       {children}
-    </Shell>
+    </SubShell>
   );
 };
 

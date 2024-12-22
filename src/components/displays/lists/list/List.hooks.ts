@@ -1,10 +1,12 @@
 import { useCallback, useState } from 'react';
-import { ShellProps } from './List.types';
+import { ListProps } from './List.types';
 
-const useBindSkin = <V extends object>({ properties, actions, options, children }: ShellProps<V>) => {
-  const { selectedValue: defaultSelectedValue } = properties;
+type ValidTypes = com.utils.ValidTypes;
+
+const useBindSkin = <V extends ValidTypes>({ properties, actions, options, renderers, children }: ListProps<V>) => {
+  const { selected: defaultSelected } = properties;
   const { onClick: onSuperOnClick } = actions ?? {};
-  const [selectedValue, setSelectedValue] = useState<V | undefined>(defaultSelectedValue);
+  const [selectedValue, setSelectedValue] = useState<V | undefined>(defaultSelected);
 
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLLIElement>) => {
@@ -25,6 +27,7 @@ const useBindSkin = <V extends object>({ properties, actions, options, children 
     },
     actions: { ...actions, onClick },
     options,
+    renderers,
     children,
   };
 };
