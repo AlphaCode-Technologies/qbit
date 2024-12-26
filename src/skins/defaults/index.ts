@@ -11,3 +11,4 @@ export { default as BatchSkin } from './Badges.default.skin';
 export { default as ModalHeaderSkin } from './ModalHeader.default';
 export { default as ModalContentSkin } from './ModalContent.default';
 export { default as ModalFooterSkin } from './ModalFooter.default';
+export { default as ToasterSkin } from './Toaster.default.skin';

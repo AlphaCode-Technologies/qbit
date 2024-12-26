@@ -232,4 +232,12 @@ declare namespace AlphaElements {
     modalClassNames?: string;
   } & Pick<ComponentProperties, 'testId'>;
   // endregion
+
+  // region TOASTER ELEMENT
+  type ToasterActions = { onClose: () => void } & com.evt.MouseEvents;
+
+  type ToasterProperties = {
+    isOpen: boolean;
+  } & Pick<ComponentProperties, 'testId'>;
+  // endregion
 }
