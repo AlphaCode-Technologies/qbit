@@ -1,1 +1,1 @@
-export { fn, log } from './helpers';
+export { fn } from './helpers';

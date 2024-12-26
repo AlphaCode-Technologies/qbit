@@ -13,12 +13,3 @@
  * any actions by manually enabling the component through the browser console)
  */
 export const fn = Object.freeze(() => {});
-
-/**
- * Log function that logs the message with a title
- */
-export const log = Object.freeze((key: string, ...args: any[]) => {
-  const title = `__${key.toLocaleUpperCase().replaceAll(' ', '_')}__`;
-
-  console.log(title, ...args);
-});

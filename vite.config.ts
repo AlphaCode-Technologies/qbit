@@ -14,6 +14,7 @@ export default defineConfig({
       '@skins': path.resolve(__dirname, 'src/skins'),
       '@utils': path.resolve(__dirname, 'src/utilities'),
       '@types': path.resolve(__dirname, 'src/types'),
+      '@fixtures': path.resolve(__dirname, 'src/fixtures'),
     },
   },
 
