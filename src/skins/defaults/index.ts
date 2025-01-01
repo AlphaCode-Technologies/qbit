@@ -1,12 +1,12 @@
-export { default as SelectSkin } from './Select.default.skin';
-export { default as OptionSkin } from './Option.default.skin';
-export { default as RadioSkin } from './Radio.default.skin';
 export { default as DefaultAccordionSkin } from './Accordion.default.skin';
+export { default as AvatarSkin } from './Avatar.default.skin';
+export { default as BatchSkin } from './Badges.default.skin';
 export { default as BreadcrumbsSkin } from './Breadcrumbs.default.skin';
 export { default as ButtonSkin } from './Button.default.skin';
-export { default as AvatarSkin } from './Avatar.default.skin';
 export { default as CheckboxSkin } from './Checkbox.default.skin';
 export { default as LoaderSkin } from './Loader.default.skin';
-export { default as BatchSkin } from './Badges.default.skin';
-export { default as ListSkin } from './list/List.skin.default';
-export { default as ListItemSkin } from './list-item/ListItem.skin.default';
+export { default as OptionSkin } from './Option.default.skin';
+export { default as RadioSkin } from './Radio.default.skin';
+export { default as SelectSkin } from './Select.default.skin';
+
+export { ListItemSkin, ListSkin } from './simple-list';

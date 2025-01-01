@@ -1,3 +1,4 @@
+// Ensure there are no import statement in this file
 /**
  * @Author Dulan Sudasinghe
  * @created Date: 15.12.2024
@@ -9,7 +10,7 @@ declare namespace com {
    * Define all typescript utilities here.
    */
   declare namespace utils {
-    type ValidateProps<T extends object> = {
+    type Property<T extends object> = {
       [key in keyof T]: T[key];
     };
 
@@ -20,14 +21,7 @@ declare namespace com {
       date: string;
     };
 
-    type ValidTypes =
-      | string
-      | number
-      | boolean
-      | object
-      | null
-      | undefined
-      | Array<string | number | boolean | object | symbol>;
+    type ValidTypes = string | number | boolean | object | null | undefined | Array<string | number | boolean | object>;
   }
 
   /**
@@ -84,69 +78,63 @@ declare namespace com {
   }
 
   /**
-   * Define all your common element types here.
+   * Type definitions for all common/generic element development.
    */
   declare namespace elem {
-    type Properties<P> = Partial<com.utils.ValidateProps<P>>;
-    type Actions<A> = Partial<com.utils.ValidateProps<A>>;
-    type Options<O> = Partial<com.utils.ValidateProps<O>>;
-    type Renderers<R> = com.utils.ValidateProps<R>;
-
-    /** Base skin props which will be injected directly to the
-     * skin component.
+    /**
+     * Basic properties to be adhered by the component. These properties
+     * should be common for all components.
      */
-    type SkinProps<P, A, O = object> = React.PropsWithChildren<{
-      properties: Properties<
-        {
-          // Write all default component properties here
-          id?: string;
-          name?: string;
-          disabled?: boolean;
-          testId?: string;
-        } & P
-      >;
-      actions?: Actions<A>;
-      options?: Options<
-        {
-          // Default options
-          a11y?: com.opt.A11yProps;
-          styling?: com.opt.StyleProps;
-          keyExtractor?: <V = any>(value: V) => string;
-        } & O
-      >;
+    type BaseProps<V extends com.utils.ValidTypes = any> = com.utils.Property<{
+      name: string;
+      value?: V;
+      disabled?: boolean;
+      // Note: For sum inexplicable reason V extending ValidTypes is not working
+      // so I had to use any. This seems to be a bug in typescript.
+      keyExtractor?: (value: V | com.utils.ValidTypes, i: number) => string;
     }>;
 
     /**
-     * Skin type component or the renderer component.
+     * Definition of `Skin properties`.
      */
-    type Skin<P, A> = React.FC<SkinProps<P, A>>;
+    type SkinProps<P extends BaseProps<com.utils.ValidTypes>> = React.PropsWithChildren<P>;
+    /**
+     * Definition of skin  component. All skins should implement this
+     */
+    type Skin<P extends BaseProps<com.utils.ValidTypes>> = React.ComponentType<SkinProps<P>>;
 
     /**
-     * Properties of the Shell component.
+     * All components gets a renderer and a child renderer.
+     * The *`renderer`* is by default the __`Skin`__ component. If a child renderer
+     * is specified that means the component will contain child elements where
+     * the default child renderer is specified in the ComponentProps. Unless otherwise
+     * the *`renderer`* attribute is specified in the __`Child`__ component.
      */
-    type ShellProps<P, A> = SkinProps<P, A> & {
-      renderers: Renderers<{
-        renderer: Skin<P, A>;
-        subRenderer?: Skin<P, A>;
-        skeletonRenderer?: Skin<P, A>;
+    type RenderProps<
+      P extends BaseProps<com.utils.ValidTypes>,
+      C extends BaseProps<com.utils.ValidTypes> = any,
+    > = com.utils.Property<{
+      renderer?: Skin<P>;
+      childRenderer?: Skin<C>;
+    }>;
+
+    /**
+     * The component properties that are common for all components.
+     * This is the main component that should be used by all components.
+     */
+    type ComponentProps<
+      P extends BaseProps<com.utils.ValidTypes>,
+      C extends BaseProps<com.utils.ValidTypes> = any,
+    > = SkinProps<P> &
+      com.utils.Property<{
+        renderers: RenderProps<P, C>;
       }>;
-    };
-
     /**
-     * Parent component or
+     * All components should use thisComponent type
      */
-    type Shell<P, A> = React.FC<ShellProps<P, A>>;
-
-    /**
-     * If the component contains child components
-     * Define the SubShell with
-     */
-    type SubShellProps<P, A> = SkinProps<P, A> & {
-      renderers?: Renderers<{
-        renderer?: Skin<P, A>;
-      }>;
-    };
-
-    type SubShell<P, A> = React.FC<SubShellProps<P, A>>;
+    type Component<
+      P extends BaseProps<com.utils.ValidTypes>,
+      C extends BaseProps<com.utils.ValidTypes> = any,
+    > = React.ComponentType<ComponentProps<P, C>>;
   }
 }

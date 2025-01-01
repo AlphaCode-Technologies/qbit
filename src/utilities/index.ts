@@ -1,1 +1,1 @@
-export { fn } from './helpers';
+export { swallow } from './helpers';

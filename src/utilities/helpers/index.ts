@@ -1,8 +1,8 @@
 /**
- * Add all global constants, fixtures in this file
+ * @description Add all global constants, fixtures in this file
  *
- * Author: Dulan Sudasinghe
- * Date: 21.12.2024
+ * @author: Dulan Sudasinghe
+ * @createdDate: 21.12.2024
  */
 
 /**
@@ -12,4 +12,4 @@
  * due to security reasons. (E.g:- in case of disabled buttons, the user should not be able to run
  * any actions by manually enabling the component through the browser console)
  */
-export const fn = Object.freeze(() => {});
+export const swallow = Object.freeze(() => {});
