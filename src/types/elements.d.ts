@@ -210,6 +210,14 @@ declare namespace AlphaElements {
   };
   // endregion
 
+  // region MODAL ELEMENT
+  type ModalActions = { onClose: () => void } & com.evt.MouseEvents;
+
+  type ModalProperties = {
+    isOpen: boolean;
+    modalClassNames?: string;
+  } & Pick<ComponentProperties, 'testId'>;
+  // endregion
   // #region TEXT ELEMENT
 
   type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';

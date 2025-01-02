@@ -8,4 +8,7 @@ export { default as AvatarSkin } from './Avatar.default.skin';
 export { default as CheckboxSkin } from './Checkbox.default.skin';
 export { default as LoaderSkin } from './Loader.default.skin';
 export { default as BatchSkin } from './Badges.default.skin';
+export { default as ModalHeaderSkin } from './ModalHeader.default';
+export { default as ModalContentSkin } from './ModalContent.default';
+export { default as ModalFooterSkin } from './ModalFooter.default';
 export { default as TextSkin } from './Text.default.skin';
