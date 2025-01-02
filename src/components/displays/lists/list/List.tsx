@@ -5,12 +5,12 @@ import { useGetChildren, useGetSkin } from '@components/containers';
  * @param props
  * @returns
  */
-const List: com.elem.Component<ListProps, ListItemProps> = <V extends com.utils.ValidTypes>(
-  props: com.elem.ComponentProps<ListProps<V>, ListItemProps<V>>,
+const List: com.elem.Component<ListProps, ListItemProps> = (
+  props: com.elem.ComponentProps<ListProps, ListItemProps>,
 ) => {
   const { renderers, ...rest } = props;
-  const renderProps = useGetSkin<ListProps<V>>(renderers);
-  const children = useGetChildren<ListProps<V>>(rest, renderProps);
+  const renderProps = useGetSkin<ListProps, ListItemProps>(renderers);
+  const children = useGetChildren<ListProps, ListItemProps>(rest, renderProps);
 
   const { renderer: Skin } = renderProps;
 

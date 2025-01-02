@@ -1,24 +1,13 @@
 /**
- * Base hooks for the container components.
+ * @description Base hooks for the container components.
  * @author Dulan Sudasinghe
  * @created 02/01/2024
  */
 import { swallow } from '@utils/helpers';
 import { Children, cloneElement, ReactElement, useMemo } from 'react';
 
-//#region Type aliases
-type ValidTypes = com.utils.ValidTypes;
-type Property<P extends object> = com.utils.Property<P>;
-type BaseProps<V extends ValidTypes> = com.elem.BaseProps<V>;
-type RenderProps<P extends BaseProps<ValidTypes>, C extends BaseProps<ValidTypes> = any> = com.elem.RenderProps<P, C>;
-type SkinProps<P extends BaseProps<ValidTypes>> = com.elem.SkinProps<P>;
-type ComponentProps<P extends BaseProps<ValidTypes>, C extends BaseProps<ValidTypes> = any> = com.elem.ComponentProps<
-  P,
-  C
->;
-//#endregion
-
 /**
+ * @description
  * Check for valid renders.
  *
  * Renderer object can have a renderer according to the following truth table
@@ -33,8 +22,8 @@ type ComponentProps<P extends BaseProps<ValidTypes>, C extends BaseProps<ValidTy
  * @param renderers
  * @returns
  */
-const useGetSkin = <P extends BaseProps<ValidTypes>, C extends BaseProps<ValidTypes> = any>(
-  renderers: RenderProps<P, C> = {},
+const useGetSkin = <P extends com.elem.BaseProps, C extends com.elem.BaseProps = any>(
+  renderers: com.elem.RenderProps<P, C> = {},
 ) => {
   const { renderer, childRenderer } = renderers;
 
@@ -50,7 +39,7 @@ const useGetSkin = <P extends BaseProps<ValidTypes>, C extends BaseProps<ValidTy
       ({
         childRenderer,
         renderer,
-      }) as RenderProps<P, C>,
+      }) as com.elem.RenderProps<P, C>,
     [childRenderer, renderer],
   );
 };
@@ -63,10 +52,9 @@ const useGetSkin = <P extends BaseProps<ValidTypes>, C extends BaseProps<ValidTy
  * @param renderProps
  * @returns
  */
-const useGetChildren = <P extends BaseProps<ValidTypes>, C extends BaseProps<ValidTypes> = any>(
-  //   props: Omit<ComponentProps<P, C>, 'renderers'>,
-  props: SkinProps<P>,
-  renderProps: RenderProps<P, C>,
+const useGetChildren = <P extends com.elem.BaseProps, C extends com.elem.BaseProps = any>(
+  props: com.elem.SkinProps<P>,
+  renderProps: com.elem.RenderProps<P, C>,
 ) => {
   const { children, keyExtractor: parentKeyExtractor, disabled: parentDisabled = false } = props;
 
@@ -94,13 +82,13 @@ const useGetChildren = <P extends BaseProps<ValidTypes>, C extends BaseProps<Val
       renderers: { renderer = defaultRenderer, childRenderer } = {},
       children: grandChildren,
       ...restChildProps
-    } = childProps as ComponentProps<P, C>;
+    } = childProps as com.elem.ComponentProps<P, C>;
 
     // Determining disabled state
     const disabled = parentDisabled || childDisabled;
 
     // If disabled, then all actions should be disabled
-    const otherProps = { ...restChildProps } as unknown as Property<P>;
+    const otherProps = { ...restChildProps } as unknown as com.utils.Property<P>;
 
     if (disabled) {
       for (const propertyName in otherProps) {

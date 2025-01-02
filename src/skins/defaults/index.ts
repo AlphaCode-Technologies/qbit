@@ -9,4 +9,4 @@ export { default as OptionSkin } from './Option.default.skin';
 export { default as RadioSkin } from './Radio.default.skin';
 export { default as SelectSkin } from './Select.default.skin';
 
-export { ListItemSkin, ListSkin } from './simple-list';
+export { ListItemSkin, ListSkin } from './list';

@@ -1,4 +1,4 @@
-// Ensure there are no import statement in this file
+// DEV NOTE:  Ensure there are no import statement in this file
 /**
  * @Author Dulan Sudasinghe
  * @created Date: 15.12.2024
@@ -47,6 +47,11 @@ declare namespace com {
       onFocus: React.FocusEventHandler;
       onBlur: React.FocusEventHandler;
     };
+
+    type FormEvents = {
+      onSubmit: React.FormEventHandler;
+      onReset: React.FormEventHandler;
+    };
   }
 
   /**
@@ -60,48 +65,51 @@ declare namespace com {
     type MediaActions = Action<Partial<com.evt.MediaEvents>>;
   }
 
-  /**
-   * Define all component options here.
-   */
-  declare namespace opt {
-    type A11yProps = {
-      role?: string;
-      title?: string;
-      tabIndex?: number;
-      'aria-label'?: string;
-    };
+  // /**
+  //  * Define all component options here.
+  //  */
+  // declare namespace opt {
+  //   type A11yProps = {
+  //     role?: string;
+  //     title?: string;
+  //     tabIndex?: number;
+  //     'aria-label'?: string;
+  //   };
 
-    type StyleProps = {
-      className?: string;
-      styles?: React.CSSProperties;
-    };
-  }
+  //   type StyleProps = {
+  //     className?: string;
+  //     styles?: React.CSSProperties;
+  //   };
+  // }
 
   /**
    * Type definitions for all common/generic element development.
    */
   declare namespace elem {
+    type KeyExtractor<V extends com.utils.ValidTypes = string> = (value: V, i: number) => string;
     /**
      * Basic properties to be adhered by the component. These properties
      * should be common for all components.
      */
-    type BaseProps<V extends com.utils.ValidTypes = any> = com.utils.Property<{
-      name: string;
-      value?: V;
+    type BaseProps = com.utils.Property<{
+      value?: any;
+      name?: string;
       disabled?: boolean;
-      // Note: For sum inexplicable reason V extending ValidTypes is not working
-      // so I had to use any. This seems to be a bug in typescript.
-      keyExtractor?: (value: V | com.utils.ValidTypes, i: number) => string;
+      keyExtractor?: KeyExtractor;
+    }>;
+
+    type DefaultBaseProps = com.utils.Property<{
+      value?: any;
     }>;
 
     /**
      * Definition of `Skin properties`.
      */
-    type SkinProps<P extends BaseProps<com.utils.ValidTypes>> = React.PropsWithChildren<P>;
+    type SkinProps<P extends BaseProps> = React.PropsWithChildren<P>;
     /**
      * Definition of skin  component. All skins should implement this
      */
-    type Skin<P extends BaseProps<com.utils.ValidTypes>> = React.ComponentType<SkinProps<P>>;
+    type Skin<P extends BaseProps> = React.ComponentType<SkinProps<P>>;
 
     /**
      * All components gets a renderer and a child renderer.
@@ -110,10 +118,7 @@ declare namespace com {
      * the default child renderer is specified in the ComponentProps. Unless otherwise
      * the *`renderer`* attribute is specified in the __`Child`__ component.
      */
-    type RenderProps<
-      P extends BaseProps<com.utils.ValidTypes>,
-      C extends BaseProps<com.utils.ValidTypes> = any,
-    > = com.utils.Property<{
+    type RenderProps<P extends BaseProps, C extends BaseProps = any> = com.utils.Property<{
       renderer?: Skin<P>;
       childRenderer?: Skin<C>;
     }>;
@@ -122,19 +127,14 @@ declare namespace com {
      * The component properties that are common for all components.
      * This is the main component that should be used by all components.
      */
-    type ComponentProps<
-      P extends BaseProps<com.utils.ValidTypes>,
-      C extends BaseProps<com.utils.ValidTypes> = any,
-    > = SkinProps<P> &
+    type ComponentProps<P extends BaseProps, C extends BaseProps = any> = SkinProps<P> &
       com.utils.Property<{
-        renderers: RenderProps<P, C>;
+        renderers?: RenderProps<P, C>;
       }>;
+
     /**
      * All components should use thisComponent type
      */
-    type Component<
-      P extends BaseProps<com.utils.ValidTypes>,
-      C extends BaseProps<com.utils.ValidTypes> = any,
-    > = React.ComponentType<ComponentProps<P, C>>;
+    type Component<P extends BaseProps, C extends BaseProps = any> = React.ComponentType<ComponentProps<P, C>>;
   }
 }
