@@ -8,7 +8,7 @@ const DEFAULT_PROPERTIES: AlphaElements.CheckboxProperties = {
   value: false,
   size: 'md',
   disabled: false,
-  Renderer: CheckboxSkin,
+  renderer: CheckboxSkin,
   testId: 'custom-test',
 };
 
@@ -80,7 +80,7 @@ describe('Checkbox Component Tests', () => {
     const properties = {
       name: 'checkbox-x',
       value: true,
-      Renderer: CustomRenderer,
+      renderer: CustomRenderer,
     };
     // pass a funcyion for onchange action
     const actions = { onChange: vi.fn() };

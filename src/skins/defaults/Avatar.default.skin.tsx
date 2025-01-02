@@ -1,4 +1,4 @@
-const Skin = ({ properties, actions }: AlphaElements.AvatarProps) => {
+const Skin: com.elem.Skin<AlphaElements.AvatarProperties, AlphaElements.AvatarActions> = ({ properties, actions }) => {
   const { value, testId } = properties;
   const { onClick } = actions ?? {};
 
@@ -9,7 +9,7 @@ const Skin = ({ properties, actions }: AlphaElements.AvatarProps) => {
       height="48"
       viewBox="0 0 48 48"
       fill="none"
-      onClick={() => onClick?.()}
+      onClick={(e: any) => onClick?.(e)}
       data-testid={testId}
     >
       <path

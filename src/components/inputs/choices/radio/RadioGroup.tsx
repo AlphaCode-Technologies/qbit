@@ -3,7 +3,10 @@ import { useBindSkin } from './Radio.hook';
 
 // Destructure `name` and `getPropsAndActions` from the custom hook `useBindSkin`,
 // passing remaining props (`rest`) and a default skin (`DefaultSkin`).
-const RadioGroup = ({ children, ...rest }: AlphaElements.RadioGroupProps) => {
+const RadioGroup = ({
+  children,
+  ...rest
+}: com.elem.Shell<AlphaElements.RadioGroupProperties, AlphaElements.RadioGroupActions>) => {
   const { name, horizontal, getPropsAndActions } = useBindSkin(rest);
   return (
     // Apply a conditional class to arrange children horizontally or vertically based on the `horizontal` prop.

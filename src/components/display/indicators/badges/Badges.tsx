@@ -1,7 +1,7 @@
-import { FC, PropsWithChildren } from 'react';
+import React from 'react';
 
-const Badges: FC<PropsWithChildren<AlphaElements.BadgesProps>> = ({ properties, actions }) => {
-  const { Renderer, ...rest } = properties;
+const Badges: React.FC<AlphaElements.BadgesProps> = ({ properties, actions }) => {
+  const { renderer: Renderer, ...rest } = properties;
 
   return (
     <div className="badge-container">

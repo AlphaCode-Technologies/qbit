@@ -1,4 +1,7 @@
-const Skin = ({ properties, actions }: AlphaElements.RadioProps) => {
+const Skin: com.elem.Skin<AlphaElements.RadioProperties, AlphaElements.RadioGroupActions> = ({
+  properties,
+  actions,
+}) => {
   const { label, value, selected, disabled, tabIndex, testId } = properties;
   const { onChange } = actions ?? {};
 

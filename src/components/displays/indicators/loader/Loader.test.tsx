@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import { Loader } from '@displays/indicators';
 import { LoaderSkin } from '@skins/defaults';
 
-const DEFAULT_PROPERTIES: AlphaElements.LoaderProperties = {
+const DEFAULT_PROPERTIES = {
   isLoading: true,
-  Renderer: LoaderSkin,
+  renderer: LoaderSkin,
 };
 
 const renderLoader = (properties: AlphaElements.LoaderProperties = DEFAULT_PROPERTIES) => {

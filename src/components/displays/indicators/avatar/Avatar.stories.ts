@@ -24,7 +24,7 @@ export const Default = {
   args: {
     properties: {
       value: 'AE',
-      Renderer: AvatarSkin,
+      renderer: AvatarSkin,
     },
   },
 };

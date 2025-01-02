@@ -9,12 +9,13 @@ const DEFAULT_PROPERTIES: AlphaElements.CheckboxProperties = {
   value: false,
   size: 'md',
   disabled: false,
-  Renderer: CheckboxSkin,
+  renderer: CheckboxSkin,
 };
 
 // Default actions for the Checkbox
 const DEFAULT_ACTIONS: AlphaElements.CheckBoxAction = {
-  onChange: (value: boolean) => {
+  onChange: (value: any) => {
+    // TODO -> discuss with @dulan
     console.log('Checkbox value changed to:', value);
   },
 };
@@ -37,7 +38,8 @@ export const Default = (args: any) => {
     <Checkbox
       properties={{ name: 'checkbox-name', value: isChecked, size: args.size, disabled: args.disabled }}
       actions={{
-        onChange: (newValue) => {
+        onChange: (newValue: any) => {
+          // TODO -> discuss with @dulan
           setIsChecked(newValue);
           if (args.actions?.onChange) args.actions.onChange(newValue);
         },
@@ -56,9 +58,10 @@ export const CustomRenderer = (args: any) => {
   const [isChecked, setIsChecked] = useState(args.value || false);
   return (
     <Checkbox
-      properties={{ ...DEFAULT_PROPERTIES, value: isChecked, Renderer: SwitchSkin }}
+      properties={{ ...DEFAULT_PROPERTIES, value: isChecked, renderer: SwitchSkin }}
       actions={{
-        onChange: (newValue) => {
+        onChange: (newValue: any) => {
+          // TODO -> discuss with @dulan
           setIsChecked(newValue);
           if (args.actions?.onChange) args.actions.onChange(newValue);
         },

@@ -5,8 +5,12 @@ const sizeMap = {
   xl: 24,
 };
 
-const SwitchSkin = ({ properties, actions }: AlphaElements.CheckboxProps) => {
+const SwitchSkin: com.elem.Skin<AlphaElements.CheckboxProperties, AlphaElements.CheckBoxAction> = ({
+  properties,
+  actions,
+}) => {
   const { value, disabled, size } = properties;
+  const { onChange } = properties;
   const dimension = sizeMap[size as AlphaElements.Size] || sizeMap['md'];
 
   //the translateY value
@@ -26,7 +30,7 @@ const SwitchSkin = ({ properties, actions }: AlphaElements.CheckboxProps) => {
             height: `${dimension * 4}px`,
           }}
           onClick={() => {
-            actions.onChange(!value);
+            onChange(!value);
           }}
         >
           <div

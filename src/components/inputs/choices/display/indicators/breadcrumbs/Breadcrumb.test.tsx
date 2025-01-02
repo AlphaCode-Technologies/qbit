@@ -23,17 +23,17 @@ describe('BreadcrumbGroup', () => {
     const breadcrumbs = [
       {
         key: 'home',
-        properties: { name: 'Home', testId: 'breadcrumb-home', Renderer: BreadcrumbsSkin },
+        properties: { name: 'Home', testId: 'breadcrumb-home', renderer: BreadcrumbsSkin },
         actions: { onClick: vi.fn() },
       },
       {
         key: 'products',
-        properties: { name: 'Products', testId: 'breadcrumb-products', Renderer: BreadcrumbsSkin },
+        properties: { name: 'Products', testId: 'breadcrumb-products', renderer: BreadcrumbsSkin },
         actions: { onClick: vi.fn() },
       },
       {
         key: 'details',
-        properties: { name: 'Details', testId: 'breadcrumb-details', Renderer: BreadcrumbsSkin },
+        properties: { name: 'Details', testId: 'breadcrumb-details', renderer: BreadcrumbsSkin },
         actions: { onClick: vi.fn() },
       },
     ];
@@ -50,12 +50,12 @@ describe('BreadcrumbGroup', () => {
     const breadcrumbs = [
       {
         key: 'home',
-        properties: { name: 'Home', testId: 'breadcrumb-home', Renderer: BreadcrumbsSkin },
+        properties: { name: 'Home', testId: 'breadcrumb-home', renderer: BreadcrumbsSkin },
         actions: { onClick: vi.fn() },
       },
       {
         key: 'products',
-        properties: { name: 'Products', testId: 'breadcrumb-products', Renderer: BreadcrumbsSkin },
+        properties: { name: 'Products', testId: 'breadcrumb-products', renderer: BreadcrumbsSkin },
         actions: { onClick: vi.fn() },
       },
     ];

@@ -17,7 +17,7 @@ export default {
       testId: '',
       disabled: false,
       horizontal: false,
-      Renderer: RadioSkin,
+      renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
@@ -41,7 +41,7 @@ export const Default = {
     properties: {
       name: 'radio-group',
       horizontal: false,
-      Renderer: RadioSkin,
+      renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
@@ -66,7 +66,7 @@ export const Selected = {
       name: 'radio-group',
       value: 'bad',
       horizontal: false,
-      Renderer: RadioSkin,
+      renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
@@ -91,7 +91,7 @@ export const Disabled = {
       name: 'radio-group',
       horizontal: false,
       disabled: true,
-      Renderer: RadioSkin,
+      renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {
@@ -115,7 +115,7 @@ export const Horizontal = {
     properties: {
       name: 'radio-group',
       horizontal: true,
-      Renderer: RadioSkin,
+      renderer: RadioSkin,
       keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
     },
     actions: {

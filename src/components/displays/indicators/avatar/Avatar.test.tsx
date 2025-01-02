@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const DEFAULT_PROPERTIES: AlphaElements.AvatarProperties = {
   value: 'AE',
-  Renderer: AvatarSkin,
+  renderer: AvatarSkin,
 };
 
 const DEFAULT_ACTIONS: AlphaElements.AvatarActions = {
@@ -33,7 +33,7 @@ const ChangeAvatarValue = ({
   disabled?: boolean;
 }) => {
   const [value, setValue] = useState(defaultValue);
-  const avatarProperties = { value, testId, disabled, Renderer: AvatarSkin };
+  const avatarProperties = { value, testId, disabled, renderer: AvatarSkin };
   const avatarActions = { onClick: () => setValue(changedValue) };
 
   return <Avatar properties={avatarProperties} actions={avatarActions} />;

@@ -1,10 +1,12 @@
 import { ReactElement, useState } from 'react';
 
 // Custom hook `useBindSkin` that binds properties, actions, and rendering logic for a radio group component.
-export const useBindSkin = (params: AlphaElements.RadioGroupProps) => {
-  // Destructure properties and actions from the input parameters.
-  const { properties, actions } = params;
-  const { name, value, disabled, Renderer, keyExtractor, horizontal } = properties;
+export const useBindSkin = ({
+  properties,
+  actions,
+  options,
+}: com.elem.ShellProps<AlphaElements.RadioGroupProperties, AlphaElements.RadioGroupActions>) => {
+  const { name, value, disabled, renderer, keyExtractor, horizontal } = properties;
   const { onChange } = actions ?? {};
 
   // State to track the currently selected radio button value.
@@ -12,13 +14,16 @@ export const useBindSkin = (params: AlphaElements.RadioGroupProps) => {
 
   // Function to generate properties and actions for each child radio element.
   const getPropsAndActions = (child: ReactElement, i: number) => {
-    const childProperties = child.props?.properties ?? {};
-    const childActions = child.props?.actions ?? {};
-    const { value: childValue, disabled: childDisabled, Renderer: childRenderer, testId } = childProperties;
+    const {
+      properties: childProperties = {},
+      actions: childActions = {},
+      options: childOptions = {},
+    } = child.props ?? {};
+    const { value: childValue, disabled: childDisabled, renderer: childRenderer, testId } = childProperties;
     // Determine if the child element should be disabled, considering both parent and child settings.
     const elementDisabled = childDisabled || disabled;
     // Choose the renderer: child-specific, parent, or the default skin.
-    const elementRenderer = childRenderer ?? Renderer;
+    const elementRenderer = childRenderer ?? renderer;
     // Generate a unique key for each child element, using a custom key extractor if provided.
     const key = keyExtractor?.(childProperties) ?? `${name}-${i}`;
     const selected = childValue === selectedValue;
@@ -37,14 +42,15 @@ export const useBindSkin = (params: AlphaElements.RadioGroupProps) => {
       properties: {
         ...childProperties,
         disabled: elementDisabled,
-        Renderer: elementRenderer,
+        renderer: elementRenderer,
         selected,
         tabIndex,
         testId,
       },
+      options: childOptions,
     };
   };
 
   // Return the function for binding props and actions, along with the group name and current selected value.
-  return { getPropsAndActions, name, selectedValue, horizontal };
+  return { getPropsAndActions, options, name, selectedValue, horizontal };
 };

@@ -26,7 +26,7 @@ DefaultAccordion.args = {
     title: 'Click to Expand',
     content: 'This is the default accordion content.',
     isOpen: false,
-    Renderer: DefaultAccordionSkin,
+    renderer: DefaultAccordionSkin,
   },
   actions: {
     onToggle: (isOpen: boolean) => console.log('Accordion toggled:', isOpen),
@@ -40,7 +40,7 @@ PreOpenAccordion.args = {
     title: 'Already Expanded',
     content: 'This accordion starts in an open state.',
     isOpen: true,
-    Renderer: DefaultAccordionSkin,
+    renderer: DefaultAccordionSkin,
   },
   actions: {
     onToggle: (isOpen: boolean) => console.log('Accordion toggled:', isOpen),
@@ -63,7 +63,7 @@ export const NestedAccordion = () => {
               title: 'Child Accordion',
               content: 'This is the child accordion content.',
               isOpen: childOpen,
-              Renderer: DefaultAccordionSkin,
+              renderer: DefaultAccordionSkin,
             }}
             actions={{
               onToggle: (isOpen) => setChildOpen(isOpen),
@@ -71,7 +71,7 @@ export const NestedAccordion = () => {
           />
         ),
         isOpen: parentOpen,
-        Renderer: DefaultAccordionSkin,
+        renderer: DefaultAccordionSkin,
       }}
       actions={{
         onToggle: (isOpen) => setParentOpen(isOpen),

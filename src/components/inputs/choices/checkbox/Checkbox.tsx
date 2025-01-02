@@ -1,17 +1,10 @@
-import { CheckboxSkin } from '@skins/defaults';
-import { FC, PropsWithChildren, useState } from 'react';
+import { Shell } from '@components/containers';
+import { useBindSkin } from './Checkbox.hooks';
 
-const Checkbox: FC<PropsWithChildren<AlphaElements.CheckboxProps>> = ({ properties, actions }) => {
-  // passing renaming props ('rest') and a default skin as renderer
-  const { Renderer = CheckboxSkin, ...rest } = properties;
-  const { value, disabled, id, name } = properties;
-  const { onChange } = actions ?? {};
-  const [selectedValue, setSelectedValue] = useState(value);
-
-  const handleClick = () => {
-    onChange?.(!selectedValue);
-    setSelectedValue(!selectedValue);
-  };
+const Checkbox = (props: com.elem.Shell<AlphaElements.CheckboxProperties, AlphaElements.CheckBoxAction>) => {
+  const { properties, actions, options } = useBindSkin(props);
+  const { disabled, id, name, value } = properties;
+  const { onChange } = actions;
 
   return (
     <>
@@ -19,15 +12,17 @@ const Checkbox: FC<PropsWithChildren<AlphaElements.CheckboxProps>> = ({ properti
         id={id}
         type="checkbox"
         name={name}
-        onClick={() => {
-          handleClick();
-        }}
-        defaultChecked={selectedValue}
-        checked={selectedValue}
+        onClick={() => onChange?.()}
+        defaultChecked={value}
+        checked={value}
         disabled={disabled}
         className="hidden"
       />
-      <Renderer properties={{ ...rest, value: selectedValue }} actions={{ onChange: handleClick }} />
+      <Shell<AlphaElements.CheckboxProperties, AlphaElements.CheckboxProperties>
+        properties={properties}
+        actions={actions}
+        options={options}
+      />
     </>
   );
 };

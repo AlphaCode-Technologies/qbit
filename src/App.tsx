@@ -1,26 +1,26 @@
 import { Option, Select } from '@inputs/choices';
+// import { Shell } from '@components/containers';
 import { DefaultAccordionSkin, OptionSkin, SelectSkin } from '@skins/defaults';
-import { Shell } from '@components/containers';
 import { Accordion } from '@components/display/menu';
 import { useState } from 'react';
 
-type CheckboxProperties = {
-  value?: boolean;
-  disabled?: boolean;
-};
+// type CheckboxProperties = {
+//   value?: boolean;
+//   disabled?: boolean;
+// };
 
-type CheckboxActions = com.evt.MouseEvents & com.evt.UiEvents;
+// type CheckboxActions = com.evt.MouseEvents & com.evt.UiEvents;
 
-const CheckboxSkin: com.elem.Skin<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
-  const { value } = properties;
-  const { onChange } = actions ?? {};
-  const { a11y = {} } = options ?? {};
-  return <input type="checkbox" defaultChecked={value} onChange={onChange} {...a11y} />;
-};
+// const CheckboxSkin: com.elem.Skin<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
+//   const { value } = properties;
+//   const { onChange } = actions ?? {};
+//   const { a11y = {} } = options ?? {};
+//   return <input type="checkbox" defaultChecked={value} onChange={onChange} {...a11y} />;
+// };
 
-const Checkbox: com.elem.Shell<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
-  return <Shell<CheckboxProperties, CheckboxActions> properties={properties} actions={actions} options={options} />;
-};
+// const Checkbox: com.elem.Shell<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
+//   return <Shell<CheckboxProperties, CheckboxActions> properties={properties} actions={actions} options={options} />;
+// };
 
 const App = () => {
   const [toggled, setToggled] = useState(false);
@@ -28,7 +28,7 @@ const App = () => {
   const SelectProperties: AlphaElements.SelectProperties = {
     name: 'select',
     value: { value: 'good', label: 'Good' },
-    Renderer: SelectSkin,
+    renderer: SelectSkin,
     optionRenderer: OptionSkin,
   };
 
@@ -54,19 +54,19 @@ const App = () => {
         <Option properties={{ value: { value: 'average', label: 'Average' } }} />
         <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
       </Select>
-      <Checkbox
+      {/* <Checkbox
         properties={{ renderer: CheckboxSkin }}
         actions={{
           onChange: () => {
             console.log('check box skin with new ');
           },
         }}
-      />
+      /> */}
       <Accordion
         properties={{
           id: 'accordion-1',
           title: 'Click to Expand',
-          Renderer: DefaultAccordionSkin,
+          renderer: DefaultAccordionSkin,
           content: (
             <>
               <p>sample</p>
@@ -74,7 +74,7 @@ const App = () => {
                 properties={{
                   id: 'accordion-2',
                   title: 'Click to Expand',
-                  Renderer: DefaultAccordionSkin,
+                  renderer: DefaultAccordionSkin,
                   content: 'This is the accordion content. It will be shown when expanded.',
                   isOpen: toggled2,
                 }}

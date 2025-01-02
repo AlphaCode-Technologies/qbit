@@ -8,7 +8,7 @@ const renderAccordion = ({ isOpen = false, onToggle }: any) => {
     id: 'accordion-1',
     title: 'Click to Expand',
     content: 'This is the accordion content.',
-    Renderer: DefaultAccordionSkin,
+    renderer: DefaultAccordionSkin,
     isOpen,
   };
   const actions = {
@@ -64,7 +64,7 @@ describe('Accordion Component', () => {
           id: 'accordion-1',
           title: 'Click to Expand',
           content: 'This is the accordion content.',
-          Renderer: DefaultAccordionSkin,
+          renderer: DefaultAccordionSkin,
           isOpen: true,
         }}
         actions={{ onToggle: mockOnToggle }}
@@ -80,7 +80,7 @@ describe('Accordion Component', () => {
         id: 'accordion-2',
         title: 'Nested Accordion',
         content: 'Nested accordion content',
-        Renderer: DefaultAccordionSkin,
+        renderer: DefaultAccordionSkin,
         isOpen: false,
       },
       actions: {
@@ -93,7 +93,7 @@ describe('Accordion Component', () => {
         properties={{
           id: 'accordion-1',
           title: 'Parent Accordion',
-          Renderer: DefaultAccordionSkin,
+          renderer: DefaultAccordionSkin,
           content: <Accordion {...nestedAccordionProps} />,
           isOpen: true,
         }}

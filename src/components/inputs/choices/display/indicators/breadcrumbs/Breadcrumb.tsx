@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Breadcrumb: React.FC<AlphaElements.BreadcrumbProps> = ({ properties, actions }) => {
-  const { Renderer, ...rest } = properties;
+  const { renderer: Renderer, ...rest } = properties;
   return <Renderer properties={rest} actions={actions} />;
 };
 

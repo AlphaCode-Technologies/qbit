@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import Badges from './Badges';
 import DefaultSkin from '@skins/defaults/Badges.default.skin';
 import OptionalSkin from '@skins/optional/Badges.optional.skin';
+import { BatchSkin } from '@skins/defaults';
 
 describe('Badges Component', () => {
   it('renders with default skin and correct properties', () => {
@@ -11,7 +12,7 @@ describe('Badges Component', () => {
       label: 'badge',
       count: 8,
       size: 'xl',
-      Renderer: DefaultSkin,
+      renderer: DefaultSkin,
       testId: 'default-skin',
     };
 
@@ -32,7 +33,7 @@ describe('Badges Component', () => {
       label: 'badge',
       count: 8,
       showCloseButton: false,
-      Renderer: DefaultSkin,
+      renderer: DefaultSkin,
     };
 
     const actions = { onClose: vi.fn() };
@@ -48,7 +49,7 @@ describe('Badges Component', () => {
       label: 'badge',
       count: 8,
       imageSrc: 'https://img.freepik.com/premium-vector/flag-united-kingdom-vector-illustration_514344-299.jpg',
-      Renderer: DefaultSkin,
+      renderer: DefaultSkin,
     };
 
     const actions = { onClose: vi.fn() };
@@ -67,7 +68,7 @@ describe('Badges Component', () => {
       id: '2',
       label: 'badge',
       count: 8,
-      Renderer: DefaultSkin,
+      renderer: DefaultSkin,
     };
 
     const actions = { onClose: vi.fn() };
@@ -91,6 +92,7 @@ describe('Badges Component', () => {
           checked: false,
           imageSrc: '',
           testId: 'default-skin',
+          renderer: BatchSkin,
         }}
         actions={{
           onClose: onCloseMock,

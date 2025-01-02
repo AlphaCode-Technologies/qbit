@@ -19,12 +19,11 @@ declare namespace AlphaElements {
     properties: Property[];
   };
 
-  type ComponentProperties<T = any> = {
+  type ComponentProperties = {
     id?: string;
     name?: string;
     value?: any;
     disabled?: boolean;
-    Renderer?: FC<T>;
     tabIndex?: number;
     horizontal?: boolean;
     testId?: string;
@@ -39,29 +38,37 @@ declare namespace AlphaElements {
   // Extends the base properties to define specific properties for a RadioGroup component.
   type RadioGroupProperties = {
     keyExtractor?: (val: RadioProperties) => string;
-  } & Required<Pick<ComponentProperties, 'name' | 'Renderer'>> & // Requires the `name` property from ComponentProperties.
+  } & Required<ComponentProperties, 'name'> & // Requires the `name` property from ComponentProperties.
     Omit<ComponentProperties, 'name'>; // Excludes the `name` property from the rest of ComponentProperties.
 
   // Defines properties specific to individual Radio buttons.
   type RadioProperties = {
     label?: string;
     selected?: boolean;
-  } & Required<Pick<ComponentProperties, 'value'>> & // Requires the `value` property from ComponentProperties.
+  } & Required<ComponentProperties, 'value'> & // Requires the `value` property from ComponentProperties.
     Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>; // Excludes `name`, `value`, and `horizontal` from the rest of ComponentProperties.
 
-  type RadioGroupActions = {
-    onChange?: (val: any) => void;
-  };
+  type RadioGroupActions = Partial<com.evt.UiEvents>;
 
-  type RadioGroupProps = {
-    properties: RadioGroupProperties;
-    actions: RadioGroupActions;
-  } & PropsWithChildren; // Allows the RadioGroup to have nested child components.
+  // #endregion
 
-  type RadioProps = {
-    properties: RadioProperties;
-    actions?: RadioGroupActions;
-  };
+  // #region SELECT ELEMENT
+  type SelectProperties = {
+    label?: string;
+    optionContainerClassName?: string;
+    optionRenderer?: FC<OptionProps>;
+    keyExtractor?: (val: SelectOptionProps) => string;
+  } & Required<ComponentProperties, 'value'> &
+    Omit<ComponentProperties, 'value' | 'horizontal'>;
+
+  type SelectActions = {
+    triggerScrollEnd?: () => void;
+  } & Partial<com.evt.UiEvents>;
+
+  type SelectOptionProps = {
+    selected?: boolean;
+  } & Required<ComponentProperties, 'value'> &
+    Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
 
   // #endregion
 
@@ -105,50 +112,31 @@ declare namespace AlphaElements {
   // Defines properties specific to Buttons.
   type ButtonProperties = {
     loaderProps?: ButtonLoadingProperties;
-  } & Required<Pick<ComponentProperties, 'value' | 'Renderer'>> & // Requires the `value` and `Renderer` property from ComponentProperties.
+  } & Required<ComponentProperties, 'value'> & // Requires the `value` property from ComponentProperties.
     Omit<ComponentProperties, 'value' | 'name' | 'horizontal'>; // Excludes `value`, `name` and `horizontal` from the rest of ComponentProperties.
 
-  type ButtonActions = {
-    onClick?: () => void;
-  };
-
-  type ButtonProps = {
-    properties: ButtonProperties;
-    actions?: ButtonActions;
-  };
+  type ButtonActions = Partial<com.evt.MouseEvents>;
 
   // #endregion
 
   // #region AVATAR ELEMENT
 
   // Extends the base properties to define specific properties for Avatar component.
-  type AvatarProperties = {} & Required<Pick<ComponentProperties, 'value' | 'Renderer'>> & // Requires the `value` and `Renderer` property from ComponentProperties.
+  type AvatarProperties = {} & Required<ComponentProperties, 'value'> & // Requires the `value` property from ComponentProperties.
     Omit<ComponentProperties, 'value' | 'name' | 'horizontal'>; // Excludes the `value`, `name` and `horizontal` property from the rest of ComponentProperties.
 
-  type AvatarActions = {
-    onClick?: () => void;
-  };
+  type AvatarActions = Partial<com.evt.MouseEvents>;
 
-  type AvatarProps = {
-    properties: AvatarProperties;
-    actions?: AvatarActions;
-  };
   // #endregion
 
   // region CHECKBOX ELEMENT
-  type CheckBoxAction = {
-    onChange: (value: boolean) => void;
-  };
+  type CheckBoxAction = Partial<com.evt.UiEvents>;
 
   type CheckboxProperties = {
     size?: Size;
-  } & Required<Pick<ComponentProperties, 'value' | 'name'>> &
+  } & Required<ComponentProperties, 'value' | 'name'> &
     Omit<ComponentProperties, 'name' | 'value'>;
 
-  type CheckboxProps = {
-    properties: CheckboxProperties;
-    actions?: CheckBoxAction;
-  };
   // #endregion
 
   // #region LOADER ELEMENT
@@ -156,9 +144,9 @@ declare namespace AlphaElements {
   // Defines properties specific to Loaders.
   type LoaderProperties = {
     isLoading: boolean;
-  } & Required<Pick<ComponentProperties, 'Renderer'>> &
-    Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'tabIndex' | 'horizontal'>;
+  } & Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'tabIndex' | 'horizontal'>;
 
+  // #endregion
   type LoaderProps = {
     properties: LoaderProperties;
   };
@@ -176,8 +164,7 @@ declare namespace AlphaElements {
     count?: number;
     checked?: boolean;
     imageSrc?: string;
-  } & Required<Pick<ComponentProperties, 'Renderer'>> &
-    Pick<ComponentProperties, 'id' | 'disabled' | 'testId'>;
+  } & Pick<ComponentProperties, 'id' | 'disabled' | 'testId', 'renderer'>;
 
   type BadgesProps = {
     properties: BadgesProperties;
@@ -193,7 +180,7 @@ declare namespace AlphaElements {
     size?: Size;
     index?: number;
     total?: number;
-  } & Pick<ComponentProperties, 'id' | 'Renderer' | 'disabled' | 'testId'>;
+  } & Pick<ComponentProperties, 'id' | 'renderer' | 'disabled' | 'testId'>;
 
   type BreadcrumbAction = {
     onClick?: (id: string) => void;
@@ -215,8 +202,7 @@ declare namespace AlphaElements {
     title: string;
     content: ReactNode;
     isOpen: boolean;
-  } & Required<Pick<ComponentProperties, 'Renderer'>> &
-    Pick<ComponentProperties, 'id' | 'disabled' | 'testId'>;
+  } & Pick<ComponentProperties, 'id' | 'disabled' | 'testId', 'renderer'>;
 
   type AccordionProps = {
     properties: AccordionProperties;
