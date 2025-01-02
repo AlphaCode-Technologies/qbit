@@ -209,4 +209,24 @@ declare namespace AlphaElements {
     actions: AccordionActions;
   };
   // endregion
+
+  // #region TEXT ELEMENT
+
+  type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';
+
+  type TextProperties = {
+    type: InputType;
+    placeholder?: string;
+    required?: boolean;
+    readOnly?: boolean;
+    min?: number;
+    max?: number;
+    step?: number;
+    maxLength?: number;
+    autoComplete?: string;
+  } & Required<ComponentProperties, 'id' | 'name'> &
+    Omit<ComponentProperties, 'horizontal'>;
+
+  type TextAction = Partial<com.evt.UiEvents>;
+  // #endregion
 }
