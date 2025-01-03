@@ -3,6 +3,9 @@ import { Option, Select } from '@inputs/choices';
 import { DefaultAccordionSkin, OptionSkin, SelectSkin } from '@skins/defaults';
 import { Accordion } from '@components/displays/menus';
 import { useState } from 'react';
+import ProgressStepGroup from '@components/displays/indicators/progress-step/ProgressStepGroup';
+import ProgressStep from '@components/displays/indicators/progress-step/ProgressStep';
+import ProgressStepSkin from '@skins/defaults/ProgressStep.default.skin';
 
 // type CheckboxProperties = {
 //   value?: boolean;
@@ -21,6 +24,13 @@ import { useState } from 'react';
 // const Checkbox: com.elem.Shell<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
 //   return <Shell<CheckboxProperties, CheckboxActions> properties={properties} actions={actions} options={options} />;
 // };
+
+const progressData = [
+  { name: 'Fill form', active: false, completed: true, id: 'step-1', renderer: ProgressStepSkin },
+  { name: 'Payment', active: true, completed: false, id: 'step-2', renderer: ProgressStepSkin },
+  { name: 'Confirmation', active: false, completed: false, id: 'step-3', renderer: ProgressStepSkin },
+  { name: 'disabled', active: false, completed: false, id: 'step-4', renderer: ProgressStepSkin, disabled: true },
+];
 
 const App = () => {
   const [toggled, setToggled] = useState(false);
@@ -86,6 +96,14 @@ const App = () => {
         }}
         actions={{ onToggle: handleToggle }}
       />
+
+      <div className="min-h-screen bg-gray-100 p-8">
+        <ProgressStepGroup properties={progressData} actions={{ onClick: () => console.log('clicked') }}>
+          {progressData.map((step, index) => (
+            <ProgressStep key={step.id} properties={{ ...step, index, total: progressData.length }} />
+          ))}
+        </ProgressStepGroup>
+      </div>
     </div>
   );
 };

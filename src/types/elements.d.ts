@@ -210,6 +210,15 @@ declare namespace AlphaElements {
   };
   // endregion
 
+  type ProgressStepProperties = {
+    name: string;
+    active: boolean;
+    completed?: boolean;
+    index?: number;
+    total?: number;
+  } & Pick<ComponentProperties, 'id' | 'renderer' | 'disabled' | 'testId'>;
+
+  type ProgressStepAction = Partial<com.evt.MouseEvents>;
   // region MODAL ELEMENT
   type ModalActions = { onClose: () => void } & com.evt.MouseEvents;
 
