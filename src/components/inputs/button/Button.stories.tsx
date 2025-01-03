@@ -20,25 +20,25 @@ export default {
 
 export const Default = {
   args: {
-    properties: { value: 'Button', Renderer: ButtonSkin },
+    properties: { value: 'Button', renderer: ButtonSkin },
   },
 };
 
 export const Skin = {
   args: {
-    properties: { value: 'Button', Renderer: ButtonSkin },
+    properties: { value: 'Button', renderer: ButtonSkin },
   },
 };
 
 export const Disabled = {
   args: {
-    properties: { value: 'Disabled Button', disabled: true, Renderer: ButtonSkin },
+    properties: { value: 'Disabled Button', disabled: true, renderer: ButtonSkin },
   },
 };
 
 export const TabIndex = {
   args: {
-    properties: { value: 'Button', Renderer: ButtonSkin, tabIndex: 1 },
+    properties: { value: 'Button', renderer: ButtonSkin, tabIndex: 1 },
   },
 };
 
@@ -46,12 +46,12 @@ export const Loading = {
   args: {
     properties: {
       value: 'Button',
-      Renderer: ButtonSkin,
+      renderer: ButtonSkin,
       tabIndex: 1,
       loaderProps: {
         isLoading: true,
         value: 'Loading...',
-        Renderer: ButtonSkin,
+        renderer: ButtonSkin,
       },
     },
   },

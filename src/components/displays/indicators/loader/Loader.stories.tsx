@@ -18,6 +18,6 @@ export default {
 
 export const Default = {
   args: {
-    properties: { isLoading: true, Renderer: LoaderSkin },
+    properties: { isLoading: true, renderer: LoaderSkin },
   },
 };

@@ -1,8 +1,12 @@
 import { Option, Select } from '@inputs/choices';
 import { DefaultAccordionSkin, OptionSkin, SelectSkin, ToasterSkin } from '@skins/defaults';
-import { Accordion } from '@components/display/menu';
 import { useState } from 'react';
 import { Toaster } from '@components/displays/notfications';
+// import { Shell } from '@components/containers';
+import ProgressStepGroup from '@components/displays/indicators/progress-step/ProgressStepGroup';
+import ProgressStep from '@components/displays/indicators/progress-step/ProgressStep';
+import ProgressStepSkin from '@skins/defaults/ProgressStep.default.skin';
+import { Accordion } from '@components/displays/menus';
 
 // type CheckboxProperties = {
 //   value?: boolean;
@@ -22,13 +26,20 @@ import { Toaster } from '@components/displays/notfications';
 //   return <Shell<CheckboxProperties, CheckboxActions> properties={properties} actions={actions} options={options} />;
 // };
 
+const progressData = [
+  { name: 'Fill form', active: false, completed: true, id: 'step-1', renderer: ProgressStepSkin },
+  { name: 'Payment', active: true, completed: false, id: 'step-2', renderer: ProgressStepSkin },
+  { name: 'Confirmation', active: false, completed: false, id: 'step-3', renderer: ProgressStepSkin },
+  { name: 'disabled', active: false, completed: false, id: 'step-4', renderer: ProgressStepSkin, disabled: true },
+];
+
 const App = () => {
   const [toggled, setToggled] = useState(false);
   const [toggled2, setToggled2] = useState(false);
   const SelectProperties: AlphaElements.SelectProperties = {
     name: 'select',
     value: { value: 'good', label: 'Good' },
-    Renderer: SelectSkin,
+    renderer: SelectSkin,
     optionRenderer: OptionSkin,
   };
 
@@ -66,7 +77,7 @@ const App = () => {
         properties={{
           id: 'accordion-1',
           title: 'Click to Expand',
-          Renderer: DefaultAccordionSkin,
+          renderer: DefaultAccordionSkin,
           content: (
             <>
               <p>sample</p>
@@ -74,7 +85,7 @@ const App = () => {
                 properties={{
                   id: 'accordion-2',
                   title: 'Click to Expand',
-                  Renderer: DefaultAccordionSkin,
+                  renderer: DefaultAccordionSkin,
                   content: 'This is the accordion content. It will be shown when expanded.',
                   isOpen: toggled2,
                 }}
@@ -87,6 +98,14 @@ const App = () => {
         actions={{ onToggle: handleToggle }}
       />
       <Toaster properties={{ renderer: ToasterSkin }} />
+
+      <div className="min-h-screen bg-gray-100 p-8">
+        <ProgressStepGroup properties={progressData} actions={{ onClick: () => console.log('clicked') }}>
+          {progressData.map((step, index) => (
+            <ProgressStep key={step.id} properties={{ ...step, index, total: progressData.length }} />
+          ))}
+        </ProgressStepGroup>
+      </div>
     </div>
   );
 };

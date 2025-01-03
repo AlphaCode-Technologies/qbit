@@ -1,4 +1,4 @@
-const Skin = ({ properties, actions }: AlphaElements.ButtonProps) => {
+const Skin: com.elem.Skin<AlphaElements.ButtonProperties, AlphaElements.ButtonActions> = ({ properties, actions }) => {
   const { value, disabled, tabIndex, testId } = properties;
   const { onClick } = actions ?? {};
 

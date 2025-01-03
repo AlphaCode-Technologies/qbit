@@ -6,7 +6,7 @@ import { RadioSkin } from '@skins/defaults';
 const DEFAULT_PROPERTIES: AlphaElements.RadioGroupProperties = {
   name: 'radio-group',
   value: 'bad',
-  Renderer: RadioSkin,
+  renderer: RadioSkin,
   keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
 };
 
@@ -28,7 +28,10 @@ type RadioData = {
   data: AlphaElements.RadioProperties[];
 };
 
-const TestSkin = ({ properties, actions }: AlphaElements.RadioProps) => {
+const TestSkin = ({
+  properties,
+  actions,
+}: com.elem.Shell<AlphaElements.RadioProperties, AlphaElements.RadioGroupActions>) => {
   const { label, value, selected, tabIndex } = properties;
   const { onChange } = actions ?? {};
   return (
@@ -91,7 +94,7 @@ describe('Test for radio elements', () => {
 
   it('Should render radio group skin', () => {
     renderRadio({
-      props: { ...DEFAULT_PROPERTIES, Renderer: TestSkin },
+      props: { ...DEFAULT_PROPERTIES, renderer: TestSkin },
       actions: DEFAULT_ACTIONS,
       data: DEFAULT_DATA,
     });

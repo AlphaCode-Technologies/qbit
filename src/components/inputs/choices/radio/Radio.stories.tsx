@@ -22,18 +22,18 @@ export default {
 
 export const Default = {
   args: {
-    properties: { value: 'good', label: 'Good', Renderer: RadioSkin },
+    properties: { value: 'good', label: 'Good', renderer: RadioSkin },
   },
 };
 
 export const Disabled = {
   args: {
-    properties: { value: 'good', label: 'Good', disabled: true, Renderer: RadioSkin },
+    properties: { value: 'good', label: 'Good', disabled: true, renderer: RadioSkin },
   },
 };
 
 export const Skin = {
   args: {
-    properties: { value: 'good', label: 'Good', Renderer: RadioSkin },
+    properties: { value: 'good', label: 'Good', renderer: RadioSkin },
   },
 };

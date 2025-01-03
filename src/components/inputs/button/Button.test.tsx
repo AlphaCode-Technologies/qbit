@@ -5,7 +5,7 @@ import { ButtonSkin } from '@skins/defaults';
 
 const DEFAULT_PROPERTIES: AlphaElements.ButtonProperties = {
   value: 'Button',
-  Renderer: ButtonSkin,
+  renderer: ButtonSkin,
 };
 
 const DEFAULT_ACTIONS: AlphaElements.ButtonActions = {
@@ -33,7 +33,7 @@ const ValueChangeButton = ({
   disabled?: boolean;
 }) => {
   const [value, setValue] = useState(defaultValue);
-  const buttonProperties = { value, testId, disabled, Renderer: ButtonSkin };
+  const buttonProperties = { value, testId, disabled, renderer: ButtonSkin };
   const buttonActions = { onClick: () => setValue(changedValue) };
 
   return <Button properties={buttonProperties} actions={buttonActions} />;
