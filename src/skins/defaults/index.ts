@@ -15,3 +15,4 @@ export { default as TextSkin } from './Text.default.skin';
 export { default as CardContentSkin } from './CardContent.skin.default';
 export { default as CardHeaderSkin } from './CardHeader.skin.default';
 export { default as CardFooterSkin } from './CardFooter.skin.default';
+export { default as ProgressBarSkin } from './ProgressBar.skin.default';

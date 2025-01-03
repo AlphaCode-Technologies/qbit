@@ -219,6 +219,8 @@ declare namespace AlphaElements {
   } & Pick<ComponentProperties, 'id' | 'renderer' | 'disabled' | 'testId'>;
 
   type ProgressStepAction = Partial<com.evt.MouseEvents>;
+  // endregion
+
   // region MODAL ELEMENT
   type ModalActions = { onClose: () => void } & com.evt.MouseEvents;
 
@@ -253,5 +255,10 @@ declare namespace AlphaElements {
     ComponentProperties,
     'id' | 'name' | 'value' | 'disabled' | 'tabIndex' | 'horizontal'
   >;
+  // #endregion
+
+  // #region PROGRESS-BAR ELEMENT
+  type ProgressBarProperties = {} & Required<ComponentProperties, 'value'> &
+    Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'horizontal'>;
   // #endregion
 }
