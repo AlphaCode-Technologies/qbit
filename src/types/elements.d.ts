@@ -227,6 +227,7 @@ declare namespace AlphaElements {
     modalClassNames?: string;
   } & Pick<ComponentProperties, 'testId'>;
   // endregion
+
   // #region TEXT ELEMENT
 
   type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';
@@ -245,5 +246,12 @@ declare namespace AlphaElements {
     Omit<ComponentProperties, 'horizontal'>;
 
   type TextAction = Partial<com.evt.UiEvents>;
+  // #endregion
+
+  // region CARD ELEMENT
+  type CardProperties = {} & Omit<
+    ComponentProperties,
+    'id' | 'name' | 'value' | 'disabled' | 'tabIndex' | 'horizontal'
+  >;
   // #endregion
 }
