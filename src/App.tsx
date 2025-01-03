@@ -1,7 +1,7 @@
 import { Option, Select } from '@inputs/choices';
 // import { Shell } from '@components/containers';
 import { DefaultAccordionSkin, OptionSkin, SelectSkin } from '@skins/defaults';
-import { Accordion } from '@components/display/menu';
+import { Accordion } from '@components/displays/menus';
 import { useState } from 'react';
 
 // type CheckboxProperties = {
