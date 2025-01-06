@@ -1,4 +1,4 @@
-const Toaster = () => {
+const Toaster: com.elem.Skin<AlphaElements.ToasterProperties, AlphaElements.ToasterActions> = () => {
   return (
     <div className="m-2 shadow-xl">
       <svg width="350" height="80" viewBox="0 0 350 80" fill="none" xmlns="http://www.w3.org/2000/svg">

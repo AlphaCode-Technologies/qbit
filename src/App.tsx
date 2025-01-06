@@ -97,7 +97,7 @@ const App = () => {
         }}
         actions={{ onToggle: handleToggle }}
       />
-      <Toaster properties={{ renderer: ToasterSkin }} />
+      <Toaster properties={{ open: true, position: 'top-center', renderer: ToasterSkin }} />
 
       <div className="min-h-screen bg-gray-100 p-8">
         <ProgressStepGroup properties={progressData} actions={{ onClick: () => console.log('clicked') }}>
