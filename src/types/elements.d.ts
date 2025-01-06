@@ -23,7 +23,7 @@ declare namespace AlphaElements {
    * Write all default component properties inside this block.
    * This can be then extended by other components properties
    */
-  type DefaultProperties<V extends com.utils.ValidTypes> = com.elem.Properties<{
+  type DefaultProperties<V extends com.utils.ValidTypes> = com.qbit.Properties<{
     value?: V;
     label?: string;
   }>;

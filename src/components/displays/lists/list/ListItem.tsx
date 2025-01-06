@@ -1,6 +1,6 @@
 import { useGetSkin } from '@components/containers';
 
-const ListItem: com.elem.Component<ListItemProps> = (props) => {
+const ListItem: com.qbit.Shell<ListItemProps> = (props) => {
   const { renderers, ...rest } = props;
 
   const renderProps = useGetSkin<ListItemProps>(renderers);

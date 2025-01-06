@@ -5,9 +5,7 @@ import { useGetChildren, useGetSkin } from '@components/containers';
  * @param props
  * @returns
  */
-const List: com.elem.Component<ListProps, ListItemProps> = (
-  props: com.elem.ComponentProps<ListProps, ListItemProps>,
-) => {
+const List: com.qbit.Shell<ListProps, ListItemProps> = (props: com.qbit.ShellProps<ListProps, ListItemProps>) => {
   const { renderers, ...rest } = props;
   const renderProps = useGetSkin<ListProps, ListItemProps>(renderers);
   const children = useGetChildren<ListProps, ListItemProps>(rest, renderProps);

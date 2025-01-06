@@ -22,8 +22,8 @@ import { Children, cloneElement, ReactElement, useMemo } from 'react';
  * @param renderers
  * @returns
  */
-const useGetSkin = <P extends com.elem.BaseProps, C extends com.elem.BaseProps = any>(
-  renderers: com.elem.RenderProps<P, C> = {},
+const useGetSkin = <P extends com.qbit.BaseProps, C extends com.qbit.BaseProps = any>(
+  renderers: com.qbit.RenderProps<P, C> = {},
 ) => {
   const { renderer, childRenderer } = renderers;
 
@@ -39,7 +39,7 @@ const useGetSkin = <P extends com.elem.BaseProps, C extends com.elem.BaseProps =
       ({
         childRenderer,
         renderer,
-      }) as com.elem.RenderProps<P, C>,
+      }) as com.qbit.RenderProps<P, C>,
     [childRenderer, renderer],
   );
 };
@@ -52,9 +52,9 @@ const useGetSkin = <P extends com.elem.BaseProps, C extends com.elem.BaseProps =
  * @param renderProps
  * @returns
  */
-const useGetChildren = <P extends com.elem.BaseProps, C extends com.elem.BaseProps = any>(
-  props: com.elem.SkinProps<P>,
-  renderProps: com.elem.RenderProps<P, C>,
+const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BaseProps = any>(
+  props: com.qbit.SkinProps<P>,
+  renderProps: com.qbit.RenderProps<P, C>,
 ) => {
   const { children, keyExtractor: parentKeyExtractor, disabled: parentDisabled = false } = props;
 
@@ -82,7 +82,7 @@ const useGetChildren = <P extends com.elem.BaseProps, C extends com.elem.BasePro
       renderers: { renderer = defaultRenderer, childRenderer } = {},
       children: grandChildren,
       ...restChildProps
-    } = childProps as com.elem.ComponentProps<P, C>;
+    } = childProps as com.qbit.ShellProps<P, C>;
 
     // Determining disabled state
     const disabled = parentDisabled || childDisabled;

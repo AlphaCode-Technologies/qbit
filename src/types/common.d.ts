@@ -14,6 +14,14 @@ declare namespace com {
       [key in keyof T]: T[key];
     };
 
+    /**
+     * User Property instead
+     * @deprecated
+     */
+    type ValidateProps<T> = {
+      [key in keyof T]: T[key];
+    };
+
     type Version = {
       version: string;
       name: string;
@@ -85,7 +93,7 @@ declare namespace com {
   /**
    * Type definitions for all common/generic element development.
    */
-  declare namespace elem {
+  declare namespace qbit {
     type KeyExtractor<V extends com.utils.ValidTypes = string> = (value: V, i: number) => string;
     /**
      * Basic properties to be adhered by the component. These properties
@@ -127,7 +135,7 @@ declare namespace com {
      * The component properties that are common for all components.
      * This is the main component that should be used by all components.
      */
-    type ComponentProps<P extends BaseProps, C extends BaseProps = any> = SkinProps<P> &
+    type ShellProps<P extends BaseProps, C extends BaseProps = any> = SkinProps<P> &
       com.utils.Property<{
         renderers?: RenderProps<P, C>;
       }>;
@@ -135,6 +143,60 @@ declare namespace com {
     /**
      * All components should use thisComponent type
      */
-    type Component<P extends BaseProps, C extends BaseProps = any> = React.ComponentType<ComponentProps<P, C>>;
+    type Shell<P extends BaseProps, C extends BaseProps = any> = React.ComponentType<ShellProps<P, C>>;
+  }
+
+  /**
+   * Define all component options here.
+   */
+  declare namespace opt {
+    type A11yProps = {
+      role?: string;
+      title?: string;
+      tabIndex?: number;
+      'aria-label'?: string;
+    };
+
+    type StyleProps = {
+      className?: string;
+      styles?: React.CSSProperties;
+    };
+  }
+
+  /**
+   * Define all your common element types here.
+   * @deprecated
+   */
+  declare namespace elem {
+    type SkinProps<P, A> = {
+      properties: com.utils.ValidateProps<P>;
+      actions?: Partial<com.utils.ValidateProps<A>>;
+      options?: Partial<
+        com.utils.ValidateProps<{
+          a11y?: com.opt.A11yProps;
+          styles?: com.opt.StyleProps;
+        }>
+      >;
+    };
+
+    type Skin<P, A> = React.FC<SkinProps<P, A>>;
+
+    type BaseShellProps<P, A> = {
+      properties: com.utils.ValidateProps<P> & {
+        renderer: Skin<P, A>;
+      };
+    };
+
+    type ShellProps<P, A> = SkinProps<P, A> & BaseShellProps<P, A>;
+    type Shell<P, A> = React.FC<ShellProps<P, A>> & PropsWithChildren;
+
+    type AsyncShellProps<P, A> = ShellProps<P, A> & {
+      properties: com.utils.ValidateProps<P> & {
+        isLoading?: boolean;
+        skeleton: React.FC;
+      };
+    };
+
+    type AsyncShell<P, A> = React.FC<AsyncShellProps<P, A>>;
   }
 }

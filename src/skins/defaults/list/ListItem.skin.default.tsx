@@ -1,4 +1,4 @@
-const ListItemSkin: com.elem.Skin<ListItemProps> = (props) => {
+const ListItemSkin: com.qbit.Skin<ListItemProps> = (props) => {
   const { label } = props;
 
   return <li>{label}</li>;

@@ -2,8 +2,8 @@ import { Option, Select } from '@inputs/choices';
 import { DefaultAccordionSkin, ListItemSkin, ListSkin, OptionSkin, SelectSkin } from '@skins/defaults';
 
 import { Accordion } from '@components/display/menu';
-import { List, ListItem } from '@components/displays';
 import { useState } from 'react';
+import { List, ListItem } from '@components/displays';
 
 const App = () => {
   const [toggled, setToggled] = useState(false);
@@ -64,24 +64,13 @@ const App = () => {
       />
       {/* List component */}
       <List
-        properties={{ label: 'List Component' }}
-        actions={{ onClick: (e) => console.log('clicked', e.currentTarget) }}
-        options={{
-          styling: {
-            styles: {
-              backgroundColor: 'gray',
-            },
-          },
-        }}
-        renderers={{ renderer: ListSkin, subRenderer: ListItemSkin }}
+        renderers={{ renderer: ListSkin, childRenderer: ListItemSkin }}
+        keyExtractor={(value, i) => `${value}-${i}`}
       >
-        <ListItem<string>
-          properties={{ label: 'Item 1', value: 'test-1' }}
-          options={{ styling: { styles: { backgroundColor: 'blue' } } }}
-        />
-        <ListItem properties={{ label: 'Item 2', value: 'test-2' }} />
-        <ListItem properties={{ label: 'Item 3', value: 'test-3' }} />
-        <ListItem properties={{ label: 'Item 4', value: 'test-4', disabled: true }} />
+        <ListItem label="item 1" value="item 1" />
+        <ListItem label="item 2" value="item 2" />
+        <ListItem label="item 3" value="item 3" />
+        <ListItem label="item 4" value="item 4" />
       </List>
     </div>
   );
