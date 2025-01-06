@@ -1,4 +1,4 @@
-const Skin = ({ properties }: AlphaElements.LoaderProps) => {
+const Skin: com.elem.Skin<AlphaElements.LoaderProperties, 0> = ({ properties }) => {
   const { testId } = properties;
 
   return (

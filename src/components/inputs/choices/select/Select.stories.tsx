@@ -30,7 +30,7 @@ export const Default = {
     properties: {
       name: 'select',
       value: { value: 'good', label: 'Good' },
-      Renderer: SelectSkin,
+      renderer: SelectSkin,
       optionRenderer: OptionSkin,
     },
   },
@@ -41,7 +41,7 @@ export const Disabled = {
     properties: {
       name: 'select',
       value: { value: 'good', label: 'Good' },
-      Renderer: SelectSkin,
+      renderer: SelectSkin,
       optionRenderer: OptionSkin,
       disabled: true,
     },

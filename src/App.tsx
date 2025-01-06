@@ -11,7 +11,7 @@ const App = () => {
   const SelectProperties: AlphaElements.SelectProperties = {
     name: 'select',
     value: { value: 'good', label: 'Good' },
-    Renderer: SelectSkin,
+    renderer: SelectSkin,
     optionRenderer: OptionSkin,
   };
 
@@ -42,7 +42,7 @@ const App = () => {
         properties={{
           id: 'accordion-1',
           title: 'Click to Expand',
-          Renderer: DefaultAccordionSkin,
+          renderer: DefaultAccordionSkin,
           content: (
             <>
               <p>sample</p>
@@ -50,7 +50,7 @@ const App = () => {
                 properties={{
                   id: 'accordion-2',
                   title: 'Click to Expand',
-                  Renderer: DefaultAccordionSkin,
+                  renderer: DefaultAccordionSkin,
                   content: 'This is the accordion content. It will be shown when expanded.',
                   isOpen: toggled2,
                 }}

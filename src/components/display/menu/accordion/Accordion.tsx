@@ -1,5 +1,5 @@
 const Accordion = ({ properties, actions }: AlphaElements.AccordionProps) => {
-  const { id, title, isOpen } = properties;
+  const { id, title, isOpen, renderer: Renderer } = properties;
   const { onToggle } = actions;
 
   return (
@@ -10,7 +10,7 @@ const Accordion = ({ properties, actions }: AlphaElements.AccordionProps) => {
       >
         {title}
       </div>
-      {isOpen && <properties.Renderer properties={properties} actions={actions} />}
+      {isOpen && <Renderer properties={properties} actions={actions} />}
     </div>
   );
 };

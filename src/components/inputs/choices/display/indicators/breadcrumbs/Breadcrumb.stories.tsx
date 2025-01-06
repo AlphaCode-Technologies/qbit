@@ -13,17 +13,17 @@ const Template: StoryFn = () => {
   const breadcrumbs = [
     {
       key: 'home',
-      properties: { name: 'Home', testId: 'breadcrumb-home', Renderer: BreadcrumbsSkin },
+      properties: { name: 'Home', testId: 'breadcrumb-home', renderer: BreadcrumbsSkin },
       actions: { onClick: () => alert('Home Clicked') },
     },
     {
       key: 'products',
-      properties: { name: 'Products', testId: 'breadcrumb-products', Renderer: BreadcrumbsSkin },
+      properties: { name: 'Products', testId: 'breadcrumb-products', renderer: BreadcrumbsSkin },
       actions: { onClick: () => alert('Products Clicked') },
     },
     {
       key: 'details',
-      properties: { name: 'Details', testId: 'breadcrumb-details', Renderer: BreadcrumbsSkin },
+      properties: { name: 'Details', testId: 'breadcrumb-details', renderer: BreadcrumbsSkin },
       actions: { onClick: () => alert('Details Clicked') },
     },
   ];

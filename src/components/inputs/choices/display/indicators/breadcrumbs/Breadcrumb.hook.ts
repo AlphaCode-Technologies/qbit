@@ -7,7 +7,7 @@ export const useBreadcrumbSkin = (params: AlphaElements.BreadcrumbProps) => {
   // Function to generate properties and actions for each breadcrumb item
   const getPropsAndActions = (child: any, index: number) => {
     const childProperties = child.props?.properties ?? {};
-    const { Renderer, id, testId } = childProperties;
+    const { renderer: Renderer, id, testId } = childProperties;
     // Determine the renderer: use the provided Renderer or fallback to BreadcrumbsSkin
     const elementRenderer = Renderer ?? BreadcrumbsSkin;
 
@@ -16,7 +16,7 @@ export const useBreadcrumbSkin = (params: AlphaElements.BreadcrumbProps) => {
       actions: actions,
       properties: {
         ...childProperties,
-        Renderer: elementRenderer,
+        renderer: elementRenderer,
         index,
         id,
         testId: testId,

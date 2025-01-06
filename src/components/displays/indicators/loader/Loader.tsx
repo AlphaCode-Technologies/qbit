@@ -1,11 +1,13 @@
-// Define the Loader component, destructuring `properties` from the props.
-const Loader = ({ properties }: AlphaElements.LoaderProps) => {
-  // Extract the custom Renderer component from the properties and spread the rest of the properties.
-  const { isLoading, Renderer } = properties;
+import { Shell } from '@components/containers';
+
+const Loader = ({ properties, options }: com.elem.Shell<AlphaElements.LoaderProperties, 0>) => {
+  // TODO -> discuss with @dulan
+  const { isLoading } = properties;
 
   if (isLoading) {
-    // Render the custom Renderer component, passing down the remaining properties.
-    return <Renderer properties={properties} />;
+    return (
+      <Shell<AlphaElements.ButtonProperties, AlphaElements.ButtonActions> properties={properties} options={options} />
+    );
   }
 };
 
