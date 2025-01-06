@@ -1,9 +1,8 @@
 import { Option, Select } from '@inputs/choices';
 import { DefaultAccordionSkin, ListItemSkin, ListSkin, OptionSkin, SelectSkin } from '@skins/defaults';
-
-import { Accordion } from '@components/display/menu';
 import { useState } from 'react';
 import { List, ListItem } from '@components/displays';
+import { Accordion } from '@components/displays/menus';
 
 const App = () => {
   const [toggled, setToggled] = useState(false);

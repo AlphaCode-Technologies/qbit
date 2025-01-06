@@ -219,4 +219,56 @@ declare namespace AlphaElements {
     actions: AccordionActions;
   };
   // endregion
+
+  type ProgressStepProperties = {
+    name: string;
+    active: boolean;
+    completed?: boolean;
+    index?: number;
+    total?: number;
+  } & Pick<ComponentProperties, 'id' | 'renderer' | 'disabled' | 'testId'>;
+
+  type ProgressStepAction = Partial<com.evt.MouseEvents>;
+  // endregion
+
+  // region MODAL ELEMENT
+  type ModalActions = { onClose: () => void } & com.evt.MouseEvents;
+
+  type ModalProperties = {
+    isOpen: boolean;
+    modalClassNames?: string;
+  } & Pick<ComponentProperties, 'testId'>;
+  // endregion
+
+  // #region TEXT ELEMENT
+
+  type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';
+
+  type TextProperties = {
+    type: InputType;
+    placeholder?: string;
+    required?: boolean;
+    readOnly?: boolean;
+    min?: number;
+    max?: number;
+    step?: number;
+    maxLength?: number;
+    autoComplete?: string;
+  } & Required<ComponentProperties, 'id' | 'name'> &
+    Omit<ComponentProperties, 'horizontal'>;
+
+  type TextAction = Partial<com.evt.UiEvents>;
+  // #endregion
+
+  // region CARD ELEMENT
+  type CardProperties = {} & Omit<
+    ComponentProperties,
+    'id' | 'name' | 'value' | 'disabled' | 'tabIndex' | 'horizontal'
+  >;
+  // #endregion
+
+  // #region PROGRESS-BAR ELEMENT
+  type ProgressBarProperties = {} & Required<ComponentProperties, 'value'> &
+    Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'horizontal'>;
+  // #endregion
 }
