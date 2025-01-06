@@ -4,7 +4,7 @@
  * @created 02/01/2024
  */
 import { swallow } from '@utils/helpers';
-import { Children, cloneElement, ReactElement, useMemo } from 'react';
+import { Children, cloneElement, ReactElement, ReactNode, useMemo } from 'react';
 
 /**
  * @description
@@ -30,6 +30,7 @@ const useGetSkin = <P extends com.qbit.BaseProps, C extends com.qbit.BaseProps =
   if (!renderer && !childRenderer) {
     throw new Error('No Renderer specified');
   }
+
   if (!renderer) {
     throw new Error('Renderer is required');
   }
@@ -53,10 +54,10 @@ const useGetSkin = <P extends com.qbit.BaseProps, C extends com.qbit.BaseProps =
  * @returns
  */
 const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BaseProps = any>(
-  props: com.qbit.SkinProps<P>,
-  renderProps: com.qbit.RenderProps<P, C>,
+  props: com.qbit.ShellProps<P, C>,
+  children: ReactNode,
 ) => {
-  const { children, keyExtractor: parentKeyExtractor, disabled: parentDisabled = false } = props;
+  const { keyExtractor: parentKeyExtractor, disabled: parentDisabled = false } = props;
 
   // Validate if children are available
   if (Children.count(children) === 0) {
@@ -69,7 +70,7 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
   }
 
   // Get the child renderer from parent props
-  const { childRenderer: defaultRenderer } = renderProps;
+  const { childRenderer: defaultChildRenderer } = props.renderers ?? {};
 
   const computedChildren = (children as ReactElement[]).map((child, i) => {
     // extract child props
@@ -79,11 +80,14 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
       value: childValue,
       disabled: childDisabled,
       keyExtractor: childKeyExtractor,
-      renderers: { renderer = defaultRenderer, childRenderer } = {},
+      renderers: { renderer = defaultChildRenderer, childRenderer: grandChildRenderer } = {},
       children: grandChildren,
       ...restChildProps
     } = childProps as com.qbit.ShellProps<P, C>;
 
+    if (!renderer) {
+      throw new Error('No Renderer specified for children');
+    }
     // Determining disabled state
     const disabled = parentDisabled || childDisabled;
 
@@ -107,7 +111,7 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
         // Pass down the properties of parent
         keyExtractor: childKeyExtractor ?? parentKeyExtractor,
         value: childValue,
-        renderers: { renderer, childRenderer },
+        renderers: { renderer, childRenderer: grandChildRenderer },
         disabled,
       },
       grandChildren,

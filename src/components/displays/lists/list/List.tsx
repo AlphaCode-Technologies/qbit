@@ -1,4 +1,4 @@
-import { useGetChildren, useGetSkin } from '@components/containers';
+import { BaseComponent, useGetChildren } from '@components/containers';
 
 /**
  * Simple list component.
@@ -6,13 +6,11 @@ import { useGetChildren, useGetSkin } from '@components/containers';
  * @returns
  */
 const List: com.qbit.Shell<ListProps, ListItemProps> = (props: com.qbit.ShellProps<ListProps, ListItemProps>) => {
-  const { renderers, ...rest } = props;
-  const renderProps = useGetSkin<ListProps, ListItemProps>(renderers);
-  const children = useGetChildren<ListProps, ListItemProps>(rest, renderProps);
+  const { children: oChildren, ...rest } = props;
 
-  const { renderer: Skin } = renderProps;
+  const children = useGetChildren<ListProps, ListItemProps>(rest, oChildren);
 
-  return Skin && <Skin {...rest}>{children}</Skin>;
+  return <BaseComponent {...rest}>{children}</BaseComponent>;
 };
 
 export default List;
