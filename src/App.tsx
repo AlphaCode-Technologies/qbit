@@ -28,8 +28,8 @@ const App = () => {
         renderers={{ renderer: ListSkin, childRenderer: ListItemSkin }}
         keyExtractor={(value: string, i: number) => `${value}-${i}`}
         className="list-decimal ml-6"
-        // @ts-expect-error temporary
         onChange={(e) => {
+          // @ts-expect-error temporary
           log('Current value', e.target.value);
         }}
       >
