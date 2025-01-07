@@ -67,10 +67,10 @@ declare namespace com {
    * Use partials as these should be optional.
    */
   declare namespace act {
-    type MouseActions = Action<Partial<com.evt.MouseEvents>>;
-    type KeyboardActions = Action<Partial<com.evt.KeyboardEvents>>;
-    type UiActions = Action<Partial<com.evt.UiEvents>>;
-    type MediaActions = Action<Partial<com.evt.MediaEvents>>;
+    type MouseActions = Partial<com.evt.MouseEvents>;
+    type KeyboardActions = Partial<com.evt.KeyboardEvents>;
+    type UiActions = Partial<com.evt.UiEvents>;
+    type MediaActions = Partial<com.evt.MediaEvents>;
   }
 
   // /**
@@ -95,6 +95,7 @@ declare namespace com {
    */
   declare namespace qbit {
     type KeyExtractor<V extends com.utils.ValidTypes = string> = (value: V, i: number) => string;
+
     /**
      * Basic properties to be adhered by the component. These properties
      * should be common for all components.
@@ -104,7 +105,9 @@ declare namespace com {
       name?: string;
       disabled?: boolean;
       keyExtractor?: KeyExtractor;
-    }>;
+    }> &
+      com.opt.StyleProps &
+      com.opt.A11yProps;
 
     type DefaultBaseProps = com.utils.Property<{
       value?: any;
@@ -159,7 +162,7 @@ declare namespace com {
 
     type StyleProps = {
       className?: string;
-      styles?: React.CSSProperties;
+      style?: React.CSSProperties;
     };
   }
 

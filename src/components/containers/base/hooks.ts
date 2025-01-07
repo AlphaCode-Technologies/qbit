@@ -57,8 +57,7 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
   props: com.qbit.ShellProps<P, C>,
   children: ReactNode,
 ) => {
-  const { keyExtractor: parentKeyExtractor, disabled: parentDisabled = false } = props;
-
+  const { keyExtractor: parentKeyExtractor, disabled: parentDisabled = false, ...restParentProps } = props;
   // Validate if children are available
   if (Children.count(children) === 0) {
     throw new Error('No children specified');
@@ -92,7 +91,7 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
     const disabled = parentDisabled || childDisabled;
 
     // If disabled, then all actions should be disabled
-    const otherProps = { ...restChildProps } as unknown as com.utils.Property<P>;
+    let otherProps = { ...restChildProps } as unknown as com.utils.Property<P>;
 
     if (disabled) {
       for (const propertyName in otherProps) {
@@ -101,6 +100,9 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
           otherProps[propertyName] = swallow as unknown as P[Extract<keyof P, string>];
         }
       }
+    } else {
+      const parentActionProps = getAction(restParentProps, childValue);
+      otherProps = { ...otherProps, ...parentActionProps };
     }
 
     return cloneElement(
@@ -119,6 +121,16 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
   });
 
   return computedChildren;
+};
+
+const getAction = (props: any, value: any) => {
+  const { onChange } = props;
+  const parentActions = Object.fromEntries(Object.entries(props).filter(([key]) => key.startsWith('on')));
+
+  return {
+    ...parentActions,
+    onClick: () => onChange?.({ target: { value } }),
+  };
 };
 
 export { useGetChildren, useGetSkin };

@@ -1,12 +1,8 @@
 import { Option, Select } from '@inputs/choices';
-import { DefaultAccordionSkin, ListItemSkin, ListSkin, OptionSkin, SelectSkin } from '@skins/defaults';
-import { useState } from 'react';
+import { ListItemSkin, ListSkin, OptionSkin, SelectSkin } from '@skins/defaults';
 import { List, ListItem } from '@components/displays';
-import { Accordion } from '@components/displays/menus';
 
 const App = () => {
-  const [toggled, setToggled] = useState(false);
-  const [toggled2, setToggled2] = useState(false);
   const SelectProperties: AlphaElements.SelectProperties = {
     name: 'select',
     value: { value: 'good', label: 'Good' },
@@ -18,16 +14,6 @@ const App = () => {
     triggerScrollEnd: () => console.log('Scrolled end'),
   };
 
-  const handleToggle = (newState: boolean) => {
-    console.log('Accordion toggled:', newState);
-    setToggled(!toggled);
-  };
-
-  const handleToggle2 = (newState: boolean) => {
-    console.log('Accordion toggled:', newState);
-    setToggled2(!toggled2);
-  };
-
   return (
     <div data-id="my-id">
       <Select properties={SelectProperties} actions={SelectAction}>
@@ -37,36 +23,17 @@ const App = () => {
         <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
       </Select>
 
-      <Accordion
-        properties={{
-          id: 'accordion-1',
-          title: 'Click to Expand',
-          renderer: DefaultAccordionSkin,
-          content: (
-            <>
-              <p>sample</p>
-              <Accordion
-                properties={{
-                  id: 'accordion-2',
-                  title: 'Click to Expand',
-                  renderer: DefaultAccordionSkin,
-                  content: 'This is the accordion content. It will be shown when expanded.',
-                  isOpen: toggled2,
-                }}
-                actions={{ onToggle: handleToggle2 }}
-              />
-            </>
-          ),
-          isOpen: toggled,
-        }}
-        actions={{ onToggle: handleToggle }}
-      />
       {/* List component */}
       <List
         renderers={{ renderer: ListSkin, childRenderer: ListItemSkin }}
-        keyExtractor={(value, i) => `${value}-${i}`}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        className="list-decimal ml-6"
+        // @ts-expect-error temporary
+        onChange={(e) => {
+          log('Current value', e.target.value);
+        }}
       >
-        <ListItem label="item 1" value="item 1" />
+        <ListItem label="item 1" value="item 1" style={{ fontSize: '20px' }} />
         <ListItem label="item 2" value="item 2" />
         <ListItem label="item 3" value="item 3" />
         <ListItem label="item 4" value="item 4" />

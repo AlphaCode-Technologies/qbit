@@ -1,7 +1,8 @@
 const ListSkin: com.qbit.Skin<ListProps> = (props: com.qbit.SkinProps<ListProps>) => {
-  const { children } = props;
+  const { children, ...rest } = props;
+  const { onChange, onBlur, onFocus, ...otherProps } = rest;
 
-  return <ul>{children}</ul>;
+  return <ul {...otherProps}>{children}</ul>;
 };
 
 export default ListSkin;
