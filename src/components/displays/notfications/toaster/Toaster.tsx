@@ -13,11 +13,11 @@ const POSITIONS = {
 
 const Toaster = (props: com.elem.Shell<AlphaElements.ToasterProperties, AlphaElements.ToasterActions>) => {
   const { properties, actions, options } = useBindSkin(props);
-  const { open, position = 'top-right' } = properties;
+  const { open, testId, position = 'top-right' } = properties;
 
   if (open) {
     return createPortal(
-      <div className="fixed inset-0 flex z-50">
+      <div className="fixed inset-0 flex z-50" data-testid={testId}>
         <div className={`absolute ${POSITIONS[position as AlphaElements.Position]}`}>
           <Shell<AlphaElements.ToasterProperties, AlphaElements.ToasterActions>
             properties={properties}
