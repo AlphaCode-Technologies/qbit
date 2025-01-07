@@ -57,6 +57,7 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
   props: com.qbit.ShellProps<P, C>,
   children: ReactNode,
 ) => {
+  const { computedActions } = useGetAction();
   const { keyExtractor: parentKeyExtractor, disabled: parentDisabled = false, ...restParentProps } = props;
   // Validate if children are available
   if (Children.count(children) === 0) {
@@ -101,7 +102,7 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
         }
       }
     } else {
-      const parentActionProps = getAction(restParentProps, childValue);
+      const parentActionProps = computedActions(restParentProps, childValue);
       otherProps = { ...otherProps, ...parentActionProps };
     }
 
@@ -123,14 +124,18 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
   return computedChildren;
 };
 
-const getAction = (props: any, value: any) => {
-  const { onChange } = props;
-  const parentActions = Object.fromEntries(Object.entries(props).filter(([key]) => key.startsWith('on')));
+const useGetAction = () => {
+  const computedActions = (props: any, value: any) => {
+    const { onChange } = props;
+    const parentActions = Object.fromEntries(Object.entries(props).filter(([key]) => key.startsWith('on')));
 
-  return {
-    ...parentActions,
-    onClick: () => onChange?.({ target: { value } }),
+    return {
+      ...parentActions,
+      onClick: () => onChange?.({ target: { value } }),
+    };
   };
+
+  return { computedActions };
 };
 
 export { useGetChildren, useGetSkin };
