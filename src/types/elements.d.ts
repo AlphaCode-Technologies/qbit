@@ -271,4 +271,11 @@ declare namespace AlphaElements {
   type ProgressBarProperties = {} & Required<ComponentProperties, 'value'> &
     Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'horizontal'>;
   // #endregion
+
+  type TabProperties = {
+    active: boolean;
+    content?: ReactNode;
+  } & Pick<ComponentProperties, 'id' | 'name' | 'renderer' | 'testId' | 'disabled'>;
+
+  type TabAction = Partial<com.evt.MouseEvents>;
 }

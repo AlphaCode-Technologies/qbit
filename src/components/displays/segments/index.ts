@@ -6,3 +6,5 @@ export { default as Card } from './card/Card';
 export { default as CardHeader } from './card/CardHeader';
 export { default as CardContent } from './card/CardContent';
 export { default as CardFooter } from './card/CardFooter';
+export { default as Tab } from './tab/Tab';
+export { default as TabGroup } from './tab/TabGroup';
