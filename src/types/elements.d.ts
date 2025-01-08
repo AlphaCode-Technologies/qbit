@@ -278,4 +278,16 @@ declare namespace AlphaElements {
   } & Pick<ComponentProperties, 'id' | 'name' | 'renderer' | 'testId' | 'disabled'>;
 
   type TabAction = Partial<com.evt.MouseEvents>;
+
+  // region DRAWER ELEMENT
+  type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
+
+  type DrawerProperties = {
+    open: boolean;
+    position: DrawerPosition;
+    drawerClassNames?: string;
+  } & Pick<ComponentProperties, 'testId'>;
+
+  type DrawerActions = { onClose: () => void } & com.evt.MouseEvents;
+  // endregion
 }
