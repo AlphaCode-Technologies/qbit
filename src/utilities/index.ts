@@ -1,0 +1,1 @@
+export { swallow } from './helpers';

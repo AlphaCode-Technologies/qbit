@@ -12,6 +12,9 @@ export default defineConfig({
       '@inputs': path.resolve(__dirname, 'src/components/inputs'),
       '@displays': path.resolve(__dirname, 'src/components/displays'),
       '@skins': path.resolve(__dirname, 'src/skins'),
+      '@utils': path.resolve(__dirname, 'src/utilities'),
+      '@types': path.resolve(__dirname, 'src/types'),
+      '@fixtures': path.resolve(__dirname, 'src/fixtures'),
     },
   },
 

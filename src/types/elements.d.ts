@@ -19,6 +19,16 @@ declare namespace AlphaElements {
     properties: Property[];
   };
 
+  /**
+   * Write all default component properties inside this block.
+   * This can be then extended by other components properties
+   */
+  type DefaultProperties<V extends com.utils.ValidTypes> = com.qbit.Properties<{
+    value?: V;
+    label?: string;
+  }>;
+
+  // type ComponentProperties<T = any> = {
   type ComponentProperties = {
     id?: string;
     name?: string;
@@ -274,4 +284,23 @@ declare namespace AlphaElements {
   type ProgressBarProperties = {} & Required<ComponentProperties, 'value'> &
     Omit<ComponentProperties, 'name' | 'value' | 'disabled' | 'horizontal'>;
   // #endregion
+
+  type TabProperties = {
+    active: boolean;
+    content?: ReactNode;
+  } & Pick<ComponentProperties, 'id' | 'name' | 'renderer' | 'testId' | 'disabled'>;
+
+  type TabAction = Partial<com.evt.MouseEvents>;
+
+  // region DRAWER ELEMENT
+  type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
+
+  type DrawerProperties = {
+    open: boolean;
+    position: DrawerPosition;
+    drawerClassNames?: string;
+  } & Pick<ComponentProperties, 'testId'>;
+
+  type DrawerActions = { onClose: () => void } & com.evt.MouseEvents;
+  // endregion
 }

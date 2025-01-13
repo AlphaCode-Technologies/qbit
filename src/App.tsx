@@ -1,111 +1,26 @@
-import { Option, Select } from '@inputs/choices';
-import { DefaultAccordionSkin, OptionSkin, SelectSkin, ToasterSkin } from '@skins/defaults';
-import { useState } from 'react';
+import { ListItemSkin, ListSkin, ToasterSkin } from '@skins/defaults';
+import { List, ListItem } from '@components/displays';
 import { Toaster } from '@components/displays/notfications';
-// import { Shell } from '@components/containers';
-import ProgressStepGroup from '@components/displays/indicators/progress-step/ProgressStepGroup';
-import ProgressStep from '@components/displays/indicators/progress-step/ProgressStep';
-import ProgressStepSkin from '@skins/defaults/ProgressStep.default.skin';
-import { Accordion } from '@components/displays/menus';
-
-// type CheckboxProperties = {
-//   value?: boolean;
-//   disabled?: boolean;
-// };
-
-// type CheckboxActions = com.evt.MouseEvents & com.evt.UiEvents;
-
-// const CheckboxSkin: com.elem.Skin<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
-//   const { value } = properties;
-//   const { onChange } = actions ?? {};
-//   const { a11y = {} } = options ?? {};
-//   return <input type="checkbox" defaultChecked={value} onChange={onChange} {...a11y} />;
-// };
-
-// const Checkbox: com.elem.Shell<CheckboxProperties, CheckboxActions> = ({ properties, actions, options }) => {
-//   return <Shell<CheckboxProperties, CheckboxActions> properties={properties} actions={actions} options={options} />;
-// };
-
-const progressData = [
-  { name: 'Fill form', active: false, completed: true, id: 'step-1', renderer: ProgressStepSkin },
-  { name: 'Payment', active: true, completed: false, id: 'step-2', renderer: ProgressStepSkin },
-  { name: 'Confirmation', active: false, completed: false, id: 'step-3', renderer: ProgressStepSkin },
-  { name: 'disabled', active: false, completed: false, id: 'step-4', renderer: ProgressStepSkin, disabled: true },
-];
 
 const App = () => {
-  const [toggled, setToggled] = useState(false);
-  const [toggled2, setToggled2] = useState(false);
-  const SelectProperties: AlphaElements.SelectProperties = {
-    name: 'select',
-    value: { value: 'good', label: 'Good' },
-    renderer: SelectSkin,
-    optionRenderer: OptionSkin,
-  };
-
-  const SelectAction: AlphaElements.SelectActions = {
-    triggerScrollEnd: () => console.log('Scrolled end'),
-  };
-
-  const handleToggle = (newState: boolean) => {
-    console.log('Accordion toggled:', newState);
-    setToggled(!toggled);
-  };
-
-  const handleToggle2 = (newState: boolean) => {
-    console.log('Accordion toggled:', newState);
-    setToggled2(!toggled2);
-  };
-
   return (
     <div data-id="my-id">
-      <Select properties={SelectProperties} actions={SelectAction}>
-        <Option properties={{ value: { value: 'good', label: 'Good' } }} />
-        <Option properties={{ value: { value: 'bad', label: 'Bad' } }} />
-        <Option properties={{ value: { value: 'average', label: 'Average' } }} />
-        <Option properties={{ value: { value: 'waste', label: 'Waste' } }} />
-      </Select>
-      {/* <Checkbox
-        properties={{ renderer: CheckboxSkin }}
-        actions={{
-          onChange: () => {
-            console.log('check box skin with new ');
-          },
+      {/* List component */}
+      <List
+        renderers={{ renderer: ListSkin, childRenderer: ListItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        className="list-decimal ml-6"
+        onChange={(e) => {
+          // @ts-expect-error temporary
+          log('Current value', e.target.value);
         }}
-      /> */}
-      <Accordion
-        properties={{
-          id: 'accordion-1',
-          title: 'Click to Expand',
-          renderer: DefaultAccordionSkin,
-          content: (
-            <>
-              <p>sample</p>
-              <Accordion
-                properties={{
-                  id: 'accordion-2',
-                  title: 'Click to Expand',
-                  renderer: DefaultAccordionSkin,
-                  content: 'This is the accordion content. It will be shown when expanded.',
-                  isOpen: toggled2,
-                }}
-                actions={{ onToggle: handleToggle2 }}
-              />
-            </>
-          ),
-          isOpen: toggled,
-        }}
-        actions={{ onToggle: handleToggle }}
-      />
+      >
+        <ListItem label="item 1" value="item 1" style={{ fontSize: '20px' }} />
+        <ListItem label="item 2" value="item 2" />
+        <ListItem label="item 3" value="item 3" />
+        <ListItem label="item 4" value="item 4" />
+      </List>
       <Toaster properties={{ open: true, position: 'top-center', renderer: ToasterSkin }} />
-
-      <div className="min-h-screen bg-gray-100 p-8">
-        <ProgressStepGroup properties={progressData} actions={{ onClick: () => console.log('clicked') }}>
-          {progressData.map((step, index) => (
-            <ProgressStep key={step.id} properties={{ ...step, index, total: progressData.length }} />
-          ))}
-        </ProgressStepGroup>
-      </div>
     </div>
   );
 };

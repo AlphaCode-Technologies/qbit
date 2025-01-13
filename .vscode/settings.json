@@ -31,5 +31,6 @@
   "editor.guides.bracketPairs": "active",
   "editor.guides.bracketPairsHorizontal": "active",
   "editor.fontLigatures": true,
-  "material-icon-theme.activeIconPack": "react_redux"
+  "material-icon-theme.activeIconPack": "react_redux",
+  "cSpell.words": ["qbit"]
 }
