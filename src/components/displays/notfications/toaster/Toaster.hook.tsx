@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 
-const useBindSkin = ({
-  properties,
-  actions,
-  options,
-}: com.elem.Shell<AlphaElements.ToasterProperties, AlphaElements.ToasterActions>) => {
-  const { open, duration = 3000, autoClose = true } = properties;
+const useBindSkin = (props: com.qbit.ShellProps<ToasterProps>) => {
+  const { open, duration = 3000, autoClose = true } = props;
   const [isOpen, setIsOpen] = useState(open);
 
   useEffect(() => {
@@ -16,7 +12,7 @@ const useBindSkin = ({
     }
   }, [duration, autoClose]);
 
-  return { properties: { ...properties, open: isOpen }, actions, options };
+  return { ...props, open: isOpen };
 };
 
 export default useBindSkin;

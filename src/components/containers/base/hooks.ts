@@ -72,7 +72,10 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
   // Get the child renderer from parent props
   const { childRenderer: defaultChildRenderer } = props.renderers ?? {};
 
-  const computedChildren = (children as ReactElement[]).map((child, i) => {
+  // if user pass only one elements react passing it as object instead of array
+  const rendererChildren = Array.isArray(children) ? children : [children];
+
+  const computedChildren = (rendererChildren as ReactElement[]).map((child, i) => {
     // extract child props
     const { props: childProps } = child;
 

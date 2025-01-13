@@ -1,4 +1,4 @@
-import { Shell } from '@components/containers';
+import { BaseComponent, useGetChildren } from '@components/containers';
 import { createPortal } from 'react-dom';
 import useBindSkin from './Toaster.hook';
 
@@ -11,19 +11,16 @@ const POSITIONS = {
   'bottom-right': 'bottom-0 right-0',
 };
 
-const Toaster = (props: com.elem.Shell<AlphaElements.ToasterProperties, AlphaElements.ToasterActions>) => {
-  const { properties, actions, options } = useBindSkin(props);
-  const { open, testId, position = 'top-right' } = properties;
+const Toaster: com.qbit.Shell<ToasterProps> = (props: com.qbit.ShellProps<ToasterProps>) => {
+  const { children: oChildren, ...rest } = props;
+  const children = useGetChildren<ToasterProps>(rest, oChildren);
+  const { open, position, testId } = useBindSkin(rest);
 
   if (open) {
     return createPortal(
       <div className="fixed inset-0 flex z-50" data-testid={testId}>
-        <div className={`absolute ${POSITIONS[position as AlphaElements.Position]}`}>
-          <Shell<AlphaElements.ToasterProperties, AlphaElements.ToasterActions>
-            properties={properties}
-            actions={actions}
-            options={options}
-          />
+        <div className={`absolute ${POSITIONS[position as Position]}`}>
+          <BaseComponent {...rest}>{children}</BaseComponent>
         </div>
       </div>,
       document.body,
