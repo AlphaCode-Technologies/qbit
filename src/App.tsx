@@ -1,6 +1,10 @@
 import { Option, Select } from '@inputs/choices';
 import { ListItemSkin, ListSkin, OptionSkin, SelectSkin } from '@skins/defaults';
 import { List, ListItem } from '@components/displays';
+import BreadcrumbSkin from '@skins/defaults/breadcrumb/Breadcrumb.skin.default';
+import BreadcrumbItemSkin from '@skins/defaults/breadcrumb/BreadcrumbItem.skin.default';
+import Breadcrumb from '@components/displays/indicators/breadcrumbs/breadcrumb/Breadcrumb';
+import BreadcrumbItem from '@components/displays/indicators/breadcrumbs/breadcrumb/BreadcrumbItem';
 
 const App = () => {
   const SelectProperties: AlphaElements.SelectProperties = {
@@ -38,6 +42,17 @@ const App = () => {
         <ListItem label="item 3" value="item 3" />
         <ListItem label="item 4" value="item 4" />
       </List>
+
+      <Breadcrumb
+        renderers={{ renderer: BreadcrumbSkin, childRenderer: BreadcrumbItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        className="p-2"
+      >
+        <BreadcrumbItem name="Home" href="/" active />
+        <BreadcrumbItem name="Category" href="/category" />
+        <BreadcrumbItem name="Subcategory" href="/category/subcategory" />
+        <BreadcrumbItem name="Current Page" disabled />
+      </Breadcrumb>
     </div>
   );
 };
