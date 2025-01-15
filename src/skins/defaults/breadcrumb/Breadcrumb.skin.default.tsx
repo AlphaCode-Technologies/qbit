@@ -3,7 +3,7 @@ const BreadcrumbSkin: com.qbit.Skin<BreadcrumbProps> = (props: com.qbit.SkinProp
 
   return (
     <nav aria-label="breadcrumb">
-      <ol className="breadcrumb flex gap-2">{children}</ol>
+      <ol className="flex gap-2">{children}</ol>
     </nav>
   );
 };

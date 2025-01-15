@@ -49,7 +49,7 @@ const App = () => {
         className="p-2"
       >
         <BreadcrumbItem name="Home" href="/" active />
-        <BreadcrumbItem name="Category" href="/category" />
+        <BreadcrumbItem name="Category" onClick={() => console.log('sss')} />
         <BreadcrumbItem name="Subcategory" href="/category/subcategory" />
         <BreadcrumbItem name="Current Page" disabled />
       </Breadcrumb>

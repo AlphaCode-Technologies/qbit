@@ -6,7 +6,6 @@ type BreadcrumbItemProps = BreadcrumbProps &
     href?: string;
     testId?: string;
     active?: boolean;
-    onClick?: (index: number) => void;
-    isActive?: any;
-    setActive?: any;
+    total?: number;
+    index?: number;
   }>;
