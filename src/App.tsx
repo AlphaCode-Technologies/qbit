@@ -1,6 +1,6 @@
 import { ListItemSkin, ListSkin, ToasterSkin } from '@skins/defaults';
 import { List, ListItem } from '@components/displays';
-import { Toaster } from '@components/displays/notfications';
+import { Toaster } from '@components/displays/notifications';
 
 const App = () => {
   return (
