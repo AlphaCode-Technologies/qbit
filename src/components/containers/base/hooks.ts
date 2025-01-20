@@ -59,8 +59,10 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
 ) => {
   const { computedActions } = useGetAction();
   const { keyExtractor: parentKeyExtractor, disabled: parentDisabled = false, ...restParentProps } = props;
+  const childrenCount = Children.count(children);
+
   // Validate if children are available
-  if (Children.count(children) === 0) {
+  if (childrenCount === 0) {
     throw new Error('No children specified');
   }
 
@@ -117,6 +119,8 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
         value: childValue,
         renderers: { renderer, childRenderer: grandChildRenderer },
         disabled,
+        index: i,
+        childrenCount,
       },
       grandChildren,
     );

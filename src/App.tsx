@@ -1,4 +1,4 @@
-import { ListItemSkin, ListSkin } from '@skins/defaults';
+import { BreadcrumbItemSkin, BreadcrumbSkin, ListItemSkin, ListSkin } from '@skins/defaults';
 import { List, ListItem } from '@components/displays';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
@@ -8,6 +8,7 @@ import Select from '@components/inputs/choices/select/Select';
 import SelectSkin from '@skins/defaults/select/Select.default.skin';
 import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
 import SelectOption from '@components/inputs/choices/select/SelectOption';
+import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
 
 const App = () => {
   return (
@@ -47,6 +48,17 @@ const App = () => {
         <SelectOption label="Option 2" value="option2" />
         <SelectOption label="Option 3" value="option3" disabled />
       </Select>
+
+      <Breadcrumb
+        renderers={{ renderer: BreadcrumbSkin, childRenderer: BreadcrumbItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        className="p-2"
+      >
+        <BreadcrumbItem name="Home" href="/" active />
+        <BreadcrumbItem name="Category" href="/category" />
+        <BreadcrumbItem name="Subcategory" href="/category/subcategory" />
+        <BreadcrumbItem name="Current Page" disabled />
+      </Breadcrumb>
     </div>
   );
 };
