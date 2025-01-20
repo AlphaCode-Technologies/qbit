@@ -1,5 +1,5 @@
 export default {
-  name: 'Text',
+  name: 'TextInput',
   actions: [],
   properties: [],
 };
