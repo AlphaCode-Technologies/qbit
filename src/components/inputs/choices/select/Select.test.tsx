@@ -1,160 +1,79 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import Select from './Select';
-import Option from './Option';
-import { OptionSkin, SelectSkin } from '@skins/defaults';
+import SelectOption from './SelectOption';
+import SelectSkin from '@skins/defaults/select/Select.default.skin';
+import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
 
-const TestSkin: com.elem.Skin<AlphaElements.SelectProperties, AlphaElements.SelectActions> = ({
-  properties,
-  actions,
-}) => {
-  const { label, value, tabIndex } = properties;
-  const { onChange } = actions ?? {};
-  return (
-    <button
-      className={`bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4`}
-      onClick={() => onChange?.(value)}
-      tabIndex={tabIndex}
+const renderSelect = (props = {}) => {
+  return render(
+    <Select
+      renderers={{ renderer: SelectSkin, childRenderer: SelectOptionSkin }}
+      keyExtractor={(value: string, i: number) => `${value}-${i}`}
+      defaultValue="Option 1"
+      {...props}
     >
-      {label}
-    </button>
-  );
-};
-
-const DEFAULT_PROPERTIES: AlphaElements.SelectProperties = {
-  name: 'select-element',
-  value: '',
-  renderer: SelectSkin,
-  optionRenderer: OptionSkin,
-  testId: 'select-test-id',
-};
-
-const DEFAULT_ACTIONS: AlphaElements.SelectActions = {
-  onChange: (val: any) => {
-    console.log(val);
-  },
-};
-
-const DEFAULT_DATA: AlphaElements.SelectOptionProps[] = [
-  { value: { value: 'good', label: 'Good' }, testId: 'good_0' },
-  { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1' },
-  { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2' },
-];
-
-type SelectData = {
-  props: AlphaElements.SelectProperties;
-  actions: AlphaElements.SelectActions;
-  data: AlphaElements.SelectOptionProps[];
-};
-
-const renderSelect = ({ props, actions, data }: SelectData) =>
-  render(
-    <Select properties={props} actions={actions}>
-      {data?.map((d: AlphaElements.SelectOptionProps) => {
-        return <Option properties={d} />;
-      })}
+      <SelectOption label="Option 1" value="option1" testId="test1" />
+      <SelectOption label="Option 2" value="option2" />
+      <SelectOption label="Option 3" value="option3" disabled />
     </Select>,
   );
+};
 
-describe('Test for select elements', () => {
+describe('Select Component', () => {
   afterEach(() => {
     cleanup();
   });
 
-  it('Should have render element', async () => {
-    renderSelect({ props: DEFAULT_PROPERTIES, actions: DEFAULT_ACTIONS, data: DEFAULT_DATA });
-    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
-    expect(selectEle).not.toBeNull();
-    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    expect(optionEle).toBeNull();
+  it('renders the Select component with default props', () => {
+    renderSelect({ testId: 'test1' });
+
+    expect(screen.getByTestId('test1')).toBeInTheDocument();
   });
 
-  it('Should have render elements for on click', async () => {
-    renderSelect({ props: DEFAULT_PROPERTIES, actions: DEFAULT_ACTIONS, data: DEFAULT_DATA });
-    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
-    await fireEvent.click(selectEle!);
-    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    expect(optionEle).not.toBeNull();
+  it('toggles dropdown visibility on click', () => {
+    renderSelect();
+
+    const trigger = screen.getByText('Option 1');
+    fireEvent.click(trigger);
+
+    expect(screen.getByText('Option 2')).toBeInTheDocument();
+    expect(screen.getByText('Option 3')).toBeInTheDocument();
   });
 
-  it('Should have hide elements for on click on option', async () => {
-    renderSelect({ props: DEFAULT_PROPERTIES, actions: DEFAULT_ACTIONS, data: DEFAULT_DATA });
-    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
-    await fireEvent.click(selectEle!);
-    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    await fireEvent.click(optionEle!);
-    const optionEle2 = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    expect(optionEle2).toBeNull();
+  it('hides dropdown when clicked again', () => {
+    renderSelect();
+
+    const trigger = screen.getByText('Option 1');
+    fireEvent.click(trigger);
+    fireEvent.click(trigger);
+
+    expect(screen.queryByText('Option 2')).not.toBeInTheDocument();
+    expect(screen.queryByText('Option 3')).not.toBeInTheDocument();
   });
 
-  it('Should have hide elements for on outside click', async () => {
-    renderSelect({ props: DEFAULT_PROPERTIES, actions: DEFAULT_ACTIONS, data: DEFAULT_DATA });
-    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
-    await fireEvent.click(selectEle!);
-    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    expect(optionEle).not.toBeNull();
-    await fireEvent.click(document.body);
-    const optionEle2 = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    expect(optionEle2).toBeNull();
+  it('calls onChange when an option is selected', () => {
+    const mockOnChange = vi.fn();
+
+    renderSelect({ onChange: mockOnChange });
+
+    const trigger = screen.getByText('Option 1');
+    fireEvent.click(trigger);
+
+    const option = screen.getByText('Option 2');
+    fireEvent.click(option);
+
+    expect(mockOnChange).toHaveBeenCalledWith('Option 2');
   });
 
-  it('Should have select value for on click on option', async () => {
-    renderSelect({ props: DEFAULT_PROPERTIES, actions: DEFAULT_ACTIONS, data: DEFAULT_DATA });
-    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
-    await fireEvent.click(selectEle!);
-    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    await fireEvent.click(optionEle!);
-    const selectEle2 = await screen.findByTestId(DEFAULT_PROPERTIES.testId!);
-    const optionText = selectEle2?.textContent?.trim();
-    expect(optionText).toContain(DEFAULT_DATA[0].value?.label);
-  });
+  it('renders the disabled option', () => {
+    renderSelect();
 
-  it('Should have render with child skin', async () => {
-    const data: AlphaElements.SelectOptionProps[] = [
-      { value: { value: 'good', label: 'Good' }, testId: 'good_0', renderer: TestSkin },
-      { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1', renderer: TestSkin },
-      { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2', renderer: TestSkin },
-    ];
-    renderSelect({
-      props: {
-        ...DEFAULT_PROPERTIES,
-        keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
-      },
-      actions: DEFAULT_ACTIONS,
-      data: data,
-    });
-    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
-    await fireEvent.click(selectEle!);
-    const element = screen.getAllByRole('button');
-    expect(element).toHaveLength(data.length);
-  });
+    const trigger = screen.getByText('Option 1');
+    fireEvent.click(trigger);
 
-  it('Should have render with child disabled', async () => {
-    const data: AlphaElements.SelectOptionProps[] = [
-      { value: { value: 'good', label: 'Good' }, testId: 'good_0', disabled: true },
-      { value: { value: 'bad', label: 'Bad' }, testId: 'bad_1' },
-      { value: { value: 'avg', label: 'Avg' }, testId: 'avg_2' },
-    ];
-    renderSelect({
-      props: {
-        ...DEFAULT_PROPERTIES,
-        keyExtractor: ({ value, label }: AlphaElements.RadioProperties) => `${value}-${label}`,
-      },
-      actions: DEFAULT_ACTIONS,
-      data: data,
-    });
-    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
-    await fireEvent.click(selectEle!);
-    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    await fireEvent.click(optionEle!);
-    const optionEle2 = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    expect(optionEle2).not.toBeNull();
-  });
-
-  it('Should have render with select', async () => {
-    renderSelect({ props: { ...DEFAULT_PROPERTIES, disabled: true }, actions: DEFAULT_ACTIONS, data: DEFAULT_DATA });
-    const selectEle = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
-    await fireEvent.click(selectEle!);
-    const optionEle = await screen.queryByTestId(DEFAULT_DATA[0].testId!);
-    expect(optionEle).toBeNull();
+    const disabledOption = screen.getByText('Option 3');
+    const parent = disabledOption.parentElement?.parentElement?.parentElement;
+    expect(parent).toHaveStyle({ cursor: 'not-allowed' });
   });
 });

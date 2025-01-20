@@ -1,38 +1,32 @@
-import React, { Children, cloneElement, ReactElement, RefObject, useRef } from 'react';
-import { useBindSkin } from './Select.hook';
-import { Shell } from '@components/containers';
+import { BaseComponent, useGetChildren } from '@components/containers';
+import useBindSkin from './Select.hook';
+import { useState } from 'react';
 
-const Select = ({ children, ...rest }: com.elem.Shell<AlphaElements.SelectProperties, AlphaElements.SelectActions>) => {
-  const ref: RefObject<HTMLDivElement> = useRef(null);
-  const optionRef: RefObject<HTMLDivElement> = useRef(null);
-  const { properties, actions, options, selectedValue, isOpen, getPropsAndActions, onClickSelectOption, handleScroll } =
-    useBindSkin(rest, ref, optionRef);
-  const { optionContainerClassName = 'rounded p-4 bg-slate-100 mt-1 min-h-64 max-h-72' } = properties;
+/**
+ * Select group component.
+ * @param props
+ * @returns
+ */
+
+const Select: com.qbit.Shell<SelectGroupProps, SelectOption> = (
+  props: com.qbit.ShellProps<SelectGroupProps, SelectOption>,
+) => {
+  const { children: oChildren, disabled, ...rest } = props;
+  const finalProps = useBindSkin(rest);
+  const children = useGetChildren<SelectGroupProps, SelectOption>(finalProps, oChildren);
+
+  // State for dropdown visibility
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+  // Toggle dropdown visibility
+  const toggleDropdown = () => setDropdownVisible(!isDropdownVisible);
 
   return (
-    <div ref={ref} className="w-fit">
-      <div onClick={() => onClickSelectOption()}>
-        <Shell<AlphaElements.SelectOptionProps, AlphaElements.SelectActions>
-          properties={{ ...properties, value: selectedValue }}
-          actions={actions}
-          options={options}
-        />
+    <div className={`relative ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}>
+      <div className="inline-block" onClick={toggleDropdown}>
+        <BaseComponent {...finalProps} />
       </div>
-      {isOpen && (
-        <div ref={optionRef} onScroll={handleScroll} className={`absolute overflow-auto ${optionContainerClassName}`}>
-          {Children.map(children as ReactElement[], (child: ReactElement, i: number) => {
-            const { key, properties, actions } = getPropsAndActions(child, i);
-            return (
-              <React.Fragment key={key}>
-                {cloneElement(child, {
-                  properties,
-                  actions,
-                })}
-              </React.Fragment>
-            );
-          })}
-        </div>
-      )}
+      {isDropdownVisible && !disabled && <div>{children}</div>}
     </div>
   );
 };
