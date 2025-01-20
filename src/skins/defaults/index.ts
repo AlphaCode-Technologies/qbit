@@ -12,6 +12,8 @@ export { default as CardFooterSkin } from './CardFooter.skin.default';
 export { default as OptionSkin } from './Option.default.skin';
 export { default as ProgressBarSkin } from './ProgressBar.skin.default';
 export { default as TabSkin } from './Tab.default.skin';
+export { default as NumericRangeSkin } from './NumericRange.default.skin';
+export { default as NumericRangePointerSkin } from './NumericRangePointer.default.skin';
 export { default as SelectSkin } from './Select.default.skin';
 export { default as TextSkin } from './Text.default.skin';
 export { TooltipSkin } from './tooltip';

@@ -1,7 +1,16 @@
+import { NumericRange, NumericRangePicker } from '@components/inputs/range';
+import {
+  ListItemSkin,
+  ListSkin,
+  NumericRangePointerSkin,
+  NumericRangeSkin,
+  CheckboxItemSkin,
+  CheckboxSkin,
+  ToasterSkin,
+} from '@skins/defaults';
 import { Toaster } from '@components/displays/notifications';
 import { SelectSkin, TooltipSkin } from '@skins/defaults';
 import { List, ListItem, Tooltip } from '@components/displays';
-import { CheckboxItemSkin, CheckboxSkin, ListItemSkin, ListSkin, ToasterSkin } from '@skins/defaults';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
 import Radio from '@components/inputs/choices/radios/radio/Radio';
@@ -31,6 +40,16 @@ const App = () => {
         <ListItem label="item 3" value="item 3" />
         <ListItem label="item 4" value="item 4" />
       </List>
+      <NumericRange
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        renderers={{ renderer: NumericRangeSkin, childRenderer: NumericRangePointerSkin }}
+        minValue={0}
+        maxValue={200}
+      >
+        <NumericRangePicker value={0} />
+        <NumericRangePicker value={100} />
+        <NumericRangePicker value={200} />
+      </NumericRange>
       <Toaster
         open={true}
         position="top-center"
