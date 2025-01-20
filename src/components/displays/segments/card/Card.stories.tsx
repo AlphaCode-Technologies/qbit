@@ -1,8 +1,7 @@
-import { CardContentSkin, CardFooterSkin, CardHeaderSkin } from '@skins/defaults';
+import { StoryFn } from '@storybook/react';
 import Card from './Card';
-import CardHeader from './CardHeader';
-import CardContent from './CardContent';
-import CardFooter from './CardFooter';
+import CardItem from './CardItem';
+import { CardItemSkin, CardSkin } from '@skins/defaults';
 
 export default {
   title: 'Alpha Elements/Displays/Segments/Card',
@@ -13,15 +12,21 @@ export default {
   tags: ['autodocs'],
   argTypes: {},
   args: {
-    properties: {},
+    renderers: { renderer: CardSkin, childRenderer: CardItemSkin },
+    keyExtractor: (value: string, i: number) => `${value}-${i}`,
   },
 };
 
-export const Default = {
-  args: {},
-  children: [
-    <CardHeader renderer={{ renderer: CardHeaderSkin }} />,
-    <CardContent renderer={{ renderer: CardContentSkin }} />,
-    <CardFooter renderer={{ renderer: CardFooterSkin }} />,
-  ],
+const Template: StoryFn = (args: any) => {
+  return (
+    <Card {...args}>
+      <CardItem>Card Content</CardItem>
+      <CardItem>Card Content</CardItem>
+    </Card>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  keyExtractor: (value: string, i: number) => `${value}-${i}`,
 };
