@@ -1,21 +1,25 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import Modal from './Modal';
-import ModalHeader from './ModalHeader';
-import ModalContent from './ModalContent';
-import ModalFooter from './ModalFooter';
-import { ModalContentSkin, ModalFooterSkin, ModalHeaderSkin } from '@skins/defaults';
+import ModalItem from './ModalItem';
+import { ModalItemSkin, ModalSkin } from '@skins/defaults';
 
-const DEFAULT_PROPERTIES: AlphaElements.ModalProperties = {
-  isOpen: true,
+const DEFAULT_PROPERTIES: com.qbit.ShellProps<ModalProps> = {
+  onClose(): void {},
+  open: true,
   testId: 'modal-test-id',
+  keyExtractor: (value: string, i: number) => `${value}-${i}`,
+  renderers: { renderer: ModalSkin, childRenderer: ModalItemSkin },
 };
 
-const renderModal = ({ props }: com.elem.Shell<AlphaElements.ModalProperties, AlphaElements.ModalActions>) =>
+const renderModal = (props: com.qbit.ShellProps<ModalProps>) =>
   render(
-    <Modal properties={props}>
-      <ModalHeader properties={{ renderer: ModalHeaderSkin }} />
-      <ModalContent properties={{ renderer: ModalContentSkin }} />
-      <ModalFooter properties={{ renderer: ModalFooterSkin }} />
+    <Modal {...props}>
+      <ModalItem>
+        <div>Modal Content</div>
+      </ModalItem>
+      <ModalItem>
+        <div>Modal Content</div>
+      </ModalItem>
     </Modal>,
   );
 
@@ -25,13 +29,13 @@ describe('Test for modal elements', () => {
   });
 
   it('Should have modal elements', async () => {
-    renderModal({ props: DEFAULT_PROPERTIES });
+    renderModal(DEFAULT_PROPERTIES);
     const element = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     expect(element).toBeInTheDocument();
   });
 
   it('Should have not modal elements if isOpen is false', async () => {
-    renderModal({ props: { ...DEFAULT_PROPERTIES, isOpen: false } });
+    renderModal({ ...DEFAULT_PROPERTIES, open: false });
     const element = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     expect(element).not.toBeInTheDocument();
   });

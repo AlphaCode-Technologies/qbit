@@ -1,16 +1,19 @@
-import { ListItemSkin, ListSkin, ToasterSkin } from '@skins/defaults';
-import { List, ListItem } from '@components/displays';
 import { Toaster } from '@components/displays/notifications';
+import { SelectSkin, TooltipSkin } from '@skins/defaults';
+import { List, ListItem, Tooltip } from '@components/displays';
+import { CheckboxItemSkin, CheckboxSkin, ListItemSkin, ListSkin, ToasterSkin } from '@skins/defaults';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
 import Radio from '@components/inputs/choices/radios/radio/Radio';
 import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
-import Select from '@components/inputs/choices/select/Select';
-import SelectSkin from '@skins/defaults/select/Select.default.skin';
 import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
 import SelectOption from '@components/inputs/choices/select/SelectOption';
+import { Select } from '@components/inputs/choices';
+import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
+import { useState } from 'react';
 
 const App = () => {
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
   return (
     <div data-id="my-id">
       {/* List component */}
@@ -51,6 +54,16 @@ const App = () => {
           </text>
         </svg>
       </Toaster>
+      <Tooltip
+        renderers={{ renderer: TooltipSkin, childRenderer: ListItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        position={'bottom'}
+        label={'Hello World'}
+        className="bg-slate-300 p-1 rounded-lg shadow-lg"
+      >
+        <ListItem label="item 2" value="item 2" />
+        <ListItem label="item 2" value="item 2" />
+      </Tooltip>
 
       <Radio
         renderers={{ renderer: RadioSkin, childRenderer: RadioOptionSkin }}
@@ -71,6 +84,39 @@ const App = () => {
         <SelectOption label="Option 2" value="option2" />
         <SelectOption label="Option 3" value="option3" disabled />
       </Select>
+
+      <Checkbox
+        renderers={{ renderer: CheckboxSkin, childRenderer: CheckboxItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        className="flex gap-2"
+      >
+        <CheckboxItem
+          name="Option 1"
+          value="option1"
+          checked={selectedValues.includes('option1')}
+          onChange={(isChecked) =>
+            setSelectedValues((prev) => (isChecked ? [...prev, 'option1'] : prev.filter((val) => val !== 'option1')))
+          }
+        />
+
+        <CheckboxItem
+          name="Option 2"
+          value="option2"
+          checked={selectedValues.includes('option2')}
+          onChange={(isChecked) =>
+            setSelectedValues((prev) => (isChecked ? [...prev, 'option2'] : prev.filter((val) => val !== 'option2')))
+          }
+        />
+
+        <CheckboxItem
+          name="Option 3"
+          value="option3"
+          checked={selectedValues.includes('option3')}
+          onChange={(isChecked) =>
+            setSelectedValues((prev) => (isChecked ? [...prev, 'option3'] : prev.filter((val) => val !== 'option3')))
+          }
+        />
+      </Checkbox>
     </div>
   );
 };

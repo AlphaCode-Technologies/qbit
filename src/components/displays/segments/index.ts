@@ -1,12 +1,8 @@
 export { default as Modal } from './modal/Modal';
-export { default as ModalHeader } from './modal/ModalHeader';
-export { default as ModalContent } from './modal/ModalContent';
-export { default as ModalFooter } from './modal/ModalFooter';
+export { default as ModalItem } from './modal/ModalItem';
 export { default as Card } from './card/Card';
 export { default as CardItem } from './card/CardItem';
 export { default as Tab } from './tab/Tab';
 export { default as TabGroup } from './tab/TabGroup';
 export { default as Drawer } from './drawer/Drawer';
-export { default as DrawerHeader } from './drawer/DrawerHeader';
-export { default as DrawerContent } from './drawer/DrawerContent';
-export { default as DrawerFooter } from './drawer/DrawerFooter';
+export { default as DrawerItem } from './drawer/DrawerItem';

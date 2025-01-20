@@ -10,18 +10,14 @@ export default {
   tags: ['autodocs'],
   argTypes: {},
   args: {
-    properties: {
-      value: '',
-      testId: '',
-    },
+    value: '',
+    testId: '',
+    renderers: { renderer: ProgressBarSkin },
   },
 };
 
 export const Default = {
   args: {
-    properties: {
-      value: 20,
-      renderer: ProgressBarSkin,
-    },
+    value: 20,
   },
 };
