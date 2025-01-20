@@ -1,31 +1,19 @@
-import { Children, cloneElement, ReactElement } from 'react';
 import { createPortal } from 'react-dom';
-import { useBindSkin } from './Modal.hook';
+import { BaseComponent, useGetChildren } from '@components/containers';
 
-const Modal = ({ children, ...rest }: com.elem.Shell<AlphaElements.ModalProperties, AlphaElements.ModalActions>) => {
-  const { properties, options, getPropsAndActions } = useBindSkin(rest);
-  const { isOpen, testId } = properties;
-  const { styles } = options ?? {};
-  const { className = 'bg-white p-6 rounded-lg' } = styles ?? {};
+/**
+ * Simple Modal component.
+ * @param props
+ * @returns
+ */
+const Modal: com.qbit.Shell<ModalProps> = (props: com.qbit.ShellProps<ModalProps>) => {
+  const { children: oChildren, open, testId } = props;
+  const children = useGetChildren<ModalProps, ModalProps>(props, oChildren);
 
-  if (isOpen)
+  if (open)
     return createPortal(
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" data-testid={testId}>
-        <div className={className}>
-          {Children.map(children as ReactElement[], (child: ReactElement) => {
-            const {
-              properties: childProperties,
-              actions: childActions,
-              options: childOptions,
-            } = getPropsAndActions(child);
-
-            return cloneElement(child, {
-              properties: childProperties,
-              actions: childActions,
-              options: childOptions,
-            });
-          })}
-        </div>
+        <BaseComponent {...props}>{children}</BaseComponent>
       </div>,
       document.body,
     );

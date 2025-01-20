@@ -1,7 +1,5 @@
 export { default as Modal } from './modal/Modal';
-export { default as ModalHeader } from './modal/ModalHeader';
-export { default as ModalContent } from './modal/ModalContent';
-export { default as ModalFooter } from './modal/ModalFooter';
+export { default as ModalItem } from './modal/ModalItem';
 export { default as Card } from './card/Card';
 export { default as CardItem } from './card/CardItem';
 export { default as Tab } from './tab/Tab';
