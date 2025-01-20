@@ -1,7 +1,7 @@
 import { BaseComponent } from '@components/containers';
 
 /**
- * Simple list component.
+ * Simple button component.
  * @param props
  * @returns
  */

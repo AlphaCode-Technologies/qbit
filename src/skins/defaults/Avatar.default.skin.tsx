@@ -1,6 +1,5 @@
-const Skin: com.elem.Skin<AlphaElements.AvatarProperties, AlphaElements.AvatarActions> = ({ properties, actions }) => {
-  const { value, testId } = properties;
-  const { onClick } = actions ?? {};
+const Skin: com.qbit.Skin<AvatarProps> = (props: com.qbit.SkinProps<AvatarProps>) => {
+  const { value, testId, onClick } = props;
 
   return (
     <svg

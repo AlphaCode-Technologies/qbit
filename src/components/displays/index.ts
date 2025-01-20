@@ -1,2 +1,2 @@
 export { List, ListItem } from './lists';
-export { Loader } from './indicators';
+export { Avatar, Loader } from './indicators';
