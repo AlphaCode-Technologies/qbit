@@ -1,5 +1,5 @@
-const Skin: com.elem.Skin<AlphaElements.LoaderProperties, 0> = ({ properties }) => {
-  const { testId } = properties;
+const Skin: com.qbit.Skin<LoaderProps> = (props: com.qbit.SkinProps<LoaderProps>) => {
+  const { testId } = props;
 
   return (
     <div role="status" data-testid={testId}>
