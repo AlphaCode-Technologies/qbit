@@ -10,49 +10,50 @@ export default {
   tags: ['autodocs'],
   argTypes: {},
   args: {
-    properties: {
-      value: '',
-      disabled: false,
-      testId: '',
-    },
+    value: '',
+    disabled: false,
   },
 };
 
 export const Default = {
   args: {
-    properties: { value: 'Button', renderer: ButtonSkin },
+    value: 'Button',
+    renderers: { renderer: ButtonSkin },
   },
 };
 
 export const Skin = {
   args: {
-    properties: { value: 'Button', renderer: ButtonSkin },
+    value: 'Button',
+    renderers: { renderer: ButtonSkin },
   },
 };
 
 export const Disabled = {
   args: {
-    properties: { value: 'Disabled Button', disabled: true, renderer: ButtonSkin },
+    value: 'Button',
+    disabled: true,
+    renderers: { renderer: ButtonSkin },
   },
 };
 
 export const TabIndex = {
   args: {
-    properties: { value: 'Button', renderer: ButtonSkin, tabIndex: 1 },
+    value: 'Button',
+    tabIndex: 1,
+    renderers: { renderer: ButtonSkin },
   },
 };
 
-export const Loading = {
-  args: {
-    properties: {
-      value: 'Button',
-      renderer: ButtonSkin,
-      tabIndex: 1,
-      loaderProps: {
-        isLoading: true,
-        value: 'Loading...',
-        renderer: ButtonSkin,
-      },
-    },
-  },
-};
+// export const Loading = {
+//   args: {
+//     value: 'Button',
+//     tabIndex: 1,
+//     renderers: { renderer: ButtonSkin },
+//     loaderProps: {
+//       isLoading: true,
+//       value: 'Loading...',
+//       renderers: { renderer: ButtonSkin },
+//     },
+//   },
+// };

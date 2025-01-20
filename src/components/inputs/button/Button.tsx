@@ -1,16 +1,14 @@
-import { Shell } from '@components/containers';
-import { useBindSkin } from '@inputs/button/Button.hook.ts';
+import { BaseComponent } from '@components/containers';
 
-const Button = (props: com.elem.ShellProps<AlphaElements.ButtonProperties, AlphaElements.ButtonActions>) => {
-  const { properties = {}, actions = {}, options = {} } = useBindSkin(props);
+/**
+ * Simple list component.
+ * @param props
+ * @returns
+ */
+const Button: com.qbit.Shell<ButtonProps> = (props: com.qbit.ShellProps<ButtonProps>) => {
+  const { children: oChildren, ...rest } = props;
 
-  return (
-    <Shell<AlphaElements.ButtonProperties, AlphaElements.ButtonActions>
-      properties={properties}
-      actions={actions}
-      options={options}
-    />
-  );
+  return <BaseComponent {...rest} />;
 };
 
 export default Button;
