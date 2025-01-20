@@ -12,7 +12,7 @@ const DEFAULT_PROPERTIES: com.qbit.ShellProps<DrawerProps> = {
   renderers: { renderer: DrawerSkin, childRenderer: DrawerItemSkin },
 };
 
-const renderDrawer = (props: com.elem.Shell<DrawerProps, DrawerItemProps>) =>
+const renderDrawer = (props: com.qbit.ShellProps<DrawerProps>) =>
   render(
     <Drawer {...props}>
       <DrawerItem>Drawer Content</DrawerItem>
@@ -20,7 +20,7 @@ const renderDrawer = (props: com.elem.Shell<DrawerProps, DrawerItemProps>) =>
     </Drawer>,
   );
 
-describe('Test for drawer elements', () => {
+describe('Drawer Component Test', () => {
   afterEach(() => {
     cleanup();
   });
@@ -38,7 +38,7 @@ describe('Test for drawer elements', () => {
   });
 
   it('Should apply the correct position class based on the position property', async () => {
-    const positions = ['top', 'bottom', 'left', 'right'];
+    const positions = ['top', 'bottom', 'left', 'right'] as const;
     for (const position of positions) {
       renderDrawer({ ...DEFAULT_PROPERTIES, position });
       const element = await screen.findByTestId(DEFAULT_PROPERTIES.testId!);
