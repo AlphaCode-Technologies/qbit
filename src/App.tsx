@@ -23,7 +23,7 @@ const App = () => {
       <Toaster
         open={true}
         position="top-center"
-        renderers={{ renderer: ToasterSkin, childRenderer: ToasterSkin }}
+        renderers={{ renderer: ToasterSkin }}
         keyExtractor={(_, i: number) => `top-center-${i}`}
         className="m-2 shadow-xl"
       >

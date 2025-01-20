@@ -88,9 +88,10 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
       ...restChildProps
     } = childProps as com.qbit.ShellProps<P, C>;
 
-    if (!renderer) {
-      throw new Error('No Renderer specified for children');
-    }
+    // TODO need to discuss with @dulan that when user is passing non qbit elements they won't have child renderer
+    // if (!renderer) {
+    //   throw new Error('No Renderer specified for children');
+    // }
     // Determining disabled state
     const disabled = parentDisabled || childDisabled;
 
