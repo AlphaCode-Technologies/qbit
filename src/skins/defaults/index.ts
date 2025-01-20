@@ -21,3 +21,4 @@ export { default as DrawerContentSkin } from './DrawerContent.skin.default';
 export { default as DrawerHeaderSkin } from './DrawerHeader.skin.default';
 export { default as DrawerFooterSkin } from './DrawerFooter.skin.default';
 export { RadioSkin, RadioOptionSkin } from './radio';
+export { MenuItemSkin, MenuSkin } from './menu';
