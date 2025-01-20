@@ -1,13 +1,17 @@
 import { Option, Select } from '@inputs/choices';
-import { ListItemSkin, ListSkin, OptionSkin, SelectSkin } from '@skins/defaults';
+import { ListItemSkin, ListSkin, SelectSkin } from '@skins/defaults';
 import { List, ListItem } from '@components/displays';
+import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
+import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
+import Radio from '@components/inputs/choices/radios/radio/Radio';
+import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
 
 const App = () => {
   const SelectProperties: AlphaElements.SelectProperties = {
     name: 'select',
     value: { value: 'good', label: 'Good' },
     renderer: SelectSkin,
-    optionRenderer: OptionSkin,
+    optionRenderer: RadioOptionSkin,
   };
 
   const SelectAction: AlphaElements.SelectActions = {
@@ -38,6 +42,16 @@ const App = () => {
         <ListItem label="item 3" value="item 3" />
         <ListItem label="item 4" value="item 4" />
       </List>
+
+      <Radio
+        renderers={{ renderer: RadioSkin, childRenderer: RadioOptionSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        defaultValue={'option2'}
+      >
+        <RadioOption label="Option 1" name="example" value="option1" />
+        <RadioOption label="Option 2" name="example" value="option2" />
+        <RadioOption label="Option 3" name="example" value="option3" />
+      </Radio>
     </div>
   );
 };

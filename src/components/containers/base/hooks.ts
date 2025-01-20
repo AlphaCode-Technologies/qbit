@@ -110,6 +110,7 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
       child,
       {
         key: parentKeyExtractor(childValue, i),
+        ...restParentProps,
         ...otherProps,
         // Pass down the properties of parent
         keyExtractor: childKeyExtractor ?? parentKeyExtractor,
