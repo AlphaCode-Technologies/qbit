@@ -1,4 +1,11 @@
-import { BreadcrumbItemSkin, BreadcrumbSkin, ListItemSkin, ListSkin } from '@skins/defaults';
+import {
+  BreadcrumbItemSkin,
+  BreadcrumbSkin,
+  CheckboxItemSkin,
+  CheckboxSkin,
+  ListItemSkin,
+  ListSkin,
+} from '@skins/defaults';
 import { List, ListItem } from '@components/displays';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
@@ -9,8 +16,11 @@ import SelectSkin from '@skins/defaults/select/Select.default.skin';
 import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
 import SelectOption from '@components/inputs/choices/select/SelectOption';
 import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
+import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
+import { useState } from 'react';
 
 const App = () => {
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
   return (
     <div data-id="my-id">
       {/* List component */}
@@ -59,6 +69,39 @@ const App = () => {
         <BreadcrumbItem name="Subcategory" href="/category/subcategory" />
         <BreadcrumbItem name="Current Page" disabled />
       </Breadcrumb>
+
+      <Checkbox
+        renderers={{ renderer: CheckboxSkin, childRenderer: CheckboxItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        className="flex gap-2"
+      >
+        <CheckboxItem
+          name="Option 1"
+          value="option1"
+          checked={selectedValues.includes('option1')}
+          onChange={(isChecked) =>
+            setSelectedValues((prev) => (isChecked ? [...prev, 'option1'] : prev.filter((val) => val !== 'option1')))
+          }
+        />
+
+        <CheckboxItem
+          name="Option 2"
+          value="option2"
+          checked={selectedValues.includes('option2')}
+          onChange={(isChecked) =>
+            setSelectedValues((prev) => (isChecked ? [...prev, 'option2'] : prev.filter((val) => val !== 'option2')))
+          }
+        />
+
+        <CheckboxItem
+          name="Option 3"
+          value="option3"
+          checked={selectedValues.includes('option3')}
+          onChange={(isChecked) =>
+            setSelectedValues((prev) => (isChecked ? [...prev, 'option3'] : prev.filter((val) => val !== 'option3')))
+          }
+        />
+      </Checkbox>
     </div>
   );
 };

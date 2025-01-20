@@ -1,25 +1,12 @@
-const sizeMap = {
-  sm: 12,
-  md: 16,
-  lg: 20,
-  xl: 24,
-};
-
-const DefaultSkin: com.elem.Skin<AlphaElements.CheckboxProperties, AlphaElements.CheckBoxAction> = ({
-  properties,
-  actions,
-}) => {
-  const { value, disabled, size, testId } = properties;
-  const { onChange } = actions ?? {};
-  const dimension = sizeMap[size as AlphaElements.Size] || sizeMap['md'];
-
+const CheckboxItemSkin: com.qbit.Skin<CheckboxItemProps> = (props) => {
+  const { onChange, disabled, testId, checked } = props;
   return (
     <div className={`${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'cursor-pointer'}`}>
-      {value ? (
+      {checked ? (
         <svg
-          onClick={() => onChange?.(!value as any)}
-          width={dimension}
-          height={dimension}
+          onClick={() => onChange?.(!checked as any)}
+          width={20}
+          height={20}
           viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -39,9 +26,9 @@ const DefaultSkin: com.elem.Skin<AlphaElements.CheckboxProperties, AlphaElements
         </svg>
       ) : (
         <svg
-          onClick={() => onChange?.(!value as any)}
-          width={dimension}
-          height={dimension}
+          onClick={() => onChange?.(!checked as any)}
+          width={20}
+          height={20}
           viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -62,4 +49,4 @@ const DefaultSkin: com.elem.Skin<AlphaElements.CheckboxProperties, AlphaElements
   );
 };
 
-export default DefaultSkin;
+export default CheckboxItemSkin;
