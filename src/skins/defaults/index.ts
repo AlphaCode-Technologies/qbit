@@ -16,6 +16,8 @@ export { default as NumericRangeSkin } from './NumericRange.default.skin';
 export { default as NumericRangePointerSkin } from './NumericRangePointer.default.skin';
 export { default as SelectSkin } from './Select.default.skin';
 export { default as TextSkin } from './Text.default.skin';
+export { SplitterSkin, SplitterItemSkin } from './splitter';
+export { TooltipSkin } from './tooltip';
 export { AccordionItemSkin, AccordionSkin } from './accordion';
 export { BreadcrumbSkin, BreadcrumbItemSkin } from './breadcrumb';
 export { ProgressStepSkin, ProgressStepItemSkin } from './progress-step';

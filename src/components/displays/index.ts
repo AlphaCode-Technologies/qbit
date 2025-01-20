@@ -1,4 +1,5 @@
 export { List, ListItem } from './lists';
+export { Splitter, SplitterItem } from './spacings';
 export { Tab, TabItem } from './segments/tabs';
 export { Tooltip } from './notifications/tooltips';
 export { Avatar, Loader, ProgressBar } from './indicators';
