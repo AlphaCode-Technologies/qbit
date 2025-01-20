@@ -9,6 +9,4 @@ export { default as CardFooter } from './card/CardFooter';
 export { default as Tab } from './tab/Tab';
 export { default as TabGroup } from './tab/TabGroup';
 export { default as Drawer } from './drawer/Drawer';
-export { default as DrawerHeader } from './drawer/DrawerHeader';
-export { default as DrawerContent } from './drawer/DrawerContent';
-export { default as DrawerFooter } from './drawer/DrawerFooter';
+export { default as DrawerItem } from './drawer/DrawerItem';

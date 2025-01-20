@@ -1,25 +1,22 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import Drawer from './Drawer';
-import DrawerHeader from './DrawerHeader';
-import DrawerContent from './DrawerContent';
-import DrawerFooter from './DrawerFooter';
-import { DrawerContentSkin, DrawerFooterSkin, DrawerHeaderSkin } from '@skins/defaults';
+import DrawerItem from './DrawerItem';
+import { DrawerItemSkin, DrawerSkin } from '@skins/defaults';
 
-const DEFAULT_PROPERTIES: AlphaElements.DrawerProperties = {
+const DEFAULT_PROPERTIES: com.qbit.ShellProps<DrawerProps> = {
   open: true,
   position: 'left',
   testId: 'drawer-test-id',
+  onClose(): void {},
+  keyExtractor: (value: string, i: number) => `${value}-${i}`,
+  renderers: { renderer: DrawerSkin, childRenderer: DrawerItemSkin },
 };
 
-const renderDrawer = ({
-  props,
-  options,
-}: com.elem.Shell<AlphaElements.DrawerProperties, AlphaElements.DrawerActions>) =>
+const renderDrawer = (props: com.elem.Shell<DrawerProps, DrawerItemProps>) =>
   render(
-    <Drawer properties={props} options={options}>
-      <DrawerHeader properties={{ renderer: DrawerHeaderSkin }} />
-      <DrawerContent properties={{ renderer: DrawerContentSkin }} />
-      <DrawerFooter properties={{ renderer: DrawerFooterSkin }} />
+    <Drawer {...props}>
+      <DrawerItem>Drawer Content</DrawerItem>
+      <DrawerItem>Drawer Content</DrawerItem>
     </Drawer>,
   );
 
@@ -29,13 +26,13 @@ describe('Test for drawer elements', () => {
   });
 
   it('Should have drawer elements', async () => {
-    renderDrawer({ props: DEFAULT_PROPERTIES });
+    renderDrawer(DEFAULT_PROPERTIES);
     const element = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     expect(element).toBeInTheDocument();
   });
 
   it('Should have not drawer elements if open is false', async () => {
-    renderDrawer({ props: { ...DEFAULT_PROPERTIES, open: false } });
+    renderDrawer({ ...DEFAULT_PROPERTIES, open: false });
     const element = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     expect(element).not.toBeInTheDocument();
   });
@@ -43,7 +40,7 @@ describe('Test for drawer elements', () => {
   it('Should apply the correct position class based on the position property', async () => {
     const positions = ['top', 'bottom', 'left', 'right'];
     for (const position of positions) {
-      renderDrawer({ props: { ...DEFAULT_PROPERTIES, position } });
+      renderDrawer({ ...DEFAULT_PROPERTIES, position });
       const element = await screen.findByTestId(DEFAULT_PROPERTIES.testId!);
 
       const expectedPositionClass: Record<string, string> = {
@@ -58,18 +55,8 @@ describe('Test for drawer elements', () => {
     }
   });
 
-  it('Should have custom class', async () => {
-    const customClassName = 'custom-drawer-class';
-    renderDrawer({
-      props: DEFAULT_PROPERTIES,
-      options: { styles: { className: customClassName } },
-    });
-    const element = await screen.findByTestId(DEFAULT_PROPERTIES.testId!);
-    expect(element?.firstChild).toHaveClass(customClassName);
-  });
-
   it('Should render backdrop with correct opacity when open', async () => {
-    renderDrawer({ props: DEFAULT_PROPERTIES });
+    renderDrawer({ ...DEFAULT_PROPERTIES });
     const backdrop = await screen.findByTestId(DEFAULT_PROPERTIES.testId!);
     expect(backdrop).toHaveClass('bg-opacity-60');
   });
