@@ -1,5 +1,13 @@
-import { CheckboxItemSkin, CheckboxSkin, ListItemSkin, ListSkin, SelectSkin } from '@skins/defaults';
-import { List, ListItem } from '@components/displays';
+import {
+  CheckboxItemSkin,
+  CheckboxSkin,
+  ListItemSkin,
+  ListSkin,
+  SelectSkin,
+  TabItemSkin,
+  TabSkin,
+} from '@skins/defaults';
+import { List, ListItem, Tab, TabItem } from '@components/displays';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
 import Radio from '@components/inputs/choices/radios/radio/Radio';
@@ -82,6 +90,18 @@ const App = () => {
           }
         />
       </Checkbox>
+
+      <Tab
+        renderers={{ renderer: TabSkin, childRenderer: TabItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        onClick={(e) => {
+          // @ts-expect-error temporary
+          log('Current Tab value', e.target.value);
+        }}
+      >
+        <TabItem active={true} name="Tab1" content={<div className="bg-danger">Tab content 1</div>}></TabItem>
+        <TabItem active={false} name="Tab2" content={<div className="bg-danger">Tab content 2</div>}></TabItem>
+      </Tab>
     </div>
   );
 };
