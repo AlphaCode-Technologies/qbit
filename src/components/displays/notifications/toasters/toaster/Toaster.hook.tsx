@@ -6,9 +6,11 @@ const useBindSkin = (props: com.qbit.ShellProps<ToasterProps>) => {
 
   useEffect(() => {
     if (duration > 0 && autoClose) {
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         setIsOpen(false);
       }, duration);
+
+      return () => clearTimeout(timeoutId);
     }
   }, [duration, autoClose]);
 

@@ -105,7 +105,6 @@ declare namespace com {
       name?: string;
       disabled?: boolean;
       keyExtractor?: KeyExtractor;
-      testId?: string;
     }> &
       com.opt.StyleProps &
       com.opt.A11yProps;
