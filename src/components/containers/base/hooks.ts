@@ -74,7 +74,10 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
   // Get the child renderer from parent props
   const { childRenderer: defaultChildRenderer } = props.renderers ?? {};
 
-  const computedChildren = (children as ReactElement[]).map((child, i) => {
+  // if user pass only one elements react passing it as object instead of array
+  const rendererChildren = Array.isArray(children) ? children : [children];
+
+  const computedChildren = (rendererChildren as ReactElement[]).map((child, i) => {
     // extract child props
     const { props: childProps } = child;
 
@@ -87,9 +90,10 @@ const useGetChildren = <P extends com.qbit.BaseProps, C extends com.qbit.BasePro
       ...restChildProps
     } = childProps as com.qbit.ShellProps<P, C>;
 
-    if (!renderer) {
-      throw new Error('No Renderer specified for children');
-    }
+    // TODO need to discuss with @dulan that when user is passing non qbit elements they won't have child renderer
+    // if (!renderer) {
+    //   throw new Error('No Renderer specified for children');
+    // }
     // Determining disabled state
     const disabled = parentDisabled || childDisabled;
 

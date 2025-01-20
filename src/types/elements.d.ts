@@ -240,6 +240,19 @@ declare namespace AlphaElements {
   } & Pick<ComponentProperties, 'testId'>;
   // endregion
 
+  // region TOASTER ELEMENT
+
+  type Position = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+
+  type ToasterActions = { onClose: () => void } & com.evt.MouseEvents;
+
+  type ToasterProperties = {
+    open: boolean;
+    position: Position;
+    duration?: number;
+    autoClose?: boolean;
+  } & Pick<ComponentProperties, 'testId'>;
+  // endregion
   // #region TEXT ELEMENT
 
   type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';
