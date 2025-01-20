@@ -1,25 +1,26 @@
 import { render, screen } from '@testing-library/react';
-import { CardContentSkin, CardFooterSkin, CardHeaderSkin } from '@skins/defaults';
-import { Card, CardContent, CardFooter, CardHeader } from '@displays/segments';
+import { CardItemSkin, CardSkin } from '@skins/defaults';
+import Card from './Card';
+import CardItem from './CardItem';
 
-const DEFAULT_PROPERTIES = {
-  Renderer: CardContentSkin,
+const DEFAULT_PROPERTIES: com.qbit.ShellProps<CardProps> = {
   testId: 'card',
+  keyExtractor: (value: string, i: number) => `${value}-${i}`,
+  renderers: { renderer: CardSkin, childRenderer: CardItemSkin },
 };
 
-const renderCard = ({ props }: com.elem.Shell<AlphaElements.CardProperties, any>) =>
+const renderCard = (props: com.qbit.ShellProps<CardProps>) =>
   render(
-    <Card properties={props}>
-      <CardHeader properties={{ renderer: CardHeaderSkin }} />
-      <CardContent properties={{ renderer: CardContentSkin }} />
-      <CardFooter properties={{ renderer: CardFooterSkin }} />
+    <Card {...props}>
+      <CardItem>Card Content</CardItem>
+      <CardItem>Card Content</CardItem>
     </Card>,
   );
 
 describe('Card Component Test', () => {
   it('Should render the card component', async () => {
-    renderCard({ props: DEFAULT_PROPERTIES });
-    const card = await screen.findByTestId(DEFAULT_PROPERTIES.testId);
+    renderCard(DEFAULT_PROPERTIES);
+    const card = await screen.findByTestId(DEFAULT_PROPERTIES.testId!);
     expect(card).toBeInTheDocument();
   });
 });

@@ -1,5 +1,5 @@
-import { AvatarSkin } from '@skins/defaults';
 import Avatar from './Avatar';
+import { AvatarSkin } from '@skins/defaults';
 
 export default {
   title: 'Alpha Elements/Displays/Indicators/Avatar',
@@ -10,21 +10,15 @@ export default {
   tags: ['autodocs'],
   argTypes: {},
   args: {
-    properties: {
-      value: '',
-      testId: '',
-    },
-    actions: {
-      onClick: () => {},
-    },
+    value: '',
+    testId: '',
+    renderers: { renderer: AvatarSkin },
   },
 };
 
 export const Default = {
   args: {
-    properties: {
-      value: 'AE',
-      renderer: AvatarSkin,
-    },
+    value: 'AE',
+    renderers: { renderer: AvatarSkin },
   },
 };

@@ -10,14 +10,14 @@ export default {
   tags: ['autodocs'],
   argTypes: {},
   args: {
-    properties: {
-      isLoading: true,
-    },
+    isLoading: true,
+    renderers: { renderer: LoaderSkin },
   },
 };
 
 export const Default = {
   args: {
-    properties: { isLoading: true, renderer: LoaderSkin },
+    isLoading: true,
+    renderers: { renderer: LoaderSkin },
   },
 };

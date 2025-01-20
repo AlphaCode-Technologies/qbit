@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.menu-item:hover > .sub-menu {
+  @apply block;
+}
