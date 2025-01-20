@@ -1,11 +1,15 @@
-import { Shell } from '@components/containers';
+import { BaseComponent } from '@components/containers';
 import { useBindSkin } from './ProgressBar.hook';
 
-// Define the Progress Bar component, destructuring `properties` from the props.
-const ProgressBar = (props: com.elem.ShellProps<AlphaElements.ProgressBarProperties, any>) => {
-  const { properties, options } = useBindSkin(props);
+/**
+ * Simple ProgressBar component.
+ * @param props
+ * @returns
+ */
+const ProgressBar: com.qbit.Shell<ProgressBarProps> = (props: com.qbit.ShellProps<ProgressBarProps>) => {
+  const bindHandlers = useBindSkin(props);
 
-  return <Shell<AlphaElements.ProgressBarProperties, any> properties={properties} options={options} />;
+  return <BaseComponent {...bindHandlers} />;
 };
 
 export default ProgressBar;

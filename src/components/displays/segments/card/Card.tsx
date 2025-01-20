@@ -1,24 +1,15 @@
-import { Children, cloneElement, ReactElement } from 'react';
-import { useBindSkin } from './Card.hook';
+import { BaseComponent, useGetChildren } from '@components/containers';
 
-const Card = ({ children, ...rest }: com.elem.Shell<AlphaElements.CardProperties, any>) => {
-  const { properties, options, getPropsAndActions } = useBindSkin(rest);
-  const { testId } = properties;
-  const { styles } = options ?? {};
-  const { className = 'max-w-sm bg-white border border-gray-200 rounded-lg shadow p-4' } = styles ?? {};
+/**
+ * Simple Card component.
+ * @param props
+ * @returns
+ */
+const Card: com.qbit.Shell<CardProps> = (props: com.qbit.ShellProps<CardProps>) => {
+  const { children: oChildren, ...rest } = props;
+  const children = useGetChildren<CardProps, CardItemProps>(rest, oChildren);
 
-  return (
-    <div className={className} data-testid={testId}>
-      {Children.map(children as ReactElement[], (child: ReactElement) => {
-        const { properties: childProperties, options: childOptions } = getPropsAndActions(child);
-
-        return cloneElement(child, {
-          properties: childProperties,
-          options: childOptions,
-        });
-      })}
-    </div>
-  );
+  return <BaseComponent {...props}>{children}</BaseComponent>;
 };
 
 export default Card;

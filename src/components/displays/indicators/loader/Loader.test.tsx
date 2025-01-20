@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { Loader } from '@displays/indicators';
+import Loader from './Loader';
 import { LoaderSkin } from '@skins/defaults';
 
-const DEFAULT_PROPERTIES = {
+const DEFAULT_PROPERTIES: com.qbit.ShellProps<LoaderProps> = {
   isLoading: true,
-  renderer: LoaderSkin,
+  renderers: { renderer: LoaderSkin },
 };
 
-const renderLoader = (properties: AlphaElements.LoaderProperties = DEFAULT_PROPERTIES) => {
-  render(<Loader properties={properties} />);
+const renderLoader = (props: com.qbit.ShellProps<LoaderProps> = DEFAULT_PROPERTIES) => {
+  render(<Loader {...props} />);
 };
 
 describe('Loader Element Test', () => {

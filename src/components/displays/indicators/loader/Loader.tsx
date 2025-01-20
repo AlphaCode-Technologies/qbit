@@ -1,13 +1,15 @@
-import { Shell } from '@components/containers';
+import { BaseComponent } from '@components/containers';
 
-const Loader = ({ properties, options }: com.elem.Shell<AlphaElements.LoaderProperties, 0>) => {
-  // TODO -> discuss with @dulan
-  const { isLoading } = properties;
+/**
+ * Simple Loader component.
+ * @param props
+ * @returns
+ */
+const Loader: com.qbit.Shell<LoaderProps> = (props: com.qbit.ShellProps<LoaderProps>) => {
+  const { isLoading } = props;
 
   if (isLoading) {
-    return (
-      <Shell<AlphaElements.ButtonProperties, AlphaElements.ButtonActions> properties={properties} options={options} />
-    );
+    return <BaseComponent {...props} />;
   }
 };
 

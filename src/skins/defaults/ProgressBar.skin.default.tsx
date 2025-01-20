@@ -1,5 +1,5 @@
-const Skin: com.elem.Skin<AlphaElements.ProgressBarProperties, any> = ({ properties }) => {
-  const { value, tabIndex, testId } = properties;
+const Skin: com.qbit.Skin<ProgressBarProps> = (props: com.qbit.SkinProps<ProgressBarProps>) => {
+  const { value, tabIndex, testId } = props;
 
   return (
     <div tabIndex={tabIndex} data-testid={testId}>
