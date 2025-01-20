@@ -10,6 +10,7 @@ export { default as ProgressBarSkin } from './ProgressBar.skin.default';
 export { default as TabSkin } from './Tab.default.skin';
 export { default as SelectSkin } from './Select.default.skin';
 export { default as TextSkin } from './Text.default.skin';
+export { TooltipSkin } from './tooltip';
 export { BreadcrumbSkin, BreadcrumbItemSkin } from './breadcrumb';
 export { ProgressStepSkin, ProgressStepItemSkin } from './progress-step';
 export { BadgesSkin } from './badges';

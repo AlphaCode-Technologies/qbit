@@ -1,21 +1,13 @@
-import {
-  BreadcrumbItemSkin,
-  BreadcrumbSkin,
-  CheckboxItemSkin,
-  CheckboxSkin,
-  ListItemSkin,
-  ListSkin,
-} from '@skins/defaults';
-import { List, ListItem } from '@components/displays';
+import { SelectSkin, TooltipSkin } from '@skins/defaults';
+import { List, ListItem, Tooltip } from '@components/displays';
+import { CheckboxItemSkin, CheckboxSkin, ListItemSkin, ListSkin } from '@skins/defaults';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
 import Radio from '@components/inputs/choices/radios/radio/Radio';
 import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
-import Select from '@components/inputs/choices/select/Select';
-import SelectSkin from '@skins/defaults/select/Select.default.skin';
 import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
 import SelectOption from '@components/inputs/choices/select/SelectOption';
-import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
+import { Select } from '@components/inputs/choices';
 import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
 import { useState } from 'react';
 
@@ -38,6 +30,16 @@ const App = () => {
         <ListItem label="item 3" value="item 3" />
         <ListItem label="item 4" value="item 4" />
       </List>
+      <Tooltip
+        renderers={{ renderer: TooltipSkin, childRenderer: ListItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        position={'bottom'}
+        label={'Hello World'}
+        className="bg-slate-300 p-1 rounded-lg shadow-lg"
+      >
+        <ListItem label="item 2" value="item 2" />
+        <ListItem label="item 2" value="item 2" />
+      </Tooltip>
 
       <Radio
         renderers={{ renderer: RadioSkin, childRenderer: RadioOptionSkin }}
@@ -58,17 +60,6 @@ const App = () => {
         <SelectOption label="Option 2" value="option2" />
         <SelectOption label="Option 3" value="option3" disabled />
       </Select>
-
-      <Breadcrumb
-        renderers={{ renderer: BreadcrumbSkin, childRenderer: BreadcrumbItemSkin }}
-        keyExtractor={(value: string, i: number) => `${value}-${i}`}
-        className="p-2"
-      >
-        <BreadcrumbItem name="Home" href="/" active />
-        <BreadcrumbItem name="Category" href="/category" />
-        <BreadcrumbItem name="Subcategory" href="/category/subcategory" />
-        <BreadcrumbItem name="Current Page" disabled />
-      </Breadcrumb>
 
       <Checkbox
         renderers={{ renderer: CheckboxSkin, childRenderer: CheckboxItemSkin }}
