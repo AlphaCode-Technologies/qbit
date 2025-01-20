@@ -20,5 +20,6 @@ export { default as TextSkin } from './Text.default.skin';
 export { default as DrawerContentSkin } from './DrawerContent.skin.default';
 export { default as DrawerHeaderSkin } from './DrawerHeader.skin.default';
 export { default as DrawerFooterSkin } from './DrawerFooter.skin.default';
+export { BadgesSkin } from './badges';
 export { RadioSkin, RadioOptionSkin } from './radio';
 export { MenuItemSkin, MenuSkin } from './menu';
