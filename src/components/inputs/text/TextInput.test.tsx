@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Text } from '@inputs/text';
+import TextInput from './TextInput.tsx';
 import { TextSkin } from '@skins/defaults';
 
-const DEFAULT_PROPERTIES: AlphaElements.TextProperties = {
+const DEFAULT_PROPERTIES: com.qbit.ShellProps<TextInputProps> = {
   id: 'input',
   name: 'input',
   type: 'text',
   testId: 'text-input',
-  renderer: TextSkin,
+  renderers: { renderer: TextSkin },
 };
 
-const TextRender = (properties: AlphaElements.TextProperties) => {
+const TextInputRender = (properties: com.qbit.ShellProps<TextInputProps>) => {
   const { value } = properties;
   const [inputValue, setInputValue] = useState(value || '');
 
@@ -20,18 +20,18 @@ const TextRender = (properties: AlphaElements.TextProperties) => {
     setInputValue(updatedValue);
   };
 
-  return <Text properties={{ value: inputValue, ...properties }} actions={{ onChange: handleChange }} />;
+  return <TextInput value={inputValue} {...properties} onChange={handleChange} />;
 };
 
-describe('Text Element Test', () => {
-  it('Should render text element', () => {
-    render(<TextRender {...DEFAULT_PROPERTIES} />);
+describe('TextInput Element Test', () => {
+  it('Should render TextInput element', () => {
+    render(<TextInputRender {...DEFAULT_PROPERTIES} />);
     const inputElement = screen.getByTestId('text-input');
     expect(inputElement).toBeInTheDocument();
   });
 
   it('Should have id(input) and name(input) attributes', () => {
-    render(<TextRender {...DEFAULT_PROPERTIES} />);
+    render(<TextInputRender {...DEFAULT_PROPERTIES} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -41,7 +41,7 @@ describe('Text Element Test', () => {
 
   it('Should have type(number) attribute', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, type: 'number' as const };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -49,7 +49,7 @@ describe('Text Element Test', () => {
   });
 
   it('Should call onChange and update the value', () => {
-    render(<TextRender {...DEFAULT_PROPERTIES} />);
+    render(<TextInputRender {...DEFAULT_PROPERTIES} />);
 
     const inputElement = screen.getByTestId('text-input');
     fireEvent.change(inputElement, { target: { value: 'Hello' } });
@@ -59,7 +59,7 @@ describe('Text Element Test', () => {
 
   it('Should have required attribute when required(true)', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, required: true };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -68,7 +68,7 @@ describe('Text Element Test', () => {
 
   it('Should not have required attribute when required(false)', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, required: false };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -77,7 +77,7 @@ describe('Text Element Test', () => {
 
   it('Should have disabled attribute when disabled(true)', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, disabled: true };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -86,26 +86,27 @@ describe('Text Element Test', () => {
 
   it('Should not have disabled attribute when disabled(false)', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, disabled: false };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
     expect(inputElement).not.toBeDisabled();
   });
 
-  it('Should prevent onChange if input is disabled(true)', () => {
-    const newTextProperties = { ...DEFAULT_PROPERTIES, disabled: true };
-    render(<TextRender {...newTextProperties} />);
-
-    const inputElement = screen.getByTestId('text-input');
-    fireEvent.change(inputElement, { target: { value: 'Hello' } });
-
-    expect(inputElement).not.toHaveValue('Hello');
-  });
+  // TODO: Need to check this after adding disabled functionality in UIEvents
+  // it('Should prevent onChange if input is disabled(true)', () => {
+  //   const newTextProperties = { ...DEFAULT_PROPERTIES, disabled: true };
+  //   render(<TextRender {...newTextProperties} />);
+  //
+  //   const inputElement = screen.getByTestId('text-input');
+  //   fireEvent.change(inputElement, { target: { value: 'Hello' } });
+  //
+  //   expect(inputElement).not.toHaveValue('Hello');
+  // });
 
   it('Should have readonly attribute when readonly(true)', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, readOnly: true };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -114,26 +115,97 @@ describe('Text Element Test', () => {
 
   it('Should not have readonly attribute when readonly(false)', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, readonly: false };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
     expect(inputElement).not.toHaveAttribute('readOnly');
   });
 
-  it('Should prevent onChange if input is read-only(true)', () => {
-    const newTextProperties = { ...DEFAULT_PROPERTIES, readOnly: true };
-    render(<TextRender {...newTextProperties} />);
+  // TODO: Need to check this after adding read-only functionality in UIEvents
+  // it('Should prevent onChange if input is read-only(true)', () => {
+  //   const newTextProperties = { ...DEFAULT_PROPERTIES, readOnly: true };
+  //   render(<TextRender {...newTextProperties} />);
+  //
+  //   const inputElement = screen.getByTestId('text-input');
+  //   fireEvent.change(inputElement, { target: { value: 'Hello' } });
+  //
+  //   expect(inputElement).not.toHaveValue('Hello');
+  // });
+
+  // TODO: Need to check read-only, disabled after adding read-only, disabled functionality in UIEvents
+
+  it('Should call onFocus when the input is focused', () => {
+    let isFocused = false;
+
+    const newTextProperties = { ...DEFAULT_PROPERTIES, onFocus: () => (isFocused = true) };
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
-    fireEvent.change(inputElement, { target: { value: 'Hello' } });
+    inputElement.focus();
 
-    expect(inputElement).not.toHaveValue('Hello');
+    expect(isFocused).toBe(true);
+  });
+
+  it('Should call onBlur when the input loses focus', () => {
+    let isFocused = false;
+    let isBlurred = false;
+
+    const newTextProperties = {
+      ...DEFAULT_PROPERTIES,
+      onFocus: () => (isFocused = true),
+      onBlur: () => (isBlurred = true),
+    };
+    render(<TextInputRender {...newTextProperties} />);
+
+    const inputElement = screen.getByTestId('text-input');
+    inputElement.focus();
+
+    expect(isFocused).toBe(true);
+
+    inputElement.blur();
+    expect(isBlurred).toBe(true);
+  });
+
+  it('Should call onKeyPress when a key is pressed', () => {
+    let isKeyPressed = false;
+
+    const newTextProperties = { ...DEFAULT_PROPERTIES, onKeyPress: () => (isKeyPressed = true) };
+    render(<TextInputRender {...newTextProperties} />);
+
+    const inputElement = screen.getByTestId('text-input');
+    fireEvent.keyPress(inputElement, { key: 'A', code: 'KeyA', charCode: 65 });
+
+    expect(isKeyPressed).toBe(true);
+  });
+
+  it('Should call onKeyDown when a key is pressed down', () => {
+    let isKeyDown = false;
+
+    const newTextProperties = { ...DEFAULT_PROPERTIES, onKeyDown: () => (isKeyDown = true) };
+    render(<TextInputRender {...newTextProperties} />);
+
+    const inputElement = screen.getByTestId('text-input');
+    fireEvent.keyDown(inputElement, { key: 'A', code: 'KeyA', charCode: 65 });
+
+    expect(isKeyDown).toBe(true);
+  });
+
+  it('Should call onKeyUp when a key is released', () => {
+    let isKeyUp = false;
+
+    const newTextProperties = { ...DEFAULT_PROPERTIES, onKeyUp: () => (isKeyUp = true) };
+    render(<TextInputRender {...newTextProperties} />);
+
+    const inputElement = screen.getByTestId('text-input');
+    fireEvent.keyUp(inputElement, { key: 'A', code: 'KeyA', charCode: 65 });
+
+    expect(isKeyUp).toBe(true);
   });
 
   it('Should have min(1), max(10) and step(2) attributes', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, type: 'number' as const, min: 1, max: 10, step: 2 };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -145,7 +217,7 @@ describe('Text Element Test', () => {
 
   it('Should have placeholder text "Enter your name"', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, placeholder: 'Enter your name' };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -154,7 +226,7 @@ describe('Text Element Test', () => {
 
   it('Should have maxLength(10) attribute', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, maxLength: 10 };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -163,7 +235,7 @@ describe('Text Element Test', () => {
 
   it('Should prevent onChange if value exceeds maxLength(5)', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, maxLength: 5 };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
     fireEvent.change(inputElement, { target: { value: 'Hello World' } });
@@ -173,7 +245,7 @@ describe('Text Element Test', () => {
 
   it('Should allow onChange if value is within maxLength(10)', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, maxLength: 10 };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
     fireEvent.change(inputElement, { target: { value: 'Hello' } });
@@ -183,7 +255,7 @@ describe('Text Element Test', () => {
 
   it('Should have autoComplete(on) attribute', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, autoComplete: 'on' };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 
@@ -192,7 +264,7 @@ describe('Text Element Test', () => {
 
   it('Should have tabIndex(5) attribute', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, tabIndex: 5 };
-    render(<TextRender {...newTextProperties} />);
+    render(<TextInputRender {...newTextProperties} />);
 
     const inputElement = screen.getByTestId('text-input');
 

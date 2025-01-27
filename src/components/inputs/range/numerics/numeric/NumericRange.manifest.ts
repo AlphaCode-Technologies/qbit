@@ -1,5 +1,5 @@
 export default {
-  name: 'Text',
+  name: 'Numeric Range',
   actions: [],
   properties: [],
 };

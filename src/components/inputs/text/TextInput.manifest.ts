@@ -1,4 +1,5 @@
 export default {
-  name: 'Tab',
+  name: 'TextInput',
+  actions: [],
   properties: [],
 };

@@ -62,6 +62,35 @@ declare namespace AlphaElements {
 
   // #endregion
 
+  // #region NUMERIC RANGE ELEMENT
+
+  type NumericRangeProperties = {
+    label?: string;
+    minValue?: number;
+    maxValue?: number;
+    leftWidth?: number;
+    rightWidth?: number;
+  } & Required<Pick<ComponentProperties, 'Renderer'>> &
+    Omit<ComponentProperties, 'value' | 'Renderer'>;
+
+  type NumericRangeActions = {
+    onChange?: (minVal: number, maxVal: number) => void;
+  };
+
+  type NumericRangeProps = {
+    properties: NumericRangeProperties;
+    actions?: NumericRangeActions;
+  } & PropsWithChildren;
+
+  type NumericRangePointerProperties = {} & Required<Pick<ComponentProperties, 'value'>> &
+    Omit<ComponentProperties, 'name' | 'value' | 'horizontal'>;
+
+  type NumericRangePointerProps = {
+    properties: NumericRangePointerProperties;
+    actions?: NumericRangeActions;
+  };
+
+  // #endregion
   // #region SELECT ELEMENT
   type SelectProperties = {
     label?: string;

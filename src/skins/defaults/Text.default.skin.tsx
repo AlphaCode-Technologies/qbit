@@ -1,4 +1,4 @@
-const Skin: com.elem.Skin<AlphaElements.TextProperties, AlphaElements.TextAction> = ({ properties, actions }) => {
+const Skin: com.qbit.Skin<TextInputProps> = (props: com.qbit.SkinProps<TextInputProps>) => {
   const {
     name,
     id,
@@ -15,9 +15,13 @@ const Skin: com.elem.Skin<AlphaElements.TextProperties, AlphaElements.TextAction
     autoComplete,
     tabIndex,
     testId,
-  } = properties;
-
-  const { onChange } = actions ?? {};
+    onChange,
+    onFocus,
+    onBlur,
+    onKeyPress,
+    onKeyDown,
+    onKeyUp,
+  } = props;
 
   return (
     <input
@@ -38,6 +42,11 @@ const Skin: com.elem.Skin<AlphaElements.TextProperties, AlphaElements.TextAction
       tabIndex={tabIndex}
       data-testid={testId}
       onChange={(event) => onChange?.(event)}
+      onFocus={(event) => onFocus?.(event)}
+      onBlur={(event) => onBlur?.(event)}
+      onKeyPress={(event) => onKeyPress?.(event)}
+      onKeyDown={(event) => onKeyDown?.(event)}
+      onKeyUp={(event) => onKeyUp?.(event)}
     />
   );
 };
