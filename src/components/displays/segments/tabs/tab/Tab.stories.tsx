@@ -5,7 +5,7 @@ import TabItem from './TabItem';
 import { TabItemSkin, TabSkin } from '@skins/defaults';
 
 export default {
-  title: 'Components/Tab',
+  title: 'Alpha Elements/Displays/Segments/Tab',
   component: Tab,
   tags: ['autodocs'],
 } as Meta;

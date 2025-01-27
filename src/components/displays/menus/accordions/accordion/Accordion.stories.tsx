@@ -4,7 +4,7 @@ import AccordionItem from './AccordionItem';
 import { Meta, StoryFn } from '@storybook/react';
 
 export default {
-  title: 'Components/Accordion',
+  title: 'Alpha Elements/Displays/Menus/Accordion',
   component: Accordion,
   argTypes: {
     onChange: { action: 'changed' },
