@@ -1,7 +1,6 @@
-import { NumericRange, NumericRangePicker } from '@components/inputs/range';
-import { ListItemSkin, NumericRangePointerSkin, NumericRangeSkin, ToasterSkin } from '@skins/defaults';
+import { ListItemSkin, ToasterSkin } from '@skins/defaults';
 import { Toaster } from '@components/displays/notifications';
-import { SelectSkin, TooltipSkin } from '@skins/defaults';
+import { TooltipSkin } from '@skins/defaults';
 import { ListItem, Tooltip } from '@components/displays';
 import { Badge } from '@components/displays';
 import { BadgesSkin } from '@skins/defaults';
@@ -10,27 +9,14 @@ import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
 import Radio from '@components/inputs/choices/radios/radio/Radio';
 import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
-import SelectOption from '@components/inputs/choices/select/SelectOption';
 import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
 import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
 import { useState } from 'react';
-import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
-import { Select } from '@components/inputs/choices';
 
 const App = () => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
   return (
     <div data-id="my-id">
-      <NumericRange
-        keyExtractor={(value: string, i: number) => `${value}-${i}`}
-        renderers={{ renderer: NumericRangeSkin, childRenderer: NumericRangePointerSkin }}
-        minValue={0}
-        maxValue={200}
-      >
-        <NumericRangePicker value={0} />
-        <NumericRangePicker value={100} />
-        <NumericRangePicker value={200} />
-      </NumericRange>
       <Toaster
         open={true}
         position="top-center"
@@ -94,17 +80,6 @@ const App = () => {
         <RadioOption label="Option 2" name="example" value="option2" />
         <RadioOption label="Option 3" name="example" value="option3" />
       </Radio>
-
-      <Select
-        renderers={{ renderer: SelectSkin, childRenderer: SelectOptionSkin }}
-        keyExtractor={(value: string, i: number) => `${value}-${i}`}
-        defaultValue="Option 1"
-      >
-        <SelectOption label="Option 1" value="option1" testId="test1" />
-        <SelectOption label="Option 2" value="option2" />
-        <SelectOption label="Option 3" value="option3" disabled />
-      </Select>
-
       <Breadcrumb
         renderers={{ renderer: BreadcrumbSkin, childRenderer: BreadcrumbItemSkin }}
         keyExtractor={(value: string, i: number) => `${value}-${i}`}

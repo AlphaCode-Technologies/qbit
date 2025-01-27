@@ -12,5 +12,6 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
+  managerHead: './manager-head.html',
 };
 export default config;
