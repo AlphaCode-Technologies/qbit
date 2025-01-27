@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import Checkbox from './Checkbox';
 import CheckboxItem from './CheckboxItem';
-import { CheckboxItemSkin, CheckboxSkin } from '@skins/defaults/checkbox';
+import { CheckboxItemSkin, CheckboxSkin } from '@skins/defaults';
+import Checkbox from './Checkbox';
 
 // Meta configuration
 export default {
-  title: 'Components/Checkbox',
+  title: 'Alpha Elements/Inputs/Choices/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
 } as Meta;

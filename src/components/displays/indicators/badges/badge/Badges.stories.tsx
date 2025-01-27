@@ -3,8 +3,9 @@ import Badge from './Badges';
 import BadgeSkin from '@skins/defaults/badges/Badges.skin.default';
 
 export default {
-  title: 'Components/Badge',
+  title: 'Alpha Elements/Displays/Indicators/Badge',
   component: Badge,
+  tags: ['autodocs'],
   args: {
     renderers: { renderer: BadgeSkin },
   },
