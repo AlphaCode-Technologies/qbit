@@ -1,3 +1,5 @@
+import { Badge } from '@components/displays';
+import { BadgesSkin } from '@skins/defaults';
 import { BreadcrumbItemSkin, BreadcrumbSkin, CheckboxItemSkin, CheckboxSkin } from '@skins/defaults';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
@@ -15,6 +17,26 @@ const App = () => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
   return (
     <div data-id="my-id">
+      <Badge
+        renderers={{ renderer: BadgesSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        size="xl"
+      >
+        <text x="45" y="18" fill="#000" fontSize="10" fontWeight="500">
+          {' '}
+          xxxxxxx{' '}
+        </text>
+        <>
+          <circle cx="28" cy="14" r="8" stroke="#D0D5DD" fill="white" />
+          <foreignObject x="20" y="7" width="16" height="16">
+            <img
+              src={'https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg'}
+              alt="Badge Icon"
+              style={{ borderRadius: '50%', width: '100%', height: '100%' }}
+            />
+          </foreignObject>
+        </>
+      </Badge>
       <Radio
         renderers={{ renderer: RadioSkin, childRenderer: RadioOptionSkin }}
         keyExtractor={(value: string, i: number) => `${value}-${i}`}

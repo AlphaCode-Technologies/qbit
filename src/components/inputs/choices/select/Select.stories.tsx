@@ -5,7 +5,8 @@ import SelectSkin from '@skins/defaults/select/Select.default.skin';
 import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
 
 export default {
-  title: 'Components/Select',
+  title: 'Alpha Elements/Inputs/Choices/Select',
+  tags: ['autodocs'],
   component: Select,
 } as Meta;
 
