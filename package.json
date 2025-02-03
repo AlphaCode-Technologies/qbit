@@ -19,7 +19,9 @@
     "build-storybook": "storybook build",
     "test:ui": "vitest --ui",
     "test": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build:components": "pnpm build --filter skins",
+    "build:skins": "pnpm build --filter components"
   },
   "dependencies": {
     "react": "^18.3.1",
