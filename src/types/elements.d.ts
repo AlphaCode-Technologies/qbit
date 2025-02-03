@@ -6,7 +6,7 @@ declare namespace AlphaElements {
   // #region COMMON ELEMENT
 
   type Action = {
-    [key: string]: function;
+    [key: string]: (...args: any[]) => any;
   };
 
   type Property = {
