@@ -20,38 +20,45 @@ function createPackageJson(folder: string, urlPostFix: string) {
     fs.mkdirSync(folderPath, { recursive: true });
   }
   fs.writeFileSync(
-    `${folderPath}/package.json`,
+    `dist/package.json`,
     JSON.stringify({ ...basePackageJson, name: `${basePackageJson.name}/${urlPostFix}` }, null, 2),
   );
 }
 
 function generatePackageJson() {
+  const args = process.argv.slice(2);
   return {
     name: 'generate-package-json',
     closeBundle() {
-      createPackageJson('components', 'shell');
-      createPackageJson('skins', 'skins');
+      if (args[2] === 'skins') {
+        createPackageJson('components', 'shell');
+      } else {
+        createPackageJson('skins', 'skins');
+      }
     },
   };
 }
 
 function findEntries(dir: string, base = '') {
+  const args = process.argv.slice(2);
   const entries = {} as any;
   fs.readdirSync(dir).forEach((file) => {
     const fullPath = resolve(dir, file);
-    if (fs.statSync(fullPath).isDirectory()) {
-      Object.assign(entries, findEntries(fullPath, `${base}${file}/`));
-    } else if (
-      (file.endsWith('.jsx') || file.endsWith('.tsx') || file.endsWith('.ts')) &&
-      !file.includes('.test.') &&
-      !file.includes('.stories.') &&
-      !file.includes('.d.ts') &&
-      !file.includes('.manifest.') &&
-      file !== 'App.tsx' &&
-      file !== 'main.tsx'
-    ) {
-      const name = `${base}${file.replace(/\.(tsx|jsx|ts)$/, '')}`;
-      entries[name] = fullPath;
+    if (args[2] !== base.split('/')[0]) {
+      if (fs.statSync(fullPath).isDirectory()) {
+        Object.assign(entries, findEntries(fullPath, `${base}${file}/`));
+      } else if (
+        (file.endsWith('.jsx') || file.endsWith('.tsx') || file.endsWith('.ts')) &&
+        !file.includes('.test.') &&
+        !file.includes('.stories.') &&
+        !file.includes('.d.ts') &&
+        !file.includes('.manifest.') &&
+        file !== 'App.tsx' &&
+        file !== 'main.tsx'
+      ) {
+        const name = `${base}${file.replace(/\.(tsx|jsx|ts)$/, '')}`;
+        entries[name] = fullPath;
+      }
     }
   });
   return entries;
