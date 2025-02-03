@@ -3,7 +3,7 @@ import Badge from './Badges';
 import BadgeSkin from '@skins/defaults/badges/Badges.skin.default';
 
 export default {
-  title: 'Alpha Elements/Displays/Indicators/Badge',
+  title: 'Qbit design/Displays/Indicators/Badge',
   component: Badge,
   tags: ['autodocs'],
   args: {

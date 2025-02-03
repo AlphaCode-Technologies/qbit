@@ -3,7 +3,7 @@ import Toaster from './Toaster';
 import { StoryFn } from '@storybook/react';
 
 export default {
-  title: 'Alpha Elements/Notifications/Toaster',
+  title: 'Qbit design/Notifications/Toaster',
   component: Toaster,
   parameters: {
     layout: 'centered',

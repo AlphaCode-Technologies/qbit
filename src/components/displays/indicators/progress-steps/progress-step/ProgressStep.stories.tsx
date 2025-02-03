@@ -4,7 +4,7 @@ import ProgressStepItem from './ProgressStepItem';
 import { ProgressStepItemSkin, ProgressStepSkin } from '@skins/defaults';
 
 const meta: Meta<typeof ProgressStep> = {
-  title: 'Alpha Elements/Display/Indicators/ProgressStep',
+  title: 'Qbit design/Displays/Indicators/ProgressStep',
   component: ProgressStep,
   tags: ['autodocs'],
   argTypes: {},

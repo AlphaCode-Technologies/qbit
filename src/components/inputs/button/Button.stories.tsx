@@ -2,7 +2,7 @@ import Button from './Button';
 import { ButtonSkin } from '@skins/defaults';
 
 export default {
-  title: 'Alpha Elements/Inputs/Button',
+  title: 'Qbit design/Inputs/Button',
   component: Button,
   parameters: {
     layout: 'centered',

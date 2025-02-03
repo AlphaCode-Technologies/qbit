@@ -5,7 +5,7 @@ import DrawerItem from './DrawerItem';
 import { DrawerItemSkin, DrawerSkin } from '@skins/defaults';
 
 export default {
-  title: 'Alpha Elements/Displays/Segments/Drawer',
+  title: 'Qbit design/Displays/Segments/Drawer',
   component: Drawer,
   parameters: {
     layout: 'centered',

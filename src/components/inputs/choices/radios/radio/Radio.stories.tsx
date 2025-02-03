@@ -5,7 +5,7 @@ import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 
 export default {
-  title: 'Alpha Elements/Inputs/Choices/Radio',
+  title: 'Qbit design/Inputs/Choices/Radio',
   tags: ['autodocs'],
   component: Radio,
   argTypes: {
