@@ -4,7 +4,7 @@ import NumericRangePicker from './NumericRangePicker';
 import { StoryFn } from '@storybook/react';
 
 export default {
-  title: 'Alpha Elements/Range/Numeric',
+  title: 'Qbit design/Range/Numeric',
   component: NumericRange,
   parameters: {
     layout: 'centered',

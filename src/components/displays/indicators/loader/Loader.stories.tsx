@@ -2,7 +2,7 @@ import Loader from './Loader';
 import { LoaderSkin } from '@skins/defaults';
 
 export default {
-  title: 'Alpha Elements/Displays/Indicators/Loader',
+  title: 'Qbit design/Displays/Indicators/Loader',
   component: Loader,
   parameters: {
     layout: 'centered',

@@ -5,7 +5,7 @@ import { MenuItemSkin, MenuSkin } from '@skins/defaults';
 import { useRef } from 'react';
 
 export default {
-  title: 'Alpha Elements/Displays/Menus/Menu',
+  title: 'Qbit design/Displays/Menus/Menu',
   component: Menu,
   parameters: {
     layout: 'centered',

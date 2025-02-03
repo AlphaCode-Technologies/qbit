@@ -4,7 +4,7 @@ import CardItem from './CardItem';
 import { CardItemSkin, CardSkin } from '@skins/defaults';
 
 export default {
-  title: 'Alpha Elements/Displays/Segments/Card',
+  title: 'Qbit design/Displays/Segments/Card',
   component: Card,
   parameters: {
     layout: 'centered',
