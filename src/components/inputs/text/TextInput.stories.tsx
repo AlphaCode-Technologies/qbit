@@ -3,7 +3,7 @@ import { TextSkin } from '@skins/defaults';
 import { useState } from 'react';
 
 export default {
-  title: 'Alpha Elements/Inputs/TextInput',
+  title: 'Qbit design/Inputs/TextInput',
   component: TextInput,
   parameters: {
     layout: 'centered',

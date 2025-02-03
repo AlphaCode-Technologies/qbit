@@ -5,7 +5,7 @@ import SelectSkin from '@skins/defaults/select/Select.default.skin';
 import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
 
 export default {
-  title: 'Alpha Elements/Inputs/Choices/Select',
+  title: 'Qbit design/Inputs/Choices/Select',
   tags: ['autodocs'],
   component: Select,
 } as Meta;

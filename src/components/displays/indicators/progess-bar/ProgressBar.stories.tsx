@@ -2,7 +2,7 @@ import ProgressBar from './ProgressBar';
 import { ProgressBarSkin } from '@skins/defaults';
 
 export default {
-  title: 'Alpha Elements/Displays/Indicators/Progress-Bar',
+  title: 'Qbit design/Displays/Indicators/Progress-Bar',
   component: ProgressBar,
   parameters: {
     layout: 'centered',

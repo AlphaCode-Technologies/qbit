@@ -2,7 +2,7 @@ import Avatar from './Avatar';
 import { AvatarSkin } from '@skins/defaults';
 
 export default {
-  title: 'Alpha Elements/Displays/Indicators/Avatar',
+  title: 'Qbit design/Displays/Indicators/Avatar',
   component: Avatar,
   parameters: {
     layout: 'centered',

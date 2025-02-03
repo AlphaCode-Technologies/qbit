@@ -6,7 +6,7 @@ import Checkbox from './Checkbox';
 
 // Meta configuration
 export default {
-  title: 'Alpha Elements/Inputs/Choices/Checkbox',
+  title: 'Qbit design/Inputs/Choices/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
 } as Meta;

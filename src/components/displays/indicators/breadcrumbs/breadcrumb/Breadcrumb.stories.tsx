@@ -4,7 +4,7 @@ import BreadcrumbItem from './BreadcrumbItem';
 import { BreadcrumbItemSkin, BreadcrumbSkin } from '@skins/defaults';
 
 export default {
-  title: 'Alpha Elements/Displays/Indicators/Breadcrumb',
+  title: 'Qbit design/Displays/Indicators/Breadcrumb',
   component: Breadcrumb,
   argTypes: {
     className: { control: 'text' }, // This is fine to control the className

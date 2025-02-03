@@ -5,7 +5,7 @@ import { ModalSkin, ModalItemSkin } from '@skins/defaults';
 import { useState } from 'react';
 
 export default {
-  title: 'Alpha Elements/Displays/Segments/Modal',
+  title: 'Qbit design/Displays/Segments/Modal',
   component: Modal,
   parameters: {
     layout: 'centered',
