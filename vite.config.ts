@@ -14,20 +14,23 @@ const basePackageJson = {
   author: mainPackageJson.author,
 };
 
-function createPackageJson(folder: string) {
+function createPackageJson(folder: string, urlPostFix: string) {
   const folderPath = resolve(__dirname, `dist/${folder}`);
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath, { recursive: true });
   }
-  fs.writeFileSync(`${folderPath}/package.json`, JSON.stringify(basePackageJson, null, 2));
+  fs.writeFileSync(
+    `${folderPath}/package.json`,
+    JSON.stringify({ ...basePackageJson, name: `${basePackageJson.name}/${urlPostFix}` }, null, 2),
+  );
 }
 
 function generatePackageJson() {
   return {
     name: 'generate-package-json',
     closeBundle() {
-      createPackageJson('components');
-      createPackageJson('skins');
+      createPackageJson('components', 'shell');
+      createPackageJson('skins', 'skins');
     },
   };
 }
