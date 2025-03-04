@@ -22,10 +22,10 @@ const basePackageJson = {
   types: mainPackageJson.types,
   main: mainPackageJson.main,
   module: mainPackageJson.module,
-  scripts: mainPackageJson.scripts,
-  dependencies: mainPackageJson.dependencies,
-  devDependencies: mainPackageJson.devDependencies,
-  peerDependencies: mainPackageJson.peerDependencies,
+  // scripts: mainPackageJson.scripts,
+  // dependencies: mainPackageJson.dependencies,
+  // devDependencies: mainPackageJson.devDependencies,
+  // peerDependencies: mainPackageJson.peerDependencies,
   publishConfig: mainPackageJson.publishConfig,
 };
 
@@ -103,13 +103,16 @@ export default defineConfig({
       fileName: (format) => `${mainPackageJson.name}.${format}.js`,
     },
     rollupOptions: {
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
-        dir: 'dist',
-        format: 'es',
+        globals: {
+          react: 'React',
+          'react-dom': 'react-dom',
+          'react/jsx-runtime': 'react/jsx-runtime',
+        },
+        exports: 'named',
       },
-      treeshake: false,
     },
-    outDir: 'dist',
   },
   preview: {
     port: 3000,
