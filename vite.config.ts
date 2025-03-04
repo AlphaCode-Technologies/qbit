@@ -14,6 +14,19 @@ const basePackageJson = {
   version: mainPackageJson.version,
   type: mainPackageJson.type,
   author: mainPackageJson.author,
+  license: mainPackageJson.license,
+  files: mainPackageJson.files,
+  keywords: mainPackageJson.keywords,
+  repository: mainPackageJson.repository,
+  readme: mainPackageJson.readme,
+  types: mainPackageJson.types,
+  main: mainPackageJson.main,
+  module: mainPackageJson.module,
+  scripts: mainPackageJson.scripts,
+  dependencies: mainPackageJson.dependencies,
+  devDependencies: mainPackageJson.devDependencies,
+  peerDependencies: mainPackageJson.peerDependencies,
+  publishConfig: mainPackageJson.publishConfig,
 };
 
 function createPackageJson(folder: string, urlPostFix: string) {
@@ -21,9 +34,11 @@ function createPackageJson(folder: string, urlPostFix: string) {
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath, { recursive: true });
   }
+  console.log(urlPostFix);
+
   fs.writeFileSync(
     `dist/package.json`,
-    JSON.stringify({ ...basePackageJson, name: `${basePackageJson.name}/${urlPostFix}` }, null, 2),
+    JSON.stringify({ ...basePackageJson, name: `${basePackageJson.name}` }, null, 2),
   );
 }
 
