@@ -1,11 +1,13 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tsConfigPath from 'vite-tsconfig-paths';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
+import dts from 'vite-plugin-dts';
 import { resolve } from 'path';
 import fs from 'fs';
 
 const mainPackageJson = JSON.parse(fs.readFileSync(resolve(__dirname, 'package.json'), 'utf-8'));
-
 const basePackageJson = {
   name: mainPackageJson.name,
   private: false,
@@ -70,28 +72,25 @@ entries['styles'] = resolve(__dirname, 'src/index.css');
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), generatePackageJson()],
-  resolve: {
-    alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@containers': path.resolve(__dirname, 'src/components/containers'),
-      '@inputs': path.resolve(__dirname, 'src/components/inputs'),
-      '@displays': path.resolve(__dirname, 'src/components/displays'),
-      '@skins': path.resolve(__dirname, 'src/skins'),
-      '@utils': path.resolve(__dirname, 'src/utilities'),
-      '@types': path.resolve(__dirname, 'src/types'),
-      '@fixtures': path.resolve(__dirname, 'src/fixtures'),
-    },
-  },
+  plugins: [
+    react(),
+    generatePackageJson(),
+    tsConfigPath(),
+    libInjectCss(),
+    dts({ insertTypesEntry: true, tsconfigPath: './tsconfig.json', rollupTypes: true }),
+  ],
   build: {
+    emptyOutDir: true,
+    lib: {
+      entry: path.resolve(__dirname, 'src/index.ts'),
+      name: mainPackageJson.name,
+      formats: ['es', 'cjs', 'umd'],
+      fileName: (format) => `${mainPackageJson.name}.${format}.js`,
+    },
     rollupOptions: {
-      input: entries,
       output: {
         dir: 'dist',
         format: 'es',
-        entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
-        assetFileNames: '[name][extname]',
       },
       treeshake: false,
     },
