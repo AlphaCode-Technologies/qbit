@@ -1,4 +1,5 @@
 import { BaseComponent } from '@components/containers';
+import { CheckboxItemProps } from './properties';
 
 /**
  * Checkbox item component.

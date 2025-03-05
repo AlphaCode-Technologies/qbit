@@ -1,4 +1,5 @@
 import { BaseComponent } from '@components/containers';
+import { BadgeProps } from './properties';
 
 /**
  * Badge component.

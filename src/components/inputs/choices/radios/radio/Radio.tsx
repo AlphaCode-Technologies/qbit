@@ -1,5 +1,6 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
 import useBindSkin from './Radio.hook';
+import { OptionProps, RadioGroupProps } from './properties';
 
 /**
  * Radio group component.

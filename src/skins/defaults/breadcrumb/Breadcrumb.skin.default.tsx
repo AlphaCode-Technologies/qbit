@@ -1,3 +1,5 @@
+import { BreadcrumbProps } from '@components/index';
+
 const BreadcrumbSkin: com.qbit.Skin<BreadcrumbProps> = (props: com.qbit.SkinProps<BreadcrumbProps>) => {
   const { children } = props;
 

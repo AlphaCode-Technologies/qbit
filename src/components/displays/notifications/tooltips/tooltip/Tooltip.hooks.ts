@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { TooltipProps } from './properties';
 
 export const useBindSkin = (props: com.qbit.ShellProps<TooltipProps>) => {
   const [open, setOpen] = useState(false);

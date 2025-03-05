@@ -1,3 +1,5 @@
+import { NumericRangeProps } from '@components/index';
+
 const NumericRangePointer: com.qbit.Skin<NumericRangeProps> = (props: com.qbit.SkinProps<NumericRangeProps>) => {
   const { onChange, onBlur, onFocus, testId, ...otherProps } = props;
   return (

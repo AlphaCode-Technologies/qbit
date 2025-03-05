@@ -1,3 +1,4 @@
+import { AccordionItemProps } from '@components/index';
 import { useState } from 'react';
 
 const AccordionItemSkin: com.qbit.Skin<AccordionItemProps> = (props) => {

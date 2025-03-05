@@ -1,4 +1,5 @@
 import { BaseComponent } from '@components/containers';
+import { ModalItemProps } from './properties';
 
 /**
  * Simple Modal-Item component.

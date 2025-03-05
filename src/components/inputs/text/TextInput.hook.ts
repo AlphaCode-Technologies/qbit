@@ -1,3 +1,5 @@
+import { TextInputProps } from './properties';
+
 export const useBindSkin = (params: TextInputProps) => {
   const { maxLength, onChange } = params;
 

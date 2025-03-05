@@ -1,4 +1,5 @@
 import { BaseComponent } from '@components/containers';
+import { AvatarProps } from './properties';
 
 /**
  * Simple Avatar component.

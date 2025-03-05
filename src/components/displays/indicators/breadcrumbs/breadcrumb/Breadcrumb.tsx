@@ -1,4 +1,5 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
+import { BreadcrumbItemProps, BreadcrumbProps } from './properties';
 
 /**
  * Breadcrumb component.

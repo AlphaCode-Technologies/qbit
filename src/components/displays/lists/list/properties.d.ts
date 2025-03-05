@@ -1,6 +1,6 @@
-type ListProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions;
+export type ListProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions;
 
-type ListItemProps = ListProps &
+export type ListItemProps = ListProps &
   com.utils.Property<{
     label: string;
   }>;

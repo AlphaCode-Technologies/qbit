@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import Button from './Button';
 import { ButtonSkin } from '@skins/defaults';
+import { ButtonProps } from './properties';
 
 const buttonRender = (props: ButtonProps) => {
   render(<Button {...props} />);

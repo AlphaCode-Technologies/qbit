@@ -1,4 +1,5 @@
 import { BaseComponent } from '@components/containers';
+import { CardItemProps } from './properties';
 
 /**
  * Simple Card-Item component.

@@ -2,6 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import Modal from './Modal';
 import ModalItem from './ModalItem';
 import { ModalItemSkin, ModalSkin } from '@skins/defaults';
+import { ModalProps } from './properties';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<ModalProps> = {
   onClose(): void {},

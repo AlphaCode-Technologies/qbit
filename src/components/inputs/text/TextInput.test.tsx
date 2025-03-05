@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import TextInput from './TextInput.tsx';
 import { TextSkin } from '@skins/defaults';
+import { TextInputProps } from './properties';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<TextInputProps> = {
   id: 'input',

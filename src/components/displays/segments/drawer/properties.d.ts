@@ -1,10 +1,10 @@
-type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
+export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
-type DrawerActions = {
+export type DrawerActions = {
   onClose: () => void;
 };
 
-type DrawerProps = com.qbit.BaseProps &
+export type DrawerProps = com.qbit.BaseProps &
   Omit<com.qbit.BaseProps, 'name' | 'value' | 'disabled' | 'tabIndex'> &
   DrawerActions & {
     open: boolean;
@@ -12,4 +12,4 @@ type DrawerProps = com.qbit.BaseProps &
     testId?: string;
   };
 
-type DrawerItemProps = Omit<DrawerProps, 'open' | 'onClose' | 'position'>;
+export type DrawerItemProps = Omit<DrawerProps, 'open' | 'onClose' | 'position'>;

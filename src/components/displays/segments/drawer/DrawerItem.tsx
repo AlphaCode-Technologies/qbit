@@ -1,4 +1,5 @@
 import { BaseComponent } from '@components/containers';
+import { DrawerItemProps } from './properties';
 
 /**
  * Simple Drawer-Item component.

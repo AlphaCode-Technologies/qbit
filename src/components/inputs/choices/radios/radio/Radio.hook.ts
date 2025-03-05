@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { OptionProps, RadioGroupProps } from './properties';
 
 const useBindSkin = (props: com.qbit.ShellProps<RadioGroupProps, OptionProps>) => {
   const { defaultValue, onChange } = props;

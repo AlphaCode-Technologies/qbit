@@ -1,6 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import ProgressBar from './ProgressBar';
 import { ProgressBarSkin } from '@skins/defaults';
+import { ProgressBarProps } from './properties';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<ProgressBarProps> = {
   value: 50,

@@ -1,5 +1,6 @@
 import { BaseComponent } from '@components/containers';
 import { useBindSkin } from './TextInput.hook';
+import { TextInputProps } from './properties';
 
 /**
  * Simple TextInput component.

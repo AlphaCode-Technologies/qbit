@@ -1,3 +1,5 @@
+import { RadioGroupProps } from '@components/inputs/choices';
+
 const RadioSkin: com.qbit.Skin<RadioGroupProps> = (props: com.qbit.SkinProps<RadioGroupProps>) => {
   const { children, horizontal } = props;
 

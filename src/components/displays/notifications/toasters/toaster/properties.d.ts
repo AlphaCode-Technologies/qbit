@@ -1,8 +1,8 @@
-type ToasterActions = { onClose?: () => void };
+export type ToasterActions = { onClose?: () => void };
 
-type Position = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export type Position = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
-type ToasterProps = {
+export type ToasterProps = {
   open: boolean;
   position: Position;
   duration?: number;

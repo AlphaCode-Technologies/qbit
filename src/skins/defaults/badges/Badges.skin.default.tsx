@@ -1,3 +1,5 @@
+import { BadgeProps } from '@components/index';
+
 const BadgeSkin: com.qbit.Skin<BadgeProps> = (props: com.qbit.SkinProps<BadgeProps>) => {
   const { children, disabled, size, testId, ...rest } = props;
   const sizeMap = {

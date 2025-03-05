@@ -1,4 +1,4 @@
-type ButtonProps = com.qbit.BaseProps &
+export type ButtonProps = com.qbit.BaseProps &
   com.act.MouseActions & {
     testId?: string;
   };

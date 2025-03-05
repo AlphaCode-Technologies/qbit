@@ -1,3 +1,5 @@
+import { ButtonProps } from '@components/inputs';
+
 const Skin: com.qbit.Skin<ButtonProps> = (props: com.qbit.SkinProps<ButtonProps>) => {
   const { value, disabled, tabIndex, testId, onClick } = props;
 

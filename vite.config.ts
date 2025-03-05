@@ -92,7 +92,7 @@ export default defineConfig({
     generatePackageJson(),
     tsConfigPath(),
     libInjectCss(),
-    dts({ insertTypesEntry: true, tsconfigPath: './tsconfig.json', rollupTypes: true }),
+    dts({ insertTypesEntry: true, tsconfigPath: './tsconfig.build.json', rollupTypes: true }),
   ],
   build: {
     emptyOutDir: true,

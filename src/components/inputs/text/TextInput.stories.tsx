@@ -39,7 +39,7 @@ export const Default = (args: any) => {
       type="text"
       value={value}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -55,7 +55,7 @@ export const Disabled = (args: any) => {
       value={value}
       disabled={true}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -71,7 +71,7 @@ export const ReadOnly = (args: any) => {
       value={value}
       readOnly={true}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -87,7 +87,7 @@ export const Placeholder = (args: any) => {
       value={value}
       placeholder="Enter text here"
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -103,7 +103,7 @@ export const NumberInput = (args: any) => {
       value={value}
       placeholder="Enter text here"
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -119,7 +119,7 @@ export const MinValue = (args: any) => {
       value={value}
       min={0}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -135,7 +135,7 @@ export const MaxValue = (args: any) => {
       value={value}
       max={10}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -151,7 +151,7 @@ export const StepValue = (args: any) => {
       value={value}
       step={3}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -166,7 +166,7 @@ export const PasswordInput = (args: any) => {
       type="password"
       value={value}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -181,7 +181,7 @@ export const EmailInput = (args: any) => {
       type="email"
       value={value}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -196,7 +196,7 @@ export const TelephoneInput = (args: any) => {
       type="tel"
       value={value}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -211,7 +211,7 @@ export const UrlInput = (args: any) => {
       type="url"
       value={value}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -227,7 +227,7 @@ export const MaxLength = (args: any) => {
       value={value}
       maxLength={10}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -243,7 +243,7 @@ export const AutoComplete = (args: any) => {
       value={value}
       autoComplete="email"
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -259,7 +259,7 @@ export const AutoCompleteOff = (args: any) => {
       value={value}
       autoComplete="off"
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };
@@ -275,7 +275,7 @@ export const TabIndex = (args: any) => {
       value={value}
       tabIndex={2}
       renderers={{ renderer: TextSkin }}
-      onChange={(event) => setValue(event.target.nodeValue)}
+      onChange={(event: any) => setValue(event.target.nodeValue)}
     />
   );
 };

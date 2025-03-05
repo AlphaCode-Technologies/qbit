@@ -1,3 +1,5 @@
+import { TextInputProps } from '@components/inputs';
+
 const Skin: com.qbit.Skin<TextInputProps> = (props: com.qbit.SkinProps<TextInputProps>) => {
   const {
     name,

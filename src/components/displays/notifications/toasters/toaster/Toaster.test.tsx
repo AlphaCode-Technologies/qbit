@@ -14,7 +14,7 @@ const renderToaster = ({ props }: com.elem.Shell<AlphaElements.ToasterProperties
   render(
     <Toaster
       renderers={{ renderer: ToasterSkin, childRenderer: ToasterSkin }}
-      keyExtractor={(_, i: number) => `top-center-${i}`}
+      keyExtractor={(_: any, i: number) => `top-center-${i}`}
       className="m-2 shadow-xl"
       {...props}
     >

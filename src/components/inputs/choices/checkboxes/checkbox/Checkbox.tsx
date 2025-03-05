@@ -1,4 +1,5 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
+import { CheckboxItemProps, CheckboxProps } from './properties';
 
 /**
  * Checkbox group component.

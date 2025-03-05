@@ -1,3 +1,5 @@
+import { ProgressBarProps } from '@components/index';
+
 const Skin: com.qbit.Skin<ProgressBarProps> = (props: com.qbit.SkinProps<ProgressBarProps>) => {
   const { value, tabIndex, testId } = props;
 

@@ -1,3 +1,5 @@
+import { TabItemProps } from '@components/index';
+
 const TabItemSkin: com.qbit.Skin<TabItemProps> = (props) => {
   const { name, onClick, disabled, active } = props;
   return (

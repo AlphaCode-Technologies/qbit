@@ -2,6 +2,7 @@ import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import Tooltip from './Tooltip';
 import { ListItemSkin } from '@skins/defaults';
 import { TooltipSkin } from '@skins/defaults/tooltip';
+import { TooltipProps } from './properties';
 
 //set all values for properties for passing them as default
 const DEFAULT_PROPERTIES: TooltipProps = {

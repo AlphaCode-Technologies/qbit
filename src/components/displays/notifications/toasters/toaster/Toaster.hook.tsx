@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ToasterProps } from './properties';
 
 const useBindSkin = (props: com.qbit.ShellProps<ToasterProps>) => {
   const { open, duration = 3000, autoClose = true } = props;

@@ -1,5 +1,6 @@
 import { BaseComponent } from '@components/containers';
 import { useBindSkin } from './ProgressBar.hook';
+import { ProgressBarProps } from './properties';
 
 /**
  * Simple ProgressBar component.

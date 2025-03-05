@@ -1,6 +1,6 @@
-type BreadcrumbProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions;
+export type BreadcrumbProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions;
 
-type BreadcrumbItemProps = BreadcrumbProps &
+export type BreadcrumbItemProps = BreadcrumbProps &
   com.utils.Property<{
     id?: string;
     href?: string;

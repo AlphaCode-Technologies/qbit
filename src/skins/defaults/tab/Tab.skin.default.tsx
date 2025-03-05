@@ -1,3 +1,5 @@
+import { TabProps } from '@components/index';
+
 const TabSkin: com.qbit.Skin<TabProps> = (props: com.qbit.SkinProps<TabProps>) => {
   const { children } = props;
 

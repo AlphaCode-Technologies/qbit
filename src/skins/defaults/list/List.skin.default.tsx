@@ -1,3 +1,5 @@
+import { ListProps } from '@components/index';
+
 const ListSkin: com.qbit.Skin<ListProps> = (props: com.qbit.SkinProps<ListProps>) => {
   const { children, ...rest } = props;
   const { onChange, onBlur, onFocus, ...otherProps } = rest;

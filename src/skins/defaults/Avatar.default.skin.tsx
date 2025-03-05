@@ -1,3 +1,5 @@
+import { AvatarProps } from '@components/index';
+
 const Skin: com.qbit.Skin<AvatarProps> = (props: com.qbit.SkinProps<AvatarProps>) => {
   const { value, testId, onClick } = props;
 

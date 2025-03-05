@@ -1,4 +1,5 @@
 import { BaseComponent } from '@components/containers';
+import { NumericRangeProps } from './properties';
 
 const NumericRangePicker: com.qbit.Shell<NumericRangeProps> = (props) => {
   const { value, minValue = 0, maxValue = 100, testId } = props;

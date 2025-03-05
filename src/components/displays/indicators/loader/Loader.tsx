@@ -1,4 +1,5 @@
 import { BaseComponent } from '@components/containers';
+import { LoaderProps } from './properties';
 
 /**
  * Simple Loader component.

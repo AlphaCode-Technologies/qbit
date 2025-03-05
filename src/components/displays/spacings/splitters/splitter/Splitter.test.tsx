@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import Splitter from './Splitter';
 import SplitterItem from './SplitterItem';
 import { act } from 'react';
+import { SplitterProps } from './properties';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<SplitterProps> = {
   width: '200px',

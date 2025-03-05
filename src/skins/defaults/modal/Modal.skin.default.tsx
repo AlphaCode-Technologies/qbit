@@ -1,3 +1,5 @@
+import { ModalProps } from '@components/index';
+
 const Modal: com.qbit.Skin<ModalProps> = (props) => {
   const { children } = props;
 

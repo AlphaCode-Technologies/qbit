@@ -1,3 +1,5 @@
+import { AccordionProps } from '@components/displays/menus';
+
 const AccordionSkin: com.qbit.Skin<AccordionProps> = (props: com.qbit.SkinProps<AccordionProps>) => {
   const { children, className } = props;
 

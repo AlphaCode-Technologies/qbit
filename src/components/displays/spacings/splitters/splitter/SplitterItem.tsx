@@ -1,5 +1,6 @@
 import { BaseComponent } from '@components/containers';
 import { useBindSkin } from './Splitter.hook';
+import { SplitterProps } from './properties';
 
 const SplitterItem: com.qbit.Shell<SplitterProps> = (props) => {
   const { resizable, horizontal, style, ref, testId, handleMouseDown } = useBindSkin(props);

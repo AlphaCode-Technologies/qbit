@@ -1,3 +1,5 @@
+import { OptionProps } from '@components/inputs/choices';
+
 const RadioOptionSkin: com.qbit.Shell<OptionProps> = (props) => {
   const { label, testId, disabled, tabIndex, name, defaultValue, value, onChange } = props;
 
