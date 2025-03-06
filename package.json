@@ -1,17 +1,13 @@
 {
   "name": "@qbit.design/test",
   "private": true,
-  "version": "0.0.4",
+  "version": "0.0.7",
   "type": "module",
   "author": {
     "name": "Dulan Sudasinghe",
     "email": "dulans@alphacodetechnologies.com"
   },
   "license": "Apache-2.0",
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "keywords": [
     "react",
     "typescript"
@@ -21,9 +17,9 @@
     "url": "https://github.com/AlphaCode-Technologies/qbit"
   },
   "readme": "README.md",
-  "types": "dist/qbit.d.ts",
-  "main": "dist/@qbit.design/test.cjs.js",
-  "module": "dist/@qbit.design/test.es.js",
+  "types": "qbit.d.ts",
+  "main": "@qbit.design/test.cjs.js",
+  "module": "@qbit.design/test.es.js",
   "scripts": {
     "dev": "vite",
     "dev:preview": "vite preview",
