@@ -1,4 +1,5 @@
 import { DrawerProps } from '@components/index';
+import { com } from 'src/types/common';
 
 const Drawer: com.qbit.Skin<DrawerProps> = (props) => {
   const { children } = props;

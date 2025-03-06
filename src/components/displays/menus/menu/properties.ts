@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type MenuProps = com.qbit.BaseProps &
   com.act.MouseActions & {
     context?: boolean;

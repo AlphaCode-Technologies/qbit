@@ -3,6 +3,7 @@ import Modal from './Modal';
 import ModalItem from './ModalItem';
 import { ModalItemSkin, ModalSkin } from '@skins/defaults';
 import { ModalProps } from './properties';
+import { com } from 'src/types/common';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<ModalProps> = {
   onClose(): void {},

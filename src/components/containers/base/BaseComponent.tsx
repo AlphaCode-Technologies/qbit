@@ -1,4 +1,5 @@
 import { useGetSkin } from './hooks';
+import { com } from 'src/types/common';
 
 const BaseComponent = <P extends com.qbit.BaseProps, C extends com.qbit.BaseProps = any>(
   props: com.qbit.ShellProps<P, C>,

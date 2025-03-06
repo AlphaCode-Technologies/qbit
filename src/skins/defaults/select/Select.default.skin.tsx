@@ -1,4 +1,5 @@
 import { SelectGroupProps } from '@components/inputs/choices';
+import { com } from 'src/types/common';
 
 const SelectSkin: com.qbit.Skin<SelectGroupProps> = (props: com.qbit.SkinProps<SelectGroupProps>) => {
   const { defaultValue, testId } = props;

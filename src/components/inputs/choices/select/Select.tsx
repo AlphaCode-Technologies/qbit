@@ -2,6 +2,7 @@ import { BaseComponent, useGetChildren } from '@components/containers';
 import useBindSkin from './Select.hook';
 import { useState } from 'react';
 import { SelectGroupProps, SelectOptionProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * Select group component.

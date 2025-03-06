@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type SelectGroupProps = com.qbit.BaseProps &
   com.act.UiActions & {
     defaultValue?: string | number;

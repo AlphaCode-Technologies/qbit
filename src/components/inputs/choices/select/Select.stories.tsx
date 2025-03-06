@@ -4,6 +4,7 @@ import SelectOption from './SelectOption';
 import SelectSkin from '@skins/defaults/select/Select.default.skin';
 import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
 import { SelectOptionProps } from './properties';
+import { com } from 'src/types/common';
 
 export default {
   title: 'Qbit design/Inputs/Choices/Select',

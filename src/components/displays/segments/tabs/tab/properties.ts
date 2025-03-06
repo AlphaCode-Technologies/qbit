@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { com } from 'src/types/common';
 
 export type TabProps = com.qbit.BaseProps &
   com.act.UiActions &

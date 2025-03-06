@@ -1,4 +1,5 @@
 import { CardProps } from '@components/index';
+import { com } from 'src/types/common';
 
 const Card: com.qbit.Skin<CardProps> = (props) => {
   const { children, testId } = props;

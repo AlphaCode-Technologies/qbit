@@ -3,6 +3,7 @@ import Menu from './Menu';
 import MenuItem from './MenuItem';
 import { MenuItemSkin, MenuSkin } from '@skins/defaults';
 import { MenuProps } from './properties';
+import { com } from 'src/types/common';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<MenuProps> = {
   keyExtractor: (value: string, i: number) => `${value}-${i}`,

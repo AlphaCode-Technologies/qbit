@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type TooltipPosition = 'top' | 'right' | 'left' | 'bottom';
 
 export type TooltipProps = com.utils.Property<{

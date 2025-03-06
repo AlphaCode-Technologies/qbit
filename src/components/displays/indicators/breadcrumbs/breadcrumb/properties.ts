@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type BreadcrumbProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions;
 
 export type BreadcrumbItemProps = BreadcrumbProps &

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { com } from 'src/types/common';
 
 export type AccordionProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions;
 

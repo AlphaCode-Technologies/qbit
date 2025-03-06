@@ -1,4 +1,5 @@
 import { NumericRangeProps } from '@components/index';
+import { com } from 'src/types/common';
 
 const NumericRange: com.qbit.Skin<NumericRangeProps> = (props: com.qbit.SkinProps<NumericRangeProps>) => {
   const { children, ...rest } = props;

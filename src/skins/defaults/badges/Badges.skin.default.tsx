@@ -1,4 +1,5 @@
 import { BadgeProps } from '@components/index';
+import { com } from 'src/types/common';
 
 const BadgeSkin: com.qbit.Skin<BadgeProps> = (props: com.qbit.SkinProps<BadgeProps>) => {
   const { children, disabled, size, testId, ...rest } = props;

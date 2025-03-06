@@ -1,5 +1,6 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
 import { CardItemProps, CardProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * Simple Card component.

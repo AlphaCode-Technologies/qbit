@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type ModalActions = {
   onClose: () => void;
 };

@@ -1,5 +1,6 @@
 import { BaseComponent } from '@components/containers';
 import { SelectOptionProps } from './properties';
+import { com } from 'src/types/common';
 
 const SelectOption: com.qbit.Shell<SelectOptionProps> = (props) => {
   const { onChange, label, disabled } = props;

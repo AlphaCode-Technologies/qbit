@@ -1,4 +1,5 @@
 import { SelectOptionProps } from '@components/inputs/choices';
+import { com } from 'src/types/common';
 
 const SelectOptionSkin: com.qbit.Shell<SelectOptionProps> = (props) => {
   const { label, value, onChange, testId } = props;

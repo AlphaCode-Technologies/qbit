@@ -1,4 +1,5 @@
 import { LoaderProps } from '@components/index';
+import { com } from 'src/types/common';
 
 const Skin: com.qbit.Skin<LoaderProps> = (props: com.qbit.SkinProps<LoaderProps>) => {
   const { testId } = props;

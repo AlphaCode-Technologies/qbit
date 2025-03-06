@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type ToasterActions = { onClose?: () => void };
 
 export type Position = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';

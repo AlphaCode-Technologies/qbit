@@ -4,6 +4,7 @@ import Splitter from './Splitter';
 import SplitterItem from './SplitterItem';
 import { act } from 'react';
 import { SplitterProps } from './properties';
+import { com } from 'src/types/common';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<SplitterProps> = {
   width: '200px',

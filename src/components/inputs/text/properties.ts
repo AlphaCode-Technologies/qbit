@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';
 
 export type TextInputProps = com.qbit.BaseProps &

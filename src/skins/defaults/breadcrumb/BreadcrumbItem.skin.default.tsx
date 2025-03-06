@@ -1,4 +1,5 @@
 import { BreadcrumbItemProps } from '@components/index';
+import { com } from 'src/types/common';
 
 const BreadcrumbItemSkin: com.qbit.Skin<BreadcrumbItemProps> = (props) => {
   const { href, disabled, testId, name, active, onClick, index, childrenCount } = props;

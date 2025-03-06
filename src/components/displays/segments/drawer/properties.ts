@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
 export type DrawerActions = {

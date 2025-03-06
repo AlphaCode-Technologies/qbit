@@ -1,5 +1,6 @@
 import { BaseComponent } from '@components/containers';
 import { BreadcrumbItemProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * BreadcrumbItem component.

@@ -1,3 +1,5 @@
+import { com } from 'src/types/common';
+
 export type RadioGroupProps = com.qbit.BaseProps &
   com.act.UiActions & {
     horizontal?: boolean;

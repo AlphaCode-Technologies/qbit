@@ -7,7 +7,6 @@
     /* Path setup */
     "baseUrl": "./",
     "paths": {
-      "@types/*": ["src/types/*"],
       "@components/*": ["src/components/*"],
       "@inputs/*": ["src/components/inputs/*"],
       "@containers/*": ["src/components/containers/*"],

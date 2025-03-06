@@ -1,5 +1,6 @@
 import { BaseComponent } from '@components/containers';
 import { BadgeProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * Badge component.

@@ -1,4 +1,5 @@
 import { SplitterProps } from '@components/displays';
+import { com } from 'src/types/common';
 
 const SplitterItemSkin: com.qbit.Skin<SplitterProps> = (props) => {
   const { children, onChange, ...rest } = props;
