@@ -1,7 +1,7 @@
 {
   "name": "@qbit.design/test",
   "private": true,
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "author": {
     "name": "Dulan Sudasinghe",
@@ -17,7 +17,6 @@
     "url": "https://github.com/AlphaCode-Technologies/qbit"
   },
   "readme": "README.md",
-  "types": "qbit.d.ts",
   "main": "@qbit.design/test.cjs.js",
   "module": "@qbit.design/test.es.js",
   "scripts": {
