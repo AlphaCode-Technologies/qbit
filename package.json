@@ -17,9 +17,9 @@
     "url": "https://github.com/AlphaCode-Technologies/qbit"
   },
   "readme": "README.md",
-  "types": "dist/qbit.d.ts",
-  "main": "dist/@qbit.design/test.cjs.js",
-  "module": "dist/@qbit.design/test.es.js",
+  "types": "qbit.d.ts",
+  "main": "@qbit.design/test.cjs.js",
+  "module": "@qbit.design/test.es.js",
   "scripts": {
     "dev": "vite",
     "dev:preview": "vite preview",
