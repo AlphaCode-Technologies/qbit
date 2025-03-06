@@ -1,4 +1,6 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
+import { AccordionItemProps, AccordionProps } from './properties.ts';
+import { com } from 'src/types/common';
 
 /**
  * Accordion component.

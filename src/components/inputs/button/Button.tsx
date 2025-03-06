@@ -1,4 +1,6 @@
 import { BaseComponent } from '@components/containers';
+import { ButtonProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * Simple button component.

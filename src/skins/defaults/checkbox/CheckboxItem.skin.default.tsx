@@ -1,3 +1,6 @@
+import { CheckboxItemProps } from '@components/inputs/choices';
+import { com } from 'src/types/common';
+
 const CheckboxItemSkin: com.qbit.Skin<CheckboxItemProps> = (props) => {
   const { onChange, disabled, testId, checked } = props;
   return (

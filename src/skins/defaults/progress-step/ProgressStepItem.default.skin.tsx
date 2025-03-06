@@ -1,3 +1,6 @@
+import { ProgressStepItemProps } from '@components/displays/indicators/progress-steps/progress-step/properties';
+import { com } from 'src/types/common';
+
 const ProgressStepItemSkin: com.qbit.Skin<ProgressStepItemProps> = (props) => {
   const { label, active, completed, disabled } = props;
 

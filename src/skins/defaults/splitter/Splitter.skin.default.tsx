@@ -1,3 +1,6 @@
+import { SplitterProps } from '@components/displays';
+import { com } from 'src/types/common';
+
 const SplitterSkin: com.qbit.Skin<SplitterProps> = (props: com.qbit.SkinProps<SplitterProps>) => {
   const { children, ...rest } = props;
   const { onChange, onBlur, onFocus, horizontal, ...otherProps } = rest;

@@ -1,4 +1,6 @@
-type SplitterProps = com.utils.Property<{
+import { com } from 'src/types/common';
+
+export type SplitterProps = com.utils.Property<{
   width: string;
   height: string;
   resizable?: boolean;

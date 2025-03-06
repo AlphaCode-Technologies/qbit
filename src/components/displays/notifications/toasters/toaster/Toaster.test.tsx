@@ -1,8 +1,10 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import Toaster from './Toaster';
 import { ToasterSkin } from '@skins/defaults';
+import { com } from 'src/types/common';
+import { ToasterProps } from './properties';
 
-const DEFAULT_PROPERTIES = {
+const DEFAULT_PROPERTIES: ToasterProps = {
   open: true,
   position: 'top-center',
   testId: 'test-toaster',
@@ -10,11 +12,11 @@ const DEFAULT_PROPERTIES = {
   autoClose: true,
 };
 
-const renderToaster = ({ props }: com.elem.Shell<AlphaElements.ToasterProperties, AlphaElements.ToasterActions>) => {
+const renderToaster = (props: com.qbit.ShellProps<ToasterProps>) => {
   render(
     <Toaster
       renderers={{ renderer: ToasterSkin, childRenderer: ToasterSkin }}
-      keyExtractor={(_, i: number) => `top-center-${i}`}
+      keyExtractor={(_: any, i: number) => `top-center-${i}`}
       className="m-2 shadow-xl"
       {...props}
     >
@@ -43,23 +45,23 @@ describe('Test for toaster elements', () => {
   });
 
   it('Should have toaster elements', async () => {
-    renderToaster({ props: DEFAULT_PROPERTIES });
+    renderToaster(DEFAULT_PROPERTIES);
     const element = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     expect(element).toBeInTheDocument();
   });
 
   it('Should have not toaster elements if open is false', async () => {
-    renderToaster({ props: { ...DEFAULT_PROPERTIES, open: false } });
+    renderToaster({ ...DEFAULT_PROPERTIES, open: false });
     const element = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     expect(element).not.toBeInTheDocument();
   });
 
   it('Should have toaster elements hidden after given time', async () => {
-    renderToaster({ props: DEFAULT_PROPERTIES });
+    renderToaster(DEFAULT_PROPERTIES);
     const element = await screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     expect(element).toBeInTheDocument();
 
-    await new Promise((r) => setTimeout(r, DEFAULT_PROPERTIES.duration + 100));
+    await new Promise((r) => setTimeout(r, DEFAULT_PROPERTIES.duration! + 100));
     const ele = screen.queryByTestId(DEFAULT_PROPERTIES.testId!);
     expect(ele).not.toBeInTheDocument();
   });

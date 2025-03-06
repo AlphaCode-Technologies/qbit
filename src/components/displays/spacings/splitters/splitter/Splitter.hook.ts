@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { SplitterProps } from './properties';
+import { com } from 'src/types/common';
 
 export const useBindSkin = (props: com.qbit.ShellProps<SplitterProps>) => {
   const { width, height, horizontal, resizable, testId } = props;

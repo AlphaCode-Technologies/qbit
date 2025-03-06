@@ -1,3 +1,6 @@
+import { BadgeProps } from '@components/index';
+import { com } from 'src/types/common';
+
 const sizeMap = {
   sm: { width: 80, height: 28 },
   md: { width: 100, height: 28 },
@@ -5,9 +8,8 @@ const sizeMap = {
   xl: { width: 130, height: 28 },
 };
 
-const DefaultSkin = ({ properties, actions }: AlphaElements.BadgesProps) => {
-  const { id, disabled, size, count, label, checked, imageSrc, testId } = properties;
-  const { onClose, onClick } = actions;
+const DefaultSkin = (properties: com.qbit.ShellProps<BadgeProps>) => {
+  const { disabled, size, testId, onClose, onClick, value, imageSrc, label, id, count } = properties;
   const dimension = sizeMap[size as AlphaElements.Size] || sizeMap['md'];
 
   return (
@@ -33,13 +35,13 @@ const DefaultSkin = ({ properties, actions }: AlphaElements.BadgesProps) => {
           fill="#d9d9d9"
           onClick={() => {
             if (onClick) {
-              onClick(!checked);
+              onClick(!value as any);
             }
           }}
         >
           <input
             type="checkbox"
-            checked={checked}
+            checked={value}
             style={{
               transform: 'scale(1.3)',
               marginTop: '-2px',

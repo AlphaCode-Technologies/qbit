@@ -1,11 +1,13 @@
 import { BaseComponent } from '@components/containers';
+import { SelectOptionProps } from './properties';
+import { com } from 'src/types/common';
 
-const SelectOption: com.qbit.Shell<SelectOption> = (props) => {
+const SelectOption: com.qbit.Shell<SelectOptionProps> = (props) => {
   const { onChange, label, disabled } = props;
 
   const handleClick = () => {
     if (!disabled) {
-      onChange?.(label);
+      onChange?.(label as any);
     }
   };
 

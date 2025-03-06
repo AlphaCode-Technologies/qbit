@@ -1,5 +1,8 @@
+import { SelectGroupProps } from '@components/inputs/choices';
+import { com } from 'src/types/common';
+
 const SelectSkin: com.qbit.Skin<SelectGroupProps> = (props: com.qbit.SkinProps<SelectGroupProps>) => {
-  const { label, defaultValue, testId } = props;
+  const { defaultValue, testId } = props;
 
   return (
     <svg
@@ -29,7 +32,7 @@ const SelectSkin: com.qbit.Skin<SelectGroupProps> = (props: com.qbit.SkinProps<S
           />
         </g>
         <text x="42.5" y="34" width="90" height="18" rx="9" fill="currentColor">
-          {defaultValue ?? label}
+          {defaultValue ?? ''}
         </text>
       </g>
     </svg>

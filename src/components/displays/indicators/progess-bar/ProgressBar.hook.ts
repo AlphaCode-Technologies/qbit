@@ -1,3 +1,5 @@
+import { ProgressBarProps } from './properties';
+
 export const useBindSkin = (params: ProgressBarProps) => {
   const { value } = params;
 

@@ -1,5 +1,7 @@
 import { createPortal } from 'react-dom';
 import { BaseComponent, useGetChildren } from '@components/containers';
+import { ModalProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * Simple Modal component.

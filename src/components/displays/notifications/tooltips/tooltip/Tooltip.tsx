@@ -1,5 +1,7 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
 import { useBindSkin } from './Tooltip.hooks';
+import { TooltipProps } from './properties';
+import { com } from 'src/types/common';
 
 const CLASSES = {
   top: 'absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1',
@@ -24,7 +26,7 @@ const Tooltip: com.qbit.Shell<TooltipProps> = (props: com.qbit.ShellProps<Toolti
         {children}
       </div>
       {open && (
-        <div className={`${CLASSES[position]}`}>
+        <div className={`${CLASSES[position as 'top' | 'bottom' | 'left' | 'right']}`}>
           <BaseComponent {...rest}>{label}</BaseComponent>
         </div>
       )}

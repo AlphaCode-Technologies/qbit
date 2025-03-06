@@ -1,6 +1,8 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
 import { createPortal } from 'react-dom';
 import useBindSkin from './Toaster.hook';
+import { Position, ToasterProps } from './properties';
+import { com } from 'src/types/common';
 
 const POSITIONS = {
   'top-left': 'top-0 left-0',

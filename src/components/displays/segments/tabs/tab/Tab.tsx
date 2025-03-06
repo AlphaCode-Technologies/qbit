@@ -1,6 +1,8 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
 import { useState } from 'react';
 import TabItem from './TabItem';
+import { TabItemProps, TabProps } from './properties';
+import { com } from 'src/types/common';
 
 const Tab: com.qbit.Shell<TabProps, TabItemProps> = (props) => {
   const { children: oChildren, ...rest } = props;

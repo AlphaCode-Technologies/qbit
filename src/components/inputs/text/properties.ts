@@ -1,6 +1,8 @@
-type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';
+import { com } from 'src/types/common';
 
-type TextInputProps = com.qbit.BaseProps &
+export type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';
+
+export type TextInputProps = com.qbit.BaseProps &
   com.act.UiActions &
   com.act.KeyboardActions & {
     id: string;

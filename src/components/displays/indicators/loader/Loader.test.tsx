@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import Loader from './Loader';
 import { LoaderSkin } from '@skins/defaults';
+import { LoaderProps } from './properties';
+import { com } from 'src/types/common';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<LoaderProps> = {
   isLoading: true,

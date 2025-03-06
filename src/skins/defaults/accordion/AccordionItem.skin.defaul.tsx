@@ -1,4 +1,6 @@
+import { AccordionItemProps } from '@components/index';
 import { useState } from 'react';
+import { com } from 'src/types/common';
 
 const AccordionItemSkin: com.qbit.Skin<AccordionItemProps> = (props) => {
   const { label, content, children, onChange, isOpen, ...rest } = props;

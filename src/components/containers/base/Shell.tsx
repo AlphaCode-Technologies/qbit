@@ -1,4 +1,5 @@
 import Wrapper from './Wrapper';
+import { com } from 'src/types/common';
 
 /**
  * The base component shell for all components. This may also be considered as the wrapper or the controller.

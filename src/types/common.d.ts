@@ -5,7 +5,7 @@
  *
  * @description This is the common namespace that contains all the common types and interfaces that are shared across the application.
  */
-declare namespace com {
+export declare namespace com {
   /**
    * Define all typescript utilities here.
    */
@@ -70,7 +70,7 @@ declare namespace com {
     type MouseActions = Partial<com.evt.MouseEvents>;
     type KeyboardActions = Partial<com.evt.KeyboardEvents>;
     type UiActions = Partial<com.evt.UiEvents>;
-    type MediaActions = Partial<com.evt.MediaEvents>;
+    // type MediaActions = Partial<com.evt.MediaEvents>;
   }
 
   // /**
@@ -191,7 +191,7 @@ declare namespace com {
     };
 
     type ShellProps<P, A> = SkinProps<P, A> & BaseShellProps<P, A>;
-    type Shell<P, A> = React.FC<ShellProps<P, A>> & PropsWithChildren;
+    type Shell<P, A> = React.FC<ShellProps<P, A>> & React.PropsWithChildren;
 
     type AsyncShellProps<P, A> = ShellProps<P, A> & {
       properties: com.utils.ValidateProps<P> & {

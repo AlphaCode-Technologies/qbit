@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import Avatar from './Avatar';
 import { AvatarSkin } from '@skins/defaults';
+import { AvatarProps } from './properties';
+import { com } from 'src/types/common';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<AvatarProps> = {
   value: 'AE',

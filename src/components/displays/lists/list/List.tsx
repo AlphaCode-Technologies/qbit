@@ -1,4 +1,6 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
+import { ListItemProps, ListProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * Simple list component.

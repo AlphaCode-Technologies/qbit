@@ -1,3 +1,6 @@
+import { CheckboxItemProps, CheckboxProps } from '@components/inputs/choices';
+import { com } from 'src/types/common';
+
 const sizeMap = {
   sm: 12,
   md: 16,
@@ -5,10 +8,9 @@ const sizeMap = {
   xl: 24,
 };
 
-const SwitchSkin: com.elem.Skin<AlphaElements.CheckboxProperties, AlphaElements.CheckBoxAction> = ({
-  properties,
-  actions,
-}) => {
+const SwitchSkin: com.qbit.Shell<CheckboxProps, CheckboxItemProps> = (
+  properties: com.qbit.ShellProps<CheckboxProps, CheckboxItemProps>,
+) => {
   const { value, disabled, size } = properties;
   const { onChange } = properties;
   const dimension = sizeMap[size as AlphaElements.Size] || sizeMap['md'];
@@ -20,7 +22,7 @@ const SwitchSkin: com.elem.Skin<AlphaElements.CheckboxProperties, AlphaElements.
     <div
       className={`${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none flex flex-col mt-10' : 'cursor-pointer flex flex-col mt-10'}`}
     >
-      {actions && (
+      {onChange && (
         <div
           className={`rounded-full flex items-center justify-center cursor-pointer shadow-md transition-colors duration-300 ease-in-out ${
             properties.value ? 'bg-green-500' : 'bg-gray-300'
@@ -30,7 +32,7 @@ const SwitchSkin: com.elem.Skin<AlphaElements.CheckboxProperties, AlphaElements.
             height: `${dimension * 4}px`,
           }}
           onClick={() => {
-            onChange(!value);
+            onChange(!value as any);
           }}
         >
           <div

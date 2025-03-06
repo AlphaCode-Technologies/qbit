@@ -1,3 +1,6 @@
+import { DrawerItemProps } from '@components/index';
+import { com } from 'src/types/common';
+
 const CardItem: com.qbit.Skin<DrawerItemProps> = (props) => {
   const { children } = props;
 

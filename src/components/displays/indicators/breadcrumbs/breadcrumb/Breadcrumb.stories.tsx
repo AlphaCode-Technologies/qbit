@@ -2,6 +2,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import Breadcrumb from './Breadcrumb';
 import BreadcrumbItem from './BreadcrumbItem';
 import { BreadcrumbItemSkin, BreadcrumbSkin } from '@skins/defaults';
+import { BreadcrumbProps } from './properties';
 
 export default {
   title: 'Qbit design/Displays/Indicators/Breadcrumb',

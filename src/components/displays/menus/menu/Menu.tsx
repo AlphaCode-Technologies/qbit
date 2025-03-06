@@ -1,5 +1,7 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
 import { useBindSkin } from './Menu.hook.ts';
+import { MenuItemProps, MenuProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * Simple Menu component.

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { MenuProps } from './properties';
 
 export const useBindSkin = (params: MenuProps) => {
   const { context, reference } = params;

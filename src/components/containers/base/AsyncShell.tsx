@@ -1,4 +1,5 @@
 import Wrapper from './Wrapper'; // Since it's in the same folder, we can just import it directly.
+import { com } from 'src/types/common';
 
 /**
  * The async component shell for components that can have a skeleton component. This may also be considered as the wrapper or the controller.

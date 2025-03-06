@@ -1,6 +1,8 @@
-type TooltipPosition = 'top' | 'right' | 'left' | 'bottom';
+import { com } from 'src/types/common';
 
-type TooltipProps = com.utils.Property<{
+export type TooltipPosition = 'top' | 'right' | 'left' | 'bottom';
+
+export type TooltipProps = com.utils.Property<{
   position: TooltipPosition;
   label: string;
   delay?: number;

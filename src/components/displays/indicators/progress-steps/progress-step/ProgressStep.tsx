@@ -1,4 +1,6 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
+import { ProgressStepItemProps, ProgressStepProps } from './properties';
+import { com } from 'src/types/common';
 
 /**
  * @param props

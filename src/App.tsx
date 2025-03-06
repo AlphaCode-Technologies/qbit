@@ -100,7 +100,7 @@ const App = () => {
           name="Option 1"
           value="option1"
           checked={selectedValues.includes('option1')}
-          onChange={(isChecked) =>
+          onChange={(isChecked: any) =>
             setSelectedValues((prev) => (isChecked ? [...prev, 'option1'] : prev.filter((val) => val !== 'option1')))
           }
         />
@@ -109,7 +109,7 @@ const App = () => {
           name="Option 2"
           value="option2"
           checked={selectedValues.includes('option2')}
-          onChange={(isChecked) =>
+          onChange={(isChecked: any) =>
             setSelectedValues((prev) => (isChecked ? [...prev, 'option2'] : prev.filter((val) => val !== 'option2')))
           }
         />
@@ -118,7 +118,7 @@ const App = () => {
           name="Option 3"
           value="option3"
           checked={selectedValues.includes('option3')}
-          onChange={(isChecked) =>
+          onChange={(isChecked: any) =>
             setSelectedValues((prev) => (isChecked ? [...prev, 'option3'] : prev.filter((val) => val !== 'option3')))
           }
         />

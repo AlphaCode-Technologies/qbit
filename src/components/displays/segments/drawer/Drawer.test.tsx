@@ -2,6 +2,8 @@ import { cleanup, render, screen } from '@testing-library/react';
 import Drawer from './Drawer';
 import DrawerItem from './DrawerItem';
 import { DrawerItemSkin, DrawerSkin } from '@skins/defaults';
+import { DrawerProps } from './properties';
+import { com } from 'src/types/common';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<DrawerProps> = {
   open: true,

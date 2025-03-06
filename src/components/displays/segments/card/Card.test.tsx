@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { CardItemSkin, CardSkin } from '@skins/defaults';
 import Card from './Card';
 import CardItem from './CardItem';
+import { CardProps } from './properties';
+import { com } from 'src/types/common';
 
 const DEFAULT_PROPERTIES: com.qbit.ShellProps<CardProps> = {
   testId: 'card',

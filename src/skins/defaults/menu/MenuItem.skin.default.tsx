@@ -1,3 +1,6 @@
+import { MenuItemProps } from '@components/index';
+import { com } from 'src/types/common';
+
 const MenuItemSkin: com.qbit.Skin<MenuItemProps> = (props) => {
   const { children, label } = props;
 

@@ -29,12 +29,11 @@ const basePackageJson = {
   publishConfig: mainPackageJson.publishConfig,
 };
 
-function createPackageJson(folder: string, urlPostFix: string) {
-  const folderPath = resolve(__dirname, `dist/${folder}`);
+function createPackageJson() {
+  const folderPath = resolve(__dirname, `dist`);
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath, { recursive: true });
   }
-  console.log(urlPostFix);
 
   fs.writeFileSync(
     `dist/package.json`,
@@ -43,15 +42,16 @@ function createPackageJson(folder: string, urlPostFix: string) {
 }
 
 function generatePackageJson() {
-  const args = process.argv.slice(2);
+  // const args = process.argv.slice(2);
   return {
     name: 'generate-package-json',
     closeBundle() {
-      if (args[2] === 'skins') {
-        createPackageJson('components', 'shell');
-      } else {
-        createPackageJson('skins', 'skins');
-      }
+      // if (args[2] === 'skins') {
+      //   createPackageJson('components', 'shell');
+      // } else {
+      //   createPackageJson('skins', 'skins');
+      // }
+      createPackageJson();
     },
   };
 }
@@ -92,7 +92,13 @@ export default defineConfig({
     generatePackageJson(),
     tsConfigPath(),
     libInjectCss(),
-    dts({ insertTypesEntry: true, tsconfigPath: './tsconfig.json', rollupTypes: true }),
+    dts({
+      insertTypesEntry: true,
+      tsconfigPath: './tsconfig.build.json',
+      rollupTypes: true,
+      exclude: ['**/*.stories.tsx', '**/*.stories.ts', '**/*.test.tsx', '**/*.test.ts'],
+      entryRoot: './src',
+    }),
   ],
   build: {
     emptyOutDir: true,
