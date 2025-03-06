@@ -1,10 +1,10 @@
-type SelectGroupProps = com.qbit.BaseProps &
-  com.act.MouseEvents & {
+export type SelectGroupProps = com.qbit.BaseProps &
+  com.act.UiActions & {
     defaultValue?: string | number;
     testId?: string;
   };
 
-type SelectOption = SelectGroupProps &
+export type SelectOptionProps = SelectGroupProps &
   com.utils.Property<{
     label: string;
     value: string | number;

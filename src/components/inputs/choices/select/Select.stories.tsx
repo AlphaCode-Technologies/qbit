@@ -3,6 +3,7 @@ import Select from './Select';
 import SelectOption from './SelectOption';
 import SelectSkin from '@skins/defaults/select/Select.default.skin';
 import SelectOptionSkin from '@skins/defaults/select/SelectOption.default.skin';
+import { SelectOptionProps } from './properties';
 
 export default {
   title: 'Qbit design/Inputs/Choices/Select',
@@ -19,7 +20,7 @@ const Template: StoryFn = (args) => (
   </Select>
 );
 
-const SelectOptionCustomSkin: com.qbit.Shell<SelectOption> = (props) => {
+const SelectOptionCustomSkin: com.qbit.Shell<SelectOptionProps> = (props) => {
   const { label, value, onChange, testId } = props;
 
   return (

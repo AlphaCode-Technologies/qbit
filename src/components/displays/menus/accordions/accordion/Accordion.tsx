@@ -1,5 +1,5 @@
 import { BaseComponent, useGetChildren } from '@components/containers';
-import { AccordionItemProps, AccordionProps } from './properties';
+import { AccordionItemProps, AccordionProps } from './properties.ts';
 
 /**
  * Accordion component.

@@ -1,5 +1,5 @@
 export type RadioGroupProps = com.qbit.BaseProps &
-  com.act.MouseEvents & {
+  com.act.UiActions & {
     horizontal?: boolean;
     defaultValue?: string;
   };

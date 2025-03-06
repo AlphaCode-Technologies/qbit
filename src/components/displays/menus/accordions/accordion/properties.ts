@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type AccordionProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions;
 
 export type AccordionItemProps = AccordionProps &

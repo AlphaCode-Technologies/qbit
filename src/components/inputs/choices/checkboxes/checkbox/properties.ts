@@ -1,3 +1,5 @@
+import { ListProps } from '@components/displays/lists';
+
 export type CheckboxProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions;
 
 export type CheckboxItemProps = ListProps &

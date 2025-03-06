@@ -19,7 +19,7 @@ export {
   ModalItem,
   Badge,
 } from './displays';
-export { Button, TextInput, type ButtonProps } from './inputs';
+export { Button, TextInput } from './inputs';
 
 export {
   type AvatarProps,
@@ -53,5 +53,4 @@ export {
 } from './displays/segments';
 
 export { type SplitterProps } from './displays/spacings';
-export { type NumericRangeProps } from './inputs/range';
-export { type InputType, type TextInputProps } from './inputs/text/properties';
+export { type InputType, type TextInputProps, type ButtonProps, type NumericRangeProps } from './inputs';

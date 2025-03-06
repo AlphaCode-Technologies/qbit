@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { SelectGroupProps, SelectOptionProps } from './properties';
 
-const useBindSkin = (props: com.qbit.ShellProps<SelectGroupProps, SelectOption>) => {
+const useBindSkin = (props: com.qbit.ShellProps<SelectGroupProps, SelectOptionProps>) => {
   const { defaultValue, onChange } = props;
   const [currentSelectedValue, setCurrentSelectedValue] = useState(defaultValue);
   const handleChange = (value: any) => {

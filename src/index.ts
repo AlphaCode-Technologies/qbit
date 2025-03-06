@@ -25,6 +25,10 @@ export {
   Badge,
   Button,
   TextInput,
+  type InputType,
+  type TextInputProps,
+  type ButtonProps,
+  type NumericRangeProps,
 } from './components';
 
 export {
