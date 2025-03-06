@@ -23,7 +23,7 @@
   "readme": "README.md",
   "types": "dist/qbit.d.ts",
   "main": "dist/@qbit.design/test.cjs.js",
-  "module": "dist/@qbit.design/qbit.es.js",
+  "module": "dist/@qbit.design/test.es.js",
   "scripts": {
     "dev": "vite",
     "dev:preview": "vite preview",
