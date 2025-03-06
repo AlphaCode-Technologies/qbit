@@ -1,7 +1,7 @@
 {
   "name": "@qbit.design/test",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "author": {
     "name": "Dulan Sudasinghe",
@@ -22,8 +22,8 @@
   },
   "readme": "README.md",
   "types": "dist/qbit.d.ts",
-  "main": "dist/qbit.cjs.js",
-  "module": "dist/qbit.es.js",
+  "main": "dist/@qbit.design/test.cjs.js",
+  "module": "dist/@qbit.design/test.es.js",
   "scripts": {
     "dev": "vite",
     "dev:preview": "vite preview",
