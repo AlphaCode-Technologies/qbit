@@ -9,7 +9,7 @@ import fs from 'fs';
 
 const mainPackageJson = JSON.parse(fs.readFileSync(resolve(__dirname, 'package.json'), 'utf-8'));
 const basePackageJson = {
-  name: mainPackageJson.name,
+  name: '@qbit.design',
   private: false,
   version: mainPackageJson.version,
   type: mainPackageJson.type,
@@ -20,8 +20,8 @@ const basePackageJson = {
   repository: mainPackageJson.repository,
   readme: mainPackageJson.readme,
   types: 'qbit.d.ts',
-  main: mainPackageJson.main,
-  module: mainPackageJson.module,
+  main: 'qbit.cjs.js',
+  module: 'qbit.es.js',
   // scripts: mainPackageJson.scripts,
   // dependencies: mainPackageJson.dependencies,
   // devDependencies: mainPackageJson.devDependencies,
@@ -29,61 +29,28 @@ const basePackageJson = {
   publishConfig: mainPackageJson.publishConfig,
 };
 
-function createPackageJson() {
-  const folderPath = resolve(__dirname, `dist`);
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath, { recursive: true });
-  }
-
+function createPackageJson(urlPostFix: string) {
   fs.writeFileSync(
     `dist/package.json`,
-    JSON.stringify({ ...basePackageJson, name: `${basePackageJson.name}` }, null, 2),
+    JSON.stringify({ ...basePackageJson, name: `${basePackageJson.name}/${urlPostFix}` }, null, 2),
   );
 }
 
 function generatePackageJson() {
-  // const args = process.argv.slice(2);
+  const args = process.argv.slice(2);
   return {
     name: 'generate-package-json',
     closeBundle() {
-      // if (args[2] === 'skins') {
-      //   createPackageJson('components', 'shell');
-      // } else {
-      //   createPackageJson('skins', 'skins');
-      // }
-      createPackageJson();
+      if (args[2] === 'skins') {
+        createPackageJson('shell-sandbox');
+      } else {
+        createPackageJson('skin-sandbox');
+      }
     },
   };
 }
 
-function findEntries(dir: string, base = '') {
-  const args = process.argv.slice(2);
-  const entries = {} as any;
-  fs.readdirSync(dir).forEach((file) => {
-    const fullPath = resolve(dir, file);
-    if (args[2] !== base.split('/')[0]) {
-      if (fs.statSync(fullPath).isDirectory()) {
-        Object.assign(entries, findEntries(fullPath, `${base}${file}/`));
-      } else if (
-        (file.endsWith('.jsx') || file.endsWith('.tsx') || file.endsWith('.ts')) &&
-        !file.includes('.test.') &&
-        !file.includes('.stories.') &&
-        !file.includes('.d.ts') &&
-        !file.includes('.manifest.') &&
-        file !== 'App.tsx' &&
-        file !== 'main.tsx'
-      ) {
-        const name = `${base}${file.replace(/\.(tsx|jsx|ts)$/, '')}`;
-        entries[name] = fullPath;
-      }
-    }
-  });
-  return entries;
-}
-
-const srcDir = './src';
-const entries = findEntries(srcDir);
-entries['styles'] = resolve(__dirname, 'src/index.css');
+const entryFile = process.env.BUILD_ENTRY || 'src/skins/index.ts'; // Default to 'src/skins/index.ts'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -103,7 +70,7 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(__dirname, entryFile),
       name: mainPackageJson.name,
       formats: ['es', 'cjs', 'umd'],
       fileName: (format) => `${mainPackageJson.name}.${format}.js`,
