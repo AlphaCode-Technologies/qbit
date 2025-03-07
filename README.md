@@ -1,4 +1,3 @@
-
 <p align="center">
   <a href="https://qbit.design" rel="noopener" target="_blank"><img width="150" height="133" src="https://qbit.design/assets/images/logo-black.png" alt="Qbit logo"></a>
 </p>
