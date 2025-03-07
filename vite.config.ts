@@ -29,12 +29,7 @@ const basePackageJson = {
   publishConfig: mainPackageJson.publishConfig,
 };
 
-function createPackageJson(folder: string, urlPostFix: string) {
-  const folderPath = resolve(__dirname, `dist/${folder}`);
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath, { recursive: true });
-  }
-
+function createPackageJson(urlPostFix: string) {
   fs.writeFileSync(
     `dist/package.json`,
     JSON.stringify({ ...basePackageJson, name: `${basePackageJson.name}/${urlPostFix}` }, null, 2),
@@ -47,9 +42,9 @@ function generatePackageJson() {
     name: 'generate-package-json',
     closeBundle() {
       if (args[2] === 'skins') {
-        createPackageJson('components', 'shell-sandbox');
+        createPackageJson('shell-sandbox');
       } else {
-        createPackageJson('skins', 'skin-sandbox');
+        createPackageJson('skin-sandbox');
       }
     },
   };
