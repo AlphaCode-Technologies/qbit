@@ -42,9 +42,9 @@ function generatePackageJson() {
     name: 'generate-package-json',
     closeBundle() {
       if (args[2] === 'skins') {
-        createPackageJson('shell-sandbox');
-      } else {
         createPackageJson('skin-sandbox');
+      } else {
+        createPackageJson('shell-sandbox');
       }
     },
   };
