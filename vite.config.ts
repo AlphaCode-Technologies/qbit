@@ -35,22 +35,23 @@ function createPackageJson(urlPostFix: string) {
     JSON.stringify({ ...basePackageJson, name: `${basePackageJson.name}/${urlPostFix}` }, null, 2),
   );
 }
+const entryFile = process.env.BUILD_ENTRY || 'src/skins/index.ts'; // Default to 'src/skins/index.ts'
 
 function generatePackageJson() {
   const args = process.argv.slice(2);
+  console.log(args[1], entryFile.includes('components'));
+
   return {
     name: 'generate-package-json',
     closeBundle() {
-      if (args[2] === 'skins') {
-        createPackageJson('skin-sandbox');
-      } else {
+      if (entryFile.includes('components')) {
         createPackageJson('shell-sandbox');
+      } else {
+        createPackageJson('skin-sandbox');
       }
     },
   };
 }
-
-const entryFile = process.env.BUILD_ENTRY || 'src/skins/index.ts'; // Default to 'src/skins/index.ts'
 
 // https://vite.dev/config/
 export default defineConfig({
