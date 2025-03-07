@@ -1,7 +1,7 @@
 {
-  "name": "@qbit.design/test",
+  "name": "qbit",
   "private": true,
-  "version": "0.0.9",
+  "version": "0.0.10",
   "type": "module",
   "author": {
     "name": "Dulan Sudasinghe",
@@ -17,8 +17,6 @@
     "url": "https://github.com/AlphaCode-Technologies/qbit"
   },
   "readme": "README.md",
-  "main": "@qbit.design/test.cjs.js",
-  "module": "@qbit.design/test.es.js",
   "scripts": {
     "dev": "vite",
     "dev:preview": "vite preview",
@@ -32,8 +30,8 @@
     "test:ui": "vitest --ui",
     "test": "vitest",
     "prepare": "husky",
-    "build:components": "pnpm build --filter skins",
-    "build:skins": "pnpm build --filter components"
+    "build:components": "BUILD_ENTRY=src/components/index.ts pnpm build",
+    "build:skins": "BUILD_ENTRY=src/skins/index.ts pnpm build"
   },
   "dependencies": {
     "react": "^18.3.1",
