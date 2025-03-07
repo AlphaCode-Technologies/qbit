@@ -41,10 +41,10 @@ function generatePackageJson() {
   return {
     name: 'generate-package-json',
     closeBundle() {
-      if (args[2] === 'skins') {
-        createPackageJson('skin-sandbox');
-      } else {
+      if (args[2] === 'components') {
         createPackageJson('shell-sandbox');
+      } else {
+        createPackageJson('skin-sandbox');
       }
     },
   };
