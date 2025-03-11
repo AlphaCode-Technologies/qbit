@@ -2,12 +2,12 @@ export { default as Loader } from './loader/Loader';
 export { default as Avatar } from './avatar/Avatar';
 export { default as ProgressBar } from './progess-bar/ProgressBar';
 export { Breadcrumb, BreadcrumbItem } from './breadcrumbs';
-export { default as ProgressStep } from './progress-steps/progress-step/ProgressStep';
-export { default as ProgressStepItem } from './progress-steps/progress-step/ProgressStepItem';
+export { ProgressStep, ProgressStepItem } from './progress-steps';
 export { Badge } from './badges';
+
 export { type AvatarProps } from './avatar/properties';
 export { type BadgeProps } from './badges';
-export { type BreadcrumbItemProps, type BreadcrumbProps } from './breadcrumbs';
+export { type BreadcrumbProps, type BreadcrumbItemProps } from './breadcrumbs';
 export { type LoaderProps } from './loader/properties';
 export { type ProgressBarProps } from './progess-bar/properties';
 export { type ProgressStepProps, type ProgressStepItemProps } from './progress-steps';
