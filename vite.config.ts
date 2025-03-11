@@ -19,13 +19,9 @@ const basePackageJson = {
   keywords: mainPackageJson.keywords,
   repository: mainPackageJson.repository,
   readme: mainPackageJson.readme,
-  types: 'qbit.d.ts',
+  types: 'qbit.es.d.ts',
   main: 'qbit.cjs.js',
   module: 'qbit.es.js',
-  // scripts: mainPackageJson.scripts,
-  // dependencies: mainPackageJson.dependencies,
-  // devDependencies: mainPackageJson.devDependencies,
-  // peerDependencies: mainPackageJson.peerDependencies,
   publishConfig: mainPackageJson.publishConfig,
 };
 
