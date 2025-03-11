@@ -1,10 +1,15 @@
-import { ListItemSkin, ToasterSkin } from '@skins/defaults';
+import {
+  ListItemSkin,
+  ToasterSkin,
+  TooltipSkin,
+  BadgesSkin,
+  BreadcrumbItemSkin,
+  BreadcrumbSkin,
+  CheckboxItemSkin,
+  CheckboxSkin,
+} from '@skins/defaults';
 import { Toaster } from '@components/displays/notifications';
-import { TooltipSkin } from '@skins/defaults';
-import { ListItem, Tooltip } from '@components/displays';
-import { Badge } from '@components/displays';
-import { BadgesSkin } from '@skins/defaults';
-import { BreadcrumbItemSkin, BreadcrumbSkin, CheckboxItemSkin, CheckboxSkin } from '@skins/defaults';
+import { ListItem, Tooltip, Badge } from '@components/displays';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
 import Radio from '@components/inputs/choices/radios/radio/Radio';
@@ -12,8 +17,11 @@ import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
 import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
 import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
 import { useState } from 'react';
+import ColorPicker from '@components/inputs/color-picker/ColorPicker';
+import ColorPickerSkin from '@skins/defaults/ColorPicker.default.skin';
 
 const App = () => {
+  const [color, setColor] = useState('#ff0000');
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
   return (
     <div data-id="my-id">
@@ -123,6 +131,15 @@ const App = () => {
           }
         />
       </Checkbox>
+      <br />
+      <div className=" w-60">
+        <ColorPicker
+          renderers={{ renderer: ColorPickerSkin }}
+          color={color}
+          onChange={(value: any) => setColor(value)}
+        />
+        <p>Selected Color: {color}</p>
+      </div>
     </div>
   );
 };
