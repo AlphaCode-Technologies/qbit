@@ -6,7 +6,7 @@ import PaginationSkin from '@skins/defaults/pagination/Pagination.defaut.skin';
 import Pagination from './Pagination';
 
 export default {
-  title: 'Components/Pagination',
+  title: 'Qbit design/Displays/Segments/Pagination',
   component: Pagination,
   tags: ['autodocs'],
   argTypes: {
