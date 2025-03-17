@@ -12,6 +12,8 @@ import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
 import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
 import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
 import { useState } from 'react';
+import Pagination from '@components/displays/segments/pagination/Pagination';
+import PaginationSkin from '@skins/defaults/pagination/Pagination.defaut.skin';
 
 const App = () => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
@@ -123,6 +125,14 @@ const App = () => {
           }
         />
       </Checkbox>
+
+      <Pagination
+        className=" mt-2 ms-8"
+        renderers={{ renderer: PaginationSkin }}
+        currentPage={1}
+        totalPages={10}
+        onPageChange={(page) => console.log('Page changed to:', page)}
+      />
     </div>
   );
 };
