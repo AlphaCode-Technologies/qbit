@@ -22,7 +22,7 @@ const PaginationSkin: com.qbit.Skin<PaginationProps> = (props: com.qbit.SkinProp
           <button
             key={page}
             disabled={disabled}
-            className={`px-3 py-1 text-gray-600 bg-white border border-gray-300 ${
+            className={`px-3 py-1 text-gray-600 border border-gray-300 ${
               currentPage === page ? 'bg-blue-800 text-white' : 'hover:bg-gray-100'
             } transition ${disabled ? 'cursor-not-allowed bg-gray-200' : ''}`}
             onClick={() => {
