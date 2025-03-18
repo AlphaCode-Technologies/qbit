@@ -64,24 +64,35 @@ export default defineConfig({
       entryRoot: './src',
     }),
   ],
+  // build: {
+  //   emptyOutDir: true,
+  //   lib: {
+  //     entry: path.resolve(__dirname, entryFile),
+  //     name: mainPackageJson.name,
+  //     formats: ['es', 'cjs', 'umd'],
+  //     fileName: (format) => `${mainPackageJson.name}.${format}.js`,
+  //   },
+  //   rollupOptions: {
+  //     external: ['react', 'react-dom', 'react/jsx-runtime'],
+  //     output: {
+  //       globals: {
+  //         react: 'React',
+  //         'react-dom': 'react-dom',
+  //         'react/jsx-runtime': 'react/jsx-runtime',
+  //       },
+  //       exports: 'named',
+  //     },
+  //   },
+  // },
+  define: {
+    'process.env': {}, // 👈 Fix "process is not defined" error
+  },
   build: {
-    emptyOutDir: true,
     lib: {
       entry: path.resolve(__dirname, entryFile),
       name: mainPackageJson.name,
       formats: ['es', 'cjs', 'umd'],
       fileName: (format) => `${mainPackageJson.name}.${format}.js`,
-    },
-    rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'react-dom',
-          'react/jsx-runtime': 'react/jsx-runtime',
-        },
-        exports: 'named',
-      },
     },
   },
   preview: {
