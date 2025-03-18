@@ -70,6 +70,24 @@ describe('Avatar Element Test', () => {
     expect(textWithinAvatar).toBeInTheDocument();
   });
 
+  it('Should render avatar with default width and height', async () => {
+    const newAvatarProperties = { ...DEFAULT_PROPERTIES, testId: 'avatar' };
+    renderAvatar(newAvatarProperties);
+    const avatar = await screen.findByTestId('avatar');
+
+    expect(avatar).toHaveAttribute('width', '48');
+    expect(avatar).toHaveAttribute('height', '48');
+  });
+
+  it('Should render avatar with custom width and height', async () => {
+    const newAvatarProperties = { ...DEFAULT_PROPERTIES, width: 100, height: 100, testId: 'avatar' };
+    renderAvatar(newAvatarProperties);
+    const avatar = await screen.findByTestId('avatar');
+
+    expect(avatar).toHaveAttribute('width', '100');
+    expect(avatar).toHaveAttribute('height', '100');
+  });
+
   // TODO: Need to check this after adding disabled functionality
   // it('Should not trigger onClick when the avatar is disabled', async () => {
   //   render(<ChangeAvatarValue changedValue="AC" testId="avatar" disabled={true} />);
