@@ -21,3 +21,4 @@ export { CardSkin, CardItemSkin } from './card';
 export { ModalSkin, ModalItemSkin } from './modal';
 export { CheckboxSkin, CheckboxItemSkin } from './checkbox';
 export { DrawerSkin, DrawerItemSkin } from './drawer';
+export { RatingSkin } from './ratings';

@@ -1,10 +1,15 @@
-import { ListItemSkin, ToasterSkin } from '@skins/defaults';
+import {
+  ListItemSkin,
+  ToasterSkin,
+  TooltipSkin,
+  BadgesSkin,
+  BreadcrumbItemSkin,
+  BreadcrumbSkin,
+  CheckboxItemSkin,
+  CheckboxSkin,
+} from '@skins/defaults';
 import { Toaster } from '@components/displays/notifications';
-import { TooltipSkin } from '@skins/defaults';
-import { ListItem, Tooltip } from '@components/displays';
-import { Badge } from '@components/displays';
-import { BadgesSkin } from '@skins/defaults';
-import { BreadcrumbItemSkin, BreadcrumbSkin, CheckboxItemSkin, CheckboxSkin } from '@skins/defaults';
+import { ListItem, Tooltip, Badge } from '@components/displays';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
 import Radio from '@components/inputs/choices/radios/radio/Radio';
@@ -12,9 +17,13 @@ import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
 import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
 import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
 import { useState } from 'react';
+import Rating from '@components/displays/indicators/ratings/Ratings';
+import RatingSkin from '@skins/defaults/ratings/Rating.default.skin';
 
 const App = () => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
+  const [rating, setRating] = useState<number>(3);
+
   return (
     <div data-id="my-id">
       <Toaster
@@ -123,6 +132,16 @@ const App = () => {
           }
         />
       </Checkbox>
+
+      <Rating
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        renderers={{ renderer: RatingSkin }}
+        rating={rating}
+        ratingRange={5}
+        size="xl"
+        editable
+        setRating={setRating}
+      />
     </div>
   );
 };

@@ -5,7 +5,7 @@ export { Toaster, Tooltip } from './notifications';
 export { Avatar, Loader, ProgressBar, Breadcrumb, BreadcrumbItem } from './indicators';
 export { Menu, MenuItem, Accordion, AccordionItem } from './menus';
 export { Card, CardItem, Drawer, DrawerItem, Modal, ModalItem } from './segments';
-export { Badge, ProgressStep, ProgressStepItem } from './indicators';
+export { Badge, ProgressStep, ProgressStepItem, Rating } from './indicators';
 
 export {
   type AvatarProps,
@@ -16,6 +16,7 @@ export {
   type ProgressBarProps,
   type ProgressStepProps,
   type ProgressStepItemProps,
+  type RatingProps,
 } from './indicators';
 
 export { type ListProps, type ListItemProps } from './lists';
