@@ -38,4 +38,4 @@ export {
   DrawerItemSkin,
 } from './defaults';
 
-export { SwitchSkin } from './optional';
+export { SwitchSkin, DottedCircleLoaderSkin, FadedCircleLoaderSkin, SegmentBarLoaderSkin } from './optional';
