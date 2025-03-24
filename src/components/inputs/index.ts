@@ -1,10 +1,11 @@
 export { default as Button } from './button/Button';
 export { default as TextInput } from './text/TextInput';
 export { NumericRange, NumericRangePicker } from './range';
+export { ColorPicker } from './color-picker';
 export { Select, SelectOption, Radio, RadioOption, Checkbox, CheckboxItem } from './choices';
 
 export { type ButtonProps } from './button/properties';
-
+export { type ColorPickerProps } from './color-picker';
 export {
   type SelectGroupProps,
   type SelectOptionProps,

@@ -21,4 +21,5 @@ export { CardSkin, CardItemSkin } from './card';
 export { ModalSkin, ModalItemSkin } from './modal';
 export { CheckboxSkin, CheckboxItemSkin } from './checkbox';
 export { DrawerSkin, DrawerItemSkin } from './drawer';
+export { default as ColorPickerSkin } from './ColorPicker.default.skin';
 export { RatingSkin } from './ratings';

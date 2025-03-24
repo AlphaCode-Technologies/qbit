@@ -72,6 +72,7 @@ export {
   NumericRange,
   NumericRangePicker,
   TextInput,
+  ColorPicker,
 } from './inputs';
 
 export {
@@ -85,4 +86,5 @@ export {
   type NumericRangeProps,
   type InputType,
   type TextInputProps,
+  type ColorPickerProps,
 } from './inputs';

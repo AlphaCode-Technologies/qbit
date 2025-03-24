@@ -17,10 +17,13 @@ import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
 import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
 import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
 import { useState } from 'react';
+import ColorPicker from '@components/inputs/color-picker/ColorPicker';
+import ColorPickerSkin from '@skins/defaults/ColorPicker.default.skin';
 import Rating from '@components/displays/indicators/ratings/Ratings';
 import RatingSkin from '@skins/defaults/ratings/Rating.default.skin';
 
 const App = () => {
+  const [color, setColor] = useState('#ff0000');
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
   const [rating, setRating] = useState<number>(3);
 
@@ -132,6 +135,15 @@ const App = () => {
           }
         />
       </Checkbox>
+      <br />
+      <div className=" w-60">
+        <ColorPicker
+          renderers={{ renderer: ColorPickerSkin }}
+          color={color}
+          onChange={(value: any) => setColor(value)}
+        />
+        <p>Selected Color: {color}</p>
+      </div>
 
       <Rating
         keyExtractor={(value: string, i: number) => `${value}-${i}`}
