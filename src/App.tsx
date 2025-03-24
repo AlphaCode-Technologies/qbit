@@ -94,10 +94,10 @@ const App = () => {
         keyExtractor={(value: string, i: number) => `${value}-${i}`}
         className="p-2"
       >
-        <BreadcrumbItem name="Home" href="/" active />
-        <BreadcrumbItem name="Category" href="/category" />
-        <BreadcrumbItem name="Subcategory" href="/category/subcategory" />
-        <BreadcrumbItem name="Current Page" disabled />
+        <BreadcrumbItem value="Home" href="/" active />
+        <BreadcrumbItem value="Category" href="/category" />
+        <BreadcrumbItem value="Subcategory" href="/category/subcategory" />
+        <BreadcrumbItem value="Current Page" disabled />
       </Breadcrumb>
 
       <Checkbox

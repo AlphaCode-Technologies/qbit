@@ -20,10 +20,10 @@ const Template: StoryFn<BreadcrumbProps> = (args: any) => (
     keyExtractor={(value: string, i: number) => `${value}-${i}`}
     {...args}
   >
-    <BreadcrumbItem name="Home" href="/" active />
-    <BreadcrumbItem name="Category" href="/category" />
-    <BreadcrumbItem name="Subcategory" href="/category/subcategory" />
-    <BreadcrumbItem name="Current Page" disabled />
+    <BreadcrumbItem value="Home" href="/" active />
+    <BreadcrumbItem value="Category" href="/category" />
+    <BreadcrumbItem value="Subcategory" href="/category/subcategory" />
+    <BreadcrumbItem value="Current Page" disabled />
   </Breadcrumb>
 );
 

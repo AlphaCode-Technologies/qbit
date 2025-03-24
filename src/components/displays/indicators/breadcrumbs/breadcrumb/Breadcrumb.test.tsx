@@ -23,10 +23,10 @@ const renderBreadcrumbItems = (items: React.ReactNode[]) => {
 describe('Breadcrumb Component', () => {
   it('renders all breadcrumb items correctly', () => {
     renderBreadcrumbItems([
-      <BreadcrumbItem key="home" name="Home" href="/" active />,
-      <BreadcrumbItem key="category" name="Category" href="/category" />,
-      <BreadcrumbItem key="subcategory" name="Subcategory" href="/category/subcategory" />,
-      <BreadcrumbItem key="current-page" name="Current Page" disabled />,
+      <BreadcrumbItem key="home" value="Home" href="/" active />,
+      <BreadcrumbItem key="category" value="Category" href="/category" />,
+      <BreadcrumbItem key="subcategory" value="Subcategory" href="/category/subcategory" />,
+      <BreadcrumbItem key="current-page" value="Current Page" disabled />,
     ]);
 
     // Check for breadcrumb navigation
@@ -44,8 +44,8 @@ describe('Breadcrumb Component', () => {
 
   it('applies the active class to the active breadcrumb item', () => {
     renderBreadcrumbItems([
-      <BreadcrumbItem key="home" name="Home" href="/" active />,
-      <BreadcrumbItem key="category" name="Category" href="/category" />,
+      <BreadcrumbItem key="home" value="Home" href="/" active />,
+      <BreadcrumbItem key="category" value="Category" href="/category" />,
     ]);
 
     const activeItem = screen.getByText('Home');
@@ -54,8 +54,8 @@ describe('Breadcrumb Component', () => {
 
   it('disables the correct breadcrumb item', () => {
     renderBreadcrumbItems([
-      <BreadcrumbItem key="current-page" name="Current Page" testId="1" disabled />,
-      <BreadcrumbItem key="current-pages" name="Current Pages" disabled />,
+      <BreadcrumbItem key="current-page" value="Current Page" testId="1" disabled />,
+      <BreadcrumbItem key="current-pages" value="Current Pages" disabled />,
     ]);
 
     const disabledItem = screen.getByTestId('1');
@@ -67,8 +67,8 @@ describe('Breadcrumb Component', () => {
   it('calls the onClick handler for non-disabled items', async () => {
     const mockOnClick = vi.fn();
     renderBreadcrumbItems([
-      <BreadcrumbItem key="category" name="Category" testId="1" href="/category" onClick={mockOnClick} />,
-      <BreadcrumbItem key="current-page" name="Current Page" />,
+      <BreadcrumbItem key="category" value="Category" testId="1" href="/category" onClick={mockOnClick} />,
+      <BreadcrumbItem key="current-page" value="Current Page" />,
     ]);
 
     const categoryItem = screen.getByTestId('1');
