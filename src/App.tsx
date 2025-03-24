@@ -17,6 +17,8 @@ import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
 import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
 import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
 import { useState } from 'react';
+import Pagination from '@components/displays/segments/pagination/Pagination';
+import PaginationSkin from '@skins/defaults/pagination/Pagination.defaut.skin';
 import ColorPicker from '@components/inputs/color-picker/ColorPicker';
 import ColorPickerSkin from '@skins/defaults/ColorPicker.default.skin';
 import Rating from '@components/displays/indicators/ratings/Ratings';
@@ -135,6 +137,14 @@ const App = () => {
           }
         />
       </Checkbox>
+
+      <Pagination
+        className=" mt-2 ms-8"
+        renderers={{ renderer: PaginationSkin }}
+        currentPage={1}
+        totalPages={10}
+        onPageChange={(page) => console.log('Page changed to:', page)}
+      />
       <br />
       <div className=" w-60">
         <ColorPicker
