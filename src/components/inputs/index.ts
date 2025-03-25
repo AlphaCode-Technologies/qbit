@@ -16,5 +16,6 @@ export {
 } from './choices';
 
 export { type NumericRangeProps } from './range';
+export { Calendar, CalendarBody, CalendarHeader, CalendarEvent, type CalendarProps } from './chrono';
 
 export { type InputType, type TextInputProps } from './text/properties';

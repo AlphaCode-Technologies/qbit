@@ -26,6 +26,23 @@ export {
   Splitter,
   SplitterItem,
 } from './displays';
+export {
+  Button,
+  Calendar,
+  CalendarBody,
+  CalendarHeader,
+  CalendarEvent,
+  Checkbox,
+  CheckboxItem,
+  Radio,
+  RadioOption,
+  Select,
+  SelectOption,
+  NumericRange,
+  NumericRangePicker,
+  TextInput,
+  ColorPicker,
+} from './inputs';
 
 export {
   type AvatarProps,
@@ -62,28 +79,15 @@ export {
 } from './displays';
 
 export {
-  Button,
-  Checkbox,
-  CheckboxItem,
-  Radio,
-  RadioOption,
-  Select,
-  SelectOption,
-  NumericRange,
-  NumericRangePicker,
-  TextInput,
-  ColorPicker,
-} from './inputs';
-
-export {
   type ButtonProps,
+  type NumericRangeProps,
+  type CalendarProps,
   type SelectGroupProps,
   type SelectOptionProps,
   type RadioGroupProps,
   type OptionProps,
   type CheckboxProps,
   type CheckboxItemProps,
-  type NumericRangeProps,
   type InputType,
   type TextInputProps,
   type ColorPickerProps,

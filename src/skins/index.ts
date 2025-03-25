@@ -36,6 +36,10 @@ export {
   CheckboxItemSkin,
   DrawerSkin,
   DrawerItemSkin,
+  CalendarSkin,
+  CalendarHeaderSkin,
+  CalendarEventSkin,
+  CalendarDaySkin,
 } from './defaults';
 
 export { SwitchSkin, DottedCircleLoaderSkin, FadedCircleLoaderSkin, SegmentBarLoaderSkin } from './optional';
