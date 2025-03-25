@@ -8,5 +8,5 @@ export default {
   arrowParens: 'always',
   bracketSpacing: true,
   bracketSameLine: false,
-  endOfLine: 'lf',
+  endOfLine: 'auto',
 };

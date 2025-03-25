@@ -1,12 +1,22 @@
 {
-  "name": "alpha-elements",
+  "name": "qbit",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.16",
   "type": "module",
   "author": {
     "name": "Dulan Sudasinghe",
     "email": "dulans@alphacodetechnologies.com"
   },
+  "license": "Apache-2.0",
+  "keywords": [
+    "react",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlphaCode-Technologies/qbit"
+  },
+  "readme": "README.md",
   "scripts": {
     "dev": "vite",
     "dev:preview": "vite preview",
@@ -19,13 +29,18 @@
     "build-storybook": "storybook build",
     "test:ui": "vitest --ui",
     "test": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build:components": "BUILD_ENTRY=src/components/index.ts pnpm build",
+    "build:skins": "BUILD_ENTRY=src/skins/index.ts pnpm build"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-lib-inject-css": "^2.2.1",
+    "vite-tsconfig-paths": "^5.1.4",
     "@chromatic-com/storybook": "3.2.2",
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
@@ -42,6 +57,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
+    "@vitest/coverage-v8": "2.1.6",
     "@vitest/ui": "^2.1.6",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.13.0",
@@ -62,6 +78,13 @@
     "typescript-eslint": "^8.11.0",
     "vite": "^5.4.10",
     "vitest": "^2.1.6"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "packageManager": "pnpm@9.13.2+sha512.88c9c3864450350e65a33587ab801acf946d7c814ed1134da4a924f6df5a2120fd36b46aab68f7cd1d413149112d53c7db3a4136624cfd00ff1846a0c6cef48a"
 }

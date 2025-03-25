@@ -1,0 +1,1 @@
+pnpm exec sh ./.github/hooks/pre-push.sh

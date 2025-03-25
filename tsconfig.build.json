@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+
+    "jsx": "react-jsx",
+
+    /* Path setup */
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@inputs/*": ["src/components/inputs/*"],
+      "@containers/*": ["src/components/containers/*"],
+      "@displays/*": ["src/components/displays/*"],
+      "@skins/*": ["src/skins/*"],
+      "@utils/*": ["src/utilities/*"],
+      "@fixtures/*": ["src/fixtures/*"]
+    },
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": false,
+    "noUncheckedSideEffectImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type inference */
+    "types": ["vitest/globals"]
+  },
+  "include": ["src", "setupTests.ts"],
+  "exclude": ["*.stories.tsx", "*.stories.ts", "*.test.tsx", "*.test.ts"]
+}
+
+
+/*
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+
+    "jsx": "react-jsx"
+  },
+  "include": ["src", "setupTests.ts"]
+  */
