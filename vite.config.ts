@@ -95,6 +95,17 @@ export default defineConfig({
       fileName: (format) => `${mainPackageJson.name}.${format}.js`,
     },
   },
+  // define: {
+  //   'process.env': {}, // 👈 Fix "process is not defined" error
+  // },
+  // build: {
+  //   lib: {
+  //     entry: path.resolve(__dirname, entryFile),
+  //     name: mainPackageJson.name,
+  //     formats: ['es', 'cjs', 'umd'],
+  //     fileName: (format) => `${mainPackageJson.name}.${format}.js`,
+  //   },
+  // },
   preview: {
     port: 3000,
     open: true,

@@ -13,7 +13,8 @@
       "@displays/*": ["src/components/displays/*"],
       "@skins/*": ["src/skins/*"],
       "@utils/*": ["src/utilities/*"],
-      "@fixtures/*": ["src/fixtures/*"]
+      "@fixtures/*": ["src/fixtures/*"],
+      "@types/*": ["src/types/*"]
     },
 
     /* Bundler mode */
