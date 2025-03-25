@@ -14,7 +14,7 @@ example="feature/ACEL-123/feature-branch"
 
 branch=$(git symbolic-ref --short HEAD)
 
-if ! [[ $branch =~ $convention ]]; then
+if [[ $branch != "dev" ]] && ! [[ $branch =~ $convention ]]; then
   echo "Invalid branch name: $branch"
   
   echo "Expected syntax: $syntax"
