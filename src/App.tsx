@@ -1,21 +1,13 @@
-import {
-  ListItemSkin,
-  ToasterSkin,
-  TooltipSkin,
-  BadgesSkin,
-  BreadcrumbItemSkin,
-  BreadcrumbSkin,
-  CheckboxItemSkin,
-  CheckboxSkin,
-} from '@skins/defaults';
+import Table from '@components/tabular/table/basic/Table';
+import TableSkin from '@skins/defaults/Table/Table.default.skin';
+import TableItem from '@components/tabular/table/basic/TableItem';
+import TableItemSkin from '@skins/defaults/Table/TableItem.default.skin';
+import { Checkbox, CheckboxItem, Radio, RadioOption } from './components';
 import { Toaster } from '@components/displays/notifications';
 import { ListItem, Tooltip, Badge } from '@components/displays';
 import RadioOptionSkin from '@skins/defaults/radio/RadioOption.default.skin';
 import RadioSkin from '@skins/defaults/radio/Radio.default.skin';
-import Radio from '@components/inputs/choices/radios/radio/Radio';
-import RadioOption from '@components/inputs/choices/radios/radio/RadioOption';
 import { Breadcrumb, BreadcrumbItem } from '@components/displays/indicators';
-import { Checkbox, CheckboxItem } from '@components/inputs/choices/checkboxes';
 import { useState } from 'react';
 import Pagination from '@components/displays/segments/pagination/Pagination';
 import PaginationSkin from '@skins/defaults/pagination/Pagination.defaut.skin';
@@ -23,6 +15,16 @@ import ColorPicker from '@components/inputs/color-picker/ColorPicker';
 import ColorPickerSkin from '@skins/defaults/ColorPicker.default.skin';
 import Rating from '@components/displays/indicators/ratings/Ratings';
 import RatingSkin from '@skins/defaults/ratings/Rating.default.skin';
+import {
+  BadgesSkin,
+  BreadcrumbItemSkin,
+  BreadcrumbSkin,
+  CheckboxItemSkin,
+  CheckboxSkin,
+  ListItemSkin,
+  ToasterSkin,
+  TooltipSkin,
+} from './skins';
 
 const App = () => {
   const [color, setColor] = useState('#ff0000');
@@ -137,6 +139,20 @@ const App = () => {
           }
         />
       </Checkbox>
+      <br />
+
+      <div className="p-5">
+        <Table
+          keyExtractor={(value: string, i: number) => `${value}-${i}`}
+          renderers={{ renderer: TableSkin, childRenderer: TableItemSkin }}
+        >
+          <TableItem data={['name', 'age', 'country', 'level']} heading />
+          <TableItem data={{ name: 'Raji', age: 69, country: 'Thai lanks', level: 'good' }} />
+          <TableItem data={{ name: 'Dils', age: 69, country: 'Thai lanks', level: 'good' }} />
+          <TableItem data={{ name: 'Muku', age: 69, country: 'Thai lanks', level: 'good' }} />
+          <TableItem data={{ name: 'Dila', age: 69, country: 'Thai lanks', level: 'good' }} />
+        </Table>
+      </div>
 
       <Pagination
         className=" mt-2 ms-8"
