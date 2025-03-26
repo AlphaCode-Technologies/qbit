@@ -64,6 +64,18 @@ export default defineConfig({
       entryRoot: './src',
     }),
   ],
+  test: {
+    coverage: {
+      reporter: ['text', 'json-summary', 'json'],
+      reportOnFailure: true,
+      thresholds: {
+        lines: 70,
+        branches: 70,
+        functions: 70,
+        statements: 70,
+      },
+    },
+  },
   build: {
     emptyOutDir: true,
     lib: {
