@@ -1,0 +1,30 @@
+name: storybook publish
+
+on:
+  release:
+    types: ['published']
+
+jobs:
+  skins-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run pre-build script
+        uses: ./.github/actions/pre-build-action
+
+      - name: Build skins
+        run: pnpm build:skins
+
+      - name: Run post-build script
+        uses: ./.github/actions/post-build-cdn-action
+
+  shells-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run pre-build script
+        uses: ./.github/actions/pre-build-action
+
+      - name: Build skins
+        run: pnpm build:skins
+
+      - name: Run post-build script
+        uses: ./.github/actions/post-build-cdn-action  
