@@ -25,6 +25,8 @@ export {
   TabItem,
   Splitter,
   SplitterItem,
+  Dropdown,
+  DropdownItem,
 } from './displays';
 export {
   Button,
@@ -76,6 +78,8 @@ export {
   type TabProps,
   type TabItemProps,
   type SplitterProps,
+  type DropdownProps,
+  type DropdownItemProps,
 } from './displays';
 
 export {
