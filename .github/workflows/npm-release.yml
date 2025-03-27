@@ -1,4 +1,4 @@
-name: publish-npm-registry
+name: npm-publish
 
 on:
   release:
@@ -23,9 +23,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
-      - name: Run post-build script
-        uses: ./.github/actions/post-build-npm-action
-
   shells-build:
     runs-on: ubuntu-latest
     steps:
@@ -43,6 +40,3 @@ jobs:
         run: pnpm publish ./dist --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-
-      - name: Run post-build script
-        uses: ./.github/actions/post-build-npm-action
