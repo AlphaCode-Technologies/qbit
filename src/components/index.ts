@@ -92,3 +92,5 @@ export {
   type TextInputProps,
   type ColorPickerProps,
 } from './inputs';
+
+export { type com } from '../types';
