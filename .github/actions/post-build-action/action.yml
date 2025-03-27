@@ -30,8 +30,8 @@ runs:
       uses: alphacode-kirushnarajg/alpha-cloud-sync@v0.1.6-alpha
       with:
         sftp_username: ${{ inputs.sftp_username }}
-        sftp_server: ${{ secrets.sftp_server }}
-        sftp_password: ${{ secrets.sftp_password }}
+        sftp_server: ${{ inputs.sftp_server }}
+        sftp_password: ${{ inputs.sftp_password }}
         local_source_path: './${{ inputs.artefact_id }}/*'
         remote_destination_path: './${{ inputs.artefact_id }}/${{ env.RELEASE_TAG }}/'
         sftp_extra_args: '-o ConnectTimeout=5'
