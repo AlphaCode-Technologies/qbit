@@ -43,7 +43,7 @@ function generatePackageJson() {
       if (entryFile.includes('components')) {
         createPackageJson('shell');
       } else {
-        createPackageJson('skin');
+        createPackageJson('skins');
       }
     },
   };
