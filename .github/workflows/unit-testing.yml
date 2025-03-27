@@ -1,0 +1,24 @@
+name: unit-tests
+
+on:
+  push:
+    branches: ['dev', 'main']
+
+jobs:
+  vitest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run pre-build script
+        uses: ./.github/actions/pre-build-action
+
+      - name: Unit tests
+        run: pnpm vitest --coverage.enabled true
+
+      - name: Report coverage
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          working-directory: ./.testing
+          json-summary-compare-path: coverage/coverage-summary.json

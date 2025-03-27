@@ -1,0 +1,23 @@
+name: post-build action
+
+description: Publish application
+
+inputs:
+  NODE_VERSION:
+    description: 'Optional input to set the version of Node.js used to build the project.'
+    default: '22.x'
+
+runs:
+  using: composite
+  steps:
+    - name: Publish to NPM registry
+      shell: bash
+      run: pnpm publish ./dist --access public --no-git-checks
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: shell
+        path: ./dist

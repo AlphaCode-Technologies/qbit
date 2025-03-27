@@ -1,0 +1,34 @@
+name: post-build action
+
+description: Publish application
+
+inputs:
+  artefact_id:
+    description: 'Required'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Fetch artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.artefact_id }}
+        path: ./${{ inputs.artefact_id }}
+
+    - name: Taging
+      run: |
+        git fetch --tags
+        TAG=$(git describe --tags --abbrev=0 || echo "no-tag")
+        echo "RELEASE_TAG=${TAG}" >> ${GITHUB_ENV}
+      shell: bash
+
+    - name: Push to S3
+      uses: alphacode-kirushnarajg/Alpha-S3-Action@v0.1.6-alpha
+      with:
+        sftp_username: ${{ secrets.SFTP_USER_NAME }}
+        sftp_server: ${{ secrets.SFTP_HOST_NAME }}
+        sftp_password: ${{ secrets.SFTP_PASSWORD }}
+        local_source_path: './${{ inputs.artefact_id }}/*'
+        remote_destination_path: './${{ inputs.artefact_id }}/${{ env.RELEASE_TAG }}/'
+        sftp_extra_args: '-o ConnectTimeout=5'
