@@ -1,0 +1,42 @@
+name: npm-publish
+
+on:
+  release:
+    types: ['published']
+
+jobs:
+  skins-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run pre-build script
+        uses: ./.github/actions/pre-build-action
+
+      - name: Build skins
+        run: pnpm build:skins
+
+      - name: Publish to NPM registry
+        shell: bash
+        run: pnpm publish ./dist --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+  shell-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run pre-build script
+        uses: ./.github/actions/pre-build-action
+
+      - name: Build skins
+        run: pnpm build:components
+
+      - name: Publish to NPM registry
+        shell: bash
+        run: pnpm publish ./dist --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
