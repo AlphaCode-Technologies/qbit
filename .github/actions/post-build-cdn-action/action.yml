@@ -24,7 +24,7 @@ runs:
       shell: bash
 
     - name: Push to S3
-      uses: alphacode-kirushnarajg/Alpha-S3-Action@v0.1.6-alpha
+      uses: alphacode-kirushnarajg/alpha-cloud-sync@v0.1.6-alpha
       with:
         sftp_username: ${{ secrets.SFTP_USER_NAME }}
         sftp_server: ${{ secrets.SFTP_HOST_NAME }}

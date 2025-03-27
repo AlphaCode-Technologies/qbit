@@ -9,7 +9,12 @@ inputs:
   node_caching:
     description: 'Optional input to set up caching for the setup-node action.'
     default: 'pnpm'
-
+  node_version_file:
+    description: 'Optional input to set up npm.'
+    default: '.nvmrc'
+  registry-url:
+    description: 'Optional input to set up npm.'
+    default: 'https://registry.npmjs.org'
 runs:
   using: composite
   steps:
@@ -21,8 +26,10 @@ runs:
     - name: setup node.js ${{ inputs.node_version }}
       uses: actions/setup-node@v4
       with:
+        node-version-file: ".nvmrc"
         node-version: ${{ inputs.node_version }}
         cache: ${{ inputs.node_caching }}
+        registry-url: https://registry.npmjs.org
 
     - name: install dependencies
       run: pnpm install

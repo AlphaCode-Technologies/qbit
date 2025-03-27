@@ -41,9 +41,9 @@ function generatePackageJson() {
     name: 'generate-package-json',
     closeBundle() {
       if (entryFile.includes('components')) {
-        createPackageJson('shell-sandbox');
+        createPackageJson('shell');
       } else {
-        createPackageJson('skin-sandbox');
+        createPackageJson('skin');
       }
     },
   };
