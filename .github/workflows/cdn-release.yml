@@ -17,6 +17,11 @@ jobs:
       - name: Build skins
         run: pnpm build:skins
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: skins
+          path: ./dist
+
       - name: Run post-build script
         uses: ./.github/actions/post-build-action
         with:
@@ -25,7 +30,7 @@ jobs:
           sftp_server: ${{ secrets.SFTP_HOST_NAME }}
           sftp_password: ${{ secrets.SFTP_PASSWORD }}
 
-  shells-build:
+  shell-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,6 +41,11 @@ jobs:
 
       - name: Build skins
         run: pnpm build:skins
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shell
+          path: ./dist
 
       - name: Run post-build script
         uses: ./.github/actions/post-build-action
