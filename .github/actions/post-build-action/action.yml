@@ -19,6 +19,12 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Fetch artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.artefact_id }}
+        path: ./${{ inputs.artefact_id }}
+        
     - name: Taging
       run: |
         git fetch --tags
