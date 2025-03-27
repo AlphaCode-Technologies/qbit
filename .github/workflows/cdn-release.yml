@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Run pre-build script
         uses: ./.github/actions/pre-build-action
 
@@ -33,4 +33,4 @@ jobs:
         run: pnpm build:skins
 
       - name: Run post-build script
-        uses: ./.github/actions/post-build-cdn-action  
+        uses: ./.github/actions/post-build-cdn-action
