@@ -1,4 +1,4 @@
-name: storybook publish
+name: cdn-publish
 
 on:
   release:
@@ -18,7 +18,7 @@ jobs:
         run: pnpm build:skins
 
       - name: Run post-build script
-        uses: ./.github/actions/post-build-cdn-action
+        uses: ./.github/actions/post-build-action
 
   shells-build:
     runs-on: ubuntu-latest
@@ -33,4 +33,4 @@ jobs:
         run: pnpm build:skins
 
       - name: Run post-build script
-        uses: ./.github/actions/post-build-cdn-action
+        uses: ./.github/actions/post-build-action

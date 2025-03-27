@@ -6,6 +6,15 @@ inputs:
   artefact_id:
     description: 'Required'
     required: true
+  sftp_username:
+    description: 'Required'
+    required: true
+  sftp_server:
+    description: 'Required'
+    required: true
+  sftp_password:
+    description: 'Required'
+    required: true
 
 runs:
   using: composite
@@ -26,9 +35,9 @@ runs:
     - name: Push to S3
       uses: alphacode-kirushnarajg/alpha-cloud-sync@v0.1.6-alpha
       with:
-        sftp_username: ${{ secrets.SFTP_USER_NAME }}
-        sftp_server: ${{ secrets.SFTP_HOST_NAME }}
-        sftp_password: ${{ secrets.SFTP_PASSWORD }}
+        sftp_username: ${{ inputs.sftp_username }}
+        sftp_server: ${{ secrets.sftp_server }}
+        sftp_password: ${{ secrets.sftp_password }}
         local_source_path: './${{ inputs.artefact_id }}/*'
         remote_destination_path: './${{ inputs.artefact_id }}/${{ env.RELEASE_TAG }}/'
         sftp_extra_args: '-o ConnectTimeout=5'

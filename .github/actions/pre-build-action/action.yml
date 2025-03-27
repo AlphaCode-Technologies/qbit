@@ -15,6 +15,7 @@ inputs:
   registry-url:
     description: 'Optional input to set up npm.'
     default: 'https://registry.npmjs.org'
+
 runs:
   using: composite
   steps:
