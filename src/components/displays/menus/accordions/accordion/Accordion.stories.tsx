@@ -12,7 +12,6 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-// Typing the Template function as a Story component
 const Template: StoryFn<any> = (args) => (
   <Accordion
     {...args}
@@ -28,16 +27,28 @@ const Template: StoryFn<any> = (args) => (
   </Accordion>
 );
 
-// Default story definition
 export const Default = Template.bind({});
-Default.args = {
-  keyExtractor: (value: string, i: number) => `${value}-${i}`,
-};
+Default.args = {};
 
 export const MultipleOpenItems = () => (
   <Accordion
     renderers={{ renderer: AccordionSkin, childRenderer: AccordionItemSkin }}
     keyExtractor={(value: string, i: number) => `${value}-${i}`}
+  >
+    <AccordionItem label="Open Item 1" value="open1" isOpen={true}>
+      <div>Content 1</div>
+    </AccordionItem>
+    <AccordionItem label="Open Item 2" value="open2" isOpen={true}>
+      <div>Content 2</div>
+    </AccordionItem>
+  </Accordion>
+);
+
+export const AlwaysOpen = () => (
+  <Accordion
+    renderers={{ renderer: AccordionSkin, childRenderer: AccordionItemSkin }}
+    keyExtractor={(value: string, i: number) => `${value}-${i}`}
+    alwaysShow={true}
   >
     <AccordionItem label="Open Item 1" value="open1" isOpen={true}>
       <div>Content 1</div>
@@ -53,22 +64,18 @@ export const WithNestedAccordion = () => (
     renderers={{ renderer: AccordionSkin, childRenderer: AccordionItemSkin }}
     keyExtractor={(value: string, i: number) => `${value}-${i}`}
   >
-    <AccordionItem
-      label="Parent Item"
-      value="parent"
-      content={
-        <Accordion
-          renderers={{ renderer: AccordionSkin, childRenderer: AccordionItemSkin }}
-          keyExtractor={(value: string, i: number) => `${value}-${i}`}
-        >
-          <AccordionItem label="Child Item 1" value="child1">
-            <div>Child Content 1</div>
-          </AccordionItem>
-          <AccordionItem label="Child Item 2" value="child2">
-            <div>Child Content 2</div>
-          </AccordionItem>
-        </Accordion>
-      }
-    ></AccordionItem>
+    <AccordionItem label="Parent Item" value="parent">
+      <Accordion
+        renderers={{ renderer: AccordionSkin, childRenderer: AccordionItemSkin }}
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+      >
+        <AccordionItem label="Child Item 1" value="child1">
+          <div>Child Content 1</div>
+        </AccordionItem>
+        <AccordionItem label="Child Item 2" value="child2">
+          <div>Child Content 2</div>
+        </AccordionItem>
+      </Accordion>
+    </AccordionItem>
   </Accordion>
 );
