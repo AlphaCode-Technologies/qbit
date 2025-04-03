@@ -1,4 +1,5 @@
 import { com } from 'src/types/common';
+import { ReactNode } from 'react';
 
 export type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url';
 
@@ -17,4 +18,7 @@ export type TextInputProps = com.qbit.BaseProps &
     maxLength?: number;
     autoComplete?: string;
     testId?: string;
+    error?: boolean;
+    prefixIcon?: ReactNode;
+    postfixIcon?: ReactNode;
   };

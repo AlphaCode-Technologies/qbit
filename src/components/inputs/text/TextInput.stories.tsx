@@ -1,6 +1,7 @@
 import TextInput from './TextInput.tsx';
 import { TextSkin } from '@skins/defaults';
 import { useState } from 'react';
+import { StoryFn } from '@storybook/react';
 
 export default {
   title: 'Qbit design/Inputs/TextInput',
@@ -11,271 +12,130 @@ export default {
   tags: ['autodocs'],
   argTypes: {},
   args: {
-    id: '',
-    name: '',
-    type: 'text',
-    value: '',
-    disabled: false,
-    readOnly: false,
-    placeholder: '',
-    required: false,
-    min: 0,
-    max: 0,
-    step: 0,
-    maxLength: 0,
-    autoComplete: 'on',
-    testId: '',
     renderers: { renderer: TextSkin },
   },
 };
 
-export const Default = (args: any) => {
-  const [value, setValue] = useState(args.value || 'Sample TextInput');
-
-  return (
-    <TextInput
-      id="input"
-      name="input"
-      type="text"
-      value={value}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+const Template: StoryFn = (args: any) => {
+  const [value, setValue] = useState(args.value);
+  return <TextInput {...args} value={value} onChange={(e) => setValue(e.target.nodeValue)} />;
 };
 
-export const Disabled = (args: any) => {
-  const [value, setValue] = useState(args.value || 'Disabled Input');
-
-  return (
-    <TextInput
-      id="input-disabled"
-      name="readonly"
-      type="text"
-      value={value}
-      disabled={true}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const Default = Template.bind({});
+Default.args = {
+  value: 'Sample TextInput',
 };
 
-export const ReadOnly = (args: any) => {
-  const [value, setValue] = useState(args.value || 'ReadOnly Input');
-
-  return (
-    <TextInput
-      id="input-readonly"
-      name="readonly"
-      type="text"
-      value={value}
-      readOnly={true}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const Disabled = Template.bind({});
+Disabled.args = {
+  value: 'Disabled Input',
+  disabled: true,
 };
 
-export const Placeholder = (args: any) => {
-  const [value, setValue] = useState(args.value || '');
-
-  return (
-    <TextInput
-      id="input-placeholder"
-      name="placeholder"
-      type="text"
-      value={value}
-      placeholder="Enter text here"
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  value: 'ReadOnly Input',
+  readOnly: true,
 };
 
-export const NumberInput = (args: any) => {
-  const [value, setValue] = useState(args.value || '3');
-
-  return (
-    <TextInput
-      id="input-number"
-      name="number"
-      type="number"
-      value={value}
-      placeholder="Enter text here"
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const Placeholder = Template.bind({});
+Placeholder.args = {
+  placeholder: 'Enter text here',
 };
 
-export const MinValue = (args: any) => {
-  const [value, setValue] = useState(args.value || '3');
-
-  return (
-    <TextInput
-      id="input-min"
-      name="number"
-      type="number"
-      value={value}
-      min={0}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const NumberInput = Template.bind({});
+NumberInput.args = {
+  type: 'number',
+  value: '3',
 };
 
-export const MaxValue = (args: any) => {
-  const [value, setValue] = useState(args.value || '3');
-
-  return (
-    <TextInput
-      id="input-max"
-      name="number"
-      type="number"
-      value={value}
-      max={10}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const MinValue = Template.bind({});
+MinValue.args = {
+  type: 'number',
+  min: 0,
+  value: '3',
 };
 
-export const StepValue = (args: any) => {
-  const [value, setValue] = useState(args.value || '3');
-
-  return (
-    <TextInput
-      id="input-step"
-      name="number"
-      type="number"
-      value={value}
-      step={3}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const MaxValue = Template.bind({});
+MaxValue.args = {
+  type: 'number',
+  max: 10,
+  value: '3',
 };
 
-export const PasswordInput = (args: any) => {
-  const [value, setValue] = useState(args.value || 'Sample password');
-
-  return (
-    <TextInput
-      id="input-password"
-      name="password"
-      type="password"
-      value={value}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const StepValue = Template.bind({});
+StepValue.args = {
+  type: 'number',
+  step: 3,
+  value: '3',
 };
 
-export const EmailInput = (args: any) => {
-  const [value, setValue] = useState(args.value || 'example@example.com');
-
-  return (
-    <TextInput
-      id="input-email"
-      name="email"
-      type="email"
-      value={value}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const PasswordInput = Template.bind({});
+PasswordInput.args = {
+  type: 'password',
+  value: 'Sample password',
 };
 
-export const TelephoneInput = (args: any) => {
-  const [value, setValue] = useState(args.value || '0761234567');
-
-  return (
-    <TextInput
-      id="input-tel"
-      name="tel"
-      type="tel"
-      value={value}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const EmailInput = Template.bind({});
+EmailInput.args = {
+  type: 'email',
+  value: 'example@example.com',
 };
 
-export const UrlInput = (args: any) => {
-  const [value, setValue] = useState(args.value || 'http://example.com');
-
-  return (
-    <TextInput
-      id="input-url"
-      name="url"
-      type="url"
-      value={value}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const TelephoneInput = Template.bind({});
+TelephoneInput.args = {
+  type: 'tel',
+  value: '0761234567',
 };
 
-export const MaxLength = (args: any) => {
-  const [value, setValue] = useState(args.value || 'Sample');
-
-  return (
-    <TextInput
-      id="input-maxlength"
-      name="maxlength"
-      type="text"
-      value={value}
-      maxLength={10}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const UrlInput = Template.bind({});
+UrlInput.args = {
+  type: 'url',
+  value: 'https://example.com',
 };
 
-export const AutoComplete = (args: any) => {
-  const [value, setValue] = useState(args.value || '');
-
-  return (
-    <TextInput
-      id="input-autocomplete"
-      name="email"
-      type="email"
-      value={value}
-      autoComplete="email"
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const MaxLength = Template.bind({});
+MaxLength.args = {
+  maxLength: 10,
+  value: 'Sample',
 };
 
-export const AutoCompleteOff = (args: any) => {
-  const [value, setValue] = useState(args.value || '');
-
-  return (
-    <TextInput
-      id="input-autocomplete-off"
-      name="email"
-      type="email"
-      value={value}
-      autoComplete="off"
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const AutoComplete = Template.bind({});
+AutoComplete.args = {
+  type: 'email',
+  autoComplete: 'email',
 };
 
-export const TabIndex = (args: any) => {
-  const [value, setValue] = useState(args.value || 'Sample TabIndex');
+export const AutoCompleteOff = Template.bind({});
+AutoCompleteOff.args = {
+  type: 'email',
+  autoComplete: 'off',
+};
 
-  return (
-    <TextInput
-      id="input-tabindex"
-      name="input"
-      type="text"
-      value={value}
-      tabIndex={2}
-      renderers={{ renderer: TextSkin }}
-      onChange={(event: any) => setValue(event.target.nodeValue)}
-    />
-  );
+export const CustomClasses = Template.bind({});
+CustomClasses.args = {
+  className: 'bg-blue-100 border-2 border-blue-500 focus:outline-none',
+  value: 'Custom Class Input',
+};
+
+export const StyledInput = Template.bind({});
+StyledInput.args = {
+  style: {
+    borderColor: 'green',
+    borderWidth: '2px',
+    backgroundColor: 'rgba(0,129,65,0.2)',
+  },
+  value: 'Styled Input',
+};
+
+export const ErrorState = Template.bind({});
+ErrorState.args = {
+  value: 'Error Input',
+  error: true,
+};
+
+export const TabIndex = Template.bind({});
+TabIndex.args = {
+  value: 'Sample TabIndex',
+  tabIndex: 2,
 };
