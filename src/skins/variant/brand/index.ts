@@ -1,1 +1,1 @@
-export { AccordionBrandSkin, AccordionItemBrandSkin } from './accordion';
+export { AccordionBrandSkin, AccordionItemBrandSkin } from './menu';
