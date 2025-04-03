@@ -1,1 +1,1 @@
-export { TextInputBrandSkin } from './input';
+export { TextInputBrandSkin } from './inputs';
