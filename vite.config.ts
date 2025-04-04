@@ -66,7 +66,7 @@ export default defineConfig({
   ],
   test: {
     coverage: {
-      reporter: ['text', 'json-summary', 'json'],
+      reporter: ['text', 'json-summary', 'json', 'html'],
       reportOnFailure: true,
       thresholds: {
         lines: 70,
