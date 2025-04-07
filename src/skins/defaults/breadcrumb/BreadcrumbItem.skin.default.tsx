@@ -2,14 +2,13 @@ import { com } from 'src/types/common';
 import { BreadcrumbItemProps } from '@components/index';
 
 const BreadcrumbItemSkin: com.qbit.Skin<BreadcrumbItemProps> = (props) => {
-  const { href, disabled, testId, value, active, onClick, splitter, className, style } = props;
+  const { href, disabled, testId, value, active, splitter, className, keyExtractor, childrenCount, ...rest } = props;
 
   return (
     <li
-      onClick={onClick}
       className={`${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'cursor-pointer'} ${className ?? ''}`}
-      style={style}
       data-testid={testId}
+      {...rest}
     >
       {active ? (
         <span className="text-blue-500 font-medium"> {value} </span>
