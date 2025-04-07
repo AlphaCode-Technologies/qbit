@@ -1,0 +1,38 @@
+name: docs-publish
+
+on: # workflow_dispatch
+  release:
+    types: ['published']
+
+jobs:
+  docs-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run pre-build script
+        uses: ./.github/actions/pre-build-action
+
+      - name: Build storybook
+        run: pnpm build:storybook
+
+      - name: Upload build artifact
+        id: storybook
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist/storybook
+
+  docs-deploy:
+    needs: docs-build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: storybook
+        uses: actions/deploy-pages@v4

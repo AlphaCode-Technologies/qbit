@@ -1,0 +1,43 @@
+name: post-build action
+
+description: Publish application
+
+inputs:
+  artefact_id:
+    description: 'Required'
+    required: true
+  sftp_username:
+    description: 'Required'
+    required: true
+  sftp_server:
+    description: 'Required'
+    required: true
+  sftp_password:
+    description: 'Required'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Fetch artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.artefact_id }}
+        path: ./${{ inputs.artefact_id }}
+
+    - name: Taging
+      run: |
+        git fetch --tags
+        TAG=$(git describe --tags --abbrev=0 || echo "no-tag")
+        echo "RELEASE_TAG=${TAG}" >> ${GITHUB_ENV}
+      shell: bash
+
+    - name: Push to S3
+      uses: alphacode-kirushnarajg/alpha-cloud-sync@v0.1.6-alpha
+      with:
+        sftp_username: ${{ inputs.sftp_username }}
+        sftp_server: ${{ inputs.sftp_server }}
+        sftp_password: ${{ inputs.sftp_password }}
+        local_source_path: './${{ inputs.artefact_id }}/*'
+        remote_destination_path: './${{ inputs.artefact_id }}/${{ env.RELEASE_TAG }}/'
+        sftp_extra_args: '-o ConnectTimeout=5'

@@ -1,1 +1,7 @@
-export { AccordionBrandSkin, AccordionItemBrandSkin } from './brand';
+export {
+  AccordionBrandSkin,
+  AccordionItemBrandSkin,
+  ButtonBrandSkin,
+  CheckboxBrandSkin,
+  TooltipBrandSkin,
+} from './brand';

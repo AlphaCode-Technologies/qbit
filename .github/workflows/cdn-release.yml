@@ -1,0 +1,56 @@
+name: cdn-publish
+
+on:
+  release:
+    types: ['published']
+
+jobs:
+  skins-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run pre-build script
+        uses: ./.github/actions/pre-build-action
+
+      - name: Build skins
+        run: pnpm build:skins
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: skins
+          path: ./dist
+
+      - name: Run post-build script
+        uses: ./.github/actions/post-build-action
+        with:
+          artefact_id: skins
+          sftp_username: ${{ secrets.SFTP_USER_NAME }}
+          sftp_server: ${{ secrets.SFTP_HOST_NAME }}
+          sftp_password: ${{ secrets.SFTP_PASSWORD }}
+
+  shell-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run pre-build script
+        uses: ./.github/actions/pre-build-action
+
+      - name: Build skins
+        run: pnpm build:skins
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shell
+          path: ./dist
+
+      - name: Run post-build script
+        uses: ./.github/actions/post-build-action
+        with:
+          artefact_id: shell
+          sftp_username: ${{ secrets.SFTP_USER_NAME }}
+          sftp_server: ${{ secrets.SFTP_HOST_NAME }}
+          sftp_password: ${{ secrets.SFTP_PASSWORD }}

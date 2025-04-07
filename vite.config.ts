@@ -41,9 +41,9 @@ function generatePackageJson() {
     name: 'generate-package-json',
     closeBundle() {
       if (entryFile.includes('components')) {
-        createPackageJson('shell-sandbox');
+        createPackageJson('shell');
       } else {
-        createPackageJson('skin-sandbox');
+        createPackageJson('skins');
       }
     },
   };
@@ -64,6 +64,18 @@ export default defineConfig({
       entryRoot: './src',
     }),
   ],
+  test: {
+    coverage: {
+      reporter: ['text', 'json-summary', 'json'],
+      reportOnFailure: true,
+      thresholds: {
+        lines: 70,
+        branches: 70,
+        functions: 70,
+        statements: 70,
+      },
+    },
+  },
   build: {
     emptyOutDir: true,
     lib: {
