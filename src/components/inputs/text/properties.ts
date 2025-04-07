@@ -5,7 +5,8 @@ export type InputType = 'text' | 'number' | 'password' | 'email' | 'tel' | 'url'
 
 export type TextInputProps = com.qbit.BaseProps &
   com.act.UiActions &
-  com.act.KeyboardActions & {
+  com.act.KeyboardActions &
+  com.utils.Property<{
     id: string;
     name: string;
     type: InputType;
@@ -21,4 +22,4 @@ export type TextInputProps = com.qbit.BaseProps &
     error?: boolean;
     prefixIcon?: ReactNode;
     postfixIcon?: ReactNode;
-  };
+  }>;
