@@ -16,7 +16,7 @@ export default mergeConfig(
         reportsDirectory: '.testing/coverage',
         include: ['src/*'],
         exclude: [
-          'src/**/*.{stories,test,d}.{ts,tsx}',
+          'src/**/*.{stories,test,properties}.{ts,tsx}',
           'src/**/*.manifest.{ts,tsx,json}',
           'src/*.{ts,tsx}',
           'src/skins',
