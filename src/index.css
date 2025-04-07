@@ -5,3 +5,43 @@
 .menu-item:hover > .sub-menu {
   @apply block;
 }
+
+.snippet-comment {
+  @apply text-[#7ec699]; /* Softer green for comments */
+}
+
+.snippet-html-tag {
+  @apply text-[#e06c75]; /* Warmer red for HTML tags */
+}
+
+.snippet-keyword {
+  @apply text-[#c678dd]; /* Purple for keywords (consistent with VS Code themes) */
+}
+
+.snippet-function-call {
+  @apply text-[#61afef]; /* Blue for function calls (widely used for clarity) */
+}
+
+.snippet-selector {
+  @apply text-[#e06c75]; /* Red for selectors (elements, classes, IDs) */
+}
+
+.snippet-pseudo {
+  @apply text-[#c678dd]; /* Purple for pseudo-classes/elements */
+}
+
+.snippet-number {
+  @apply text-[#d19a66]; /* Orange for numbers and units */
+}
+
+.snippet-symbol {
+  @apply text-[#56b6c2]; /* Teal for symbols (;, {}) */
+}
+
+.snippet-property {
+  @apply text-[#61afef]; /* Blue for CSS properties */
+}
+
+.snippet-value {
+  @apply text-[#98c379]; /* Soft green for values */
+}
