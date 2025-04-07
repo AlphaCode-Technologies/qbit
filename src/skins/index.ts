@@ -47,6 +47,8 @@ export { SwitchSkin, DottedCircleLoaderSkin, FadedCircleLoaderSkin, SegmentBarLo
 export {
   AccordionBrandSkin,
   AccordionItemBrandSkin,
+  BreadcrumbBrandSkin,
+  BreadcrumbItemBrandSkin,
   ButtonBrandSkin,
   CheckboxBrandSkin,
   TextInputBrandSkin,
