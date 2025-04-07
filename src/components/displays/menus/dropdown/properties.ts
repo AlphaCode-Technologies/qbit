@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { com } from 'src/types/common';
 
 export type DropdownProps = com.qbit.BaseProps & {
-  buttonLabel?: string;
+  label?: string;
   testId?: string;
 };
 

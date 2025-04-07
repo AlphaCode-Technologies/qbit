@@ -16,7 +16,7 @@ export const Default: Story = {
     <Dropdown
       keyExtractor={(value: string, i: number) => `${value}-${i}`}
       renderers={{ renderer: DropdownSkin, childRenderer: DropdownItemSkin }}
-      buttonLabel="Account ▼"
+      label="Account ▼"
     >
       <DropdownItem
         name={'Logout'}

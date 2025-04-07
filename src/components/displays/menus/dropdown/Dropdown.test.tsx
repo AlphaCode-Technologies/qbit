@@ -20,7 +20,7 @@ describe('Dropdown Component', () => {
       <Dropdown
         keyExtractor={(value: string, i: number) => `${value}-${i}`}
         renderers={{ renderer: DropdownSkin, childRenderer: DropdownItemSkin }}
-        buttonLabel="Menu"
+        label="Menu"
       >
         <DropdownItem name="Profile" />
         <DropdownItem name="Settings" />
@@ -36,7 +36,7 @@ describe('Dropdown Component', () => {
       <Dropdown
         keyExtractor={(value: string, i: number) => `${value}-${i}`}
         renderers={{ renderer: DropdownSkin, childRenderer: DropdownItemSkin }}
-        buttonLabel="Menu"
+        label="Menu"
       >
         <DropdownItem name="Profile" />
         <DropdownItem name="Settings" />
@@ -55,7 +55,7 @@ describe('Dropdown Component', () => {
       <Dropdown
         keyExtractor={(value: string, i: number) => `${value}-${i}`}
         renderers={{ renderer: DropdownSkin, childRenderer: DropdownItemSkin }}
-        buttonLabel="Menu"
+        label="Menu"
       >
         <DropdownItem name="Logout" onChange={mockOnClick} />
       </Dropdown>,

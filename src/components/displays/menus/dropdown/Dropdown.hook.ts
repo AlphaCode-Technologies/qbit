@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { DropdownProps } from './properties';
 
-export const useBindSkin = (params: DropdownProps) => {
+export const useBindSkin = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLDivElement | null>(null);
 
@@ -28,10 +27,6 @@ export const useBindSkin = (params: DropdownProps) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
-  useEffect(() => {
-    console.log('Dropdown Props:', params);
-  }, [params]);
 
   return {
     isOpen,
