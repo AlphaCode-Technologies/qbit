@@ -25,6 +25,7 @@ export {
   TabItem,
   Splitter,
   SplitterItem,
+  EmptyState,
 } from './displays';
 export {
   Button,
@@ -76,6 +77,7 @@ export {
   type TabProps,
   type TabItemProps,
   type SplitterProps,
+  type EmptyStateProps,
 } from './displays';
 
 export {
