@@ -44,4 +44,4 @@ export {
 
 export { SwitchSkin, DottedCircleLoaderSkin, FadedCircleLoaderSkin, SegmentBarLoaderSkin } from './optional';
 
-export { CheckboxBrandSkin } from './variant';
+export { ButtonBrandSkin, CheckboxBrandSkin, TooltipBrandSkin } from './variant';
