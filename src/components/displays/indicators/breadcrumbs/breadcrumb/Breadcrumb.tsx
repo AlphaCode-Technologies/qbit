@@ -11,14 +11,10 @@ import { com } from 'src/types/common';
 const Breadcrumb: com.qbit.Shell<BreadcrumbProps, BreadcrumbItemProps> = (
   props: com.qbit.ShellProps<BreadcrumbProps, BreadcrumbItemProps>,
 ) => {
-  const { children: oChildren, className, ...rest } = props;
+  const { children: oChildren, ...rest } = props;
   const children = useGetChildren<BreadcrumbProps, BreadcrumbItemProps>(rest, oChildren);
 
-  return (
-    <div className={`${className}`}>
-      <BaseComponent {...rest}>{children}</BaseComponent>
-    </div>
-  );
+  return <BaseComponent {...rest}>{children}</BaseComponent>;
 };
 
 export default Breadcrumb;
