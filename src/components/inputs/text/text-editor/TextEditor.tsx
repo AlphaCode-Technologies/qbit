@@ -26,6 +26,8 @@ const TextEditor: com.qbit.Shell<TextEditorProps> = (props: com.qbit.ShellProps<
     changeFontSize,
     fontOptions,
     fontSizeOptions,
+    fontColor,
+    changeFontColor,
   } = useTextEditor(rest);
 
   return (
@@ -45,6 +47,8 @@ const TextEditor: com.qbit.Shell<TextEditorProps> = (props: com.qbit.ShellProps<
       changeFontSize={changeFontSize}
       fontOptions={fontOptions}
       fontSizeOptions={fontSizeOptions}
+      fontColor={fontColor}
+      changeFontColor={changeFontColor}
     />
   );
 };

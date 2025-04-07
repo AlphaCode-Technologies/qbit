@@ -20,6 +20,8 @@ const TextEditorSkin: com.qbit.Skin<TextEditorProps> = (props: com.qbit.SkinProp
     fontSizeOptions,
     testId,
     disabled,
+    fontColor,
+    changeFontColor,
   } = props;
 
   const contentEditableRef = useRef<HTMLDivElement>(null);
@@ -91,6 +93,14 @@ const TextEditorSkin: com.qbit.Skin<TextEditorProps> = (props: com.qbit.SkinProp
         >
           <u>U</u>
         </button>
+
+        <input
+          type="color"
+          disabled={disabled}
+          value={fontColor}
+          onChange={(e) => changeFontColor?.(e.target.value)}
+          className="w-10 h-8 border border-gray-300 rounded cursor-pointer"
+        />
       </div>
 
       {/* Content Editable Area */}
@@ -102,6 +112,7 @@ const TextEditorSkin: com.qbit.Skin<TextEditorProps> = (props: com.qbit.SkinProp
         style={{
           fontFamily: fontFamily,
           fontSize: `${fontSize}px`,
+          color: fontColor,
         }}
       />
     </div>

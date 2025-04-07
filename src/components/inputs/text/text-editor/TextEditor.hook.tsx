@@ -109,6 +109,22 @@ const useTextEditor = (props: com.qbit.ShellProps<TextEditorProps>) => {
     setFontSize(size);
   };
 
+  const [fontColor, setFontColor] = useState<string>('#000000'); // default black
+
+  const changeFontColor = (color: string) => {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+    const span = document.createElement('span');
+    span.style.color = color;
+    span.appendChild(range.extractContents());
+    range.deleteContents();
+    range.insertNode(span);
+
+    setFontColor(color);
+  };
+
   return {
     content,
     fontFamily,
@@ -124,6 +140,8 @@ const useTextEditor = (props: com.qbit.ShellProps<TextEditorProps>) => {
     changeFontSize,
     fontOptions: props.fontOptions || ['Arial', 'Verdana', 'Times New Roman', 'Courier New', 'Georgia'],
     fontSizeOptions: props.fontSizeOptions || [10, 12, 14, 16, 18, 20, 24, 28, 32, 36],
+    fontColor,
+    changeFontColor,
   };
 };
 

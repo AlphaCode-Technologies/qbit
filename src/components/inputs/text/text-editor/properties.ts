@@ -23,4 +23,6 @@ export type TextEditorProps = com.qbit.BaseProps &
     changeFontFamily?: (font: string) => void;
     changeFontSize?: (size: number) => void;
     contentEditableRef?: any;
+    fontColor?: string;
+    changeFontColor?: (color: string) => void;
   };
