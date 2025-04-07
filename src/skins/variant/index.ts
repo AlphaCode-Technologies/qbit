@@ -3,5 +3,6 @@ export {
   AccordionItemBrandSkin,
   ButtonBrandSkin,
   CheckboxBrandSkin,
+  TextInputBrandSkin,
   TooltipBrandSkin,
 } from './brand';

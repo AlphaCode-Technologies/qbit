@@ -49,5 +49,6 @@ export {
   AccordionItemBrandSkin,
   ButtonBrandSkin,
   CheckboxBrandSkin,
+  TextInputBrandSkin,
   TooltipBrandSkin,
 } from './variant';
