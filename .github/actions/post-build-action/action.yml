@@ -24,7 +24,7 @@ runs:
       with:
         name: ${{ inputs.artefact_id }}
         path: ./${{ inputs.artefact_id }}
-        
+
     - name: Taging
       run: |
         git fetch --tags
