@@ -1,1 +1,1 @@
-export { TooltipBrandSkin } from './brand';
+export { ButtonBrandSkin, TooltipBrandSkin } from './brand';
