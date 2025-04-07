@@ -36,18 +36,6 @@ describe('FileUpload Component', () => {
     expect(fileInput).toBeDisabled();
   });
 
-  //   it('accepts valid files and calls onChange', async () => {
-  //     render(<FileUpload {...defaultProps} />);
-  //     const fileInput = screen.getByTestId('file-upload').querySelector('input[type="file"]') as HTMLInputElement;
-  //     if (!fileInput) {
-  //       throw new Error('File input not found');
-  //     }
-  //     const file = new File(['test'], 'test.png', { type: 'image/png' });
-  //     Object.defineProperty(fileInput, 'files', {value: [file],configurable: true,});
-  //     fireEvent.change(fileInput);
-  //     await waitFor(() => {expect(mockOnChange).toHaveBeenCalledWith([file]);});
-  //   });
-
   it('shows error when file type is not allowed', async () => {
     render(<FileUpload {...defaultProps} />);
     const fileInput = screen

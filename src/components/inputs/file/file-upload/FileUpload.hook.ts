@@ -3,7 +3,7 @@ import { FileUploadProps } from './properties';
 import { com } from 'src/types/common';
 
 const useBindFileUpload = (props: com.qbit.ShellProps<FileUploadProps>) => {
-  const { maxSize = 1024, allowedTypes, maxFiles = 1, onChange } = props;
+  const { maxSize, allowedTypes, maxFiles = 1, onChange } = props;
 
   const [files, setFiles] = useState<File[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -21,7 +21,7 @@ const useBindFileUpload = (props: com.qbit.ShellProps<FileUploadProps>) => {
         setErrorMessage('Invalid file type.');
         return false;
       }
-      if (file.size > maxSize * 1024) {
+      if (maxSize && file.size > maxSize * 1024) {
         setErrorMessage(`File size exceeds ${maxSize}KB.`);
         return false;
       }
