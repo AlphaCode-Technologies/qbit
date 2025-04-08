@@ -1,6 +1,7 @@
 export {
   AccordionBrandSkin,
   AccordionItemBrandSkin,
+  BadgeBrandSkin,
   BreadcrumbBrandSkin,
   BreadcrumbItemBrandSkin,
   ButtonBrandSkin,

@@ -1,5 +1,4 @@
 export { default as AvatarSkin } from './Avatar.default.skin';
-export { default as BatchSkin } from './Badges.default.skin';
 export { default as ButtonSkin } from './Button.default.skin';
 export { ListItemSkin, ListSkin } from './list';
 export { default as LoaderSkin } from './Loader.default.skin';
