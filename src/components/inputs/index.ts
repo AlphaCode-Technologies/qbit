@@ -17,6 +17,14 @@ export {
 } from './choices';
 
 export { type NumericRangeProps } from './range';
-export { Calendar, CalendarBody, CalendarHeader, CalendarEvent, type CalendarProps } from './chrono';
+export {
+  Calendar,
+  CalendarBody,
+  CalendarHeader,
+  CalendarEvent,
+  type CalendarProps,
+  DateTimePicker,
+  type DateTimePickerProps,
+} from './chrono';
 
 export { type InputType, type TextInputProps } from './text/properties';
