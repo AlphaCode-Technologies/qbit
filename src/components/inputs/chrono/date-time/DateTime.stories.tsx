@@ -5,7 +5,7 @@ import DateTimePicker from './DateTime';
 import { DateTimePickerSkin } from '@skins/defaults';
 
 export default {
-  title: 'Components/DateTimePicker',
+  title: 'Qbit design/Inputs/Chrono/DateTimePicker',
   component: DateTimePicker,
   tags: ['autodocs'],
 } as Meta;
