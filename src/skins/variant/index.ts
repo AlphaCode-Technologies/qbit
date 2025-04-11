@@ -6,5 +6,6 @@ export {
   ButtonBrandSkin,
   CheckboxBrandSkin,
   TextInputBrandSkin,
+  ToggleBrandSkin,
   TooltipBrandSkin,
 } from './brand';

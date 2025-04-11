@@ -52,6 +52,6 @@ export {
   ButtonBrandSkin,
   CheckboxBrandSkin,
   TextInputBrandSkin,
+  ToggleBrandSkin,
   TooltipBrandSkin,
 } from './variant';
-export { ButtonBrandSkin, CheckboxBrandSkin, TooltipBrandSkin } from './variant';
