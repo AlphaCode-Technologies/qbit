@@ -51,6 +51,7 @@ export {
   BreadcrumbItemBrandSkin,
   ButtonBrandSkin,
   CheckboxBrandSkin,
+  PaginationBrandSkin,
   TextInputBrandSkin,
   TooltipBrandSkin,
 } from './variant';
