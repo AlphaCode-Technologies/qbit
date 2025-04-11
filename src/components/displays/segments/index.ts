@@ -10,4 +10,5 @@ export { default as DrawerItem } from './drawer/DrawerItem';
 export { type CardProps, type CardItemProps } from './card/properties';
 export { type DrawerPosition, type DrawerActions, type DrawerProps, type DrawerItemProps } from './drawer/properties';
 export { type ModalActions, type ModalProps, type ModalItemProps } from './modal/properties';
+export { type PaginationProps } from './pagination/properties';
 export { type TabProps, type TabItemProps } from './tabs';

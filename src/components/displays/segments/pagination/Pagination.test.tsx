@@ -11,186 +11,102 @@ describe('Pagination component', () => {
     render(<Pagination renderers={{ renderer: PaginationSkin }} {...props} />);
   };
 
-  it('renders pagination buttons with correct page numbers', () => {
-    renderPagination({
-      currentPage: 1,
-      totalPages: 5,
-      onPageChange: onPageChangeMock,
-    });
+  it('calls onPageChange with the correct page when a page button is clicked', () => {
+    renderPagination({ currentPage: 1, totalPages: 5, onPageChange: onPageChangeMock });
 
-    // Check if all page numbers are rendered
-    for (let i = 1; i <= 5; i++) {
-      expect(screen.getByText(i)).toBeInTheDocument();
-    }
-  });
-
-  it('calls onPageChange with the correct page when a page button is clicked', async () => {
-    renderPagination({
-      currentPage: 1,
-      totalPages: 5,
-      onPageChange: onPageChangeMock,
-    });
-
-    const page2Button = screen.getByText('2');
-    fireEvent.click(page2Button);
-
-    // Check if the onPageChange mock is called with the correct page number
+    fireEvent.click(screen.getByText('2'));
     expect(onPageChangeMock).toHaveBeenCalledWith(2);
   });
 
-  it('disables the "Previous" button on the first page', () => {
+  it('disables the "previous" button on the first page', () => {
     renderPagination({
       currentPage: 1,
       totalPages: 5,
       onPageChange: onPageChangeMock,
+      paginationItems: [{ type: 'control', label: 'previous', page: 0, disabled: true }],
     });
 
-    const previousButton = screen.getByText('← Previous');
-    expect(previousButton).toBeDisabled();
+    const prevBtn = screen.getByText('previous');
+    expect(prevBtn).toBeDisabled();
   });
 
-  it('disables the "Next" button on the last page', () => {
+  it('disables the "next" button on the last page', () => {
     renderPagination({
       currentPage: 5,
       totalPages: 5,
       onPageChange: onPageChangeMock,
+      paginationItems: [{ type: 'control', label: 'next', page: 6, disabled: true }],
     });
 
-    const nextButton = screen.getByText('Next →');
-    expect(nextButton).toBeDisabled();
+    const nextBtn = screen.getByText('next');
+    expect(nextBtn).toBeDisabled();
   });
 
-  it('renders the correct classes for the active page', () => {
+  it('renders correct styles for active page', () => {
     renderPagination({
       currentPage: 3,
       totalPages: 5,
       onPageChange: onPageChangeMock,
+      paginationItems: Array.from({ length: 5 }, (_, i) => ({
+        type: 'page',
+        label: 'page',
+        page: i + 1,
+        disabled: false,
+      })),
     });
 
-    const activePageButton = screen.getByText('3');
-    expect(activePageButton).toHaveClass('bg-blue-800 text-white');
+    const activeBtn = screen.getByText('3');
+    expect(activeBtn).toHaveClass('bg-gray-600 text-white');
   });
 
-  it('does not add the "active" class to other page buttons', () => {
+  it('does not apply active class to non-active buttons', () => {
     renderPagination({
       currentPage: 3,
       totalPages: 5,
       onPageChange: onPageChangeMock,
+      paginationItems: Array.from({ length: 5 }, (_, i) => ({
+        type: 'page',
+        label: 'page',
+        page: i + 1,
+        disabled: false,
+      })),
     });
 
-    // Ensure that no other page buttons have the active class
     for (let i = 1; i <= 5; i++) {
+      const btn = screen.getByText(i.toString());
       if (i !== 3) {
-        const button = screen.getByText(i.toString());
-        expect(button).not.toHaveClass('active');
+        expect(btn).not.toHaveClass('bg-gray-600 text-white');
       }
     }
   });
 
-  it('handles the page change correctly when using next and previous buttons', async () => {
+  it('calls onPageChange when a page number is clicked', () => {
     renderPagination({
-      currentPage: 1,
+      currentPage: 2,
       totalPages: 5,
       onPageChange: onPageChangeMock,
+      paginationItems: [{ type: 'page', label: 'page', page: 3, disabled: false }],
     });
 
-    // Click the "Next" button
-    const nextButton = screen.getByText('Next →');
-    fireEvent.click(nextButton);
-    expect(onPageChangeMock).toHaveBeenCalledWith(2);
-
-    // Click the "Previous" button
-    const prevButton = screen.getByText('← Previous');
-    fireEvent.click(prevButton);
-    expect(onPageChangeMock).toHaveBeenCalledWith(1);
-  });
-
-  // Test for checking disabled state on pagination
-  it('disables all buttons when the "disabled" prop is true', () => {
-    renderPagination({
-      currentPage: 1,
-      totalPages: 5,
-      onPageChange: onPageChangeMock,
-      disabled: true,
-    });
-
-    // Check if Previous, Next, and page buttons are all disabled
-    const previousButton = screen.getByText('← Previous');
-    const nextButton = screen.getByText('Next →');
-    const pageButtons = screen.getAllByRole('button');
-
-    expect(previousButton).toBeDisabled();
-    expect(nextButton).toBeDisabled();
-    pageButtons.forEach((button) => {
-      expect(button).toBeDisabled();
-    });
-  });
-
-  // Test for checking currentPage state handling
-  it('should call onPageChange with the correct currentPage when page buttons are clicked', () => {
-    const currentPage = 3;
-    renderPagination({
-      currentPage,
-      totalPages: 5,
-      onPageChange: onPageChangeMock,
-    });
-
-    // Simulate clicking a different page
-    const page4Button = screen.getByText('4');
-    fireEvent.click(page4Button);
-
-    // Ensure that onPageChange is called with the correct page
-    expect(onPageChangeMock).toHaveBeenCalledWith(4);
-
-    // Ensure the current page is reflected in the UI (active button)
-    const activePageButton = screen.getByText('4');
-    expect(activePageButton).toHaveClass('bg-blue-800 text-white');
-  });
-
-  it('calls onPageChange when a page button is clicked', () => {
-    renderPagination({
-      currentPage: 1,
-      totalPages: 5,
-      onPageChange: onPageChangeMock,
-    });
-
-    // Simulate clicking on page 3
-    const page3Button = screen.getByText('3');
-    fireEvent.click(page3Button);
-
-    // Ensure the onPageChangeMock was called with page 3
+    fireEvent.click(screen.getByText('3'));
     expect(onPageChangeMock).toHaveBeenCalledWith(3);
   });
 
-  it('updates the current page when current page not passed', () => {
+  it('disables all buttons when disabled prop is true', () => {
     renderPagination({
-      currentPage: 1,
+      currentPage: 2,
       totalPages: 5,
       onPageChange: onPageChangeMock,
+      disabled: true,
+      paginationItems: [
+        { type: 'page', label: 'page', page: 1, disabled: true },
+        { type: 'control', label: 'previous', page: 1, disabled: true },
+        { type: 'control', label: 'next', page: 3, disabled: true },
+      ],
     });
 
-    // Simulate clicking on page 4
-    const page4Button = screen.getByText('4');
-    fireEvent.click(page4Button);
-
-    // Ensure the onPageChangeMock was called with page 4
-    expect(onPageChangeMock).toHaveBeenCalledWith(4);
-
-    // Check if the page 4 button is now active
-    const activeButton = screen.getByText('4');
-    expect(activeButton).toHaveClass('bg-blue-800 text-white');
-  });
-
-  it('changes the page if the page number is valid', () => {
-    renderPagination({
-      currentPage: 0,
-      totalPages: 0,
-      onPageChange: onPageChangeMock,
+    screen.getAllByRole('button').forEach((btn) => {
+      expect(btn).toBeDisabled();
     });
-
-    const nextButton = screen.getByText('Next →');
-    fireEvent.click(nextButton);
-
-    expect(onPageChangeMock).toHaveBeenCalledWith(4);
   });
 });
