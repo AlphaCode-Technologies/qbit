@@ -44,4 +44,14 @@ export {
 
 export { SwitchSkin, DottedCircleLoaderSkin, FadedCircleLoaderSkin, SegmentBarLoaderSkin } from './optional';
 
+export {
+  AccordionBrandSkin,
+  AccordionItemBrandSkin,
+  BreadcrumbBrandSkin,
+  BreadcrumbItemBrandSkin,
+  ButtonBrandSkin,
+  CheckboxBrandSkin,
+  TextInputBrandSkin,
+  TooltipBrandSkin,
+} from './variant';
 export { ButtonBrandSkin, CheckboxBrandSkin, TooltipBrandSkin } from './variant';

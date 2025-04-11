@@ -1,6 +1,7 @@
 import { BaseComponent } from '@components/containers';
-import { BreadcrumbItemProps } from './properties';
 import { com } from 'src/types/common';
+import { useBindSkin } from './Breadcrumb.hook';
+import { BreadcrumbItemProps } from './properties';
 
 /**
  * BreadcrumbItem component.
@@ -9,12 +10,9 @@ import { com } from 'src/types/common';
  */
 
 const BreadcrumbItem: com.qbit.Shell<BreadcrumbItemProps> = (props) => {
-  const { className } = props;
-  return (
-    <div className={`${className}`}>
-      <BaseComponent {...props} />
-    </div>
-  );
+  const bindHandlers = useBindSkin(props);
+
+  return <BaseComponent {...bindHandlers} {...props} />;
 };
 
 export default BreadcrumbItem;
