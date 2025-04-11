@@ -1,6 +1,8 @@
 import { com } from 'src/types/common';
 
-export type CheckboxProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions & { size?: any };
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+
+export type CheckboxProps = com.qbit.BaseProps & com.act.UiActions & com.act.MouseActions & { size?: Size };
 
 export type CheckboxItemProps = CheckboxProps &
   com.utils.Property<{
