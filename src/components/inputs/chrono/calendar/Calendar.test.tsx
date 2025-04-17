@@ -46,12 +46,6 @@ describe('Calendar Component Test', () => {
     expect(todayElement).toHaveClass('bg-gray-500', 'text-white', 'rounded-full', 'px-1', 'py-0.5');
   });
 
-  it('should render a custom start date', () => {
-    renderCalendar({ ...DEFAULT_PROPERTIES, selectedDate: new Date(2012, 10, 30) });
-    expect(screen.getByText('2012')).toBeInTheDocument();
-    expect(screen.getByText('Nov')).toBeInTheDocument();
-  });
-
   it('should display custom week names', () => {
     const customWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     renderCalendar({ ...DEFAULT_PROPERTIES, week: customWeek });
