@@ -37,6 +37,9 @@ export type CalendarProps = com.qbit.BaseProps &
     handleTodayClick?: () => void;
     selectDate?: (date: Date) => void;
     getWeekMonths?: string[];
+    startDate?: Date;
+    endDate?: Date;
+    weekCount?: number;
   };
 
 export type EventType = {

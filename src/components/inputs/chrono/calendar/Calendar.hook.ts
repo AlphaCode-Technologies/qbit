@@ -29,47 +29,85 @@ export const useBindSkin = (props: CalendarProps) => {
   const [selectedMonth, setSelectedMonth] = useState<number>(propsSelectedMonth ?? todayMonth);
   const [selectedView, setSelectedView] = useState<ViewType>(propsSelectedView ?? 'month');
   const [selectedDate, setSelectedDate] = useState<Date>(propsSelectedDate ?? today);
+  const [selectedWeekStartDate, setSelectedWeekStartDate] = useState<Date>(() => {
+    const date = new Date(propsSelectedDate ?? today);
+    date.setDate(date.getDate() - date.getDay());
+    return date;
+  });
+
   const [days, setDays] = useState<Day[]>([]);
 
   useEffect(() => {
-    generateCalendar(selectedYear, selectedMonth);
-  }, [selectedYear, selectedMonth]);
+    generateCalendarView();
+  }, [selectedYear, selectedMonth, selectedView, selectedWeekStartDate]);
 
   useEffect(() => {
-    setSelectedMonth(selectedDate.getMonth());
-    setSelectedYear(selectedDate.getFullYear());
-  }, [selectedDate]);
+    if (selectedView === 'week') {
+      const targetDate = selectedDate ?? new Date(selectedYear, selectedMonth, 1);
+      const startOfWeek = new Date(targetDate);
+      startOfWeek.setDate(targetDate.getDate() - targetDate.getDay());
+      setSelectedWeekStartDate(startOfWeek);
+    }
+  }, [selectedView]);
 
-  const generateCalendar = (year: number, month: number) => {
-    const firstDay = new Date(year, month, 1).getDay();
-    const lastDate = new Date(year, month + 1, 0).getDate();
-    const prevLastDate = new Date(year, month, 0).getDate();
+  const createDay = (date: Date, type: DayType): Day => {
+    const dayIndex = date.getDay();
+    return {
+      date,
+      isToday:
+        date.getFullYear() === today.getFullYear() &&
+        date.getMonth() === today.getMonth() &&
+        date.getDate() === today.getDate(),
+      isWeekend: dayIndex === 0 || dayIndex === 6,
+      type,
+    };
+  };
 
-    const createDays = (count: number, offset: number, type: DayType, monthOffset = 0) =>
-      Array.from({ length: count }, (_, i) => {
-        const day = offset + i;
-        const correctMonth = month + monthOffset;
-        const correctYear = year + (correctMonth < 0 ? -1 : correctMonth > 11 ? 1 : 0);
-        const dayIndex = new Date(correctYear, correctMonth, day).getDay();
+  const generateCalendarView = () => {
+    if (selectedView === 'month') {
+      const firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
+      const lastDayOfMonth = new Date(selectedYear, selectedMonth + 1, 0);
+      const firstDayIndex = firstDayOfMonth.getDay();
+      const daysInMonth = lastDayOfMonth.getDate();
 
-        return {
-          date: new Date(correctYear, correctMonth, day),
-          isToday:
-            type === 'currentMonth' &&
-            correctYear === today.getFullYear() &&
-            correctMonth === today.getMonth() &&
-            day === today.getDate(),
-          isWeekend: new Date(correctYear, correctMonth, day).getDay() % 6 === 0,
-          type,
-          dayType: week[dayIndex],
-        };
-      });
+      const prevMonthLastDate = new Date(selectedYear, selectedMonth, 0).getDate();
+      const prevMonthDays = Array.from({ length: firstDayIndex }, (_, i) =>
+        createDay(new Date(selectedYear, selectedMonth - 1, prevMonthLastDate - firstDayIndex + i + 1), 'prevMonth'),
+      );
 
-    setDays([
-      ...createDays(firstDay, prevLastDate - firstDay + 1, 'prevMonth', -1),
-      ...createDays(lastDate, 1, 'currentMonth', 0),
-      ...createDays((firstDay + lastDate) % 7 ? 7 - ((firstDay + lastDate) % 7) : 0, 1, 'nextMonth', 1),
-    ]);
+      const currentMonthDays = Array.from({ length: daysInMonth }, (_, i) =>
+        createDay(new Date(selectedYear, selectedMonth, i + 1), 'currentMonth'),
+      );
+
+      const remaining = (prevMonthDays.length + currentMonthDays.length) % 7;
+      const nextMonthDays = Array.from({ length: remaining ? 7 - remaining : 0 }, (_, i) =>
+        createDay(new Date(selectedYear, selectedMonth + 1, i + 1), 'nextMonth'),
+      );
+
+      setDays([...prevMonthDays, ...currentMonthDays, ...nextMonthDays]);
+    } else if (selectedView === 'week') {
+      const weekDays = Array.from({ length: 7 }, (_, i) =>
+        createDay(
+          new Date(
+            selectedWeekStartDate.getFullYear(),
+            selectedWeekStartDate.getMonth(),
+            selectedWeekStartDate.getDate() + i,
+          ),
+          'currentMonth',
+        ),
+      );
+      setDays(weekDays);
+    } else if (selectedView === 'year') {
+      const yearDays: Day[] = [];
+      for (let m = 0; m < 12; m++) {
+        const daysInMonth = new Date(selectedYear, m + 1, 0).getDate();
+        for (let d = 1; d <= daysInMonth; d++) {
+          const date = new Date(selectedYear, m, d);
+          yearDays.push(createDay(date, 'currentMonth'));
+        }
+      }
+      setDays(yearDays);
+    }
   };
 
   const handleDateChange = (direction: NavigationDirection, view?: ViewType) => {
@@ -93,9 +131,16 @@ export const useBindSkin = (props: CalendarProps) => {
 
       case 'week': {
         const daysToMove = direction === 'prev' ? -7 : 7;
-        setSelectedDate((prev) => {
+        setSelectedWeekStartDate((prev) => {
           const newDate = new Date(prev);
           newDate.setDate(prev.getDate() + daysToMove);
+
+          const newMonth = newDate.getMonth();
+          const newYear = newDate.getFullYear();
+
+          setSelectedMonth(newMonth);
+          setSelectedYear(newYear);
+
           return newDate;
         });
         break;
@@ -119,24 +164,25 @@ export const useBindSkin = (props: CalendarProps) => {
   const handleTodayClick = () => {
     setSelectedYear(todayYear);
     setSelectedMonth(todayMonth);
-    setSelectedDate(today);
+
+    const startOfWeek = new Date(today);
+    startOfWeek.setDate(today.getDate() - today.getDay());
+    setSelectedWeekStartDate(startOfWeek);
   };
 
   const getWeekMonths = useMemo(() => {
     if (!days.length) return [];
 
-    const selectedWeekStart = new Date(selectedDate);
-    selectedWeekStart.setDate(selectedDate.getDate() - selectedDate.getDay());
-
-    const selectedWeekDays = Array.from({ length: 7 }, (_, i) => {
-      const date = new Date(selectedWeekStart);
-      date.setDate(selectedWeekStart.getDate() + i);
+    const weekStart = new Date(selectedWeekStartDate);
+    const weekMonths = Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(weekStart);
+      date.setDate(weekStart.getDate() + i);
       return date.getMonth();
     });
 
-    const uniqueMonths = new Set(selectedWeekDays);
-    return Array.from(uniqueMonths).map((monthIndex) => months[monthIndex]);
-  }, [days.length, selectedDate, months]);
+    const uniqueMonths = new Set(weekMonths);
+    return Array.from(uniqueMonths).map((index) => months[index]);
+  }, [days.length, selectedWeekStartDate, months]);
 
   const selectDate = (date: Date) => {
     setSelectedDate(date);
