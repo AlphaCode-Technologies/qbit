@@ -25,6 +25,8 @@ export {
   TabItem,
   Splitter,
   SplitterItem,
+  Kanban,
+  KanbanItem,
 } from './displays';
 export {
   Button,
@@ -76,6 +78,8 @@ export {
   type TabProps,
   type TabItemProps,
   type SplitterProps,
+  type KanbanProps,
+  type KanbanItemProps,
 } from './displays';
 
 export {

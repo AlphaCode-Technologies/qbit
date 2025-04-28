@@ -24,3 +24,4 @@ export { DrawerSkin, DrawerItemSkin } from './drawer';
 export { CalendarSkin, CalendarHeaderSkin, CalendarEventSkin, CalendarDaySkin } from './calendar';
 export { default as ColorPickerSkin } from './ColorPicker.default.skin';
 export { RatingSkin } from './ratings';
+export { KanbanSkin, KanbanItemSkin } from './kanban';
