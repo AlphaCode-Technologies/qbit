@@ -1,0 +1,1 @@
+export { PaginationBrandSkin } from './pagination';

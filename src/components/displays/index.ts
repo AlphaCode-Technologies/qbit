@@ -3,8 +3,9 @@ export { Splitter, SplitterItem } from './spacings';
 export { Tab, TabItem } from './segments/tabs';
 export { Toaster, Tooltip } from './notifications';
 export { Avatar, Loader, ProgressBar, Breadcrumb, BreadcrumbItem } from './indicators';
-export { Menu, MenuItem, Accordion, AccordionItem } from './menus';
-export { Card, CardItem, Drawer, DrawerItem, Modal, ModalItem } from './segments';
+export { Menu, MenuItem, Accordion, AccordionItem, Dropdown, DropdownItem } from './menus';
+export { Card, CardItem, Drawer, DrawerItem, Modal, ModalItem, EmptyState } from './segments';
+
 export { Badge, ProgressStep, ProgressStepItem, Rating } from './indicators';
 
 export {
@@ -21,7 +22,14 @@ export {
 
 export { type ListProps, type ListItemProps } from './lists';
 
-export { type AccordionProps, type AccordionItemProps, type MenuProps, type MenuItemProps } from './menus';
+export {
+  type AccordionProps,
+  type AccordionItemProps,
+  type MenuProps,
+  type MenuItemProps,
+  type DropdownProps,
+  type DropdownItemProps,
+} from './menus';
 
 export {
   type ToasterActions,
@@ -41,8 +49,10 @@ export {
   type ModalActions,
   type ModalProps,
   type ModalItemProps,
+  type PaginationProps,
   type TabProps,
   type TabItemProps,
+  type EmptyStateProps,
 } from './segments';
 
 export { type SplitterProps } from './spacings';

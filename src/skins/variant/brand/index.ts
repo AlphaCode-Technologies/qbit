@@ -1,5 +1,5 @@
-export { CheckboxBrandSkin } from './choices';
-export { BreadcrumbBrandSkin, BreadcrumbItemBrandSkin } from './indicators';
+export { CheckboxBrandSkin, ToggleBrandSkin } from './choices';
+export { BreadcrumbBrandSkin, BreadcrumbItemBrandSkin, BadgeBrandSkin, ProgressBarBrandSkin } from './indicators';
 export {
   ButtonBrandSkin,
   CalendarDayBrandSkin,
@@ -10,3 +10,4 @@ export {
 } from './inputs';
 export { AccordionBrandSkin, AccordionItemBrandSkin } from './menu';
 export { TooltipBrandSkin } from './notifications';
+export { PaginationBrandSkin } from './segments';
