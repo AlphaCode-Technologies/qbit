@@ -23,6 +23,7 @@ export { DrawerSkin, DrawerItemSkin } from './drawer';
 export { CalendarSkin, CalendarHeaderSkin, CalendarEventSkin, CalendarDaySkin } from './calendar';
 export { default as ColorPickerSkin } from './ColorPicker.default.skin';
 export { RatingSkin } from './ratings';
+export { DateTimePickerSkin } from './date-time';
 export { EmptyStateSkin } from './empty-state';
 export { SnippetSkin } from './snippets';
 export { DropdownSkin, DropdownItemSkin } from './dropdown';

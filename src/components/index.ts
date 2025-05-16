@@ -45,6 +45,7 @@ export {
   NumericRangePicker,
   TextInput,
   ColorPicker,
+  DateTimePicker,
 } from './inputs';
 
 export {
@@ -97,6 +98,7 @@ export {
   type InputType,
   type TextInputProps,
   type ColorPickerProps,
+  type DateTimePickerProps,
 } from './inputs';
 
 export { type com } from '../types';
