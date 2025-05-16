@@ -25,3 +25,4 @@ export { CalendarSkin, CalendarHeaderSkin, CalendarEventSkin, CalendarDaySkin } 
 export { default as ColorPickerSkin } from './ColorPicker.default.skin';
 export { RatingSkin } from './ratings';
 export { SnippetSkin } from './snippets';
+export { DropdownSkin, DropdownItemSkin } from './dropdown';
