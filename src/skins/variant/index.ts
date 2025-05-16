@@ -9,5 +9,6 @@ export {
   PaginationBrandSkin,
   ProgressBarBrandSkin,
   TextInputBrandSkin,
+  ToggleBrandSkin,
   TooltipBrandSkin,
 } from './brand';
