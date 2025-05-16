@@ -2,7 +2,6 @@ import '../index.css';
 
 export {
   AvatarSkin,
-  BatchSkin,
   ButtonSkin,
   ListItemSkin,
   ListSkin,
@@ -47,10 +46,13 @@ export { SwitchSkin, DottedCircleLoaderSkin, FadedCircleLoaderSkin, SegmentBarLo
 export {
   AccordionBrandSkin,
   AccordionItemBrandSkin,
+  BadgeBrandSkin,
   BreadcrumbBrandSkin,
   BreadcrumbItemBrandSkin,
   ButtonBrandSkin,
   CheckboxBrandSkin,
+  PaginationBrandSkin,
+  ProgressBarBrandSkin,
   TextInputBrandSkin,
   ToggleBrandSkin,
   TooltipBrandSkin,
