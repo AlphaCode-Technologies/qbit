@@ -74,6 +74,14 @@ export default defineConfig({
         functions: 70,
         statements: 70,
       },
+      exclude: [
+        'src/**/*.{stories,test,properties}.{ts,tsx}',
+        'src/**/properties.ts',
+        'src/**/*.manifest.{ts,tsx,json}',
+        'src/*.{ts,tsx}',
+        'src/skins',
+        'src/types',
+      ],
     },
   },
   build: {

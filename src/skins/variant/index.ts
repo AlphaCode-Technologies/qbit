@@ -1,10 +1,18 @@
 export {
   AccordionBrandSkin,
   AccordionItemBrandSkin,
+  BadgeBrandSkin,
   BreadcrumbBrandSkin,
   BreadcrumbItemBrandSkin,
   ButtonBrandSkin,
+  CalendarDayBrandSkin,
+  CalendarEventBrandSkin,
+  CalendarHeaderBrandSkin,
+  CalendarBrandSkin,
   CheckboxBrandSkin,
+  PaginationBrandSkin,
+  ProgressBarBrandSkin,
   TextInputBrandSkin,
+  ToggleBrandSkin,
   TooltipBrandSkin,
 } from './brand';

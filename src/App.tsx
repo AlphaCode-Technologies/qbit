@@ -1,45 +1,23 @@
-import { useState } from 'react';
-import Kanban from '@components/displays/segments/kanban/Kanban';
-import KanbanItem from '@components/displays/segments/kanban/KanbanItem';
-import KanbanSkin from '@skins/defaults/kanban/Kanban.skin.default';
-import KanbanColumnSkin from '@skins/defaults/kanban/KanbanItem.skin.default';
+import { Calendar } from '@inputs/chrono';
+import CalendarHeader from './components/inputs/chrono/calendar/CalendarHeader.tsx';
+import CalendarBody from './components/inputs/chrono/calendar/CalendarBody.tsx';
+import { CalendarBrandSkin, CalendarDayBrandSkin, CalendarHeaderBrandSkin } from '@skins/variant';
 
 const App = () => {
-  const initialData = [
-    {
-      columnId: 'todo',
-      title: 'To Do',
-      items: [
-        { id: 'task-1', content: 'Task 1' },
-        { id: 'task-2', content: 'Task 2' },
-      ],
-    },
-    {
-      columnId: 'in-progress',
-      title: 'In Progress',
-      items: [{ id: 'task-3', content: 'Task 3' }],
-    },
-    {
-      columnId: 'done',
-      title: 'Done',
-      items: [{ id: 'task-4', content: 'Task 4' }],
-    },
-  ];
-
-  const [columns, setColumns] = useState(initialData);
-
   return (
-    <div data-id="my-id">
-      <Kanban
+    <div data-id="my-id" className="my-5 max-w-4xl mx-auto">
+      <Calendar
+        renderers={{ renderer: CalendarBrandSkin }}
+        selectedView={'month'}
+        selectedDate={new Date(2025, 10, 24)}
         keyExtractor={(value: string, i: number) => `${value}-${i}`}
-        renderers={{ renderer: KanbanSkin, childRenderer: KanbanColumnSkin }}
-        columns={columns}
-        setColumns={setColumns}
       >
-        {columns.map((item) => (
-          <KanbanItem key={item.columnId} columnId={item.columnId} title={item.title} items={item.items} />
-        ))}
-      </Kanban>
+        <CalendarHeader renderers={{ renderer: CalendarHeaderBrandSkin }} />
+        <CalendarBody
+          renderers={{ renderer: CalendarDayBrandSkin }}
+          className="grid grid-cols-7 border-l border-t border-gray-300"
+        ></CalendarBody>
+      </Calendar>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 export { default as AvatarSkin } from './Avatar.default.skin';
-export { default as BatchSkin } from './Badges.default.skin';
 export { default as ButtonSkin } from './Button.default.skin';
 export { ListItemSkin, ListSkin } from './list';
 export { default as LoaderSkin } from './Loader.default.skin';
@@ -25,3 +24,7 @@ export { CalendarSkin, CalendarHeaderSkin, CalendarEventSkin, CalendarDaySkin } 
 export { default as ColorPickerSkin } from './ColorPicker.default.skin';
 export { RatingSkin } from './ratings';
 export { KanbanSkin, KanbanItemSkin } from './kanban';
+export { DateTimePickerSkin } from './date-time';
+export { EmptyStateSkin } from './empty-state';
+export { SnippetSkin } from './snippets';
+export { DropdownSkin, DropdownItemSkin } from './dropdown';
