@@ -4,7 +4,7 @@ export { Tab, TabItem } from './segments/tabs';
 export { Toaster, Tooltip } from './notifications';
 export { Avatar, Loader, ProgressBar, Breadcrumb, BreadcrumbItem } from './indicators';
 export { Menu, MenuItem, Accordion, AccordionItem, Dropdown, DropdownItem } from './menus';
-export { Card, CardItem, Drawer, DrawerItem, Modal, ModalItem, EmptyState } from './segments';
+export { Card, CardItem, Drawer, DrawerItem, Modal, ModalItem, Kanban, KanbanItem, EmptyState } from './segments';
 
 export { Badge, ProgressStep, ProgressStepItem, Rating } from './indicators';
 
@@ -52,6 +52,8 @@ export {
   type PaginationProps,
   type TabProps,
   type TabItemProps,
+  type KanbanProps,
+  type KanbanItemProps,
   type EmptyStateProps,
 } from './segments';
 
