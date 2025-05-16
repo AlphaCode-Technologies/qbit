@@ -264,6 +264,34 @@ describe('TextInput Element Test', () => {
     expect(inputElement).toHaveAttribute('autoComplete', 'on');
   });
 
+  it('Should apply custom className', () => {
+    const newTextProperties = { ...DEFAULT_PROPERTIES, className: 'custom-class' };
+    render(<TextInputRender {...newTextProperties} />);
+
+    const inputElement = screen.getByTestId('text-input');
+    expect(inputElement).toHaveClass('custom-class');
+  });
+
+  it('Should apply custom inline styles', () => {
+    const newTextProperties = {
+      ...DEFAULT_PROPERTIES,
+      style: { borderColor: 'red', borderWidth: '2px' },
+    };
+    render(<TextInputRender {...newTextProperties} />);
+
+    const inputElement = screen.getByTestId('text-input');
+    expect(inputElement).toHaveStyle({ borderColor: 'red', borderWidth: '2px' });
+  });
+
+  it('Should have error class when error prop is true', () => {
+    const newTextProperties = { ...DEFAULT_PROPERTIES, error: true };
+    render(<TextInputRender {...newTextProperties} />);
+
+    const inputElement = screen.getByTestId('text-input');
+    expect(inputElement).toHaveClass('outline-red-600');
+    expect(inputElement).toHaveClass('text-red-600');
+  });
+
   it('Should have tabIndex(5) attribute', () => {
     const newTextProperties = { ...DEFAULT_PROPERTIES, tabIndex: 5 };
     render(<TextInputRender {...newTextProperties} />);
