@@ -2,7 +2,6 @@ import '../index.css';
 
 export {
   AvatarSkin,
-  BatchSkin,
   ButtonSkin,
   ListItemSkin,
   ListSkin,
@@ -43,3 +42,22 @@ export {
 } from './defaults';
 
 export { SwitchSkin, DottedCircleLoaderSkin, FadedCircleLoaderSkin, SegmentBarLoaderSkin } from './optional';
+
+export {
+  AccordionBrandSkin,
+  AccordionItemBrandSkin,
+  BadgeBrandSkin,
+  BreadcrumbBrandSkin,
+  BreadcrumbItemBrandSkin,
+  ButtonBrandSkin,
+  CalendarDayBrandSkin,
+  CalendarEventBrandSkin,
+  CalendarHeaderBrandSkin,
+  CalendarBrandSkin,
+  CheckboxBrandSkin,
+  PaginationBrandSkin,
+  ProgressBarBrandSkin,
+  TextInputBrandSkin,
+  ToggleBrandSkin,
+  TooltipBrandSkin,
+} from './variant';

@@ -66,7 +66,7 @@ export default defineConfig({
   ],
   test: {
     coverage: {
-      reporter: ['text', 'json-summary', 'json'],
+      reporter: ['text', 'json-summary', 'json', 'html'],
       reportOnFailure: true,
       thresholds: {
         lines: 70,
@@ -74,6 +74,14 @@ export default defineConfig({
         functions: 70,
         statements: 70,
       },
+      exclude: [
+        'src/**/*.{stories,test,properties}.{ts,tsx}',
+        'src/**/properties.ts',
+        'src/**/*.manifest.{ts,tsx,json}',
+        'src/*.{ts,tsx}',
+        'src/skins',
+        'src/types',
+      ],
     },
   },
   build: {

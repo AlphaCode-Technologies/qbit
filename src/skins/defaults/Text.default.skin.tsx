@@ -18,6 +18,9 @@ const Skin: com.qbit.Skin<TextInputProps> = (props: com.qbit.SkinProps<TextInput
     autoComplete,
     tabIndex,
     testId,
+    style,
+    className,
+    error,
     onChange,
     onFocus,
     onBlur,
@@ -41,9 +44,10 @@ const Skin: com.qbit.Skin<TextInputProps> = (props: com.qbit.SkinProps<TextInput
       step={step}
       maxLength={maxLength}
       autoComplete={autoComplete}
-      className="block w-full px-3 py-1.5 rounded-md outline outline-1 outline-gray-300 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-2 focus:outline-gray-600 sm:text-sm/6"
+      className={`block w-full px-3 py-1.5 rounded-md outline outline-1 outline-gray-300 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-2 focus:outline-gray-600 sm:text-sm/6 ${error ? 'outline-red-600 text-red-600' : ''} ${className ?? ''}`}
       tabIndex={tabIndex}
       data-testid={testId}
+      style={style}
       onChange={(event) => onChange?.(event)}
       onFocus={(event) => onFocus?.(event)}
       onBlur={(event) => onBlur?.(event)}

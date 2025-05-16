@@ -25,13 +25,14 @@ const BadgeSkin: com.qbit.Skin<BadgeProps> = (props: com.qbit.SkinProps<BadgePro
           xmlns="http://www.w3.org/2000/svg"
           data-testid={testId}
         >
-          {/* Outer shape */}
           <path
             d="M0.5 6C0.5 2.96243 2.96243 0.5 6 0.5H114C117.038 0.5 119.5 2.96243 119.5 6V22C119.5 25.0376 117.038 27.5 114 27.5H6C2.96244 27.5 0.5 25.0376 0.5 22V6Z"
             fill="white"
             stroke="#D0D5DD"
           />
-          {children}
+          <foreignObject x="0" y="0" width={dimension.width} height={dimension.height}>
+            {children}
+          </foreignObject>
         </svg>
       </div>
     </div>
