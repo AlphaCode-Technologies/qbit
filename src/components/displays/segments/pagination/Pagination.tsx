@@ -10,7 +10,7 @@ import { useBindSkin } from './Pagination.hook';
  */
 const Pagination: com.qbit.Shell<PaginationProps> = (props: com.qbit.ShellProps<PaginationProps>) => {
   const { renderers, onPageChange, totalPages, currentPage, ...rest } = props;
-  const { activePage, handlePageChange } = useBindSkin({ currentPage, totalPages, onPageChange });
+  const { activePage, handlePageChange, paginationItems } = useBindSkin(props);
 
   return (
     <BaseComponent
@@ -19,6 +19,7 @@ const Pagination: com.qbit.Shell<PaginationProps> = (props: com.qbit.ShellProps<
       currentPage={activePage}
       totalPages={totalPages}
       onPageChange={handlePageChange}
+      paginationItems={paginationItems}
     />
   );
 };

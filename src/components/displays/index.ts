@@ -49,6 +49,7 @@ export {
   type ModalActions,
   type ModalProps,
   type ModalItemProps,
+  type PaginationProps,
   type TabProps,
   type TabItemProps,
   type EmptyStateProps,

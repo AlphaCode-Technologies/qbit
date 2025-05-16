@@ -51,6 +51,7 @@ export {
   BreadcrumbItemBrandSkin,
   ButtonBrandSkin,
   CheckboxBrandSkin,
+  PaginationBrandSkin,
   ProgressBarBrandSkin,
   TextInputBrandSkin,
   TooltipBrandSkin,
