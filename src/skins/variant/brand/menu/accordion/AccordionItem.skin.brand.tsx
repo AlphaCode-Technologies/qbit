@@ -1,4 +1,4 @@
-import { com } from '@types/common';
+import { com } from 'src/types/common';
 import { AccordionItemProps } from '@displays/menus';
 
 const AccordionItemSkin: com.qbit.Skin<AccordionItemProps> = (props: com.qbit.SkinProps<AccordionItemProps>) => {
