@@ -17,6 +17,7 @@ export default mergeConfig(
         include: ['src/*'],
         exclude: [
           'src/**/*.{stories,test,properties}.{ts,tsx}',
+          'src/**/properties.ts',
           'src/**/*.manifest.{ts,tsx,json}',
           'src/*.{ts,tsx}',
           'src/skins',
