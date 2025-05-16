@@ -4,7 +4,8 @@ export { Tab, TabItem } from './segments/tabs';
 export { Toaster, Tooltip } from './notifications';
 export { Avatar, Loader, ProgressBar, Breadcrumb, BreadcrumbItem } from './indicators';
 export { Menu, MenuItem, Accordion, AccordionItem, Dropdown, DropdownItem } from './menus';
-export { Card, CardItem, Drawer, DrawerItem, Modal, ModalItem } from './segments';
+export { Card, CardItem, Drawer, DrawerItem, Modal, ModalItem, EmptyState } from './segments';
+
 export { Badge, ProgressStep, ProgressStepItem, Rating } from './indicators';
 
 export {
@@ -50,6 +51,7 @@ export {
   type ModalItemProps,
   type TabProps,
   type TabItemProps,
+  type EmptyStateProps,
 } from './segments';
 
 export { type SplitterProps } from './spacings';
