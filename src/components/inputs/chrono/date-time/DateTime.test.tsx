@@ -4,7 +4,7 @@ import DateTimePicker from './DateTime';
 import { DateTimePickerSkin } from '@skins/defaults';
 
 describe('DateTimePicker', () => {
-  const baseDate = new Date('2025-04-10T11:37');
+  const baseDate = new Date();
   const onChangeMock = vi.fn();
   const onCancelMock = vi.fn();
 
@@ -17,8 +17,15 @@ describe('DateTimePicker', () => {
   };
 
   beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(baseDate);
+
     onChangeMock.mockReset();
     onCancelMock.mockReset();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('renders input field with correct initial value', () => {
@@ -31,10 +38,11 @@ describe('DateTimePicker', () => {
     const input = screen.getByTestId('date-time-picker').querySelector('input');
     const actualValue = input?.value;
 
-    expect(actualValue?.split('T')[0]).toBe('2025-04-10');
+    const expectedDate = baseDate.toISOString().split('T')[0];
+    expect(actualValue?.split('T')[0]).toBe(expectedDate);
 
+    const expectedTime = baseDate.toTimeString().slice(0, 5);
     const renderedTime = actualValue?.split('T')[1];
-    const expectedTime = '11:37';
     expect(renderedTime).toBe(expectedTime);
 
     vi.useRealTimers();
@@ -49,19 +57,23 @@ describe('DateTimePicker', () => {
     expect(popup).toBeInTheDocument();
   });
 
-  // it('triggers onChange when a date is selected', () => {
-  //   render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} />);
-  //   fireEvent.click(screen.getByRole('textbox'));
+  it('triggers onChange when a date is selected', () => {
+    render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} />);
+    fireEvent.click(screen.getByRole('textbox'));
 
-  //   const targetDay = screen.getByText('15');
-  //   fireEvent.click(targetDay);
+    const tomorrowDate = new Date(baseDate);
+    tomorrowDate.setDate(baseDate.getDate() + 1);
+    const dayToClick = tomorrowDate.getDate().toString();
 
-  //   expect(onChangeMock).toHaveBeenCalled();
-  //   const changedDate = onChangeMock.mock.calls[0][0] as Date;
+    const targetDay = screen.getByText(dayToClick);
+    fireEvent.click(targetDay);
 
-  //   expect(changedDate.getDate()).toBe(15);
-  //   expect(changedDate.getMonth()).toBe(3);
-  // });
+    expect(onChangeMock).toHaveBeenCalled();
+    const changedDate = onChangeMock.mock.calls[0][0] as Date;
+
+    expect(changedDate.getDate()).toBe(tomorrowDate.getDate());
+    expect(changedDate.getMonth()).toBe(tomorrowDate.getMonth());
+  });
 
   it('triggers onChange when time is changed and Apply is clicked', () => {
     render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} />);
@@ -91,20 +103,29 @@ describe('DateTimePicker', () => {
     expect(onCancelMock).toHaveBeenCalled();
   });
 
-  // it('navigates to next and previous months', () => {
-  //   render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} />);
-  //   fireEvent.click(screen.getByRole('textbox'));
+  it('navigates to next and previous months', () => {
+    render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} />);
+    fireEvent.click(screen.getByRole('textbox'));
 
-  //   const header = screen.getByRole('heading');
-  //   expect(header).toHaveTextContent('April 2025');
+    const currentMonthName = baseDate.toLocaleString('default', { month: 'long' });
+    const currentYear = baseDate.getFullYear();
 
-  //   fireEvent.click(screen.getByLabelText('Next month'));
-  //   expect(header).toHaveTextContent('May 2025');
+    const header = screen.getByRole('heading');
+    expect(header).toHaveTextContent(`${currentMonthName} ${currentYear}`);
 
-  //   fireEvent.click(screen.getByLabelText('Previous month'));
-  //   fireEvent.click(screen.getByLabelText('Previous month'));
-  //   expect(header).toHaveTextContent('March 2025');
-  // });
+    fireEvent.click(screen.getByLabelText('Next month'));
+    const nextMonth = new Date(baseDate);
+    nextMonth.setMonth(baseDate.getMonth() + 1);
+    const nextMonthName = nextMonth.toLocaleString('default', { month: 'long' });
+    expect(header).toHaveTextContent(`${nextMonthName} ${nextMonth.getFullYear()}`);
+
+    fireEvent.click(screen.getByLabelText('Previous month'));
+    fireEvent.click(screen.getByLabelText('Previous month'));
+    const prevMonth = new Date(baseDate);
+    prevMonth.setMonth(baseDate.getMonth() - 1);
+    const prevMonthName = prevMonth.toLocaleString('default', { month: 'long' });
+    expect(header).toHaveTextContent(`${prevMonthName} ${prevMonth.getFullYear()}`);
+  });
 
   it('disables input and calendar when disabled is true', () => {
     render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} disabled={true} />);
