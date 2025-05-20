@@ -65,4 +65,37 @@ describe('Dropdown Component', () => {
     fireEvent.click(logoutItem);
     expect(mockOnClick).toHaveBeenCalled();
   });
+
+  it('renders with the provided testId', () => {
+    render(
+      <Dropdown
+        testId="custom-dropdown"
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        renderers={{ renderer: DropdownSkin, childRenderer: DropdownItemSkin }}
+        label="Options"
+      >
+        <DropdownItem name="Item 1" />
+      </Dropdown>,
+    );
+
+    expect(screen.getByTestId('custom-dropdown')).toBeInTheDocument();
+  });
+
+  it('renders all dropdown items passed as children', () => {
+    render(
+      <Dropdown
+        keyExtractor={(value: string, i: number) => `${value}-${i}`}
+        renderers={{ renderer: DropdownSkin, childRenderer: DropdownItemSkin }}
+        label="Menu"
+      >
+        <DropdownItem name="Item A" />
+        <DropdownItem name="Item B" />
+        <DropdownItem name="Item C" />
+      </Dropdown>,
+    );
+
+    expect(screen.getByText('Item A')).toBeInTheDocument();
+    expect(screen.getByText('Item B')).toBeInTheDocument();
+    expect(screen.getByText('Item C')).toBeInTheDocument();
+  });
 });
