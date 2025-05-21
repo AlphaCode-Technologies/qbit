@@ -101,4 +101,24 @@ describe('FileUpload Component', () => {
       expect(svg?.querySelector('path[fill="#D92D20"]')).toBeInTheDocument();
     });
   });
+
+  it('remove uploaded file', async () => {
+    render(<FileUpload {...defaultProps} allowedTypes={[...defaultProps.allowedTypes, 'application/pdf']} />);
+    const fileInput = screen
+      .getByText('Click to upload')
+      .closest('label')
+      ?.querySelector('input[type="file"]') as HTMLInputElement;
+    const file = new File(['test'], 'test.pdf', { type: 'application/pdf' });
+    Object.defineProperty(fileInput, 'files', { value: [file], configurable: true });
+    fireEvent.change(fileInput);
+    await waitFor(async () => {
+      expect(screen.getByText('test.pdf')).toBeInTheDocument();
+      const svg = screen.getByTestId('file-upload').querySelector('svg');
+      expect(svg).toBeInTheDocument();
+      const removeBtns = await screen.findAllByTestId('remove-file-button');
+      removeBtns.forEach((item) => {
+        item.click();
+      });
+    });
+  });
 });

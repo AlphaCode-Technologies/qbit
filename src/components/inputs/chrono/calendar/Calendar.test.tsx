@@ -131,4 +131,26 @@ describe('Calendar Component Test', () => {
       expect(screen.getByText(day)).toBeInTheDocument();
     });
   });
+
+  it('validate render with empty children fro body', () => {
+    const selectedDate = new Date(2025, 4, 14);
+    const weekStart = new Date(2025, 4, 11);
+    const props = {
+      ...DEFAULT_PROPERTIES,
+      selectedView: 'week',
+      selectedDate,
+    } as com.qbit.ShellProps<CalendarProps>;
+
+    render(
+      <Calendar {...props}>
+        <CalendarHeader renderers={{ renderer: CalendarHeaderSkin }} />
+        <CalendarBody renderers={{ renderer: CalendarDaySkin }}></CalendarBody>
+      </Calendar>,
+    );
+    const weekDates = Array.from({ length: 7 }, (_, i) => (weekStart.getDate() + i).toString());
+
+    weekDates.forEach((day) => {
+      expect(screen.getByText(day)).toBeInTheDocument();
+    });
+  });
 });
