@@ -15,7 +15,7 @@ jobs:
         uses: ./.github/actions/pre-build-action
 
       - name: Unit tests
-        run: pnpm vitest --coverage.enabled true
+        run: pnpm vitest run --coverage
 
       - name: Report coverage
         uses: davelosert/vitest-coverage-report-action@v2
