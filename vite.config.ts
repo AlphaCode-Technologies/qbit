@@ -84,7 +84,7 @@ export default defineConfig({
         'src/components/index.ts',
         'src/components/containers/base/*',
         'src/**/index.ts',
-        'src/components/displays/menus/dropdown/Dropdown.hook.ts',
+        'src/components/displays/menus/dropdown/*',
         'src/fixtures/methods.ts',
       ],
     },
