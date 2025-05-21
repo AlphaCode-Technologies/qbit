@@ -9,7 +9,7 @@ const renderColorPicker = (color = '#ffffff', onChange = vi.fn()) => {
 
 describe('ColorPicker Component', () => {
   const mockOnChange = vi.fn();
-  const initialColor = '#ffffff';
+  const initialColor = '#001122';
 
   it('renders the ColorPicker component with the initial color', () => {
     renderColorPicker(initialColor, mockOnChange);
