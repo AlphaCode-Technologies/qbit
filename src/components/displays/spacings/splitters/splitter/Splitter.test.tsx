@@ -10,6 +10,7 @@ const DEFAULT_PROPERTIES: com.qbit.ShellProps<SplitterProps> = {
   width: '200px',
   height: '400px',
   resizable: true,
+  horizontal: false,
   testId: 'parent-ele',
   keyExtractor: (_: string, i: number) => `${i}`,
   renderers: { renderer: SplitterSkin, childRenderer: SplitterItemSkin },
@@ -70,6 +71,7 @@ const splitterRender = (props: com.qbit.ShellProps<SplitterProps>, values: Split
       renderers={props.renderers}
       resizable={props.resizable}
       testId={props.testId}
+      horizontal={props.horizontal}
     >
       {values?.map((item: SplitterProps) => {
         return <SplitterItem width={item.width} height={item.height} testId={item.testId} />;
@@ -104,7 +106,7 @@ describe('Splitter Element Test', () => {
   });
 
   it('Should render Splitter horizontal element', async () => {
-    splitterRender({ ...DEFAULT_PROPERTIES, horizontal: true }, DEFAULT_VALUES2);
+    splitterRender({ ...DEFAULT_PROPERTIES, horizontal: true, resizable: true }, DEFAULT_VALUES2);
     const ele = await screen.findByTestId(DEFAULT_PROPERTIES.testId!);
     expect(ele).toBeInTheDocument();
 
@@ -116,7 +118,7 @@ describe('Splitter Element Test', () => {
   });
 
   it('Should render Splitter child in correct position', async () => {
-    splitterRender(DEFAULT_PROPERTIES, DEFAULT_VALUES);
+    splitterRender({ ...DEFAULT_PROPERTIES, horizontal: false }, DEFAULT_VALUES);
 
     const ele1 = await screen.findByTestId(DEFAULT_VALUES[0].testId!);
     expect(ele1).toHaveStyle({
