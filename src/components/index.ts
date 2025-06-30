@@ -30,6 +30,7 @@ export {
   EmptyState,
   Dropdown,
   DropdownItem,
+  Image,
 } from './displays';
 export {
   Button,
@@ -88,6 +89,7 @@ export {
   type EmptyStateProps,
   type DropdownProps,
   type DropdownItemProps,
+  type ImageProps,
 } from './displays';
 
 export {
