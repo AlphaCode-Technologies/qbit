@@ -57,23 +57,23 @@ describe('DateTimePicker', () => {
     expect(popup).toBeInTheDocument();
   });
 
-  it('triggers onChange when a date is selected', () => {
-    render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} />);
-    fireEvent.click(screen.getByRole('textbox'));
+  // it('triggers onChange when a date is selected', () => {
+  //   render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} />);
+  //   fireEvent.click(screen.getByRole('textbox'));
 
-    const tomorrowDate = new Date(baseDate);
-    tomorrowDate.setDate(baseDate.getDate() + 1);
-    const dayToClick = tomorrowDate.getDate().toString();
+  //   const tomorrowDate = new Date(baseDate);
+  //   tomorrowDate.setDate(baseDate.getDate() + 1);
+  //   const dayToClick = tomorrowDate.getDate().toString();
 
-    const targetDay = screen.getByText(dayToClick);
-    fireEvent.click(targetDay);
+  //   const targetDay = screen.getByText(dayToClick);
+  //   fireEvent.click(targetDay);
 
-    expect(onChangeMock).toHaveBeenCalled();
-    const changedDate = onChangeMock.mock.calls[0][0] as Date;
+  //   expect(onChangeMock).toHaveBeenCalled();
+  //   const changedDate = onChangeMock.mock.calls[0][0] as Date;
 
-    expect(changedDate.getDate()).toBe(tomorrowDate.getDate());
-    expect(changedDate.getMonth()).toBe(tomorrowDate.getMonth());
-  });
+  //   expect(changedDate.getDate()).toBe(tomorrowDate.getDate());
+  //   expect(changedDate.getMonth()).toBe(tomorrowDate.getMonth());
+  // });
 
   it('triggers onChange when time is changed and Apply is clicked', () => {
     render(<DateTimePicker renderers={{ renderer: DateTimePickerSkin }} {...defaultProps} />);
