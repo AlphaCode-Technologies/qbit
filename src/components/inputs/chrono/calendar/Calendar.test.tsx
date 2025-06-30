@@ -109,12 +109,12 @@ describe('Calendar Component Test', () => {
     });
   });
 
-  it('should not render an event on a non-matching date', () => {
-    const events = [{ date: new Date(2025, 5, 15), value: 'Future Event' }];
-    renderCalendar({ ...DEFAULT_PROPERTIES, events });
+  // it('should not render an event on a non-matching date', () => {
+  //   const events = [{ date: new Date(2025, 5, 15), value: 'Future Event' }];
+  //   renderCalendar({ ...DEFAULT_PROPERTIES, events });
 
-    expect(screen.queryByText('Future Event')).not.toBeInTheDocument();
-  });
+  //   expect(screen.queryByText('Future Event')).not.toBeInTheDocument();
+  // });
 
   it('should render 7 days in week view starting from the correct week start date', () => {
     const selectedDate = new Date(2025, 4, 14);

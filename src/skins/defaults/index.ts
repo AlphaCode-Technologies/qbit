@@ -28,3 +28,4 @@ export { DateTimePickerSkin } from './date-time';
 export { EmptyStateSkin } from './empty-state';
 export { SnippetSkin } from './snippets';
 export { DropdownSkin, DropdownItemSkin } from './dropdown';
+export { ImageSkin } from './image';
