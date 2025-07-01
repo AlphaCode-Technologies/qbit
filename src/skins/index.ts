@@ -39,6 +39,7 @@ export {
   CalendarHeaderSkin,
   CalendarEventSkin,
   CalendarDaySkin,
+  ImageSkin,
 } from './defaults';
 
 export { SwitchSkin, DottedCircleLoaderSkin, FadedCircleLoaderSkin, SegmentBarLoaderSkin } from './optional';
